@@ -3,6 +3,7 @@
 """
 
 
+from functools import cache
 import os
 import re
 import glob
@@ -30,7 +31,7 @@ from bnip.NTIPAliasType import NTIPAliasType
 from bnip.utils import find_unique_or_set_base
 
 
-
+@cache
 def should_keep(item_data) -> tuple[bool, str]:
     """Decides whether or not to keep an item.
     Args:
@@ -46,6 +47,7 @@ def should_keep(item_data) -> tuple[bool, str]:
             return True, expression.raw
     return False, ""
 
+@cache
 def _gold_pickup(item_data: dict, expression: BNIPExpression) -> bool | None:
     res = None
     for i, token in enumerate(expression.tokens):
@@ -66,6 +68,7 @@ def _gold_pickup(item_data: dict, expression: BNIPExpression) -> bool | None:
     return res
 
 
+@cache
 def _handle_pick_eth_sockets(item_data: dict, expression: BNIPExpression) -> tuple[bool, str]:
     """Handles the pick condition for eth and sockets.
         Args:
@@ -130,7 +133,7 @@ def _handle_pick_eth_sockets(item_data: dict, expression: BNIPExpression) -> tup
 
     return ignore, pick_eval_expr
 
-
+@cache
 def should_pickup(item_data) -> tuple[bool, str]:
     """Decides whether or not to keep an item.
     Args:
@@ -164,7 +167,7 @@ def should_pickup(item_data) -> tuple[bool, str]:
 
     return False, ""
 
-
+@cache
 def should_id(item_data) -> bool:
     """Checks if the item should be identified.
 
