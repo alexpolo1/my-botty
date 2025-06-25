@@ -26,7 +26,7 @@ class Pindle:
         self._pickit = pickit
         self.runs = runs
 
-    def approach(self, start_loc: Location) -> bool | Location:
+    def approach(self, start_loc: Location, do_pre_buff: bool) -> bool | Location:
         # Go through Red Portal in A5
         Logger.info("Run Pindle")
         loc = self._town_manager.go_to_act(5, start_loc)
@@ -35,18 +35,18 @@ class Pindle:
         if not self._pather.traverse_nodes((loc, Location.A5_NIHLATHAK_PORTAL), self._char):
             return False
         wait(0.5, 0.6)
+        # Pre-buff before entering the portal
+        if do_pre_buff:
+            self._char.pre_buff()
         found_loading_screen_func = lambda: loading.wait_for_loading_screen(2.0)
         if not self._char.select_by_template("A5_RED_PORTAL", found_loading_screen_func, telekinesis=False):
             return False
         return Location.A5_PINDLE_START
 
-    def battle(self, do_pre_buff: bool) -> bool | tuple[Location, bool]:
+    def battle(self) -> bool | tuple[Location, bool]:
         # Kill Pindle
         if not template_finder.search_and_wait(["PINDLE_0", "PINDLE_1"], threshold=0.65, timeout=20).valid:
             return False
-        if do_pre_buff:
-            if not self._char.pre_buff():
-                return False
         # move to pindle
         if self._char.capabilities.can_teleport_natively:
             self._pather.traverse_nodes_fixed("pindle_safe_dist", self._char)
