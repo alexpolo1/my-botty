@@ -535,10 +535,10 @@ class Bot:
         res = False
         self._do_runs["run_pindle"] = False
         self._game_stats.update_location("Pin")
-        self._curr_loc = self._pindle.approach(self._curr_loc)
+        self._curr_loc = self._pindle.approach(self._curr_loc, not self._pre_buffed)
         if self._curr_loc:
             set_pause_state(False)
-            res = self._pindle.battle(not self._pre_buffed)
+            res = self._pindle.battle()
         self._ending_run_helper(res)
 
     def on_run_shenk(self):
