@@ -437,6 +437,21 @@ class IChar:
     def kill_cs_trash(self, location:str) -> bool:
         raise ValueError("Diablo CS Trash is not implemented!")
 
+    def kill_andariel(self) -> bool:
+        raise ValueError("Andariel is not implemented!")
+
+    def kill_countess(self) -> bool:
+        raise ValueError("Countess is not implemented!")
+
+    def kill_mephisto(self) -> bool:
+        raise ValueError("Mephisto is not implemented!")
+
+    def kill_baal(self) -> bool:
+        raise ValueError("Baal is not implemented!")
+
+    def kill_baal_waves(self, duration: int = 45) -> bool:
+        raise ValueError("Baal wave clearing is not implemented!")
+
 if __name__ == "__main__":
     import os
     import keyboard
