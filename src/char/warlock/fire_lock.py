@@ -148,3 +148,46 @@ class FireLock(Warlock):
     #     clear_inside()
     #     clear_outside()
     #     return True
+
+    def kill_andariel(self) -> bool:
+        atk_len = float(Config().char.get("atk_len_andariel", 4.0))
+        self._cast_deathmark_combo((0, -10))
+        start = time.time()
+        while (time.time() - start) < atk_len:
+            self._cast_chaos_combo((0, -10))
+        return True
+
+    def kill_countess(self) -> bool:
+        atk_len = float(Config().char.get("atk_len_countess", 3.0))
+        self._cast_deathmark_combo((0, -10))
+        start = time.time()
+        while (time.time() - start) < atk_len:
+            self._cast_chaos_combo((0, -10))
+        return True
+
+    def kill_mephisto(self) -> bool:
+        atk_len = float(Config().char.get("atk_len_mephisto", 12.0))
+        self._cast_ring_of_fire()
+        self._cast_deathmark_combo((0, -10))
+        start = time.time()
+        while (time.time() - start) < atk_len:
+            self._cast_chaos_combo((0, -10))
+        return True
+
+    def kill_baal(self) -> bool:
+        atk_len = float(Config().char.get("atk_len_baal", 10.0))
+        self._cast_ring_of_fire()
+        self._cast_deathmark_combo((0, -10))
+        start = time.time()
+        while (time.time() - start) < atk_len:
+            self._cast_chaos_combo((0, -10))
+        return True
+
+    def kill_baal_waves(self, duration: int = 45) -> bool:
+        atk_len = float(Config().char.get("atk_len_baal_waves", 30.0))
+        self._cast_ring_of_fire()
+        self._cast_deathmark_combo((0, -10))
+        start = time.time()
+        while (time.time() - start) < atk_len:
+            self._cast_chaos_combo((0, -10))
+        return True

@@ -779,3 +779,51 @@ class FoHdin(Paladin):
         ### LOOT ###
         #self._cs_pickit()
         return True
+
+    def kill_andariel(self) -> bool:
+        atk_len = float(Config().char.get("atk_len_andariel", 4.0))
+        Logger.info("Killing Andariel")
+        self._generic_foh_attack_sequence(default_target_abs=(0, 0), min_duration=atk_len, max_duration=atk_len*2, default_spray=20)
+        self._move_and_attack((30, 15), atk_len * 0.3, aura="redemption")
+        self._move_and_attack((-30, -15), atk_len * 0.3, aura="redemption")
+        self._activate_cleanse_redemption()
+        return True
+
+    def kill_countess(self) -> bool:
+        atk_len = float(Config().char.get("atk_len_countess", 3.0))
+        Logger.info("Killing Countess")
+        self._generic_foh_attack_sequence(default_target_abs=(0, 0), min_duration=atk_len, max_duration=atk_len*2, default_spray=20)
+        self._move_and_attack((30, 15), atk_len * 0.3, aura="redemption")
+        self._activate_cleanse_redemption()
+        return True
+
+    def kill_mephisto(self) -> bool:
+        atk_len = float(Config().char.get("atk_len_mephisto", 12.0))
+        Logger.info("Killing Mephisto")
+        self._generic_foh_attack_sequence(default_target_abs=(0, 0), min_duration=atk_len, max_duration=atk_len*2, default_spray=30)
+        self._move_and_attack((30, 15), atk_len * 0.3, aura="redemption")
+        self._move_and_attack((-30, -15), atk_len * 0.3, aura="redemption")
+        self._activate_cleanse_redemption()
+        return True
+
+    def kill_baal(self) -> bool:
+        atk_len = float(Config().char.get("atk_len_baal", 10.0))
+        Logger.info("Killing Baal")
+        self._generic_foh_attack_sequence(default_target_abs=(0, 0), min_duration=atk_len, max_duration=atk_len*2, default_spray=30)
+        self._move_and_attack((30, 15), atk_len * 0.3, aura="redemption")
+        self._move_and_attack((-30, -15), atk_len * 0.3, aura="redemption")
+        self._activate_cleanse_redemption()
+        return True
+
+    def kill_baal_waves(self, duration: int = 45) -> bool:
+        atk_len = float(Config().char.get("atk_len_baal_waves", 30.0))
+        Logger.info("Clearing Baal waves")
+        self._foh_clear_screen(duration=atk_len * 0.3)
+        self._activate_redemption_aura()
+        self._foh_clear_screen(duration=atk_len * 0.3)
+        self._activate_redemption_aura()
+        self._foh_clear_screen(duration=atk_len * 0.3)
+        self._activate_redemption_aura()
+        self._foh_clear_screen(duration=atk_len * 0.1)
+        self._activate_cleanse_redemption()
+        return True
