@@ -150,6 +150,17 @@ class Config:
             "restart_d2r_when_stuck": bool(int(self._select_val("general", "restart_d2r_when_stuck"))),
         }
 
+        self.stealth = {
+            "wait_jitter_min": float(self._select_optional("stealth", "wait_jitter_min", "0.85")),
+            "wait_jitter_max": float(self._select_optional("stealth", "wait_jitter_max", "1.20")),
+            "click_variance": int(self._select_optional("stealth", "click_variance", "8")),
+            "reshuffle_each_rotation": bool(int(self._select_optional("stealth", "reshuffle_each_rotation", "1"))),
+            "skip_run_chance": int(self._select_optional("stealth", "skip_run_chance", "10")),
+            "afk_break_chance": int(self._select_optional("stealth", "afk_break_chance", "5")),
+            "afk_break_min_m": float(self._select_optional("stealth", "afk_break_min_m", "2")),
+            "afk_break_max_m": float(self._select_optional("stealth", "afk_break_max_m", "12")),
+        }
+
         self.routes = {}
         order_str = self._select_val("routes", "order")
         self.routes_order = [x.strip() for x in order_str.split(",")]

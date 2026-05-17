@@ -258,6 +258,18 @@ class mouse:
             _mouse.move(point[0], point[1], duration=delta)
 
     @staticmethod
+    def stealth_move(x, y, absolute: bool = True, randomize: int | tuple[int, int] = 5, delay_factor: tuple[float, float] = [0.4, 0.6]):
+        """Like move() but adds config-driven extra pixel variance for anti-detection."""
+        try:
+            from config import Config
+            variance = Config().stealth["click_variance"]
+        except Exception:
+            variance = 0
+        rx = x + random.randint(-variance, variance)
+        ry = y + random.randint(-variance, variance)
+        mouse.move(rx, ry, absolute=absolute, randomize=5 + variance, delay_factor=delay_factor)
+
+    @staticmethod
     def _is_clicking_safe():
         # Because of reports that botty lost equiped items, let's check if the inventory is open, and if it is, restrict the mouse move
         mouse_pos = screen.convert_monitor_to_screen(_mouse.get_position())

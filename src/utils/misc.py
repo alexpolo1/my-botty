@@ -84,7 +84,14 @@ def restore_d2r_window_visibility():
 def wait(min_seconds, max_seconds = None):
     if max_seconds is None:
         max_seconds = min_seconds
-    time.sleep(random.uniform(min_seconds, max_seconds))
+    base = random.uniform(min_seconds, max_seconds)
+    try:
+        from config import Config
+        cfg = Config().stealth
+        jitter = random.uniform(cfg["wait_jitter_min"], cfg["wait_jitter_max"])
+    except Exception:
+        jitter = 1.0
+    time.sleep(base * jitter)
     return
 
 def kill_thread(thread):
