@@ -73,6 +73,22 @@ class Location:
     A2_ARC_START = "a2_arc_start"
     A2_ARC_CHECKPOINT = "a2_arc_checkpoint"
     A2_ARC_END = "a2_arc_end"
+    # Andariel (A1 Catacombs)
+    A1_ANDY_LEVEL3_ENTER = "a1_andy_level3_enter"
+    A1_ANDY_LEVEL4_ENTER = "a1_andy_level4_enter"
+    A1_ANDY_SAFE_DIST = "a1_andy_safe_dist"
+    # Countess (A1 Forgotten Tower)
+    A1_TOWER_LEVEL2_ENTER = "a1_tower_level2_enter"
+    A1_TOWER_LEVEL3_ENTER = "a1_tower_level3_enter"
+    A1_TOWER_LEVEL4_ENTER = "a1_tower_level4_enter"
+    A1_TOWER_LEVEL5_ENTER = "a1_tower_level5_enter"
+    A1_COUNTESS_SAFE_DIST = "a1_countess_safe_dist"
+    # Mephisto (A3 Durance of Hate)
+    A3_MEPH_LEVEL3_ENTER = "a3_meph_level3_enter"
+    A3_MEPH_SAFE_DIST = "a3_meph_safe_dist"
+    # Baal (A5 Throne of Destruction)
+    A5_BAAL_THRONE_ENTRY = "a5_baal_throne_entry"
+    A5_BAAL_SAFE_DIST = "a5_baal_safe_dist"
     # Chaos Sanctuary (a = vizier, b = deseis, c = infector)
     A4_DIABLO_WP = "a4_diablo_wp"
     A4_DIABLO_START = "a4_diablo_start"
