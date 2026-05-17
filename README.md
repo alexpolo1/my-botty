@@ -241,3 +241,31 @@ order=run_pindle, run_eldritch
 
 | [advanced_options]   | Descriptions                                                          |
 | -------------------- | --------------------------------------------------------------------- |
+
+## Tooling
+
+### New route scaffolding
+
+A CLI tool is provided to scaffold new farming routes in one step:
+
+```bash
+python3 tools/new_route.py --name <name> --display "<Display Name>" --act <1-5>
+```
+
+This creates `src/run/<name>.py` from a template and mutates `src/bot.py` and
+`src/run/__init__.py` to wire the new route into the bot's state machine.
+
+Options:
+
+| Option | Description |
+|--------|-------------|
+| `--name` | Snake-case run name (e.g. `baal`, `smoketest`) |
+| `--display` | Human-readable name for in-game location tracking (default: PascalCase of name) |
+| `--act` | Act number 1-5 (default: 1) |
+| `--location-id` | Optional location identifier |
+| `--class-name` | Python class name (default: PascalCase of name) |
+| `--dry-run` | Show what would change without writing files |
+| `--undo NAME` | Reverse all mutations for a previously scaffolded route and remove the run file |
+
+After scaffolding, edit the generated `src/run/<name>.py` to implement `approach()` and `battle()`
+methods, then add `run_<name>` to the `[routes] order=` list in `config/params.ini`.
