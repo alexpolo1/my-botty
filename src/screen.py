@@ -1,13 +1,15 @@
 import numpy as np
-from mss import mss
+import os
 from logger import Logger
 from utils.misc import WindowSpec, find_d2r_window, wait
 from config import Config
 import threading
 import time
 
-sct = mss()
-monitor_roi = sct.monitors[0]
+# Defer mss() and monitor setup until first grab() so the module can import
+# on headless Linux (no X display) without crashing.
+sct = None
+monitor_roi = {"top": 0, "left": 0, "width": 1280, "height": 720}
 found_offsets = False
 monitor_x_range = None
 monitor_y_range = None
@@ -72,6 +74,15 @@ def grab(force_new: bool = False) -> np.ndarray:
     global monitor_roi
     global cached_img
     global last_grab
+    global sct
+    if sct is None:
+        from mss import mss as mss_factory
+        sct = mss_factory()
+        m0 = sct.monitors[0]
+        monitor_roi["left"] = m0["left"]
+        monitor_roi["top"] = m0["top"]
+        monitor_roi["width"] = m0["width"]
+        monitor_roi["height"] = m0["height"]
     # with 25fps we have 40ms per frame. If we check for 20ms range to make sure we can still get each frame if we want.
     with cached_img_lock:
         if not force_new and cached_img is not None and last_grab is not None and (time.perf_counter() - last_grab) < 0.02:

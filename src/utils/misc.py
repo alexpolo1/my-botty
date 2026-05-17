@@ -15,14 +15,50 @@ import cv2
 import os
 from math import cos, sin, dist
 import subprocess
-from win32con import HWND_TOPMOST, SWP_NOMOVE, SWP_NOSIZE, HWND_NOTOPMOST
-from win32gui import GetWindowText, SetWindowPos, EnumWindows, GetClientRect, ClientToScreen
-from win32api import GetMonitorInfo, MonitorFromWindow
-from win32process import GetWindowThreadProcessId
 import psutil
 
+if os.name == 'nt':
+    from win32con import HWND_TOPMOST, SWP_NOMOVE, SWP_NOSIZE, HWND_NOTOPMOST
+    from win32gui import GetWindowText, SetWindowPos, EnumWindows, GetClientRect, ClientToScreen
+    from win32api import GetMonitorInfo, MonitorFromWindow
+    from win32process import GetWindowThreadProcessId
+else:
+    # Linux stubs — these functions are never called outside os.name == 'nt' blocks,
+    # but they must exist for the module to import cleanly on non-Windows systems.
+    HWND_TOPMOST = None
+    SWP_NOMOVE = None
+    SWP_NOSIZE = None
+    HWND_NOTOPMOST = None
+
+    def GetWindowText(hwnd):
+        return None
+
+    def SetWindowPos(hwnd, flags, x, y, w, h, extra):
+        pass
+
+    def EnumWindows(callback, lParam):
+        pass
+
+    def GetClientRect(hwnd):
+        return (0, 0, 0, 0)
+
+    def ClientToScreen(hwnd, pt):
+        return pt
+
+    def GetMonitorInfo(hwnd, info):
+        return None
+
+    def MonitorFromWindow(hwnd, flags):
+        return None
+
+    def GetWindowThreadProcessId(hwnd):
+        return (0, 0)
+
 from rapidfuzz.process import extractOne
-from rapidfuzz.string_metric import levenshtein
+try:
+    from rapidfuzz.string_metric import levenshtein
+except ImportError:
+    from rapidfuzz.distance import Levenshtein as levenshtein
 
 def close_down_d2():
     subprocess.call(["taskkill","/F","/IM","D2R.exe"], stderr=subprocess.DEVNULL)
