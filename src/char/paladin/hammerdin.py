@@ -1261,6 +1261,67 @@ class Hammerdin(Paladin):
         self._picked_up_items |= self._pickit.pick_up_items(self)
         return True
 
+    def kill_andariel(self) -> bool:
+        atk_len = float(Config().char.get("atk_len_andariel", 4.0))
+        pos_m = convert_abs_to_monitor((0, 0))
+        mouse.move(*pos_m, randomize=80, delay_factor=[0.5, 0.7])
+        self._cast_hammers(atk_len)
+        self._cast_hammers(0.8, "redemption")
+        self._move_and_attack((30, 15), atk_len * 0.3)
+        self._cast_hammers(0.6, "redemption")
+        self._move_and_attack((-30, -15), atk_len * 0.3)
+        self._cast_hammers(0.8, "redemption")
+        return True
+
+    def kill_countess(self) -> bool:
+        atk_len = float(Config().char.get("atk_len_countess", 3.0))
+        pos_m = convert_abs_to_monitor((0, 0))
+        mouse.move(*pos_m, randomize=80, delay_factor=[0.5, 0.7])
+        self._cast_hammers(atk_len)
+        self._cast_hammers(0.8, "redemption")
+        self._move_and_attack((30, 15), atk_len * 0.3)
+        self._cast_hammers(0.6, "redemption")
+        return True
+
+    def kill_mephisto(self) -> bool:
+        atk_len = float(Config().char.get("atk_len_mephisto", 12.0))
+        pos_m = convert_abs_to_monitor((0, 0))
+        mouse.move(*pos_m, randomize=80, delay_factor=[0.5, 0.7])
+        self._cast_hammers(atk_len)
+        self._cast_hammers(0.8, "redemption")
+        self._move_and_attack((30, 15), atk_len * 0.4)
+        self._cast_hammers(0.8, "redemption")
+        self._move_and_attack((-30, -15), atk_len * 0.4)
+        self._cast_hammers(1.2, "redemption")
+        return True
+
+    def kill_baal(self) -> bool:
+        atk_len = float(Config().char.get("atk_len_baal", 10.0))
+        pos_m = convert_abs_to_monitor((0, 0))
+        mouse.move(*pos_m, randomize=80, delay_factor=[0.5, 0.7])
+        self._cast_hammers(atk_len)
+        self._cast_hammers(0.8, "redemption")
+        self._move_and_attack((30, 15), atk_len * 0.4)
+        self._cast_hammers(0.8, "redemption")
+        self._move_and_attack((-30, -15), atk_len * 0.4)
+        wait(0.1, 0.15)
+        self._cast_hammers(1.2, "redemption")
+        return True
+
+    def kill_baal_waves(self, duration: int = 45) -> bool:
+        atk_len = float(Config().char.get("atk_len_baal_waves", 30.0))
+        pos_m = convert_abs_to_monitor((0, 0))
+        mouse.move(*pos_m, randomize=80, delay_factor=[0.5, 0.7])
+        self._move_and_attack((30, 15), atk_len * 0.3)
+        self._cast_hammers(0.75, "redemption")
+        self._move_and_attack((-50, -15), atk_len * 0.3)
+        self._cast_hammers(0.75, "redemption")
+        self._move_and_attack((-30, -15), atk_len * 0.3)
+        self._cast_hammers(0.75, "redemption")
+        self._move_and_attack((30, -15), atk_len * 0.1)
+        self._cast_hammers(1.0, "redemption")
+        return True
+
 
 if __name__ == "__main__":
     import os
