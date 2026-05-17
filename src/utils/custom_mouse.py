@@ -1,6 +1,14 @@
 # Mostly copied from: https://github.com/patrikoss/pyclick
 import mouse as _mouse
-from mouse import _winmouse
+import os
+if os.name == 'nt':
+    from mouse import _winmouse
+else:
+    # Linux stub — _winmouse is only used in _move_to() which wraps calls in os.name checks
+    class _winmouse:
+        @staticmethod
+        def move_to(x, y):
+            _mouse.move(x, y)
 import pytweening
 import numpy as np
 import random
