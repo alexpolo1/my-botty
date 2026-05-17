@@ -1,4 +1,7 @@
-"""Code-mod helpers for botty route scaffolding."""
+"""Code-mod helpers for botty route scaffolding.
+
+Uses line-based insertion for reliable idempotency and clean undo.
+"""
 import os
 import re
 from pathlib import Path
@@ -18,6 +21,8 @@ Q2 = chr(34)
 LB = chr(123)
 RB = chr(125)
 
+
+# ─── __init__.py import ───────────────────────────────────────────────
 
 def insert_init_import(init_path, name, class_name):
     text = _read(init_path)
@@ -41,46 +46,63 @@ def undo_init_import(init_path, name):
     return True
 
 
+# ─── _do_runs dict ────────────────────────────────────────────────────
+
 def insert_into_do_runs(bot_path, name):
     text = _read(bot_path)
-    needle = Q2 + "run_" + name + Q2
-    if needle in text:
+    if Q2 + "run_" + name + Q2 in text:
         return False
-    m = re.search(r'(self\._do_runs = \{.*?)(\s*\})', text, re.DOTALL)
+    # Find the last "run_XX" entry line before the closing }
+    m = re.search(
+        r'(self\._do_runs = \{.*?)(\s+"run_\w+":\s*Config\(\)\.routes\.get\([^)]+\),\s*\n)(\s*\})',
+        text, re.DOTALL
+    )
     if not m:
-        raise ValueError("Cannot find self._do_runs dict")
-    before = m.group(1)
-    last_line = before.rstrip().rsplit(NL, 1)[-1]
-    indent = " " * (len(last_line) - len(last_line.lstrip()))
-    entry = NL + indent + Q2 + "run_" + name + Q2
-    entry += ": Config().routes.get(" + Q2 + "run_" + name + Q2 + ")," + chr(10)
-    result = text[:m.start(2)] + entry + m.group(2) + text[m.end():]
+        raise ValueError("Cannot find last entry in self._do_runs dict")
+    last_entry = m.group(2)
+    indent = " " * (len(last_entry) - len(last_entry.lstrip()))
+    entry = indent + Q2 + "run_" + name + Q2
+    entry += ": Config().routes.get(" + Q2 + "run_" + name + Q2 + ")," + NL
+    result = text[:m.start(2)] + m.group(2) + entry + m.group(3) + text[m.end():]
     _write(bot_path, result)
     return True
 
 
 def undo_do_runs(bot_path, name):
     text = _read(bot_path)
-    en = re.escape(name)
-    pat = r"\s*" + Q2 + "run_" + en + Q2 + ": Config\(\)\.routes\.get\(" + Q2 + "run_" + en + Q2 + "\),\s*" + NL
-    t = re.sub(pat, "", text)
-    if t == text:
+    lines = text.split(NL)
+    en = name
+    new_lines = []
+    removed = False
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+        if stripped.startswith(Q2 + "run_" + en + Q2 + ":") and "Config().routes.get" in stripped:
+            removed = True
+            continue
+        new_lines.append(line)
+    if not removed:
         return False
-    _write(bot_path, t)
+    _write(bot_path, NL.join(new_lines))
     return True
 
+
+# ─── instantiation block ──────────────────────────────────────────────
 
 def insert_instantiation(bot_path, name, class_name):
     text = _read(bot_path)
     if "self._" + name + " = " in text:
         return False
-    pat = r'(\s+self\._[a-z_]+ = [A-Z][a-zA-Z]*\(self\._pather, self\._town_manager[^\)]+\))' + NL
+    pat = r'(self\._[a-z_]+ = [A-Z][a-zA-Z]*\(self\._pather, self\._town_manager[^)]+\))(\s*\n)'
     matches = list(re.finditer(pat, text))
     if not matches:
         raise ValueError("Cannot find run instantiation pattern")
     last = matches[-1]
-    indent = last.group(1)[:len(last.group(1)) - len(last.group(1).lstrip())]
-    new_line = indent + "self._" + name + " = " + class_name + "(self._pather, self._town_manager, self._char, self._pickit, self._do_runs)" + NL
+    # Extract indentation from the start of the matched line
+    before_match = text[:last.start(1)]
+    line_start = before_match.rfind(NL) + 1
+    indent = before_match[line_start:last.start(1)]
+    new_line = indent + "self._" + name + " = " + class_name
+    new_line += "(self._pather, self._town_manager, self._char, self._pickit, self._do_runs)" + NL
     result = text[:last.end()] + new_line + text[last.end():]
     _write(bot_path, result)
     return True
@@ -88,28 +110,38 @@ def insert_instantiation(bot_path, name, class_name):
 
 def undo_instantiation(bot_path, name):
     text = _read(bot_path)
-    pat = r'\s+self\._' + re.escape(name) + r'\s*=\s*[A-Za-z_]+\([^\)]+\)\s*' + NL
-    t = re.sub(pat, "", text)
-    if t == text:
+    lines = text.split(NL)
+    new_lines = []
+    removed = False
+    for line in lines:
+        stripped = line.strip()
+        if stripped.startswith("self._" + name + " = ") and "(self._pather" in stripped:
+            removed = True
+            continue
+        new_lines.append(line)
+    if not removed:
         return False
-    _write(bot_path, t)
+    _write(bot_path, NL.join(new_lines))
     return True
 
 
+# ─── _states list ─────────────────────────────────────────────────────
+
 def insert_state(bot_path, name):
     text = _read(bot_path)
-    sm = re.search(r'self\._states\s*=\s*\[([^\]]*)\]', text)
-    if sm and Q1 + name + Q1 in sm.group(1):
-        return False
-    m = re.search(r'(self\._states\s*=\s*\[.*?)(\])', text, re.DOTALL)
+    m = re.search(r'(self\._states\s*=\s*\[)(.*?)(\])', text, re.DOTALL)
     if not m:
         raise ValueError("Cannot find self._states list")
-    inner = m.group(1)
+    inner = m.group(2)
+    needle = Q1 + name + Q1
+    if needle in inner:
+        return False
+    # Append with comma
     if inner.rstrip().endswith(","):
-        inner = inner + Q1 + name + Q1
+        inner = inner + " " + needle
     else:
-        inner = inner + ", " + Q1 + name + Q1
-    result = text[:m.start(1)] + inner + m.group(2) + text[m.end():]
+        inner = inner + ", " + needle
+    result = text[:m.start(2)] + inner + m.group(3) + text[m.end():]
     _write(bot_path, result)
     return True
 
@@ -130,6 +162,8 @@ def undo_state(bot_path, name):
     return True
 
 
+# ─── _transitions list ────────────────────────────────────────────────
+
 def insert_transitions(bot_path, name):
     text = _read(bot_path)
     if Q1 + "trigger" + Q1 + ": " + Q1 + "run_" + name + Q1 in text:
@@ -138,20 +172,30 @@ def insert_transitions(bot_path, name):
     if marker not in text:
         raise ValueError("Cannot find # End run / game")
     idx = text.index(marker)
+    # Find the line start for proper indentation — insert BEFORE the comment line
     ls = text.rfind(NL, 0, idx) + 1
     indent = text[ls:idx]
-    tl = indent + LB + " " + Q1 + "trigger" + Q1 + ": " + Q1 + "run_" + name + Q1 + ", " + Q1 + "source" + Q1 + ": " + Q1 + "town" + Q1 + ", " + Q1 + "dest" + Q1 + ": " + Q1 + name + Q1 + ", " + Q1 + "before" + Q1 + ": " + Q2 + "on_run_" + name + Q2 + " " + RB + ","
+    # Build the new transition row with proper formatting
+    tl = indent + LB + " 'trigger': 'run_" + name + "', 'source': 'town', 'dest': '"
+    tl += name + "', 'before': " + Q2 + "on_run_" + name + Q2 + " " + RB + ","
     tl += NL
-    text = text[:idx] + tl + text[idx:]
+    # Insert at line start, before the comment line (preserving its indentation)
+    text = text[:ls] + tl + text[ls:]
+    # Add name to end_run source list
     m = re.search(r"('trigger': 'end_run', 'source': \[)([^\]]+)(\])", text, re.DOTALL)
     if m:
         s = m.group(2).strip()
-        s = s + ("" if s.endswith(",") else ",") + " " + Q1 + name + Q1
+        if not s.endswith(","):
+            s += ","
+        s += " " + Q1 + name + Q1
         text = text[:m.start(2)] + s + text[m.end(2):]
+    # Add name to end_game source list
     m = re.search(r"('trigger': 'end_game', 'source': \[)([^\]]+)(\])", text, re.DOTALL)
     if m:
         s = m.group(2).strip()
-        s = s + ("" if s.endswith(",") else ",") + " " + Q1 + name + Q1
+        if not s.endswith(","):
+            s += ","
+        s += " " + Q1 + name + Q1
         text = text[:m.start(2)] + s + text[m.end(2):]
     _write(bot_path, text)
     return True
@@ -159,19 +203,30 @@ def insert_transitions(bot_path, name):
 
 def undo_transitions(bot_path, name):
     text = _read(bot_path)
+    en = name
     changed = False
-    en = re.escape(name)
-    pat = re.compile(
-        r'\s*' + LB + r'\s*' + Q1 + 'trigger' + Q1 + ':\s*' + Q1 + 'run_' + en
-        + Q1 + '.*?' + Q1 + 'before' + Q1 + ':\s*' + Q2 + 'on_run_' + en + Q2 + '\s*' + RB + r',\s*' + NL,
-        re.DOTALL,
-    )
-    t = pat.sub("", text)
-    if t != text:
-        text = t
-        changed = True
-    for trigger in ['end_run', 'end_game']:
-        pat2 = r"('trigger':\s*" + trigger + r"',\s*'source':\s*)\[([^\]]*)\]"
+
+    # Remove the transition row for this route using line-by-line removal
+    lines = text.split(NL)
+    new_lines = []
+    removed_transition = False
+    for line in lines:
+        stripped = line.strip()
+        # Match lines containing the transition dict for this route
+        if (stripped.startswith(LB) and
+            f"'run_{en}'" in stripped and
+            f"on_run_{en}" in stripped and
+            stripped.endswith(RB + ",")):
+            removed_transition = True
+            changed = True
+            continue
+        new_lines.append(line)
+    if removed_transition:
+        text = NL.join(new_lines)
+
+    # Remove name from end_run and end_game source lists
+    for trigger in ["end_run", "end_game"]:
+        pat2 = r"('trigger': 'end_run', 'source': \[)([^\]]+)(\])" if trigger == "end_run" else r"('trigger': 'end_game', 'source': \[)([^\]]+)(\])"
         m = re.search(pat2, text, re.DOTALL)
         if m:
             sources = m.group(2)
@@ -180,10 +235,13 @@ def undo_transitions(bot_path, name):
             if ns != sources:
                 text = text[:m.start(2)] + ns + text[m.end(2):]
                 changed = True
+
     if changed:
         _write(bot_path, text)
     return changed
 
+
+# ─── on_run_* handler ─────────────────────────────────────────────────
 
 def insert_handler(bot_path, name, display):
     text = _read(bot_path)
@@ -195,17 +253,18 @@ def insert_handler(bot_path, name, display):
     if not matches:
         raise ValueError("Cannot find existing handler pattern")
     last = matches[-1]
-    h = []
-    h.append("")
-    h.append("    def on_run_" + name + "(self):")
-    h.append("        res = False")
-    h.append('        self._do_runs[' + Q2 + 'run_' + name + Q2 + '] = False')
-    h.append('        self._game_stats.update_location(' + Q2 + short + Q2 + ')')
-    h.append("        self._curr_loc = self._" + name + ".approach(self._curr_loc)")
-    h.append("        if self._curr_loc:")
-    h.append("            set_pause_state(False)")
-    h.append("            res = self._" + name + ".battle(not self._pre_buffed)")
-    h.append("        self._ending_run_helper(res)")
+    h = [
+        "",
+        "    def on_run_" + name + "(self):",
+        "        res = False",
+        "        self._do_runs[" + Q2 + "run_" + name + Q2 + "] = False",
+        "        self._game_stats.update_location(" + Q2 + short + Q2 + ")",
+        "        self._curr_loc = self._" + name + ".approach(self._curr_loc)",
+        "        if self._curr_loc:",
+        "            set_pause_state(False)",
+        "            res = self._" + name + ".battle(not self._pre_buffed)",
+        "        self._ending_run_helper(res)",
+    ]
     handler = NL.join(h) + NL
     result = text[:last.end()] + handler + text[last.end():]
     _write(bot_path, result)
@@ -214,13 +273,18 @@ def insert_handler(bot_path, name, display):
 
 def undo_handler(bot_path, name):
     text = _read(bot_path)
-    pat = re.compile(r'\n\s*def on_run_' + re.escape(name) + r'\(self\):.*?_ending_run_helper\(res\)\n', re.DOTALL)
+    pat = re.compile(
+        r'\n\s*def on_run_' + re.escape(name) + r'\(self\):.*?_ending_run_helper\(res\)\n',
+        re.DOTALL
+    )
     t = pat.sub("", text)
     if t == text:
         return False
     _write(bot_path, t)
     return True
 
+
+# ─── batch operations ──────────────────────────────────────────────────
 
 def apply_all(base_dir, name, class_name, display, act, location_id=None):
     bp = os.path.join(base_dir, "src", "bot.py")
@@ -265,4 +329,3 @@ def undo_all(base_dir, name):
         os.remove(rf)
         actions.append("removed_run_file")
     return actions
-

@@ -43,6 +43,7 @@ from town import TownManager, A1, A2, A3, A4, A5, town_manager
 
 from messages import Messenger
 from threading import Lock
+from utils.stealth import maybe_afk_break, should_skip_run
 
 class Bot:
 
@@ -112,6 +113,10 @@ class Bot:
             "run_arcane": Config().routes.get("run_arcane"),
             "run_diablo": Config().routes.get("run_diablo"),
             "run_vizier": Config().routes.get("run_vizier"),
+             "run_baal": Config().routes.get("run_baal"),
+              "run_mephisto": Config().routes.get("run_mephisto"),
+               "run_andariel": Config().routes.get("run_andariel"),
+                "run_countess": Config().routes.get("run_countess"),
         }
         # Adapt order to the config
         self._do_runs = OrderedDict((k, self._do_runs[k]) for k in Config().routes_order if k in self._do_runs and self._do_runs[k])
@@ -128,6 +133,10 @@ class Bot:
         self._diablo = Diablo(self._pather, self._town_manager, self._char, self._pickit, self._do_runs)
         self._vizier = Vizier(self._pather, self._town_manager, self._char, self._pickit, self._do_runs)
 
+        self._baal = Baal(self._pather, self._town_manager, self._char, self._pickit, self._do_runs)
+        self._mephisto = Mephisto(self._pather, self._town_manager, self._char, self._pickit, self._do_runs)
+        self._andariel = Andariel(self._pather, self._town_manager, self._char, self._pickit, self._do_runs)
+        self._countess = Countess(self._pather, self._town_manager, self._char, self._pickit, self._do_runs)
         # Create member variables
         self._picked_up_items = False
         self._curr_loc: bool | Location = None
@@ -142,7 +151,7 @@ class Bot:
         self._timer = time.time()
 
         # Create State Machine
-        self._states=['initialization','hero_selection', 'town', 'pindle', 'shenk', 'trav', 'nihlathak', 'arcane', 'diablo', 'vizier']
+        self._states=['initialization','hero_selection', 'town', 'pindle', 'shenk', 'trav', 'nihlathak', 'arcane', 'diablo', 'vizier', 'baal', 'mephisto', 'andariel', 'countess']
         self._transitions = [
             { 'trigger': 'init', 'source': 'initialization', 'dest': '=','before': "on_init"},
             { 'trigger': 'select_character', 'source': 'initialization', 'dest': 'hero_selection', 'before': "on_select_character"},
@@ -158,9 +167,13 @@ class Bot:
             { 'trigger': 'run_arcane', 'source': 'town', 'dest': 'arcane', 'before': "on_run_arcane"},
             { 'trigger': 'run_diablo', 'source': 'town', 'dest': 'diablo', 'before': "on_run_diablo"},
             { 'trigger': 'run_vizier', 'source': 'town', 'dest': 'vizier', 'before': "on_run_vizier"},
+            { 'trigger': 'run_baal', 'source': 'town', 'dest': 'baal', 'before': "on_run_baal" },
+            { 'trigger': 'run_mephisto', 'source': 'town', 'dest': 'mephisto', 'before': "on_run_mephisto" },
+            { 'trigger': 'run_andariel', 'source': 'town', 'dest': 'andariel', 'before': "on_run_andariel" },
+            { 'trigger': 'run_countess', 'source': 'town', 'dest': 'countess', 'before': "on_run_countess" },
             # End run / game
-            { 'trigger': 'end_run', 'source': ['shenk', 'pindle', 'nihlathak', 'trav', 'arcane', 'diablo','vizier'], 'dest': 'town', 'before': "on_end_run"},
-            { 'trigger': 'end_game', 'source': ['town', 'shenk', 'pindle', 'nihlathak', 'trav', 'arcane', 'diablo','vizier','end_run'], 'dest': 'initialization', 'before': "on_end_game"},
+            { 'trigger': 'end_run', 'source': ['shenk', 'pindle', 'nihlathak', 'trav', 'arcane', 'diablo','vizier', 'baal', 'mephisto', 'andariel', 'countess'], 'dest': 'town', 'before': "on_end_run"},
+            { 'trigger': 'end_game', 'source': ['town', 'shenk', 'pindle', 'nihlathak', 'trav', 'arcane', 'diablo','vizier','end_run', 'baal', 'mephisto', 'andariel', 'countess'], 'dest': 'initialization', 'before': "on_end_game"},
         ]
         self.machine = Machine(model=self, states=self._states, initial="initialization", transitions=self._transitions, queued=True)
         self._transmute = Transmute(self._game_stats)
@@ -445,6 +458,9 @@ class Bot:
         self._previous_run_failed = False
         for key in self._do_runs:
             if self._do_runs[key]:
+                if should_skip_run():
+                    self._do_runs[key] = False
+                    continue
                 self.trigger_or_stop(key)
                 started_run = True
                 break
@@ -497,6 +513,12 @@ class Bot:
         self._do_runs.update(self._do_runs_reset)
         if Config().general["randomize_runs"]:
             self.shuffle_runs()
+        if Config().stealth.get("reshuffle_each_rotation"):
+            tmp = list(self._do_runs_reset.items())
+            random.shuffle(tmp)
+            self._do_runs_reset = OrderedDict(tmp)
+            self._do_runs.clear()
+            self._do_runs.update(self._do_runs_reset)
         self.trigger_or_stop("init")
 
     def on_end_run(self):
@@ -507,6 +529,8 @@ class Bot:
             self._curr_loc = self._town_manager.wait_for_tp(self._curr_loc)
             if self._curr_loc:
                 set_pause_state(True)
+                # Stealth: chance of unscheduled AFK break after returning to town
+                maybe_afk_break()
                 return self.trigger_or_stop("maintenance")
         if not skills.has_tps():
             consumables.set_needs("tp", 20)
@@ -599,3 +623,42 @@ class Bot:
             set_pause_state(False)
             res = self._vizier.battle(not self._pre_buffed)
         self._ending_run_helper(res)
+    def on_run_baal(self):
+        res = False
+        self._do_runs["run_baal"] = False
+        self._game_stats.update_location("Baa")
+        self._curr_loc = self._baal.approach(self._curr_loc)
+        if self._curr_loc:
+            set_pause_state(False)
+            res = self._baal.battle(not self._pre_buffed)
+        self._ending_run_helper(res)
+    def on_run_mephisto(self):
+        res = False
+        self._do_runs["run_mephisto"] = False
+        self._game_stats.update_location("Mep")
+        self._curr_loc = self._mephisto.approach(self._curr_loc)
+        if self._curr_loc:
+            set_pause_state(False)
+            res = self._mephisto.battle(not self._pre_buffed)
+        self._ending_run_helper(res)
+    def on_run_andariel(self):
+        res = False
+        self._do_runs["run_andariel"] = False
+        self._game_stats.update_location("And")
+        self._curr_loc = self._andariel.approach(self._curr_loc)
+        if self._curr_loc:
+            set_pause_state(False)
+            res = self._andariel.battle(not self._pre_buffed)
+        self._ending_run_helper(res)
+    def on_run_countess(self):
+        res = False
+        self._do_runs["run_countess"] = False
+        self._game_stats.update_location("Cou")
+        self._curr_loc = self._countess.approach(self._curr_loc)
+        if self._curr_loc:
+            set_pause_state(False)
+            res = self._countess.battle(not self._pre_buffed)
+        self._ending_run_helper(res)
+
+
+

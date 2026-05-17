@@ -5,3 +5,7 @@ from .nihlathak import Nihlathak
 from .arcane import Arcane
 from .diablo import Diablo
 from .vizier import Vizier
+from .baal import Baal
+from .mephisto import Mephisto
+from .andariel import Andariel
+from .countess import Countess
