@@ -5,6 +5,8 @@ from item.pickit import PickIt
 import template_finder
 from town.town_manager import TownManager
 from utils.misc import wait
+from ui import loading
+from ui import waypoint
 from collections import OrderedDict
 
 
@@ -26,31 +28,43 @@ class Baal:
         self._pickit = pickit
         self.runs = runs
 
-    def approach(self, start_loc: Location) -> bool | Location:
-        # TODO: Implement approach logic for Baal
+    def approach(self, start_loc: Location, do_pre_buff: bool) -> bool | Location:
         Logger.info("Run Baal")
-        # loc = self._town_manager.go_to_act(5, start_loc)
-        # if not loc:
-        #     return False
-        # TODO: Add traversal to None  # TODO
-        # if not self._pather.traverse_nodes((loc, Location.None  # TODO), self._char):
-        #     return False
-        return False  # Replace with actual start Location constant
+        loc = self._town_manager.go_to_act(5, start_loc)
+        if not loc:
+            return False
+        # Traverse to the waypoint
+        if not self._pather.traverse_nodes((loc, Location.A5_WP), self._char):
+            return False
+        # Open waypoint and select Throne of Destruction (Worldstone Keep Level 2 is the closest;
+        # Throne of Destruction is not a direct waypoint but accessed from it)
+        if not self._town_manager.open_wp(loc):
+            return False
+        if not waypoint.use_wp(label="Worldstone Keep Level 2"):
+            return False
+        wait(0.5, 0.6)
+        # Pre-buff after entering the area
+        if do_pre_buff:
+            self._char.pre_buff()
+        return Location.A5_TOWN_START  # Throne of Destruction fallback
 
-    def battle(self, do_pre_buff: bool) -> bool | tuple[Location, bool]:
-        # TODO: Implement battle logic for Baal
-        # if not template_finder.search_and_wait(["TODO"], threshold=0.65, timeout=20).valid:
-        #     return False
-        # if do_pre_buff:
-        #     if not self._char.pre_buff():
-        #         return False
-        # if self._char.capabilities.can_teleport_natively:
-        #     self._pather.traverse_nodes_fixed("todo_safe_dist", self._char)
-        # else:
-        #     if not self._pather.traverse_nodes((Location.TODO), self._char):
-        #         return False
-        # self._char.kill_todo()
-        # wait(0.2, 0.3)
-        # picked_up_items = self._pickit.pick_up_items(self._char)
-        # return (Location.TODO, picked_up_items)
-        return False
+    def battle(self) -> bool | tuple[Location, bool]:
+        # Traverse into the Throne of Destruction
+        if self._char.capabilities.can_teleport_natively:
+            self._pather.traverse_nodes_fixed("a5_baal_throne_entry", self._char)
+        else:
+            if not self._pather.traverse_nodes((Location.A5_TOWN_START, Location.A5_BAAL_THRONE_ENTRY), self._char):
+                return False
+        if self._char.capabilities.can_teleport_natively:
+            self._pather.traverse_nodes_fixed("a5_baal_safe_dist", self._char)
+        else:
+            if not self._pather.traverse_nodes((Location.A5_BAAL_THRONE_ENTRY, Location.A5_BAAL_SAFE_DIST), self._char):
+                return False
+
+        # Clear the waves of minions (~45s of combat)
+        self._char.kill_baal_waves()
+        # Kill Baal
+        self._char.kill_baal()
+        wait(0.2, 0.3)
+        picked_up_items = self._pickit.pick_up_items(self._char)
+        return (Location.A5_TOWN_START, picked_up_items)
