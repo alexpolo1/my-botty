@@ -14,6 +14,8 @@ import numpy as np
 import random
 import math
 import time
+import threading
+from concurrent.futures import Future
 import screen
 from config import Config
 from utils.misc import is_in_roi
@@ -340,6 +342,40 @@ class mouse:
     @staticmethod
     def wheel(delta):
         _mouse.wheel(delta)
+
+    @staticmethod
+    def async_move(x, y, absolute=True, randomize=5, delay_factor=[0.4, 0.6]):
+        """
+        Non-blocking mouse move. Returns immediately with a Future-like object.
+
+        :return: A dict with:
+          - 'done()': callable returning bool
+          - 'wait(timeout=None)': blocks until move completes or timeout
+        """
+        result = {"_done": False, "_lock": threading.Lock()}
+
+        def _run():
+            try:
+                mouse.move(x, y, absolute=absolute, randomize=randomize, delay_factor=delay_factor)
+            finally:
+                with result["_lock"]:
+                    result["_done"] = True
+
+        threading.Thread(target=_run, daemon=True).start()
+
+        def done():
+            with result["_lock"]:
+                return result["_done"]
+
+        def wait(timeout=None):
+            deadline = None if timeout is None else time.monotonic() + timeout
+            while not done():
+                if deadline is not None and time.monotonic() >= deadline:
+                    return False
+                time.sleep(0.01)
+            return True
+
+        return {"done": done, "wait": wait}
 
 
 if __name__ == "__main__":
