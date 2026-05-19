@@ -1,5 +1,6 @@
 import cv2
 import threading
+import concurrent.futures
 from screen import convert_screen_to_monitor, grab
 from dataclasses import dataclass
 import numpy as np
@@ -125,35 +126,55 @@ def _single_template_match(template: Template, inp_img: np.ndarray = None, roi: 
     return template_match
 
 
+def _match_template_worker(template, inp_img, roi, color_match, use_grayscale):
+    """Worker for parallel template matching (runs in thread pool)."""
+    return _single_template_match(template, inp_img, roi, color_match, use_grayscale)
+
+
 def search(
-    ref: str | np.ndarray | list[str],
-    inp_img: np.ndarray,
-    threshold: float = 0.68,
-    roi: list[float] = None,
-    use_grayscale: bool = False,
-    color_match: list = False,
-    best_match: bool = False
-) -> TemplateMatch:
+    ref,
+    inp_img,
+    threshold=0.68,
+    roi=None,
+    use_grayscale=False,
+    color_match=False,
+    best_match=False,
+    max_workers=4
+):
     """
-    Search for a template in an image
+    Search for a template in an image. Uses parallel matching for list inputs.
+
     :param ref: Either key of a already loaded template, list of such keys, or a image which is used as template
     :param inp_img: Image in which the template will be searched
     :param threshold: Threshold which determines if a template is found or not
     :param roi: Region of Interest of the inp_img to restrict search area. Format [left, top, width, height]
     :param use_grayscale: Use grayscale template matching for speed up
-    :param color_match: Pass a color to be used by misc.color_filter to filter both image of interest and template image (format Config().colors["color"])
+    :param color_match: Pass a color to be used by misc.color_filter to filter both image of interest and template image
     :param best_match: If list input, will search for list of templates by best match. Default behavior is first match.
+    :param max_workers: Max parallel threads for template matching (default 4)
     :return: Returns a TemplateMatch object with a valid flag
     """
     templates = _process_template_refs(ref)
+
+    # Single template — no benefit to parallelize
+    if len(templates) == 1:
+        match = _single_template_match(templates[0], inp_img, roi, color_match, use_grayscale)
+        return match if match.score >= threshold else TemplateMatch()
+
+    # Multiple templates — parallel search
     matches = []
-    for template in templates:
-        match = _single_template_match(template, inp_img, roi, color_match, use_grayscale)
-        if match.score >= threshold:
-            if not best_match:
-                return match
-            else:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = [
+            executor.submit(_match_template_worker, t, inp_img, roi, color_match, use_grayscale)
+            for t in templates
+        ]
+        for future in concurrent.futures.as_completed(futures):
+            match = future.result()
+            if match.score >= threshold:
+                if not best_match:
+                    return match
                 matches.append(match)
+
     if matches:
         matches = sorted(matches, key=lambda obj: obj.score, reverse=True)
         return matches[0]
