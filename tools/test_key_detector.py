@@ -12,7 +12,7 @@ import sys
 # Ensure src/ is on the path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 
-from key_detector import vk_to_name, _find_key_file, parse_key_file
+from utils.key_detector import vk_to_name, _find_key_file, parse_key_file
 from config import Config
 
 print("=" * 50)
