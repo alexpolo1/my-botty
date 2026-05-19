@@ -73,6 +73,13 @@ class GameController:
                     if messenger.enabled:
                         messenger.send_message(msg)
                     safe_exit(1)
+                elif self.death_manager.died() and Config().general["hardcore"]:
+                    # Hardcore: character is gone, no point restarting
+                    msg = "Hardcore character died permanently. Stopping botty."
+                    Logger.error(msg)
+                    if messenger.enabled:
+                        messenger.send_message(msg)
+                    safe_exit(1)
                 else:
                     do_restart = self.game_recovery.go_to_hero_selection()
                 break

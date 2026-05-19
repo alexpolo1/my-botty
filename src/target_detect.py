@@ -14,6 +14,19 @@ FILTER_RANGES=[
     {"erode": 1, "blur": 3, "lh": 110, "ls": 169, "lv": 50, "uh": 120, "us": 255, "uv": 255} # frozen
 ]
 
+# Shape filtering to reject false positives:
+# - Health bars: thin horizontal strips (aspect ratio >> 1, very wide and short)
+# - Immune text: small vertical blobs (aspect ratio << 1, tall and narrow)
+# - Real auras: roughly circular/elliptical (aspect ratio ~0.5-2.0)
+TARGET_ASPECT_MIN = 0.5    # reject blobs taller than twice as tall as wide (immune text)
+TARGET_ASPECT_MAX = 3.0    # reject strips wider than 3x their height (health bars)
+
+# Target shape filters to reject false positives (health bars, immune text)
+TARGET_MIN_AREA = 100       # minimum connected component area (immune text is tiny)
+TARGET_MAX_AREA = 200       # maximum area (real aura blobs)
+TARGET_ASPECT_MIN = 0.4    # w/h ratio minimum (health bars are very thin strips)
+TARGET_ASPECT_MAX = 3.0    # w/h ratio maximum (health bars are very wide)
+
 @dataclass
 class TargetInfo:
     roi: tuple = None
@@ -143,37 +156,38 @@ def _process_image(img, mask_char:bool=False, mask_hud:bool=True, erode:int=None
 # add rectangles and crosses - adapted from Nathan's Live-View
 def _add_markers(img:str, threshz:str, rect_min_size:int=20, rect_max_size:int=50, line_color:str=(0, 255, 0), line_type:str=cv2.LINE_4, marker:bool=False, marker_color:str=(0, 255, 255), marker_type:str=cv2.MARKER_CROSS):
     """
-    Helper function that will add rectangles and crosshairs to allow object detection
-    :param img: The image to which filters should be applied
-    :param threshz: The image that had the threshold adjusted (obtained from _process_image())
-    :param rect_min_size: Minimum size for the rectangle to be drawn [Default: 20, Integer]
-    :param rect_max_size: Minimum size for the rectangle to be drawn [Default: 50, Integer]
-    :param line_color: Color of the rectangle line [Default: (0, 255, 0)]
-    :param line_type: Type of Line of the rectangle [Default: cv2.LINE_4]
-    :param marker: Add Marker to center of rectangles [Default: False, Bool]
-    :param marker_color: Color for the Marker [Default: (0, 255, 255)]
-    :param marker_type: Type for the Marker [Default: cv2.MARKER_CROSS]
-    Returns variables img (containing markers) & rectangles (x,y,w,h for each) & marker (x,y for eah)
+    Helper function that will add rectangles and crosshairs to allow object detection.
+    Uses shape filtering to reject false positives (health bars, immune text).
     """
     #add rectangles
     n_labels, _, stats, _ = cv2.connectedComponentsWithStats(threshz)
     rectangles = []
     markers = []
     for i in range(1, n_labels):
-        if stats[i, cv2.CC_STAT_AREA] >= rect_min_size <= rect_max_size:
-            x = stats[i, cv2.CC_STAT_LEFT]
-            y = stats[i, cv2.CC_STAT_TOP]
-            w = stats[i, cv2.CC_STAT_WIDTH]
-            h = stats[i, cv2.CC_STAT_HEIGHT]
-            cv2.rectangle(img, (x, y), (x + w, y + h), color=line_color, thickness=1)
-            rect = (int(x), int(y), int(w), int(h))
-            rectangles.append(rect)
-            if marker:
-                center_x = x + int(w/2)
-                center_y = y + int(h/2)
-                cv2.drawMarker(img, (center_x, center_y), color=marker_color, markerType=marker_type, markerSize=15, thickness=2)
-                mark = (int(center_x), int(center_y))
-                markers.append(mark)
+        area = stats[i, cv2.CC_STAT_AREA]
+        w = stats[i, cv2.CC_STAT_WIDTH]
+        h = stats[i, cv2.CC_STAT_HEIGHT]
+
+        # Filter by area first (cheaper check)
+        if not (rect_min_size <= area <= rect_max_size):
+            continue
+
+        # Filter by aspect ratio to reject thin strips (health bars) and tall blobs (text)
+        aspect_ratio = w / h if h > 0 else 0
+        if not (TARGET_ASPECT_MIN <= aspect_ratio <= TARGET_ASPECT_MAX):
+            continue
+
+        x = stats[i, cv2.CC_STAT_LEFT]
+        y = stats[i, cv2.CC_STAT_TOP]
+        cv2.rectangle(img, (x, y), (x + w, y + h), color=line_color, thickness=1)
+        rect = (int(x), int(y), int(w), int(h))
+        rectangles.append(rect)
+        if marker:
+            center_x = x + int(w/2)
+            center_y = y + int(h/2)
+            cv2.drawMarker(img, (center_x, center_y), color=marker_color, markerType=marker_type, markerSize=15, thickness=2)
+            mark = (int(center_x), int(center_y))
+            markers.append(mark)
     return img, rectangles, markers
 
 class LiveViewer:

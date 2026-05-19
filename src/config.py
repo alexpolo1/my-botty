@@ -148,6 +148,7 @@ class Config:
             "pickit_screenshots": bool(int(self._select_val("general", "pickit_screenshots"))),
             "d2r_path": _default_iff(self._select_val("general", "d2r_path"), "", r"C:\Program Files (x86)\Diablo II Resurrected"),
             "restart_d2r_when_stuck": bool(int(self._select_val("general", "restart_d2r_when_stuck"))),
+            "hardcore": bool(int(self._select_val("general", "hardcore"))),
         }
 
         self.stealth = {
