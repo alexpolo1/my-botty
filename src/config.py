@@ -159,6 +159,11 @@ class Config:
             "afk_break_chance": int(self._select_optional("stealth", "afk_break_chance", "5")),
             "afk_break_min_m": float(self._select_optional("stealth", "afk_break_min_m", "2")),
             "afk_break_max_m": float(self._select_optional("stealth", "afk_break_max_m", "12")),
+            "run_duration_variance": float(self._select_optional("stealth", "run_duration_variance", "0.15")),
+            "micro_pause_min_ms": int(self._select_optional("stealth", "micro_pause_min_ms", "20")),
+            "micro_pause_max_ms": int(self._select_optional("stealth", "micro_pause_max_ms", "120")),
+            "human_curve_complexity": float(self._select_optional("stealth", "human_curve_complexity", "1.0")),
+            "vary_kill_time": bool(int(self._select_optional("stealth", "vary_kill_time", "1"))),
         }
 
         self.routes = {}
@@ -394,6 +399,13 @@ class Config:
             "speed_factor": float(self._select_val("scepters", "speed_factor")),
             "apply_pather_adjustment": bool(int(self._select_val("scepters", "apply_pather_adjustment"))),
         }
+
+        # Auto-detect key bindings from D2R .key file
+        try:
+            from utils.key_detector import apply_key_bindings
+            apply_key_bindings(self)
+        except Exception as e:
+            Logger.debug(f"Key auto-detection skipped: {e}")
         stash_destination_str = self._select_val("transmute","stash_destination")
         transmute_str = self._select_val("transmute","transmute")
         self.configs["transmute"]["parser"] = {

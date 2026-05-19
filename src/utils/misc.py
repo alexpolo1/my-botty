@@ -18,6 +18,16 @@ import subprocess
 import psutil
 
 if os.name == 'nt':
+    # Set DPI awareness BEFORE any Win32 GUI calls.
+    # Without this, Windows at 80% DPI reports 1280x720 as 1024x576.
+    try:
+        ctypes.windll.shcore.SetProcessDpiAwareness(2)  # Per-monitor v2
+    except:
+        try:
+            ctypes.windll.shcore.SetProcessDpiAwareness(1)  # Per-monitor v1
+        except:
+            pass
+
     from win32con import HWND_TOPMOST, SWP_NOMOVE, SWP_NOSIZE, HWND_NOTOPMOST
     from win32gui import GetWindowText, SetWindowPos, EnumWindows, GetClientRect, ClientToScreen
     from win32api import GetMonitorInfo, MonitorFromWindow
@@ -124,7 +134,13 @@ def wait(min_seconds, max_seconds = None):
     try:
         from config import Config
         cfg = Config().stealth
-        jitter = random.uniform(cfg["wait_jitter_min"], cfg["wait_jitter_max"])
+        # Use Gaussian jitter for more natural-feeling delays
+        jitter_min = cfg["wait_jitter_min"]
+        jitter_max = cfg["wait_jitter_max"]
+        center = (jitter_min + jitter_max) / 2
+        sigma = (jitter_max - jitter_min) / 4
+        jitter = random.gauss(center, sigma)
+        jitter = max(jitter_min * 0.8, min(jitter_max * 1.2, jitter))
     except Exception:
         jitter = 1.0
     time.sleep(base * jitter)

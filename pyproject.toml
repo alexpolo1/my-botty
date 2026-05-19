@@ -1,0 +1,41 @@
+[project]
+name = "botty"
+version = "0.8.1"
+description = "Pixelbot for Diablo 2 Resurrected"
+requires-python = ">=3.10,<3.11"
+dependencies = [
+    "pywin32",
+    "opencv-python==4.5.5.64",
+    "transitions",
+    "mss==7.0.1",
+    "numpy==1.26.4",
+    "mouse",
+    "keyboard",
+    "beautifultable",
+    "pytweening",
+    "requests",
+    "rapidfuzz==2.15.1",
+    "pyparsing",
+    "graphviz",
+    "psutil",
+    "cryptography",
+    "pillow",
+    "discord.py",
+    "parse",
+    "typing_extensions",
+    "colorama",
+    "dataclasses-json",
+    # tesserocr must be installed separately - see development.md
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-env",
+    "pytest-pythonpath",
+    "pytest-mock",
+    "coverage",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

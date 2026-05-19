@@ -1,22 +1,42 @@
 # Dev Docu
 
 ## Dependencies
-- Install latest miniconda (https://docs.conda.io/en/latest/miniconda.html). Note: Check "Add conda to my PATH environment variable" in order to access the conda command in the cmd, or you'll need to set manually set PATH each time (below).
-- Install git (https://gitforwindows.org/)
+- Install [Miniforge](https://github.com/conda-forge/miniforge) (recommended over Miniconda for conda-forge packages). Check "Add to PATH" during installation.
+  - Alternatively, [Miniconda](https://docs.conda.io/en/latest/miniconda.html) works too.
+- Install [git](https://gitforwindows.org/)
 
 ## Getting started
 ```bash
 git clone https://github.com/Hoblirm/botty.git
 cd botty
-set PATH=%PATH%;C:\<install_path>\miniconda3;C:\<install_path>\miniconda3\Scripts; #If conda was not added to PATH on install, run this
-conda env create -f environment.yml  #One time creation for environment
+
+# Create the conda environment (installs all Python deps + tesserocr with tesseract)
+conda env create -f environment.yml
+
+# Activate and run
 conda activate botty
 python src/main.py
 ```
-Important info for Powershell users:
-```bash
-# for powershell you have to init conda before using any conda commands:
-conda init powershell
+
+### PowerShell users
+```powershell
+conda init powershell  # One time setup
+conda activate botty
+python src/main.py
+```
+
+### No conda? Quick setup
+If you don't want to use conda, you can install dependencies with pip, but `tesserocr`
+requires the tesseract C library which is easiest to get via conda. See `environment.yml`
+for the full dependency list.
+
+## Running with the launcher
+A `run_botty.bat` file is provided in the project root. It auto-detects the conda
+environment and launches the bot. You can also run manually:
+```cmd
+conda activate botty
+cd C:\path\to\botty
+python src\main.py
 ```
 
 ## Tests

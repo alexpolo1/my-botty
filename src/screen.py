@@ -78,11 +78,15 @@ def grab(force_new: bool = False) -> np.ndarray:
     if sct is None:
         from mss import mss as mss_factory
         sct = mss_factory()
-        m0 = sct.monitors[0]
-        monitor_roi["left"] = m0["left"]
-        monitor_roi["top"] = m0["top"]
-        monitor_roi["width"] = m0["width"]
-        monitor_roi["height"] = m0["height"]
+        # Only use monitor[0] as defaults if set_window_position hasn't been called yet.
+        # With DPI awareness, set_window_position uses GetClientRect/ClientToScreen which
+        # gives us the precise client area - don't overwrite that.
+        if not found_offsets:
+            m0 = sct.monitors[0]
+            monitor_roi["left"] = m0["left"]
+            monitor_roi["top"] = m0["top"]
+            monitor_roi["width"] = m0["width"]
+            monitor_roi["height"] = m0["height"]
     # with 25fps we have 40ms per frame. If we check for 20ms range to make sure we can still get each frame if we want.
     with cached_img_lock:
         if not force_new and cached_img is not None and last_grab is not None and (time.perf_counter() - last_grab) < 0.02:
