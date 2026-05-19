@@ -256,8 +256,26 @@ class mouse:
                 x = int(x) + random.randrange(-randomize[0], +randomize[0])
                 y = int(y) + random.randrange(-randomize[1], +randomize[1])
 
+        # Apply human curve complexity from stealth config
+        try:
+            complexity = Config().stealth.get("human_curve_complexity", 1.0)
+        except Exception:
+            complexity = 1.0
 
-        human_curve = HumanCurve(from_point, (x, y), offsetBoundaryX=offsetBoundaryX, offsetBoundaryY=offsetBoundaryY, targetPoints=targetPoints)
+        # Scale distortion parameters based on complexity
+        distortionMean = 1 * complexity
+        distortionStdev = 1 * complexity
+        distortionFreq = min(0.8, 0.4 * complexity)
+
+        human_curve = HumanCurve(
+            from_point, (x, y),
+            offsetBoundaryX=offsetBoundaryX,
+            offsetBoundaryY=offsetBoundaryY,
+            targetPoints=targetPoints,
+            distortionMean=distortionMean,
+            distortionStdev=distortionStdev,
+            distortionFrequency=distortionFreq
+        )
 
         duration = min(0.5, max(0.05, dist * 0.0004) * random.uniform(delay_factor[0], delay_factor[1]))
         delta = duration / len(human_curve.points)
@@ -269,12 +287,17 @@ class mouse:
     def stealth_move(x, y, absolute: bool = True, randomize: int | tuple[int, int] = 5, delay_factor: tuple[float, float] = [0.4, 0.6]):
         """Like move() but adds config-driven extra pixel variance for anti-detection."""
         try:
-            from config import Config
-            variance = Config().stealth["click_variance"]
+            from utils.stealth import randomize_click_position, add_micro_pause
+            rx, ry = randomize_click_position(x, y)
+            # Add micro-pause before movement to simulate human thinking time
+            add_micro_pause()
         except Exception:
-            variance = 0
-        rx = x + random.randint(-variance, variance)
-        ry = y + random.randint(-variance, variance)
+            try:
+                variance = Config().stealth["click_variance"]
+            except Exception:
+                variance = 0
+            rx = x + random.randint(-variance, variance)
+            ry = y + random.randint(-variance, variance)
         mouse.move(rx, ry, absolute=absolute, randomize=5 + variance, delay_factor=delay_factor)
 
     @staticmethod

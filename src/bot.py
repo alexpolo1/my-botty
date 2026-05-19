@@ -16,7 +16,7 @@ from utils.restart import safe_exit, restart_game
 from game_stats import GameStats
 from logger import Logger
 from config import Config
-from screen import grab
+from screen import grab, convert_monitor_to_screen, convert_screen_to_abs, convert_abs_to_monitor, convert_screen_to_monitor
 import template_finder
 from char import IChar
 from item.pickit import PickIt
@@ -38,7 +38,7 @@ from ui_manager import wait_until_hidden, wait_until_visible, ScreenObjects, is_
 from ui import meters, skills, view, character_select, main_menu
 from inventory import personal, vendor, belt, common
 
-from run import Pindle, ShenkEld, Trav, Nihlathak, Arcane, Diablo, Vizier
+from run import Pindle, ShenkEld, Trav, Nihlathak, Arcane, Diablo, Vizier, Level
 from town import TownManager, A1, A2, A3, A4, A5, town_manager
 
 from messages import Messenger
@@ -106,6 +106,7 @@ class Bot:
 
         # Create runs
         self._do_runs = {
+            "run_level": Config().routes.get("run_level"),
             "run_trav": Config().routes.get("run_trav"),
             "run_pindle": Config().routes.get("run_pindle"),
             "run_shenk": Config().routes.get("run_eldritch") or Config().routes.get("run_eldritch_shenk"),
@@ -125,6 +126,7 @@ class Bot:
         Logger.info(f"Doing runs: {self._do_runs_reset.keys()}")
         if Config().general["randomize_runs"]:
             self.shuffle_runs()
+        self._level = Level(self._pather, self._town_manager, self._char, self._pickit, self._do_runs)
         self._pindle = Pindle(self._pather, self._town_manager, self._char, self._pickit, self._do_runs)
         self._shenk = ShenkEld(self._pather, self._town_manager, self._char, self._pickit, self._do_runs)
         self._trav = Trav(self._pather, self._town_manager, self._char, self._pickit, self._do_runs)
@@ -151,15 +153,17 @@ class Bot:
         self._timer = time.time()
 
         # Create State Machine
-        self._states=['initialization','hero_selection', 'town', 'pindle', 'shenk', 'trav', 'nihlathak', 'arcane', 'diablo', 'vizier', 'baal', 'mephisto', 'andariel', 'countess']
+        self._states=['initialization','hero_selection', 'town', 'level', 'pindle', 'shenk', 'trav', 'nihlathak', 'arcane', 'diablo', 'vizier', 'baal', 'mephisto', 'andariel', 'countess']
         self._transitions = [
             { 'trigger': 'init', 'source': 'initialization', 'dest': '=','before': "on_init"},
+            { 'trigger': 'skip_to_level', 'source': 'initialization', 'dest': 'level', 'before': "on_skip_to_level"},
             { 'trigger': 'select_character', 'source': 'initialization', 'dest': 'hero_selection', 'before': "on_select_character"},
             { 'trigger': 'start_from_town', 'source': ['initialization', 'hero_selection'], 'dest': 'town', 'before': "on_start_from_town"},
             { 'trigger': 'create_game', 'source': 'hero_selection', 'dest': '=', 'before': "on_create_game"},
             # Tasks within town
             { 'trigger': 'maintenance', 'source': 'town', 'dest': 'town', 'before': "on_maintenance"},
             # Different runs
+            { 'trigger': 'run_level', 'source': 'town', 'dest': 'level', 'before': "on_run_level"},
             { 'trigger': 'run_pindle', 'source': 'town', 'dest': 'pindle', 'before': "on_run_pindle"},
             { 'trigger': 'run_shenk', 'source': 'town', 'dest': 'shenk', 'before': "on_run_shenk"},
             { 'trigger': 'run_trav', 'source': 'town', 'dest': 'trav', 'before': "on_run_trav"},
@@ -172,7 +176,7 @@ class Bot:
             { 'trigger': 'run_andariel', 'source': 'town', 'dest': 'andariel', 'before': "on_run_andariel" },
             { 'trigger': 'run_countess', 'source': 'town', 'dest': 'countess', 'before': "on_run_countess" },
             # End run / game
-            { 'trigger': 'end_run', 'source': ['shenk', 'pindle', 'nihlathak', 'trav', 'arcane', 'diablo','vizier', 'baal', 'mephisto', 'andariel', 'countess'], 'dest': 'town', 'before': "on_end_run"},
+            { 'trigger': 'end_run', 'source': ['level', 'shenk', 'pindle', 'nihlathak', 'trav', 'arcane', 'diablo','vizier', 'baal', 'mephisto', 'andariel', 'countess'], 'dest': 'town', 'before': "on_end_run"},
             { 'trigger': 'end_game', 'source': ['town', 'shenk', 'pindle', 'nihlathak', 'trav', 'arcane', 'diablo','vizier','end_run', 'baal', 'mephisto', 'andariel', 'countess'], 'dest': 'initialization', 'before': "on_end_game"},
         ]
         self.machine = Machine(model=self, states=self._states, initial="initialization", transitions=self._transitions, queued=True)
@@ -251,6 +255,13 @@ class Bot:
     def on_init(self):
         self._game_stats.log_start_game()
         keyboard.release(Config().char["stand_still"])
+        # If we're only doing run_level and character is already in-game, skip
+        # the town detection and go straight to the run
+        if list(self._do_runs.keys()) == ["run_level"]:
+            Logger.info("Level run only - skipping town detection, starting directly")
+            self._curr_loc = Location.A1_TOWN_START
+            self.trigger_or_stop("skip_to_level")
+            return
         transition_to_screens = Bot._rebuild_as_asset_to_trigger({
             "select_character": main_menu.MAIN_MENU_MARKERS,
             "start_from_town": town_manager.TOWN_MARKERS,
@@ -554,6 +565,20 @@ class Bot:
             self.trigger_or_stop("end_game", failed=failed_run)
         else:
             self.trigger_or_stop("end_run")
+
+    def on_skip_to_level(self):
+        """Skip town detection and go straight to level run."""
+        pass
+
+    def on_run_level(self):
+        res = False
+        self._do_runs["run_level"] = False
+        self._game_stats.update_location("Lvl")
+        self._curr_loc = self._level.approach(self._curr_loc, not self._pre_buffed)
+        if self._curr_loc:
+            set_pause_state(False)
+            res = self._level.battle()
+        self._ending_run_helper(res)
 
     def on_run_pindle(self):
         res = False

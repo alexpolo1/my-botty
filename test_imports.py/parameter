@@ -1,0 +1,46 @@
+import sys
+sys.path.insert(0, 'src')
+
+print("Checking core imports...")
+
+import tesserocr
+print(f"  tesserocr OK (tesseract {tesserocr.tesseract_version()})")
+
+import cv2
+print(f"  cv2 OK (OpenCV {cv2.__version__})")
+
+import numpy as np
+print(f"  numpy OK ({np.__version__})")
+
+import keyboard
+print(f"  keyboard OK ({keyboard.__version__})")
+
+import mss
+print(f"  mss OK ({mss.__version__})")
+
+import win32gui
+print(f"  win32gui OK")
+
+import transitions
+print(f"  transitions OK ({transitions.__version__})")
+
+import discord
+print(f"  discord.py OK ({discord.__version__})")
+
+import psutil
+print(f"  psutil OK ({psutil.__version__})")
+
+import pytweening
+print(f"  pytweening OK")
+
+import rapidfuzz
+print(f"  rapidfuzz OK ({rapidfuzz.__version__})")
+
+# Now try importing the project modules
+from config import Config
+print("  Config OK")
+
+from version import __version__
+print(f"  version OK ({__version__})")
+
+print("\nAll core imports successful!")

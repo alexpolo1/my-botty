@@ -23,7 +23,12 @@ Open up D2R and wait till you are at the hero selection screen. Make sure the ch
 
 ### 4) Start Botty
 
-Refer to [development.md](development.md) for starting botty from the python scripts. This fork is not maintaining prebuilt releases at this time. After running the python main.py script, focus your D2R window and press the start key (default f11). You can always force stop botty with f12. Note: Botty will use the /nopickup command in the first game to avoid pickup up trash while traversing. This command will only allow item pickup when "show items" is active.
+Refer to [development.md](development.md) for setup instructions. Once the conda environment is created:
+
+- **Quick start**: Double-click `run_botty.bat` (auto-detects your conda env)
+- **Manual**: `conda activate botty` then `python src\main.py`
+
+After starting, focus your D2R window and press the start key (default f11). You can always force stop botty with f12. Note: Botty will use the /nopickup command in the first game to avoid pickup up trash while traversing. This command will only allow item pickup when "show items" is active.
 
 ## Development
 

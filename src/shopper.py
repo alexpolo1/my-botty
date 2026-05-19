@@ -1,9 +1,15 @@
+# Fix: On Windows, Python 3.8+ requires os.add_dll_directory for conda-forge DLLs
+import os, sys
+if sys.platform == "win32":
+    _dll_dir = os.path.join(os.path.dirname(os.path.dirname(sys.executable)), "Library", "bin")
+    if os.path.isdir(_dll_dir):
+        os.add_dll_directory(_dll_dir)
+
 from beautifultable import BeautifulTable
 import logging
 import traceback
 import keyboard
 import time
-import os
 from shop.anya import AnyaShopper
 from shop.drognan import DrognanShopper
 from config import Config
