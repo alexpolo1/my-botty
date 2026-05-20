@@ -106,12 +106,12 @@ def detect_visible_npcs_cached(img=None, ttl=5.0):
     Use this when scanning every tick but only need fresh data periodically.
     """
     import time
+    global _cache_time
     now = time.time()
     if now - _cache_time < ttl:
         return _cache
     _cache.clear()
     _cache.update(detect_visible_npcs(img))
-    global _cache_time
     _cache_time = now
     return _cache
 
