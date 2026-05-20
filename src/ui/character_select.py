@@ -131,4 +131,109 @@ def select_char() -> bool:
                 scrolls_attempts += 1
                 wait(0.4, 0.6)
         Logger.error(f"select_char: unable to find saved profile after {scrolls_attempts} scroll attempts")
+
+        # Fallback: try OCR-based name matching
+        char_name = Config().general.get("char_name", "")
+        if char_name:
+            Logger.info(f"Template matching failed, trying OCR for character name: {char_name}")
+            return _select_char_by_ocr(char_name)
         return False
+
+    # No template saved — try OCR-based lookup if char_name is set
+    char_name = Config().general.get("char_name", "")
+    if char_name:
+        Logger.info(f"No template saved, selecting character '{char_name}' via OCR")
+        return _select_char_by_ocr(char_name)
+
+    Logger.error("select_char: No character template saved and no char_name configured")
+    return False
+
+
+def _select_char_by_ocr(char_name: str) -> bool:
+    """OCR-based character selection fallback. Scans visible character list, finds
+    the matching name, clicks it, then scrolls and retries up to 2 times."""
+    char_name_lower = char_name.lower()
+
+    # Ensure we're on the right tab (online vs offline)
+    online_status = None
+    if online_character is not None:
+        img = grab()
+        if (match := detect_screen_object(ScreenObjects.OnlineStatus, img)).valid:
+            online_status = online_active(match)
+            if online_status != online_character:
+                if not select_online_tab(match.region, match.center):
+                    Logger.error("_select_char_by_ocr: could not switch online/offline tab")
+                    return False
+                img = grab()
+                wait(1, 1.5)
+    else:
+        Logger.debug("_select_char_by_ocr: online status unknown, searching all tabs")
+
+    if online_status is not None:
+        img = grab()
+    else:
+        img = grab()
+
+    # Get the character list ROI for scrolling
+    char_roi = Config().ui_roi["character_select"]
+
+    for scroll_pass in range(3):
+        if scroll_pass > 0:
+            # Scroll down and re-grab
+            center = roi_center(char_roi)
+            center = convert_screen_to_monitor(center)
+            mouse.move(*center)
+            wait(0.4, 0.6)
+            mouse.wheel(-14)
+            wait(0.4, 0.6)
+            img = grab()
+
+        # OCR each visible character entry
+        # The character list is a vertical column — scan rows
+        x, y, w, h = char_roi
+        row_height = 30  # approximate height of each character entry row
+        num_rows = max(1, h // row_height)
+
+        for row in range(num_rows):
+            row_y = y + row * row_height
+            row_h = min(row_height + 5, y + h - row_y)
+            if row_h < 5:
+                break
+
+            roi = [x, row_y, w, row_h]
+            row_img = cut_roi(img, roi)
+
+            try:
+                result = ocr.image_to_text(
+                    images=row_img,
+                    model="hover-eng_inconsolata_inv_th_fast",
+                    psm=6,
+                    scale=1.2,
+                    crop_pad=False,
+                    erode=False,
+                    invert=False,
+                    threshold=0,
+                    digits_only=False,
+                    fix_regexps=True,
+                    check_known_errors=False,
+                    correct_words=False,
+                )
+                if result and result[0].text:
+                    detected = result[0].text.strip().lower()
+                    Logger.debug(f"Row {row}: OCR detected '{detected}'")
+                    if char_name_lower == detected:
+                        click_x = x + w // 2
+                        click_y = row_y + row_h // 2
+                        click_pos = convert_screen_to_monitor((click_x, click_y))
+                        Logger.info(f"Found character '{char_name}' at row {row}")
+                        mouse.move(*click_pos)
+                        wait(0.4, 0.6)
+                        mouse.click(button="left")
+                        wait(0.4, 0.6)
+                        return True
+            except Exception as e:
+                Logger.debug(f"OCR row {row} failed: {e}")
+                continue
+
+    Logger.error(f"_select_char_by_ocr: could not find '{char_name}' after scanning all visible entries")
+    return False
