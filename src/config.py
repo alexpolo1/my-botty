@@ -131,6 +131,9 @@ class Config:
 
 
         self.general = {
+            "bnet_name": self._select_val("general", "bnet_name"),
+            "bnet_pass": self._select_val("general", "bnet_pass"),
+            "char_name": self._select_val("general", "char_name"),
             "saved_games_folder": self._select_val("general", "saved_games_folder"),
             "name": _default_iff(self._select_val("general", "name"), "", "botty"),
             "max_game_length_s": float(self._select_val("general", "max_game_length_s")),
@@ -361,9 +364,20 @@ class Config:
             "hwnd_window_process": _default_iff(Config()._select_val("advanced_options", "hwnd_window_process"), ''),
             "window_client_area_offset": tuple(map(int, Config()._select_val("advanced_options", "window_client_area_offset").split(","))),
             "ocr_during_pickit": bool(int(self._select_val("advanced_options", "ocr_during_pickit"))),
-            "launch_options": self._select_val("advanced_options", "launch_options").replace("<name>", only_lowercase_letters(self.general["name"].lower())),
+            "launch_options": self._build_launch_options(),
             "override_capabilities": _default_iff(Config()._select_optional("advanced_options", "override_capabilities"), ""),
         }
+
+    def _build_launch_options(self) -> str:
+        """Build D2R launch options, appending auto-login flags when bnet credentials are set."""
+        opts = self._select_val("advanced_options", "launch_options").replace(
+            "<name>", only_lowercase_letters(self.general["name"].lower())
+        )
+        bnet_name = self.general.get("bnet_name", "")
+        bnet_pass = self.general.get("bnet_pass", "")
+        if bnet_name and bnet_pass:
+            opts += f" -bnetname {bnet_name} -bnetpass {bnet_pass}"
+        return opts
 
         self.colors = {}
         for key in self.configs["game"]["parser"]["colors"]:
