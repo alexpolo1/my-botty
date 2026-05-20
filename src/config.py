@@ -131,9 +131,6 @@ class Config:
 
 
         self.general = {
-            "bnet_name": self._select_val("general", "bnet_name"),
-            "bnet_pass": self._select_val("general", "bnet_pass"),
-            "char_name": self._select_val("general", "char_name"),
             "saved_games_folder": self._select_val("general", "saved_games_folder"),
             "name": _default_iff(self._select_val("general", "name"), "", "botty"),
             "max_game_length_s": float(self._select_val("general", "max_game_length_s")),
@@ -152,6 +149,9 @@ class Config:
             "d2r_path": _default_iff(self._select_val("general", "d2r_path"), "", r"C:\Program Files (x86)\Diablo II Resurrected"),
             "restart_d2r_when_stuck": bool(int(self._select_val("general", "restart_d2r_when_stuck"))),
             "hardcore": bool(int(self._select_val("general", "hardcore"))),
+            "bnet_name": self._select_val("general", "bnet_name"),
+            "bnet_pass": self._select_val("general", "bnet_pass"),
+            "char_name": self._select_val("general", "char_name"),
         }
 
         self.stealth = {
@@ -368,17 +368,6 @@ class Config:
             "override_capabilities": _default_iff(Config()._select_optional("advanced_options", "override_capabilities"), ""),
         }
 
-    def _build_launch_options(self) -> str:
-        """Build D2R launch options, appending auto-login flags when bnet credentials are set."""
-        opts = self._select_val("advanced_options", "launch_options").replace(
-            "<name>", only_lowercase_letters(self.general["name"].lower())
-        )
-        bnet_name = self.general.get("bnet_name", "")
-        bnet_pass = self.general.get("bnet_pass", "")
-        if bnet_name and bnet_pass:
-            opts += f" -bnetname {bnet_name} -bnetpass {bnet_pass}"
-        return opts
-
         self.colors = {}
         for key in self.configs["game"]["parser"]["colors"]:
             self.colors[key] = np.split(np.array([int(x) for x in self._select_val("colors", key).split(",")]), 2)
@@ -428,6 +417,17 @@ class Config:
             "transmute_every_x_game": self._select_val("transmute","transmute_every_x_game"),
             "transmute": [x.strip() for x in transmute_str.split(",")],
         }
+
+    def _build_launch_options(self) -> str:
+        """Build D2R launch options, appending auto-login flags when bnet credentials are set."""
+        opts = self._select_val("advanced_options", "launch_options").replace(
+            "<name>", only_lowercase_letters(self.general["name"].lower())
+        )
+        bnet_name = self.general.get("bnet_name", "")
+        bnet_pass = self.general.get("bnet_pass", "")
+        if bnet_name and bnet_pass:
+            opts += f" -bnetname {bnet_name} -bnetpass {bnet_pass}"
+        return opts
 
 if __name__ == "__main__":
     from copy import deepcopy
