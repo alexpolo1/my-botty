@@ -87,6 +87,14 @@ def main():
         print(f"ERROR: Unkown logg_lvl {Config().advanced_options['logg_lvl']}. Must be one of [info, debug]")
     startup_checks()
 
+    # Auto-launch D2R if not already running
+    from utils.restart import process_exists, restart_game
+    if not process_exists("D2R.exe"):
+        Logger.info("D2R is not running, launching...")
+        restart_game(Config().general["d2r_path"], Config().advanced_options["launch_options"])
+    else:
+        Logger.info("D2R is already running")
+
     print(f"============ Botty {__version__} [name: {Config().general['name']}] ============")
     print("\nFor gettings started and documentation\nplease read https://github.com/aeon0/botty\n")
     table = BeautifulTable()
