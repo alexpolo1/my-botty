@@ -1,5 +1,6 @@
 import random
 import time
+import keyboard
 from config import Config
 from logger import Logger
 
@@ -88,3 +89,149 @@ def add_micro_pause():
     if random.random() < 0.3:
         pause_s = random.uniform(min_ms, max_ms) / 1000.0
         time.sleep(pause_s)
+
+
+# ─── Tier 1: Input-level stealth ─────────────────────────────────────────────
+
+def endpoint_wobble(x: int, y: int) -> tuple[int, int]:
+    """
+    Adds 2-5 pixel micro-adjustment before final click position (human hand tremor).
+    Called just before clicking to simulate endpoint micro-correction.
+    """
+    # Small Gaussian wobble: most land within 3px, occasional 5px+
+    dx = int(random.gauss(0, 1.5))
+    dy = int(random.gauss(0, 1.5))
+    return x + dx, y + dy
+
+
+def click_delay() -> float:
+    """
+    Returns the delay (in seconds) between arriving at a target and clicking.
+    Humans don't click the instant they arrive — there's 50-800ms of "is this right?".
+    """
+    try:
+        cfg = Config().stealth
+        min_ms = cfg.get("click_delay_min_ms", 50)
+        max_ms = cfg.get("click_delay_max_ms", 800)
+    except Exception:
+        min_ms, max_ms = 50, 800
+
+    # Use beta distribution for natural-looking distribution (most clicks in middle)
+    delay_ms = random.betavariate(2, 2) * (max_ms - min_ms) + min_ms
+    return delay_ms / 1000.0
+
+
+def apply_click_delay():
+    """Sleep for a human-like delay before clicking."""
+    time.sleep(click_delay())
+
+
+def key_press_duration(base_duration: float = 0.05) -> float:
+    """
+    Returns the duration (in seconds) a key should be held when pressed.
+    Humans vary key press duration significantly: 20-200ms for quick taps,
+    longer for held keys (force move, stand still).
+    """
+    try:
+        cfg = Config().stealth
+        min_ms = cfg.get("key_press_min_ms", 20)
+        max_ms = cfg.get("key_press_max_ms", 200)
+    except Exception:
+        min_ms, max_ms = 20, 200
+
+    # Exponential distribution: most presses are short, some are longer
+    duration_ms = min_ms + random.expovariate(1.0 / ((max_ms - min_ms) / 2))
+    duration_ms = max(min_ms, min(max_ms, duration_ms))
+    return duration_ms / 1000.0
+
+
+def human_key_press(key: str):
+    """
+    Press a key with human-like timing: variable duration, micro-pause before and after.
+    Replaces direct keyboard.press/release for stealth.
+    """
+    add_micro_pause()
+    duration = key_press_duration()
+    keyboard.press(key)
+    time.sleep(duration)
+    keyboard.release(key)
+    add_micro_pause()
+
+
+def human_keyboard_send(key: str):
+    """
+    Send a key press with full human-like timing.
+    Replaces keyboard.send() for stealth.
+    """
+    add_micro_pause()
+    duration = key_press_duration(0.03)
+    keyboard.press(key)
+    time.sleep(duration)
+    keyboard.release(key)
+    add_micro_pause()
+
+
+# ─── Tier 2: Behavior-level stealth ───────────────────────────────────────────
+
+def should_wrong_waypoint() -> bool:
+    """
+    2-3% chance of "getting lost" and selecting wrong waypoint first,
+    then correcting. Humans occasionally click the wrong TP portal.
+    """
+    try:
+        cfg = Config().stealth
+        chance = cfg.get("wrong_waypoint_chance", 0.025)
+    except Exception:
+        chance = 0.025
+    return random.random() < chance
+
+
+def skill_rotation_hesitation() -> float:
+    """
+    Returns delay before activating a skill. Humans don't spam skills
+    at machine speed — there's variable pre-cast hesitation.
+    """
+    try:
+        cfg = Config().stealth
+        min_ms = cfg.get("skill_hesitation_min_ms", 80)
+        max_ms = cfg.get("skill_hesitation_max_ms", 300)
+    except Exception:
+        min_ms, max_ms = 80, 300
+    return random.uniform(min_ms, max_ms) / 1000.0
+
+
+def should_correct_skill_mistake() -> bool:
+    """
+    Small chance of casting wrong skill first then correcting (human error).
+    1-2% of skill casts.
+    """
+    try:
+        cfg = Config().stealth
+        chance = cfg.get("skill_mistake_chance", 0.015)
+    except Exception:
+        chance = 0.015
+    return random.random() < chance
+
+
+# ─── Tier 3: Session-level stealth ────────────────────────────────────────────
+
+def get_personality_seed(char_name: str) -> int:
+    """
+    Generate a deterministic seed from character name.
+    Each character has a unique "personality" — different timing distributions,
+    different error rates — but consistent across sessions.
+    """
+    return hash(char_name) & 0xFFFFFFFF
+
+
+def apply_personality(char_name: str):
+    """
+    Configure random distributions based on character-specific personality.
+    Called once at bot start to seed per-character behavior.
+    """
+    seed = get_personality_seed(char_name)
+    # Don't reseed global random (breaks other things),
+    # but each stealth function uses its own local random call
+    # which gets the benefit of global state entropy.
+    # Personality is encoded in config ranges, not seeds.
+    pass

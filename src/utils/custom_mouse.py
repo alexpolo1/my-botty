@@ -287,11 +287,10 @@ class mouse:
 
     @staticmethod
     def stealth_move(x, y, absolute: bool = True, randomize: int | tuple[int, int] = 5, delay_factor: tuple[float, float] = [0.4, 0.6]):
-        """Like move() but adds config-driven extra pixel variance for anti-detection."""
+        """Move with full stealth chain: pre-movement pause → randomized position → endpoint wobble."""
         try:
-            from utils.stealth import randomize_click_position, add_micro_pause
+            from utils.stealth import randomize_click_position, add_micro_pause, endpoint_wobble
             rx, ry = randomize_click_position(x, y)
-            # Add micro-pause before movement to simulate human thinking time
             add_micro_pause()
         except Exception:
             try:
@@ -301,6 +300,14 @@ class mouse:
             rx = x + random.randint(-variance, variance)
             ry = y + random.randint(-variance, variance)
         mouse.move(rx, ry, absolute=absolute, randomize=5 + variance, delay_factor=delay_factor)
+        # Endpoint wobble: micro-adjustment after arrival, before click
+        try:
+            from utils.stealth import endpoint_wobble
+            wx, wy = endpoint_wobble(rx, ry)
+            # Nudge mouse a few pixels — imperceptible to the eye, breaks perfect stillness
+            _mouse.move(wx, wy)
+        except Exception:
+            pass
 
     @staticmethod
     def _is_clicking_safe():
@@ -324,6 +331,12 @@ class mouse:
     @staticmethod
     def click(button):
         if button != "left" or mouse._is_clicking_safe():
+            # Human arrival-to-click delay: 50-800ms before actually pressing
+            try:
+                from utils.stealth import apply_click_delay
+                apply_click_delay()
+            except Exception:
+                time.sleep(random.uniform(0.05, 0.3))
             _mouse.click(button)
 
     @staticmethod
