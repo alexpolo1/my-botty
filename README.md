@@ -165,87 +165,121 @@ order=run_pindle, run_eldritch
 | transmute         | Add any or all of `chipped, flawed, standard, flawless` to trasmute gems of these types |
 | transmute_every_x_game               | How often to run transmute routine (currently transmutes flawless gems into perfect gems). Transmute routine depends on stashing routine it will only start after items stashing is done. E.g. so it could take more than X games to perform transmutes if there were no items to stash at the time. Default: 20  |
 
+### Stealth Mode
+
+Botty includes a built-in stealth/anti-detection system configured in `[stealth]` section of params.ini. All features aim to make bot behaviour look more human.
+
+|| [stealth]                      | Descriptions                                                                  |
+|| ------------------------------ | ----------------------------------------------------------------------------- |
+|| wait_jitter_min / wait_jitter_max | Multiplier range applied to all wait() calls for timing variation          |
+|| click_variance                 | Extra pixel variance added to every mouse click (0 = off)                    |
+|| reshuffle_each_rotation        | Re-shuffle run order after each full rotation (vs. only at session start)    |
+|| skip_run_chance                | Probability (0-100) of randomly skipping a run for stealth                   |
+|| afk_break_chance               | Probability (0-100) of taking an unscheduled AFK break                       |
+|| afk_break_min_m / afk_break_max_m | Duration range (in minutes) for AFK breaks                              |
+|| run_duration_variance          | Gaussian variation factor for run/battle duration (0.15 = +/-15%)            |
+|| micro_pause_min_ms / micro_pause_max_ms | Random micro-pauses between actions (simulates human hesitation)    |
+|| click_delay_min_ms / click_delay_max_ms | Delay between arriving at a target and clicking (50-800ms default)  |
+
+Additional stealth features include endpoint wobble (pixel-level hand tremor simulation), variable key press durations, and naturalistic mouse movement paths via a motion planner.
+
+### Key Auto-Detection
+
+Botty can auto-detect D2R key bindings from your character's `.key` / `.keyo` file in `~\Saved Games\Diablo II Resurrected`. Run `python tools/test_key_detector.py` to test parsing. The key detector reads the binary key file format and populates `config.char` values (inventory, potions, teleport, skills, etc.) so you don't need to set them manually in params.ini.
+
+### Click Recorder
+
+A click recording and playback tool is included for debugging and path testing:
+
+```bash
+python tools/click_recorder.py record    # F11=start/stop, F12=exit
+python tools/click_recorder.py playback  # replay with human-like timing
+```
+
+Records mouse clicks with timestamps and replays them with configurable speed and repeat count.
+
 ### Builds
-| [sorceress]   | Descriptions                                                                  |
-| ------------- | ----------------------------------------------------------------------------- |
-| frozen_armor  | Optional Hotkey for frozen armor (or any of the other armors)                 |
-| energy_shield | Optional Hotkey for energy shield                                             |
-| thunder_storm | Optional Hotkey for thunder storm                                             |
-| static_field | Optional Hotkey for static field                                      |
-| telekinesis | Optional Hotkey for telekinesis                                      |
+|| [sorceress]   | Descriptions                                                                  |
+|| ------------- | ----------------------------------------------------------------------------- |
+|| frozen_armor  | Optional Hotkey for frozen armor (or any of the other armors)                 |
+|| energy_shield | Optional Hotkey for energy shield                                             |
+|| thunder_storm | Optional Hotkey for thunder storm                                             |
+|| static_field | Optional Hotkey for static field                                      |
+|| telekinesis | Optional Hotkey for telekinesis                                      |
 
-| [light_sorc]  | Descriptions                                                                  |
-| ------------- | ----------------------------------------------------------------------------- |
-| chain_lightning | Optional Hotkey for chain_lightning (must be bound to left skill)           |
-| lightning     | Required Hotkey for lightning (must be bound to right skill)                  |
-| frozen_orb     | Optional Hotkey for frozen orb (must be bound to right skill)                  |
+|| [light_sorc]  | Descriptions                                                                  |
+|| ------------- | ----------------------------------------------------------------------------- |
+|| chain_lightning | Optional Hotkey for chain_lightning (must be bound to left skill)           |
+|| lightning     | Required Hotkey for lightning (must be bound to right skill)                  |
+|| frozen_orb     | Optional Hotkey for frozen orb (must be bound to right skill)                  |
 
-| [blizz_sorc]  | Descriptions                                                                  |
-| ------------- | ----------------------------------------------------------------------------- |
-| blizzard      | Required Hotkey for Blizzard (must be bound to right skill)                   |
-| ice_blast     | Optional Hotkey for ice_blast (must be bound to left skill)                   |
+|| [blizz_sorc]  | Descriptions                                                                  |
+|| ------------- | ----------------------------------------------------------------------------- |
+|| blizzard      | Required Hotkey for Blizzard (must be bound to right skill)                   |
+|| ice_blast     | Optional Hotkey for ice_blast (must be bound to left skill)                   |
 
-| [nova_sorc]   | Descriptions                                                                  |
-| ------------- | ----------------------------------------------------------------------------- |
-| nova          | Required Hotkey for Nova (must be bound to right skill)                       |
+|| [nova_sorc]   | Descriptions                                                                  |
+|| ------------- | ----------------------------------------------------------------------------- |
+|| nova          | Required Hotkey for Nova (must be bound to right skill)                       |
 
-| [hydra_sorc]  | Descriptions                                                                  |
-| ------------- | ----------------------------------------------------------------------------- |
-| alt_attack     | Required Hotkey for any alternate attacking skill. Fireball,Lightning,Frozen Orb, etc. (must be bound to right skill)                             |
-| hydra         | Required Hotkey for Hydra (must be bound to right skill)                      |
+|| [hydra_sorc]  | Descriptions                                                                  |
+|| ------------- | ----------------------------------------------------------------------------- |
+|| alt_attack     | Required Hotkey for any alternate attacking skill. Fireball,Lightning,Frozen Orb, etc. (must be bound to right skill)                             |
+|| hydra         | Required Hotkey for Hydra (must be bound to right skill)                      |
 
-| [paladin]    | Descriptions                                                                        |
-| -------------- | ----------------------------------------------------------------------------------- |
-| cleansing      | Optional Hotkey for Cleansing                                                       |
-| holy_shield    | Required Hotkey for Holy Shield                                                     |
-| redemption     | Optional Hotkey for Redemption                                                      |
-| vigor          | Optional Hotkey for Vigor                                                           |
+|| [paladin]    | Descriptions                                                                        |
+|| -------------- | ----------------------------------------------------------------------------------- |
+|| cleansing      | Optional Hotkey for Cleansing                                                       |
+|| holy_shield    | Required Hotkey for Holy Shield                                                     |
+|| redemption     | Optional Hotkey for Redemption                                                      |
+|| vigor          | Optional Hotkey for Vigor                                                           |
 
-| [fohdin]    | Descriptions                                                                        |
-| -------------- | ----------------------------------------------------------------------------------- |
-| blessed_hammer | Hotkey for Blessed Hammer. (Optional. Bind to left skill)                  |
-| concentration  | Hotkey for Concentration                                                   |
-| conviction  | Hotkey for Conviction                                                   |
-| foh  | Hotkey for Fist of Heavens (Required)                                                   |
-| holy_bolt  | Hotkey for Holy Bolt (Required)                                                   |
+|| [fohdin]    | Descriptions                                                                        |
+|| -------------- | ----------------------------------------------------------------------------------- |
+|| blessed_hammer | Hotkey for Blessed Hammer. (Optional. Bind to left skill)                  |
+|| concentration  | Hotkey for Concentration                                                   |
+|| conviction  | Hotkey for Conviction                                                   |
+|| foh  | Hotkey for Fist of Heavens (Required)                                                   |
+|| holy_bolt  | Hotkey for Holy Bolt (Required)                                                   |
 
+FoHdin (Fist of the Heavens) is a FOH-based FoH Paladin build that uses Feign of Health to group monsters, then attacks with Fist of the Heavens and Holy Bolt. Works well for Hell difficulty farming runs.
 
-| [hammerdin]    | Descriptions                                                                        |
-| -------------- | ----------------------------------------------------------------------------------- |
-| concentration  | Required Hotkey for Concentration                                                   |
-| blessed_hammer | Required Hotkey for Blessed Hammer. (must be bound to left skill!)                  |
+|| [hammerdin]    | Descriptions                                                                        |
+|| -------------- | ----------------------------------------------------------------------------------- |
+|| concentration  | Required Hotkey for Concentration                                                   |
+|| blessed_hammer | Required Hotkey for Blessed Hammer. (must be bound to left skill!)                  |
 
-| [trapsin]    | Descriptions                                                                          |
-| -------------- | ----------------------------------------------------------------------------------- |
-| burst_of_speed | Optional Hotkey for Burst of Speed                                                  |
-| death_sentry   | Required Hotkey for Death Sentry                                                    |
-| fade           | Optional Hotkey for Fade                                                            |
-| lightning_sentry | Required Hotkey for Lightning Sentry                                              |
-| shadow_warrior | Optional Hotkey for Shadow Warrior                                                  |
-| skill_left     | Optional Hotkey for Left Skill                                                      |
+|| [trapsin]    | Descriptions                                                                          |
+|| -------------- | ----------------------------------------------------------------------------------- |
+|| burst_of_speed | Optional Hotkey for Burst of Speed                                                  |
+|| death_sentry   | Required Hotkey for Death Sentry                                                    |
+|| fade           | Optional Hotkey for Fade                                                            |
+|| lightning_sentry | Required Hotkey for Lightning Sentry                                              |
+|| shadow_warrior | Optional Hotkey for Shadow Warrior                                                  |
+|| skill_left     | Optional Hotkey for Left Skill                                                      |
 
-| [barbarian]    | Descriptions                                                                        |
-| -------------- | ----------------------------------------------------------------------------------- |
-| cry_frequency  | Time in seconds between each cast of war_cry. Set to 0.0 if max fcr should be used  |
-| find_item      | Optional Hotkey for Find Item                                                       |
-| leap           | Required Hotkey for Leap                                                            |
-| shout          | Required Hotkey for Shout                                                           |
-| war_cry        | Required Hotkey for War Cry                                                         |
+|| [barbarian]    | Descriptions                                                                        |
+|| -------------- | ----------------------------------------------------------------------------------- |
+|| cry_frequency  | Time in seconds between each cast of war_cry. Set to 0.0 if max fcr should be used  |
+|| find_item      | Optional Hotkey for Find Item                                                       |
+|| leap           | Required Hotkey for Leap                                                            |
+|| shout          | Required Hotkey for Shout                                                           |
+|| war_cry        | Required Hotkey for War Cry                                                         |
 
-| [Necro]        | Descriptions                                                                        |
-| -------------- | ----------------------------------------------------------------------------------- |
-| skill_left     | Required Hotkey for attack (bonespear/teeth)                                        |
-| bone_armor     | Required Hotkey for Bone Armor                                                      |
-| clay_golem     | Required Hotkey for Clay Golem                                                      |
-| raise_skeleton | Required Hotkey for Raise Skeleton                                                  |
-| amp_dmg        | Required Hotkey for Amplify Damage                                                  |
-| corpse_explosion | Required Hotkey Corpse Explosion                                                  |
-| raise_revive   | Required Hotkey revive                                                              |
-| damage_scaling   | Adjusts time spent casting attack skills. Ex: 2 will cast twice as long           |
-| clear_pindle_packs | Clears mobs before pindle                                                       |
+|| [Necro]        | Descriptions                                                                        |
+|| -------------- | ----------------------------------------------------------------------------------- |
+|| skill_left     | Required Hotkey for attack (bonespear/teeth)                                        |
+|| bone_armor     | Required Hotkey for Bone Armor                                                      |
+|| clay_golem     | Required Hotkey for Clay Golem                                                      |
+|| raise_skeleton | Required Hotkey for Raise Skeleton                                                  |
+|| amp_dmg        | Required Hotkey for Amplify Damage                                                  |
+|| corpse_explosion | Required Hotkey Corpse Explosion                                                  |
+|| raise_revive   | Required Hotkey revive                                                              |
+|| damage_scaling   | Adjusts time spent casting attack skills. Ex: 2 will cast twice as long           |
+|| clear_pindle_packs | Clears mobs before pindle                                                       |
 
-| [advanced_options]   | Descriptions                                                          |
-| -------------------- | --------------------------------------------------------------------- |
+|| [advanced_options]   | Descriptions                                                          |
+|| -------------------- | --------------------------------------------------------------------- |
 
 ## Tooling
 
