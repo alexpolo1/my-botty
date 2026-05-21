@@ -4,12 +4,12 @@ import time
 import cv2
 import math
 from item import consumables
-import keyboard
+from input_layer import keyboard
 import numpy as np
 from char.capabilities import CharacterCapabilities
 from ui_manager import is_visible, wait_until_visible
 from ui import skills
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from utils.misc import wait, cut_roi, is_in_roi, color_filter, arc_spread
 from logger import Logger
 from config import Config
@@ -100,7 +100,7 @@ class IChar:
             return False
         else:
             mouse.move(pos[0], pos[1])
-            time.sleep(0.1)
+            wait(0.1, 0.12)
             mouse.click(button="left")
 
             #Current logic only sets force_run if we previously teled. 
@@ -454,7 +454,7 @@ class IChar:
 
 if __name__ == "__main__":
     import os
-    import keyboard
+    from input_layer import keyboard
     keyboard.add_hotkey('f12', lambda: os._exit(1))
     print(f"Get on D2R screen and press F11 when ready")
     keyboard.wait("f11")

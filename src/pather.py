@@ -1,11 +1,11 @@
 import math
-import keyboard
+from input_layer import keyboard
 import time
 import os
 import random
 import cv2
 import numpy as np
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from utils.misc import wait # for stash/shrine tele cancel detection in traverse node
 from utils.misc import is_in_roi
 from config import Config
@@ -728,7 +728,7 @@ if __name__ == "__main__":
             cv2.imshow("debug", display_img)
             cv2.waitKey(1)
 
-    import keyboard
+    from input_layer import keyboard
     from screen import start_detecting_window, stop_detecting_window, grab
     keyboard.add_hotkey('f12', lambda: Logger.info('Force Exit (f12)') or os._exit(1))
     keyboard.wait("f11")

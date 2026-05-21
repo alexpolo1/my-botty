@@ -2,6 +2,7 @@ import time
 import numpy as np
 from screen import grab
 from config import Config
+from utils.misc import wait
 
 def check_for_black_screen() -> bool:
     img = grab()
@@ -17,5 +18,5 @@ def wait_for_loading_screen(timeout: float = 10.0) -> bool:
     while time.time() - start < timeout:
         if check_for_black_screen():
             return True
-        time.sleep(0.02)
+        wait(0.02, 0.024)
     return False

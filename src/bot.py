@@ -1,6 +1,6 @@
 from transitions import Machine
 import time
-import keyboard
+from input_layer import keyboard
 import time
 import os
 import random
@@ -69,7 +69,7 @@ class Bot:
             case "hammerdin" | "paladin":
                 self._char: IChar = Hammerdin(Config().hammerdin, self._pather, self._pickit) #pickit added for diablo
             case "fohdin":
-                self._char: IChar = FoHdin(Config().fohdin, self._pather) 
+                self._char: IChar = FoHdin(Config().fohdin, self._pather, self._pickit) 
             case "abyss_lock" | "warlock":
                 self._char: IChar = AbyssLock(Config().abyss_lock, self._pather)
             case "fire_lock":
@@ -211,7 +211,8 @@ class Bot:
             Logger.info(f"{Config().general['name']} is now pausing")
             self._game_stats.pause_timer()
         while self._pausing:
-            time.sleep(0.2)
+            from utils.misc import wait as _wait
+            _wait(0.2, 0.24)
         if not self._stopping:
             self.trigger(name, **kwargs)
 
@@ -352,7 +353,7 @@ class Bot:
         if Config().char["runs_per_stash"]:
             need_inspect |= (self._game_stats._run_counter - 1) % Config().char["runs_per_stash"] == 0
         if need_inspect:
-            img = personal.open()
+            img = personal.open_inventory()
             # Update TP, ID, key needs
             if self._game_stats._game_counter == 1:
                 self._use_id_tome = common.tome_state(img, 'id')[0] is not None

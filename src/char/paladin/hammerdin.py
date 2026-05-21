@@ -1,4 +1,4 @@
-import keyboard
+from input_layer import keyboard
 import random
 import time
 
@@ -12,7 +12,7 @@ from pather import Pather, Location
 from screen import convert_abs_to_monitor, convert_screen_to_abs, grab
 from target_detect import get_visible_targets
 from ui import skills
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from utils.misc import wait
 
 class Hammerdin(Paladin):
@@ -1325,7 +1325,7 @@ class Hammerdin(Paladin):
 
 if __name__ == "__main__":
     import os
-    import keyboard
+    from input_layer import keyboard
     keyboard.add_hotkey('f12', lambda: Logger.info('Force Exit (f12)') or os._exit(1))
     keyboard.wait("f11")
     from config import Config

@@ -1,0 +1,57 @@
+# ruff.toml — botty project linting configuration
+
+target-version = "py310"
+line-length = 120
+
+[lint]
+select = [
+    "E",    # pycodestyle errors
+    "F",    # Pyflakes
+    "I",    # isort
+    "UP",   # pyupgrade
+    "SIM",  # simplify
+    "RUF",  # ruff-specific rules
+]
+ignore = [
+    "E501",   # line too long (handled by line-length)
+    "F401",   # unused imports (common in __init__.py and game bots)
+    "F403",   # star imports (used for convenience modules)
+    "E722",   # bare except (intentional in game automation)
+    "RUF012", # mutable class attributes (State machine patterns)
+]
+
+[lint.per-file-ignores]
+"__init__.py"       = ["F401", "F403"]
+"**/test/**/*.py"   = ["F401"]
+"**/mocks/**/*.py"  = ["F401"]
+"tools/*.py"        = ["E402"]
+"build.py"          = ["E402"]
+
+[lint.isort]
+force-single-line = false
+known-first-party = [
+    "screen",
+    "config",
+    "logger",
+    "bot",
+    "pather",
+    "template_finder",
+    "input_layer",
+    "ui",
+    "ui_manager",
+    "game_controller",
+    "game_stats",
+    "health_manager",
+    "death_manager",
+    "target_detect",
+    "char",
+    "shop",
+    "item",
+    "transmute",
+    "bnip",
+    "d2r_image",
+    "messages",
+    "npc_manager",
+    "utils",
+    "version",
+]

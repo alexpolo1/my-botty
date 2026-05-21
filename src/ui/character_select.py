@@ -1,4 +1,4 @@
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from utils.misc import cut_roi, roi_center, wait, is_in_roi
 
 from config import Config

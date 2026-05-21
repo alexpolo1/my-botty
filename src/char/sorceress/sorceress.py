@@ -1,6 +1,6 @@
-import keyboard
+from input_layer import keyboard
 from typing import Callable
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from char import IChar
 import template_finder
 from pather import Pather

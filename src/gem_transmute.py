@@ -1,7 +1,7 @@
 from game_stats import GameStats
 from transmute import Transmute
 import threading
-import keyboard
+from input_layer import keyboard
 
 if __name__ == "__main__":
     stats = GameStats()

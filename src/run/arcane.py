@@ -110,7 +110,7 @@ class Arcane:
 
 
 if __name__ == "__main__":
-    import keyboard
+    from input_layer import keyboard
     from game_stats import GameStats
     import os
     keyboard.add_hotkey('f12', lambda: os._exit(1))

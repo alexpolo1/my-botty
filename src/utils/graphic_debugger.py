@@ -15,8 +15,8 @@ import time
 from pather import Pather
 from char.sorceress import NovaSorc
 from screen import convert_screen_to_monitor
-import keyboard
-from utils.custom_mouse import mouse
+from input_layer import keyboard
+from input_layer import mouse
 from PIL import ImageTk, Image
 import re
 

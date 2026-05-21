@@ -6,11 +6,11 @@ import template_finder
 from inventory import common, personal
 from ui import view
 from ui_manager import is_visible, wait_until_visible, ScreenObjects, wait_until_hidden
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from utils.misc import cut_roi, wait, color_filter
 from config import Config
 from screen import convert_abs_to_monitor, convert_monitor_to_screen, convert_screen_to_monitor, grab
-import keyboard
+from input_layer import keyboard
 import os
 
 def open(img: np.ndarray = None) -> np.ndarray:
@@ -147,7 +147,7 @@ def fill_up_belt_from_inventory(num_loot_columns: int):
     Fill up your belt with pots from the inventory e.g. after death. It will open and close invetory by itself!
     :param num_loot_columns: Number of columns used for loot from left
     """
-    img = personal.open()
+    img = personal.open_inventory()
     pot_positions = []
     for column, row in itertools.product(range(num_loot_columns), range(4)):
         center_pos, slot_img = common.get_slot_pos_and_img(img, column, row)

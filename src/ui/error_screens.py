@@ -1,7 +1,7 @@
 from ui_manager import detect_screen_object, select_screen_object_match, ScreenObjects
 from logger import Logger
 from utils.misc import wait
-import keyboard
+from input_layer import keyboard
 
 def handle_error() -> bool:
     Logger.warning("Server connection issue. waiting 20s")

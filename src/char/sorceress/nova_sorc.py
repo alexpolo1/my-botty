@@ -1,8 +1,8 @@
-import keyboard
+from input_layer import keyboard
 import time
 import numpy as np
 from char.sorceress import Sorceress
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from logger import Logger
 from utils.misc import wait
 from pather import Location
@@ -100,7 +100,7 @@ class NovaSorc(Sorceress):
 
 if __name__ == "__main__":
     import os
-    import keyboard
+    from input_layer import keyboard
     from pather import Pather
     keyboard.add_hotkey('f12', lambda: Logger.info('Force Exit (f12)') or os._exit(1))
     keyboard.wait("f11")

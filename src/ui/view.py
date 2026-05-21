@@ -1,8 +1,8 @@
 import time
 from screen import grab
 from config import Config
-import keyboard
-from utils.custom_mouse import mouse
+from input_layer import keyboard
+from input_layer import mouse
 from logger import Logger
 from utils.misc import wait
 from ui_manager import wait_until_hidden, wait_until_visible, detect_screen_object, select_screen_object_match, ScreenObjects, list_visible_objects, is_visible
@@ -138,7 +138,7 @@ def return_to_play() -> bool:
 
 # Testing
 if __name__ == "__main__":
-    import keyboard
+    from input_layer import keyboard
     import os
     from screen import start_detecting_window, stop_detecting_window
     start_detecting_window()

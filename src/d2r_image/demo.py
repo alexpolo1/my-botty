@@ -2,7 +2,7 @@ from copy import deepcopy
 from email.mime import base
 import time
 import cv2
-import keyboard
+from input_layer import keyboard
 import os
 import json
 import screen

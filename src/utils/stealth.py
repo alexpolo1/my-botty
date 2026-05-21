@@ -1,8 +1,9 @@
 import random
 import time
-import keyboard
+from input_layer import keyboard
 from config import Config
 from logger import Logger
+from utils.misc import wait
 
 
 def maybe_afk_break():
@@ -14,7 +15,7 @@ def maybe_afk_break():
     if random.randint(1, 100) <= cfg["afk_break_chance"]:
         minutes = random.uniform(cfg["afk_break_min_m"], cfg["afk_break_max_m"])
         Logger.info(f"[Stealth] Taking unscheduled AFK break for {minutes:.1f} minutes")
-        time.sleep(minutes * 60)
+        wait(minutes * 60, minutes * 60 * 1.5)
         Logger.info("[Stealth] AFK break over, resuming")
 
 
@@ -88,7 +89,7 @@ def add_micro_pause():
     # 30% chance of micro-pause
     if random.random() < 0.3:
         pause_s = random.uniform(min_ms, max_ms) / 1000.0
-        time.sleep(pause_s)
+        wait(pause_s, pause_s * 1.2)
 
 
 # ─── Tier 1: Input-level stealth ─────────────────────────────────────────────
@@ -123,7 +124,7 @@ def click_delay() -> float:
 
 def apply_click_delay():
     """Sleep for a human-like delay before clicking."""
-    time.sleep(click_delay())
+    wait(click_delay(), click_delay() * 1.2)
 
 
 def key_press_duration(base_duration: float = 0.05) -> float:
@@ -153,7 +154,7 @@ def human_key_press(key: str):
     add_micro_pause()
     duration = key_press_duration()
     keyboard.press(key)
-    time.sleep(duration)
+    wait(duration, duration * 1.2)
     keyboard.release(key)
     add_micro_pause()
 
@@ -166,7 +167,7 @@ def human_keyboard_send(key: str):
     add_micro_pause()
     duration = key_press_duration(0.03)
     keyboard.press(key)
-    time.sleep(duration)
+    wait(duration, duration * 1.2)
     keyboard.release(key)
     add_micro_pause()
 

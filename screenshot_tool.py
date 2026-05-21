@@ -16,7 +16,7 @@ Screenshots saved to screenshots/
 import os
 import sys
 import time
-import keyboard
+from input_layer import keyboard
 import numpy as np
 import cv2
 from datetime import datetime

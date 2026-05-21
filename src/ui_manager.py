@@ -1,4 +1,4 @@
-import keyboard
+from input_layer import keyboard
 import os
 import numpy as np
 import time
@@ -6,7 +6,7 @@ import cv2
 from functools import cache
 
 from typing import TypeVar, Callable
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from utils.misc import wait, cut_roi, image_is_equal
 from logger import Logger
 from config import Config
@@ -411,7 +411,7 @@ def get_closest_non_hud_pixel(pos : tuple[int, int], pos_type: str = "abs") -> t
 
 # Testing: Move to whatever ui to test and run
 if __name__ == "__main__":
-    import keyboard
+    from input_layer import keyboard
     from screen import start_detecting_window, grab, stop_detecting_window
     start_detecting_window()
     keyboard.add_hotkey('f12', lambda: Logger.info('Force Exit (f12)') or stop_detecting_window() or os._exit(1))
@@ -422,4 +422,5 @@ if __name__ == "__main__":
     print(wait_for_update(grab(), Config().ui_roi["right_inventory"], timeout=5))
     # while 1:
     #     print(list_visible_objects())
-    #     time.sleep(1)
+    #     from utils.misc import wait as _wait
+    #     _wait(1, 1.2)

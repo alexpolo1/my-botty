@@ -1,5 +1,5 @@
 import time
-import keyboard
+from input_layer import keyboard
 from config import Config
 from utils.misc import wait
 from logger import Logger

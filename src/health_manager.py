@@ -1,9 +1,10 @@
 from inventory import belt
 from pather import Location
 import cv2
+from threading import Lock
 import time
-import keyboard
-from utils.custom_mouse import mouse
+from input_layer import keyboard
+from input_layer import mouse
 from utils.misc import wait
 from logger import Logger
 from screen import grab
@@ -14,33 +15,15 @@ from ui import view, meters
 from ui_manager import ScreenObjects, is_visible
 from random import uniform
 
-pause_state = True
-panel_check_paused = False
-
-def get_pause_state():
-    return pause_state
-
-def set_pause_state(state: bool):
-    global pause_state
-    prev = get_pause_state()
-    if prev != state:
-        debug_str = "paused" if state else "active"
-        Logger.info(f"Health Manager is now {debug_str}")
-        pause_state = state
-
-def get_panel_check_paused():
-    return panel_check_paused
-
-def set_panel_check_paused(state: bool):
-    global panel_check_paused
-    prev = get_panel_check_paused()
-    if prev != state:
-        debug_str = "pausing" if state else "activating"
-        Logger.info(f"Health Manager is now {debug_str} inventory panel check")
-        panel_check_paused = state
 
 class HealthManager:
+    _instance = None
+
     def __init__(self):
+        HealthManager._instance = self
+        self._state_lock = Lock()
+        self._pause_state = True
+        self._panel_check_paused = False
         self._do_monitor = False
         self._did_chicken = False
         self._last_rejuv = time.time()
@@ -62,7 +45,31 @@ class HealthManager:
 
     def reset_chicken_flag(self):
         self._did_chicken = False
-        set_pause_state(True)
+        self.set_pause_state(True)
+
+    def get_pause_state(self):
+        with self._state_lock:
+            return self._pause_state
+
+    def set_pause_state(self, state: bool):
+        with self._state_lock:
+            prev = self._pause_state
+            if prev != state:
+                debug_str = "paused" if state else "active"
+                Logger.info(f"Health Manager is now {debug_str}")
+                self._pause_state = state
+
+    def get_panel_check_paused(self):
+        with self._state_lock:
+            return self._panel_check_paused
+
+    def set_panel_check_paused(self, state: bool):
+        with self._state_lock:
+            prev = self._panel_check_paused
+            if prev != state:
+                debug_str = "pausing" if state else "activating"
+                Logger.info(f"Health Manager is now {debug_str} inventory panel check")
+                self._panel_check_paused = state
 
     def _do_chicken(self, img):
         if self._callback is not None:
@@ -78,7 +85,7 @@ class HealthManager:
             self._last_chicken_screenshot = "./log/screenshots/info/info_debug_chicken_" + time.strftime("%Y%m%d_%H%M%S") + ".png"
             cv2.imwrite(self._last_chicken_screenshot, img)
         self._did_chicken = True
-        set_pause_state(True)
+        self.set_pause_state(True)
 
     def start_monitor(self):
         Logger.info("Start health monitoring")
@@ -91,7 +98,7 @@ class HealthManager:
         merc_hp_potion_delay = 10.24
 
         while self._do_monitor:
-            if self._did_chicken or get_pause_state():
+            if self._did_chicken or self.get_pause_state():
                 wait(1)
                 continue
             fn_start = time.perf_counter()
@@ -106,9 +113,11 @@ class HealthManager:
                 #It seems that hit recovery can delay the use of juvs and 15 frames is max recovery time. 
                 #To delay two juvs being used back to back, we'll need to wait the recovery time between uses.
                 #15 frames is 0.60 seconds.
-                if last_drink > 0.60: 
+                if last_drink > 0.60:
                     if (health_percentage <= Config().char["take_rejuv_potion_health"]) or \
                         (mana_percentage <= Config().char["take_rejuv_potion_mana"]):
+                        # Simulate human reaction time (100-300ms)
+                        wait(0.1, 0.3)
                         success_drink_rejuv = belt.drink_potion("rejuv", stats=[health_percentage, mana_percentage])
                         #failure to drink juv (likely out of juvs). Perform chicken
                         if not success_drink_rejuv:
@@ -134,11 +143,13 @@ class HealthManager:
                     # check health
                     last_drink = time.time() - self._last_health
                     if health_percentage <= Config().char["take_health_potion"] and last_drink > lp_hp_potion_delay:
+                        wait(0.1, 0.3)  # human reaction time
                         belt.drink_potion("health", stats=[health_percentage, mana_percentage])
                         self._last_health = time.time()
                     # check mana
                     last_drink = time.time() - self._last_mana
                     if mana_percentage <= Config().char["take_mana_potion"] and last_drink > lp_mp_potion_delay:
+                        wait(0.1, 0.3)  # human reaction time
                         belt.drink_potion("mana", stats=[health_percentage, mana_percentage])
                         self._last_mana = time.time()
                 # check merc
@@ -151,12 +162,14 @@ class HealthManager:
                             self._do_chicken(img)
                             continue
                         if Config().char["heal_rejuv_merc"] and (merc_health_percentage <= Config().char["heal_rejuv_merc"] and last_drink > 4.0):
+                            wait(0.1, 0.3)  # human reaction time
                             belt.drink_potion("rejuv", merc=True, stats=[merc_health_percentage])
                             self._last_merc_heal = time.time()
                         elif Config().char["heal_merc"] and (merc_health_percentage <= Config().char["heal_merc"] and last_drink > merc_hp_potion_delay):
+                            wait(0.1, 0.3)  # human reaction time
                             belt.drink_potion("health", merc=True, stats=[merc_health_percentage])
                             self._last_merc_heal = time.time()
-                if not get_panel_check_paused() and (is_visible(ScreenObjects.LeftPanel, img) or is_visible(ScreenObjects.RightPanel, img)):
+                if not self.get_panel_check_paused() and (is_visible(ScreenObjects.LeftPanel, img) or is_visible(ScreenObjects.RightPanel, img)):
                     Logger.warning(f"Found an open inventory / quest / skill / stats page. Close it.")
                     self._count_panel_detects += 1
                     if self._count_panel_detects >= 2:
@@ -166,16 +179,44 @@ class HealthManager:
                         continue
                     common.close()
             fn_end = time.perf_counter()
-            wait_time = 3/25 - (fn_end - fn_start)
+            # Add timing jitter to avoid perfectly regular polling pattern (anti-cheat)
+            import random
+            base_wait = 3/25 - (fn_end - fn_start)
+            jitter = random.uniform(0.8, 1.2)  # ±20% jitter
+            wait_time = max(0.0, base_wait * jitter)
             if wait_time > 0:
-                wait(wait_time) # wait 3 frames before rechecking
+                wait(wait_time)  # wait ~3 frames before rechecking
         Logger.debug("Stop health monitoring")
+
+
+# Backwards-compatible module-level functions that delegate to the singleton instance
+def get_pause_state():
+    """Backwards-compatible wrapper that delegates to the singleton instance."""
+    if HealthManager._instance is not None:
+        return HealthManager._instance.get_pause_state()
+    return True
+
+def set_pause_state(state: bool):
+    """Backwards-compatible wrapper that delegates to the singleton instance."""
+    if HealthManager._instance is not None:
+        HealthManager._instance.set_pause_state(state)
+
+def get_panel_check_paused():
+    """Backwards-compatible wrapper that delegates to the singleton instance."""
+    if HealthManager._instance is not None:
+        return HealthManager._instance.get_panel_check_paused()
+    return False
+
+def set_panel_check_paused(state: bool):
+    """Backwards-compatible wrapper that delegates to the singleton instance."""
+    if HealthManager._instance is not None:
+        HealthManager._instance.set_panel_check_paused(state)
 
 
 # Testing: Start dying or losing mana and see if it works
 if __name__ == "__main__":
     import threading
-    import keyboard
+    from input_layer import keyboard
     import os
     from health_manager import set_pause_state
     from screen import start_detecting_window, stop_detecting_window, grab

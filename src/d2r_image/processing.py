@@ -48,7 +48,7 @@ def get_hovered_item(image: np.ndarray, model = "hover-eng_inconsolata_inv_th_fa
 
 
 if __name__ == "__main__":
-    import keyboard
+    from input_layer import keyboard
     import os
     from screen import start_detecting_window, stop_detecting_window, grab
     from d2r_image import processing as d2r_image

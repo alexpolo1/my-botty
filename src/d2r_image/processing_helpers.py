@@ -625,7 +625,7 @@ def build_d2_items(items_by_quality: dict) -> GroundItemList | None:
     return ground_item_list
 
 if __name__ == "__main__":
-    import keyboard
+    from input_layer import keyboard
     import os
     from screen import start_detecting_window, grab, stop_detecting_window
     start_detecting_window()

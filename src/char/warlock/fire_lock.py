@@ -1,12 +1,12 @@
 import random
-import keyboard
+from input_layer import keyboard
 import time
 import numpy as np
 
 from health_manager import get_panel_check_paused, set_panel_check_paused
 from inventory.personal import inspect_items
 from screen import convert_abs_to_monitor, convert_screen_to_abs, grab, convert_abs_to_screen
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from char.warlock import Warlock
 from logger import Logger
 from config import Config

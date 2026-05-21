@@ -6,14 +6,14 @@ from .inventory_collection import InventoryCollection
 from .stash import Stash
 from .gem_picking import SimpleGemPicking
 from screen import convert_screen_to_monitor, grab
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from utils.misc import wait
 from version import __version__
 from logger import Logger
 from game_stats import GameStats
 import template_finder
 import numpy as np
-import keyboard
+from input_layer import keyboard
 import cv2
 from inventory import personal, common
 

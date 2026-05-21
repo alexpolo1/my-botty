@@ -6,7 +6,7 @@ from pather import Pather, Location
 import template_finder
 from utils.misc import wait
 from ui_manager import ScreenObjects, is_visible
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from screen import convert_abs_to_monitor
 from logger import Logger
 

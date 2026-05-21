@@ -76,7 +76,7 @@ if __name__ == "__main__":
         if args.use_key:
             key = Fernet.generate_key().decode("utf-8")
             key_cmd = " --key " + key
-        installer_cmd = f"pyinstaller --onefile --distpath {botty_dir}{key_cmd} --exclude-module graphviz --paths .\\src --paths {args.conda_path}\\envs\\botty\\Lib\\site-packages src\\{exe}"
+        installer_cmd = f"pyinstaller --onefile --noconsole --distpath {botty_dir}{key_cmd} --exclude-module graphviz --exclude-module keyboard --exclude-module mouse --exclude-module pyclick --exclude-module mouseinfo --paths .\\src --paths {args.conda_path}\\envs\\botty\\Lib\\site-packages src\\{exe}"
         os.system(installer_cmd)
 
     os.system(f"cd {botty_dir} && mkdir config && cd ..")
@@ -96,6 +96,12 @@ if __name__ == "__main__":
         print("Generate random names")
         new_name = ''.join(random.choices(string.ascii_letters, k=random.randint(6, 14)))
         os.rename(f'{botty_dir}/main.exe', f'{botty_dir}/{new_name}.exe')
+
+    # Always rename main.exe to avoid Warden flagging the obvious name
+    if not args.random_name:
+        new_name = ''.join(random.choices(string.ascii_lowercase + string.digits, k=8))
+        os.rename(f'{botty_dir}/main.exe', f'{botty_dir}/{new_name}.exe')
+        print(f"Renamed main.exe -> {new_name}.exe")
 
     if new_version_code is not None:
         os.system(f'git add .')
