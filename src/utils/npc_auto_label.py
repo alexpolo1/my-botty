@@ -118,7 +118,7 @@ def detect_visible_npcs_cached(img=None, ttl=5.0):
 
 if __name__ == "__main__":
     import cv2
-    import keyboard
+    from input_layer import keyboard
     from screen import start_detecting_window
 
     start_detecting_window()

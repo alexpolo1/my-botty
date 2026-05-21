@@ -1,5 +1,5 @@
 import os, sys
-import keyboard
+from input_layer import keyboard
 import subprocess
 
 import template_finder

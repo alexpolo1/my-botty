@@ -3,6 +3,8 @@ from decimal import InvalidOperation
 import time
 import random
 import ctypes
+import threading
+import logging
 import numpy as np
 from copy import deepcopy
 import unicodedata
@@ -107,12 +109,20 @@ def find_d2r_window(spec: WindowSpec, offset = (0, 0)) -> tuple[int, int]:
 
 def set_d2r_always_on_top():
     if os.name == 'nt':
-        windows_list = []
-        EnumWindows(lambda w, l: l.append((w, GetWindowText(w))), windows_list)
-        for w in windows_list:
-            if w[1] == "Diablo II: Resurrected":
-                SetWindowPos(w[0], HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE)
-                print("Set D2R to be always on top")
+        for attempt in range(30):
+            windows_list = []
+            EnumWindows(lambda w, l: l.append((w, GetWindowText(w))), windows_list)
+            found = False
+            for w in windows_list:
+                if "Diablo II" in w[1]:
+                    SetWindowPos(w[0], HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE)
+                    print("Set D2R to be always on top")
+                    found = True
+                    break
+            if found:
+                return
+            wait(0.5, 1.0)
+        print('D2R window not found, could not set always on top')
     else:
         print('OS not supported, unable to set D2R always on top')
 
@@ -146,12 +156,72 @@ def wait(min_seconds, max_seconds = None):
     time.sleep(base * jitter)
     return
 
-def kill_thread(thread):
+def _force_kill_thread(thread):
+    """
+    DANGEROUS: Force-kills a thread via CPython private API.
+    Only use as a last resort when cooperative shutdown failed.
+    Can corrupt locks, cause GIL issues, or corrupt numpy arrays.
+    """
+    Logger.error(
+        f"Force-killing thread '{thread.name}' via PyThreadState_SetAsyncExc. "
+        "This is dangerous and can corrupt locks/GIL/numpy arrays!"
+    )
     thread_id = thread.ident
     res = ctypes.pythonapi.PyThreadState_SetAsyncExc(thread_id, ctypes.py_object(SystemExit))
     if res > 1:
         ctypes.pythonapi.PyThreadState_SetAsyncExc(thread_id, 0)
         Logger.error('Exception raise failure')
+
+
+def cooperative_shutdown(
+    thread,
+    bot=None,
+    health_manager=None,
+    death_manager=None,
+    timeout=5.0,
+):
+    """
+    Cooperatively shut down a thread by signalling the owning objects, then join.
+
+    Falls back to _force_kill_thread only if the thread is still alive after
+    *timeout* seconds.  This avoids the dangers of PyThreadState_SetAsyncExc
+    (corrupted locks, GIL issues, numpy array corruption) in the common path.
+    """
+    # Signal Bot to stop its run loop
+    if bot is not None:
+        bot.stop()
+
+    # Signal HealthManager to stop its monitoring loop
+    if health_manager is not None:
+        health_manager.stop_monitor()
+
+    # Signal DeathManager to stop its monitoring loop
+    if death_manager is not None:
+        death_manager.stop_monitor()
+
+    # Wait for the thread to finish cooperatively
+    thread.join(timeout=timeout)
+
+    if thread.is_alive():
+        Logger.warning(
+            f"Thread '{thread.name}' did not exit within {timeout}s; "
+            "falling back to force kill (PyThreadState_SetAsyncExc)."
+        )
+        _force_kill_thread(thread)
+
+
+# Kept for backwards-compatibility so existing imports still work.
+# Calls the cooperative path when the owning objects are available;
+# otherwise falls back to force kill immediately.
+def kill_thread(thread):
+    """
+    Backwards-compatibility wrapper.
+    Prefer cooperative_shutdown() for new code.
+    """
+    # We can't signal anything without the owning objects, so fall back
+    # to force kill.  Callers that own the bot/managers should use
+    # cooperative_shutdown() instead.
+    _force_kill_thread(thread)
 
 def cut_roi(img, roi):
     x, y, w, h = roi

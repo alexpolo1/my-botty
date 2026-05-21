@@ -4,7 +4,7 @@ from config import Config
 import template_finder
 from utils.misc import load_template, cut_roi
 import mouse
-import keyboard
+from input_layer import keyboard
 import os
 import shutil
 from pathlib import Path

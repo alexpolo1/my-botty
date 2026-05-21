@@ -1,8 +1,8 @@
-import keyboard
+from input_layer import keyboard
 from ui import skills
 import time
 import random
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from char import IChar, CharacterCapabilities
 from pather import Pather
 from logger import Logger

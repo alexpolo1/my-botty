@@ -1,12 +1,13 @@
 import time
 import os
+from pathlib import Path
 
 from logger import Logger
 import template_finder
 from screen import grab
 from char import IChar
 from config import Config
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from utils.misc import wait
 from item import consumables
 
@@ -15,9 +16,10 @@ class Chest:
     def __init__(self, char: IChar, template: str = None):
         self._char = char
         self._folder_name = "chests"
+        self._assets_path = Path(__file__).parent.parent / "assets"
         # load all templates
         self._templates = []
-        for filename in os.listdir(f'assets/{self._folder_name}/{template}'):
+        for filename in os.listdir(f'{self._assets_path}/{self._folder_name}/{template}'):
             filename = filename.lower()
             if filename.endswith('.png'):
                 chest = filename[:-4].upper()
@@ -60,7 +62,7 @@ class Chest:
 
 
 if __name__ == "__main__":
-    import keyboard
+    from input_layer import keyboard
     import os
     keyboard.add_hotkey('f12', lambda: Logger.info('Force Exit (f12)') or os._exit(1))
     print("Move to d2r window and press f11")

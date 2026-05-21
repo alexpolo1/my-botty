@@ -1,8 +1,8 @@
 from utils.misc import wait
 from screen import grab
 from config import Config
-from utils.custom_mouse import mouse
-import keyboard
+from input_layer import mouse
+from input_layer import keyboard
 import cv2
 from logger import Logger
 import time
@@ -42,7 +42,6 @@ class DeathManager:
             # first wait a bit to make sure health manager is done with its chicken stuff which obviously failed
             if self._callback is not None:
                 self._callback()
-                self._callback = None
             # clean up key presses that might be pressed
             keyboard.release(Config().char["stand_still"])
             wait(0.1, 0.2)
@@ -51,7 +50,7 @@ class DeathManager:
             mouse.release(button="right")
             wait(0.1, 0.2)
             mouse.release(button="left")
-            time.sleep(1)
+            wait(1, 1.5)
             if is_visible(ScreenObjects.MainMenu):
                 # in this case chicken executed and left the game, but we were still dead.
                 return True
@@ -66,7 +65,7 @@ class DeathManager:
         Logger.info("Start Death monitoring")
         while self._do_monitor:
             if self._died: continue
-            time.sleep(self._loop_delay) # no need to do this too frequent, when we died we are not in a hurry...
+            wait(self._loop_delay, self._loop_delay * 1.5) # no need to do this too frequent, when we died we are not in a hurry...
             # Wait until the flag is reset by main.py
             if self._died: continue
             self.handle_death_screen()

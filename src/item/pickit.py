@@ -2,7 +2,7 @@ from enum import Enum
 from numpy import ndarray
 import cv2
 import json
-import keyboard
+from input_layer import keyboard
 import os
 import time
 import uuid
@@ -19,7 +19,7 @@ from bnip.actions import should_pickup
 from bnip.NTIPAliasType import NTIPAliasType as NTIP_TYPES
 from screen import grab, convert_abs_to_monitor
 from ui_manager import ScreenObjects, is_visible
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from utils.misc import wait
 
 
@@ -204,7 +204,7 @@ if __name__ == "__main__":
     from char.sorceress import LightSorc
     from char.paladin import Hammerdin
     from pather import Pather
-    import keyboard
+    from input_layer import keyboard
     from logger import Logger
     from screen import start_detecting_window, stop_detecting_window
 

@@ -8,7 +8,7 @@ from item.pickit import PickIt
 import template_finder
 from town.town_manager import TownManager, A4
 from utils.misc import wait
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from screen import convert_abs_to_monitor, grab
 from ui_manager import detect_screen_object, ScreenObjects
 from ui import skills, loading, waypoint
@@ -505,7 +505,7 @@ class Diablo:
         return (Location.A4_DIABLO_END, self._picked_up_items)
 
 if __name__ == "__main__":
-    import keyboard
+    from input_layer import keyboard
     from game_stats import GameStats
     import os
     keyboard.add_hotkey('f12', lambda: os._exit(1))

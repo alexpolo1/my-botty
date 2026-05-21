@@ -11,7 +11,7 @@ if sys.platform == "win32":
         os.add_dll_directory(_conda_dll_dir)
 
 from dataclasses import dataclass
-import keyboard
+from input_layer import keyboard
 from beautifultable import BeautifulTable
 import logging
 import traceback
@@ -90,8 +90,13 @@ def main():
     # Auto-launch D2R if not already running
     from utils.restart import process_exists, restart_game
     if not process_exists("D2R.exe"):
-        Logger.info("D2R is not running, launching...")
-        restart_game(Config().general["d2r_path"], Config().advanced_options["launch_options"])
+        if Config().general.get("bnet_name", "") and Config().general.get("bnet_pass", ""):
+            Logger.info("D2R is not running, launching with auto-login...")
+            restart_game(Config().general["d2r_path"], Config().advanced_options["launch_options"])
+        else:
+            Logger.info("D2R is not running. No auto-login configured - please launch D2R and log in, then press the resume key to start.")
+            # Don't auto-launch without credentials; user will start manually
+            # Still show the UI and wait for resume key
     else:
         Logger.info("D2R is already running")
 
@@ -126,5 +131,9 @@ if __name__ == "__main__":
         main()
     except:
         traceback.print_exc()
-    print("Press Enter to exit ...")
-    input()
+    # In --noconsole builds, skip input() - the hotkey-based exit_key handles shutdown
+    try:
+        if __import__('sys').stdin and __import__('sys').stdin.isatty():
+            input()
+    except (OSError, ValueError):
+        pass

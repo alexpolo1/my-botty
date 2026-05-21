@@ -3,7 +3,7 @@ import cv2
 from config import Config
 from utils.misc import cut_roi
 import mouse
-import keyboard
+from input_layer import keyboard
 import os
 import time
 from screen import grab, convert_monitor_to_screen

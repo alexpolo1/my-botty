@@ -1,6 +1,6 @@
-import keyboard
+from input_layer import keyboard
 from char.sorceress import Sorceress
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from logger import Logger
 from utils.misc import wait, rotate_vec, unit_vector
 import random

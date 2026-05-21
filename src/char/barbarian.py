@@ -1,6 +1,6 @@
-import keyboard
+from input_layer import keyboard
 from ui import skills
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from char import IChar, CharacterCapabilities
 import template_finder
 from pather import Pather
@@ -192,7 +192,7 @@ class Barbarian(IChar):
 
 if __name__ == "__main__":
     import os
-    import keyboard
+    from input_layer import keyboard
     keyboard.add_hotkey('f12', lambda: Logger.info('Force Exit (f12)') or os._exit(1))
     keyboard.wait("f11")
     from config import Config

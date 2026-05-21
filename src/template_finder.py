@@ -246,7 +246,7 @@ def search_all(
 
 # Testing: Have whatever you want to find on the screen
 if __name__ == "__main__":
-    import keyboard
+    from input_layer import keyboard
     import os
     from screen import start_detecting_window, stop_detecting_window
     from utils.misc import wait

@@ -5,7 +5,7 @@ import math
 import random
 from typing import Callable
 
-import keyboard
+from input_layer import keyboard
 import numpy as np
 
 from screen import convert_screen_to_monitor, grab, convert_abs_to_monitor, convert_screen_to_abs, convert_monitor_to_screen
@@ -13,7 +13,7 @@ from config import Config
 from logger import Logger
 from npc_manager import Npc, open_npc_menu, press_npc_btn
 import template_finder
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from utils.misc import wait
 
 
@@ -75,7 +75,7 @@ class DrognanShopper:
         while True:
             open_npc_menu(Npc.DROGNAN)
             press_npc_btn(Npc.DROGNAN, "trade")
-            time.sleep(0.1)
+            wait(0.1, 0.12)
             img = grab()
 
             if self.look_for_scepters is True:
@@ -110,7 +110,7 @@ class DrognanShopper:
                                 mouse.click(button="right")
                                 Logger.info(f"Item bought!")
                                 self.items_bought += 1
-                                time.sleep(1)
+                                wait(1, 1.2)
 
                     self.items_evaluated += 1
 

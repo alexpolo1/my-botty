@@ -1,14 +1,14 @@
 import time
 import os
 import numpy as np
-import keyboard
+from input_layer import keyboard
 import template_finder
 from config import Config
 from screen import grab
 from ui_manager import ScreenObjects, center_mouse, is_visible, wait_until_hidden
 from utils.misc import color_filter, wait
 from logger import Logger
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from math import sqrt
 
 class Npc:
@@ -322,7 +322,7 @@ if __name__ == "__main__":
     from screen import grab
     from config import Config
     import os
-    import keyboard
+    from input_layer import keyboard
     keyboard.add_hotkey('f12', lambda: os._exit(1))
     keyboard.wait("f11")
     open_npc_menu(Npc.MALAH)

@@ -88,8 +88,12 @@ def grab(force_new: bool = False) -> np.ndarray:
             monitor_roi["width"] = m0["width"]
             monitor_roi["height"] = m0["height"]
     # with 25fps we have 40ms per frame. If we check for 20ms range to make sure we can still get each frame if we want.
+    # Added 5-10% jitter to the cache interval to break perfectly regular timing patterns.
     with cached_img_lock:
-        if not force_new and cached_img is not None and last_grab is not None and (time.perf_counter() - last_grab) < 0.02:
+        import random
+        jitter = 0.9 + random.random() * 0.2  # 0.9x to 1.1x
+        cache_threshold = 0.02 * jitter
+        if not force_new and cached_img is not None and last_grab is not None and (time.perf_counter() - last_grab) < cache_threshold:
             return cached_img
         else:
             last_grab = time.perf_counter()

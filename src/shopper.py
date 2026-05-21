@@ -8,8 +8,9 @@ if sys.platform == "win32":
 from beautifultable import BeautifulTable
 import logging
 import traceback
-import keyboard
+from input_layer import keyboard
 import time
+from utils.misc import wait
 from shop.anya import AnyaShopper
 from shop.drognan import DrognanShopper
 from config import Config
@@ -46,13 +47,13 @@ def main():
             merchant = AnyaShopper()
             merchant.run()
             break
-        time.sleep(0.02)
+        wait(0.02, 0.024)
 
 if __name__ == "__main__":
     # To avoid cmd just closing down, except any errors and add a input() to the end
     try:
         start_detecting_window()
-        time.sleep(2)
+        wait(2, 2.4)
         main()
     except:
         traceback.print_exc()

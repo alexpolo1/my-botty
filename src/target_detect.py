@@ -14,13 +14,6 @@ FILTER_RANGES=[
     {"erode": 1, "blur": 3, "lh": 110, "ls": 169, "lv": 50, "uh": 120, "us": 255, "uv": 255} # frozen
 ]
 
-# Shape filtering to reject false positives:
-# - Health bars: thin horizontal strips (aspect ratio >> 1, very wide and short)
-# - Immune text: small vertical blobs (aspect ratio << 1, tall and narrow)
-# - Real auras: roughly circular/elliptical (aspect ratio ~0.5-2.0)
-TARGET_ASPECT_MIN = 0.5    # reject blobs taller than twice as tall as wide (immune text)
-TARGET_ASPECT_MAX = 3.0    # reject strips wider than 3x their height (health bars)
-
 # Target shape filters to reject false positives (health bars, immune text)
 TARGET_MIN_AREA = 100       # minimum connected component area (immune text is tiny)
 TARGET_MAX_AREA = 200       # maximum area (real aura blobs)
@@ -254,7 +247,7 @@ class LiveViewer:
 
 # Testing: Have whatever you want to detect on the screen
 if __name__ == "__main__":
-    import keyboard
+    from input_layer import keyboard
     import os
     from logger import Logger
     from screen import start_detecting_window, stop_detecting_window

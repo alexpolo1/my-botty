@@ -9,8 +9,6 @@ dependencies = [
     "transitions",
     "mss==7.0.1",
     "numpy==1.26.4",
-    "mouse",
-    "keyboard",
     "beautifultable",
     "pytweening",
     "requests",

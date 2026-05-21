@@ -1,0 +1,56 @@
+# ==========================================
+# botty - Pixelbot for Diablo 2 Resurrected
+# requirements.txt
+# ==========================================
+# Pin to versions that match the existing conda environment (environment.yml).
+# Run `pip install -r requirements.txt` inside the `botty` conda env.
+# For tesserocr, install the pre-built wheel instead:
+#   pip install dependencies/tesserocr-2.5.2-cp310-cp310-win_amd64.whl
+# ==========================================
+
+# --- Core runtime ---
+numpy==1.26.4
+opencv-python==4.5.5.64
+mss==7.0.1
+pillow
+pywin32
+
+# --- Game input & control ---
+keyboard
+mouse
+pytweening
+
+# --- State machine & logic ---
+transitions
+rapidfuzz==2.15.1
+pyparsing
+parse
+dataclasses-json
+
+# --- UI & display ---
+colorama
+beautifultable
+
+# --- Networking & messaging ---
+requests
+discord.py
+
+# --- System & utilities ---
+psutil
+cryptography
+typing_extensions
+graphviz
+
+# --- OCR (requires tesseract + leptonica from conda-forge first) ---
+# tesserocr -- install via wheel:
+#   pip install dependencies/tesserocr-2.5.2-cp310-cp310-win_amd64.whl
+
+# --- Dev / testing ---
+pytest
+pytest-env
+pytest-pythonpath
+pytest-mock
+coverage
+
+# --- Packaging ---
+pyinstaller

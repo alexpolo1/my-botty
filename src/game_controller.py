@@ -1,7 +1,7 @@
 import threading
 import time
 import cv2
-import keyboard
+from input_layer import keyboard
 
 from utils.auto_settings import check_settings
 from bot import Bot
@@ -14,7 +14,7 @@ from logger import Logger
 from messages import Messenger
 from screen import grab, get_offset_state
 from utils.restart import restart_game, safe_exit
-from utils.misc import kill_thread, set_d2r_always_on_top, restore_d2r_window_visibility
+from utils.misc import kill_thread, cooperative_shutdown, set_d2r_always_on_top, restore_d2r_window_visibility, wait
 
 
 class GameController:
@@ -25,7 +25,7 @@ class GameController:
         self.death_manager = None
         self.death_monitor_thread = None
         self.game_recovery = None
-        self.game_stats = None
+        self.game_stats = GameStats()
         self.game_controller_thread = None
         self.bot_thread = None
         self.bot = None
@@ -37,8 +37,8 @@ class GameController:
         self.bot_thread.daemon = True
         self.bot_thread.start()
         # Register that thread to the death and health manager so they can stop the bot thread if needed
-        self.death_manager.set_callback(lambda: self.bot.stop() or kill_thread(self.bot_thread))
-        self.health_manager.set_callback(lambda: self.bot.stop() or kill_thread(self.bot_thread))
+        self.death_manager.set_callback(lambda: self.bot.stop())
+        self.health_manager.set_callback(lambda: self.bot.stop())
         do_restart = False
         messenger = Messenger()
         force_stopped = False
@@ -58,7 +58,12 @@ class GameController:
                     self.game_stats.log_chicken(self.health_manager._last_chicken_screenshot)
                 self.bot._stash_mutex.acquire() #Grab mutex to ensure stashing is not occuring 
                 self.bot.stop()
-                kill_thread(self.bot_thread)
+                cooperative_shutdown(
+                    self.bot_thread,
+                    bot=self.bot,
+                    health_manager=self.health_manager,
+                    death_manager=self.death_manager,
+                )
                 self.bot._stash_mutex.release()
                 # clean up key presses that might be pressed in the bot_thread after killing
                 keyboard.release(Config().char["stand_still"])
@@ -83,7 +88,7 @@ class GameController:
                 else:
                     do_restart = self.game_recovery.go_to_hero_selection()
                 break
-            time.sleep(0.5)
+            wait(0.5, 0.75)
         self.bot_thread.join()
         if do_restart:
             # Reset flags before running a new bot
@@ -125,16 +130,36 @@ class GameController:
         self.start_health_manager_thread()
         self.start_death_manager_thread()
         self.game_recovery = GameRecovery(self.death_manager)
-        self.game_stats = GameStats()
         self.start_game_controller_thread()
         self.is_running = True
 
     def stop(self):
         restore_d2r_window_visibility()
-        if self.death_monitor_thread: kill_thread(self.death_monitor_thread)
-        if self.health_monitor_thread: kill_thread(self.health_monitor_thread)
-        if self.bot_thread: kill_thread(self.bot_thread)
-        if self.game_controller_thread: kill_thread(self.game_controller_thread)
+        if self.death_monitor_thread:
+            cooperative_shutdown(
+                self.death_monitor_thread,
+                death_manager=self.death_manager,
+            )
+        if self.health_monitor_thread:
+            cooperative_shutdown(
+                self.health_monitor_thread,
+                health_manager=self.health_manager,
+            )
+        if self.bot_thread:
+            cooperative_shutdown(
+                self.bot_thread,
+                bot=self.bot,
+                health_manager=self.health_manager,
+                death_manager=self.death_manager,
+            )
+        if self.game_controller_thread:
+            # game_controller_thread runs run_bot() which checks self.bot._stopping
+            cooperative_shutdown(
+                self.game_controller_thread,
+                bot=self.bot,
+                health_manager=self.health_manager,
+                death_manager=self.death_manager,
+            )
         self.is_running = False
 
     def setup_screen(self):

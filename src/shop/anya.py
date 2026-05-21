@@ -3,7 +3,7 @@ import os
 import time
 import math
 
-import keyboard
+from input_layer import keyboard
 import numpy as np
 
 from screen import grab, convert_screen_to_monitor
@@ -11,7 +11,7 @@ from config import Config
 from logger import Logger
 from npc_manager import Npc, open_npc_menu, press_npc_btn
 import template_finder
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from utils.misc import wait, load_template
 
 from messages import Messenger
@@ -94,7 +94,7 @@ class AnyaShopper:
         if ias_glove.valid:
             self.ias_gloves_seen += 1
             mouse.move(*ias_glove.center_monitor)
-            time.sleep(0.5)
+            wait(0.5, 0.6)
             glove_dialog_img = grab()
             
             if self.look_for_plus_3_gloves is True:
@@ -110,7 +110,7 @@ class AnyaShopper:
                         self._messenger.send_message("Bought awesome IAS/+3 jav gloves!")
                     Logger.info("IAS/jav gloves bought!")
                     self.gloves_bought += 1
-                    time.sleep(1)
+                    wait(1, 1.2)
                 else:
                     gg_gloves = template_finder.search(
                     ref=load_template(asset_folder + "plus3_ma_skills.jpg"),
@@ -123,7 +123,7 @@ class AnyaShopper:
                             self._messenger.send_message("Bought awesome IAS/+3 ma gloves!")
                         Logger.info("IAS/ma gloves bought!")
                         self.gloves_bought += 1
-                        time.sleep(1)
+                        wait(1, 1.2)
 
             else:
                 if self.look_for_plus_2_gloves is True:
@@ -140,13 +140,13 @@ class AnyaShopper:
                             self._messenger.send_message("Bought some decent IAS/+2 gloves")
                         Logger.info("IAS/+2 gloves bought!")
                         self.gloves_bought += 1
-                        time.sleep(1)
+                        wait(1, 1.2)
 
     def shop_loop(self):
         while True:
             open_npc_menu(Npc.ANYA)
             press_npc_btn(Npc.ANYA, "trade")
-            time.sleep(0.5)
+            wait(0.5, 0.6)
             img = grab()
 
             #For some reason the glove image varies slightly depending on where it is located in the shop.
@@ -204,7 +204,7 @@ class AnyaShopper:
 
                         Logger.info(f"Trap Claws (score: {trap_score}) bought!")
                         self.claws_bought += 1
-                        time.sleep(1)
+                        wait(1, 1.2)
 
                     if melee_score > self.melee_claw_min_score and self.look_for_melee_claws is True:
                         # pick it up
@@ -213,7 +213,7 @@ class AnyaShopper:
                             self._messenger.send_message(f"Bought some mad melee Claws (score: {melee_score})")
                         Logger.info(f"Melee Claws (score: {melee_score}) bought!")
                         self.claws_bought += 1
-                        time.sleep(1)
+                        wait(1, 1.2)
 
             # Done with this shopping round
             self.reset_shop()
@@ -227,7 +227,7 @@ class AnyaShopper:
                 break
             else:
                 mouse.move(800, 450, randomize=50, delay_factor=[0.7, 0.7])
-        time.sleep(2.5)
+        wait(2.5, 3.0)
         while 1:
             success = self.select_by_template("A5_RED_PORTAL")
             success &= wait_for_loading_screen(2)

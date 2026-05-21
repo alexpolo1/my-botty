@@ -1,12 +1,12 @@
 from math import floor
-import keyboard
+from input_layer import keyboard
 import template_finder
 from config import Config
 import numpy as np
 from utils.misc import wait
 from screen import grab
 from logger import Logger
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from ui_manager import center_mouse, is_visible, select_screen_object_match, wait_until_visible, ScreenObjects
 from inventory import personal, common, stash
 

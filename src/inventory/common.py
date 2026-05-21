@@ -1,10 +1,10 @@
 from config import Config
 import cv2
 import numpy as np
-import keyboard
+from input_layer import keyboard
 import time
 import itertools
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from ui_manager import detect_screen_object, ScreenObjects, is_visible, wait_until_hidden, center_mouse
 import template_finder
 from utils.misc import wait, trim_black, color_filter, cut_roi
@@ -274,7 +274,7 @@ def select_stash_page(idx: int):
 
 if __name__ == "__main__":
     import os
-    import keyboard
+    from input_layer import keyboard
     from config import Config
     from screen import start_detecting_window, stop_detecting_window
     from utils.misc import color_filter

@@ -1,4 +1,4 @@
-import keyboard
+from input_layer import keyboard
 import random
 import time
 
@@ -12,7 +12,7 @@ from pather import Pather, Location
 from screen import convert_abs_to_monitor, convert_screen_to_abs, grab
 from target_detect import get_visible_targets
 from ui import skills
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from utils.misc import wait
 
 class AbyssLock(Warlock):

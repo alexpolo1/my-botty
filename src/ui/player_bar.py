@@ -1,6 +1,6 @@
 from config import Config
 from screen import convert_screen_to_monitor, grab
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from utils.misc import cut_roi, wait
 from logger import Logger
 from config import Config
@@ -44,7 +44,7 @@ def get_experience():
 
 
 if __name__ == "__main__":
-    import keyboard
+    from input_layer import keyboard
     import os
 
     from screen import start_detecting_window

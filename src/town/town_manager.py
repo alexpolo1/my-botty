@@ -1,5 +1,5 @@
 from item import consumables
-import keyboard
+from input_layer import keyboard
 import template_finder
 from config import Config
 from pather import Location
@@ -247,7 +247,7 @@ class TownManager:
 
 # Test: Move to desired location in d2r and run any town action you want to test from there
 if __name__ == "__main__":
-    import keyboard
+    from input_layer import keyboard
     import os
     from screen import start_detecting_window
     start_detecting_window()

@@ -1,6 +1,6 @@
 import itertools
 from game_stats import GameStats
-import keyboard
+from input_layer import keyboard
 import cv2
 import time
 import numpy as np
@@ -11,7 +11,7 @@ from logger import Logger
 from config import Config
 import template_finder
 from utils.misc import wait, is_in_roi, mask_by_roi
-from utils.custom_mouse import mouse
+from input_layer import mouse
 from inventory import stash, common, vendor
 from ui import view
 from ui_manager import detect_screen_object, is_visible, select_screen_object_match, wait_until_visible, ScreenObjects, center_mouse, wait_for_update
@@ -57,7 +57,7 @@ def inventory_has_items(img: np.ndarray = None, close_window = False) -> bool:
     :param img: Img from screen.grab() with inventory open
     :return: Bool if inventory still has items or not
     """
-    img = open(img)
+    img = open_inventory(img)
     if img is not None:
         items=False
         for column, row in itertools.product(range(0, Config().char["num_loot_columns"]), range(4)):
@@ -165,7 +165,7 @@ def stash_all_items(items: list = None):
     Logger.debug("Done stashing")
     return items
 
-def open(img: np.ndarray = None) -> np.ndarray:
+def open_inventory(img: np.ndarray = None) -> np.ndarray:
     img = grab() if img is None else img
     if not common.inventory_is_open():
         keyboard.send(Config().char["inventory_screen"])
@@ -174,7 +174,7 @@ def open(img: np.ndarray = None) -> np.ndarray:
                 return None
             keyboard.send(Config().char["inventory_screen"])
             if not wait_until_visible(ScreenObjects.RightPanel, 1).valid:
-                Logger.error(f"personal.open(): Failed to open inventory")
+                Logger.error(f"personal.open_inventory(): Failed to open inventory")
                 return None
         img = grab()
     return img
@@ -207,7 +207,7 @@ def inspect_items(inp_img: np.ndarray = None, close_window: bool = True, game_st
     :param img: Image in which the item is searched (item details should be visible)
     """
     center_mouse()
-    img = open(inp_img)
+    img = open_inventory(inp_img)
     if img is None:
         Logger.error("personal.inspect_items(): unable to get inventory image")
         return []
@@ -433,7 +433,7 @@ def transfer_items(items: list, action: str = "drop", img: np.ndarray = None) ->
     return items
 
 def update_tome_key_needs(img: np.ndarray = None, item_type: str = "tp") -> bool:
-    img = open(img)
+    img = open_inventory(img)
     if img is None:
         Logger.debug(f"update_tome_key_needs: failed to get inventory image")
         return False
