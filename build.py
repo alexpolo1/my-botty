@@ -90,6 +90,13 @@ if __name__ == "__main__":
     os.makedirs(f"{botty_dir}/config/bnip", exist_ok=True)
     shutil.copy("README.md", f"{botty_dir}/")
     shutil.copytree("assets", f"{botty_dir}/assets")
+    shutil.copytree("src", f"{botty_dir}/src")
+    shutil.copy("environment.yml", f"{botty_dir}/")
+    shutil.copy("install.bat", f"{botty_dir}/")
+    shutil.copy("run_botty.bat", f"{botty_dir}/")
+    shutil.copy("run.bat", f"{botty_dir}/")
+    if os.path.exists("dependencies"):
+        shutil.copytree("dependencies", f"{botty_dir}/dependencies")
     clean_up()
 
     if args.random_name:
