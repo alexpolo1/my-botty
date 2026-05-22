@@ -39,6 +39,10 @@ from ui import meters, skills, view, character_select, main_menu
 from inventory import personal, vendor, belt, common
 
 from run import Pindle, ShenkEld, Trav, Nihlathak, Arcane, Diablo, Vizier, Level
+from run.baal import Baal
+from run.mephisto import Mephisto
+from run.andariel import Andariel
+from run.countess import Countess
 from town import TownManager, A1, A2, A3, A4, A5, town_manager
 
 from messages import Messenger
