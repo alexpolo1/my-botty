@@ -97,8 +97,9 @@ if __name__ == "__main__":
         new_name = ''.join(random.choices(string.ascii_letters, k=random.randint(6, 14)))
         os.rename(f'{botty_dir}/main.exe', f'{botty_dir}/{new_name}.exe')
 
-    # Always rename main.exe to avoid Warden flagging the obvious name
-    if not args.random_name:
+    # Rename main.exe to avoid Warden flagging the obvious name
+    # In CI/production builds (env BOTTY_NO_RENAME=1) keep main.exe as-is
+    if not args.random_name and not os.environ.get("BOTTY_NO_RENAME"):
         new_name = ''.join(random.choices(string.ascii_lowercase + string.digits, k=8))
         os.rename(f'{botty_dir}/main.exe', f'{botty_dir}/{new_name}.exe')
         print(f"Renamed main.exe -> {new_name}.exe")

@@ -3,6 +3,8 @@ on:
   pull_request:
   push:
     branches: [main, mine]
+  release:
+    types: [published]
 
 jobs:
   test:
@@ -55,9 +57,22 @@ jobs:
 
       - name: Build exe
         shell: powershell
+        env:
+          BOTTY_NO_RENAME: '1'
         run: |
           C:\Miniconda\condabin\conda.bat activate botty
-          python build.py --conda_path C:\Miniconda --random_name
+          python build.py --conda_path C:\Miniconda
+
+      - name: Prepare release zip
+        shell: powershell
+        run: |
+          $BOTTY_DIR = Get-ChildItem -Directory -Name | Where-Object { $_ -match '^botty_v' } | Select-Object -First 1
+          Write-Host "Botty dir: $BOTTY_DIR"
+          Get-ChildItem -Path $BOTTY_DIR -Recurse | Select-Object -Property FullName, Length
+          $ZIP = "${BOTTY_DIR}.zip"
+          Compress-Archive -Path "${BOTTY_DIR}\*" -DestinationPath $ZIP -Force
+          Write-Host "Release zip: $ZIP"
+          Get-Item $ZIP | Select-Object -Property FullName, Length
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -65,3 +80,12 @@ jobs:
           name: botty-build
           path: botty_v*/
           retention-days: 7
+
+      - name: Upload to Release
+        if: github.event_name == 'release'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          BOTTY_DIR=$(ls -d botty_v* | head -1)
+          gh release upload "${{ github.event.release.tag_name }}" "${BOTTY_DIR}.zip" --clobber
