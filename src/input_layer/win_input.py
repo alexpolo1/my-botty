@@ -295,23 +295,47 @@ def get_cursor_pos():
 # ─── text input ───
 
 def send_text(text: str, delay: float = 0.05):
-    """Send text character by character."""
+    """Send text character by character using the active keyboard layout."""
     for ch in text:
-        vk = _get_vk(ch)
-        if vk is None:
-            continue
-        # Determine if shift is needed
-        if ch.isupper() and ch.lower() != ch:
-            # Need shift for uppercase letters
-            key_down(0xA0)  # left shift
+        if ch == ' ':
+            vk = 0x20  # VK_SPACE
             key_press(vk)
-            key_up(0xA0)
-        elif not ch.isalnum() and ch != ' ':
-            # Shift needed for most punctuation
-            key_down(0xA0)
-            key_press(vk)
-            key_up(0xA0)
+        elif ch.isalpha():
+            vk = ord(ch.upper())
+            if ch.isupper():
+                key_down(0xA0)  # left shift
+                key_press(vk)
+                key_up(0xA0)
+            else:
+                key_press(vk)
+        elif '0' <= ch <= '9':
+            vk = 0x0B + ord(ch) - ord('0')
+            if ch in '0123456789':
+                key_down(0xA0)  # shift for digits on some layouts
+                key_press(vk)
+                key_up(0xA0)
+            else:
+                key_press(vk)
         else:
-            key_press(vk)
+            # Punctuation: use MapVirtualKey to get the correct VK for the active layout
+            # First try without shift
+            vk = user32.MapVirtualKeyW(ord(ch), 3)  # MAPVK_VK_TO_CHAR -> MAPVK_VSC_TO_VK
+            if vk == 0:
+                # Try: get scan code from char, then vk from scan code
+                # Fallback: send via PostMessage to target window
+                vk = _get_vk(ch)
+            if vk is None or vk == 0:
+                # Last resort: try with shift
+                vk = user32.MapVirtualKeyW(ord(ch.upper()), 3) if ch.islower() else user32.MapVirtualKeyW(ord(ch), 3)
+            if vk is None or vk == 0:
+                continue
+            # Check if shift is needed by testing if the char without shift matches
+            char_without_shift = user32.MapVirtualKeyW(vk, 3)
+            if char_without_shift != ord(ch.lower()):
+                key_down(0xA0)  # left shift
+                key_press(vk)
+                key_up(0xA0)
+            else:
+                key_press(vk)
         from utils.misc import wait as _wait
         _wait(delay, delay * 1.2)
