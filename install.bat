@@ -1,6 +1,9 @@
 @echo off
 setlocal enabledelayedexpansion
 
+:: Always run from the folder this script lives in
+cd /d "%~dp0"
+
 echo ============================================
 echo  Botty - Dependency Installer
 echo ============================================
