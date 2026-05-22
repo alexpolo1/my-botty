@@ -66,11 +66,12 @@ else:
     def GetWindowThreadProcessId(hwnd):
         return (0, 0)
 
-from rapidfuzz.process import extractOne
+from rapidfuzz.process import extract as _rf_extract
 try:
-    from rapidfuzz.string_metric import levenshtein
+    from rapidfuzz.string_metric import levenshtein as _levenshtein_scorer
 except ImportError:
-    from rapidfuzz.distance import Levenshtein as levenshtein
+    from rapidfuzz.distance import Levenshtein as _Levenshtein
+    _levenshtein_scorer = _Levenshtein.distance
 
 def close_down_d2():
     subprocess.call(["taskkill","/F","/IM","D2R.exe"], stderr=subprocess.DEVNULL)
@@ -371,7 +372,10 @@ class BestMatchResult:
     score_normalized: float
 
 def find_best_match(in_str: str, str_list: list[str]) -> BestMatchResult:
-    best_match, best_lev, _ = extractOne(in_str, str_list, scorer=levenshtein)
+    # extractOne maximizes its scorer — wrong for distance metrics (lower=better).
+    # Use extract+min to correctly minimise Levenshtein distance.
+    results = _rf_extract(in_str, str_list, scorer=_levenshtein_scorer, limit=None)
+    best_match, best_lev, _ = min(results, key=lambda x: x[1])
     best_lev_normalized = 1 - best_lev / max(1, len(in_str))
     return BestMatchResult(best_match, best_lev, best_lev_normalized)
 
