@@ -1,3 +1,13 @@
+import os
+import sys
+if os.name == 'nt':
+    # Python 3.8+ requires explicit DLL directories; conda puts tesseract/leptonica in Library\bin
+    for _dll_dir in [
+        os.path.join(sys.prefix, 'Library', 'bin'),
+        os.path.join(sys.prefix, 'Library', 'mingw-w64', 'bin'),
+    ]:
+        if os.path.isdir(_dll_dir):
+            os.add_dll_directory(_dll_dir)
 from tesserocr import PyTessBaseAPI, OEM
 import numpy as np
 import cv2
