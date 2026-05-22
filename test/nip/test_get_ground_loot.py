@@ -16,6 +16,9 @@ import utils.download_test_assets # downloads assets if they don't already exist
 PATH='test/assets/ground_loot'
 screen.set_window_position(0, 0)
 
+if not os.path.isdir(PATH):
+    pytest.skip("test assets not available", allow_module_level=True)
+
 @cache
 def load_ground_loot() -> dict:
     test_objs = {}

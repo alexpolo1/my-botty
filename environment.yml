@@ -23,7 +23,6 @@ dependencies:
     - coverage
     - pytest
     - pytest-env
-    - pytest-pythonpath
     - pytest-mock
     - pyparsing
     - graphviz
