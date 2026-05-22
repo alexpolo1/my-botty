@@ -1,52 +1,67 @@
 name: Botty - CI
-on: [pull_request]
+on:
+  pull_request:
+  push:
+    branches: [main, mine]
+
 jobs:
-  tests:
+  test:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+
       - name: Setup Miniconda Python 3.10
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.10'
-      # TODO: The below setp only chaches conda packages, need to cache pip seperatly
-      - name: Cache conda
-        uses: actions/cache@v2
-        env:
-          # Increase this value to reset cache if environment.yml has not changed
-          CACHE_NUMBER: 1
-        with:
-          path: ~/conda_pkgs_dir
-          key: conda-${{ env.CACHE_NUMBER }}-${{hashFiles('environment.yml') }}
-      - name: Cache pip
-        uses: actions/cache@v2
-        env:
-          # Increase this value to reset cache if environment.yml has not changed
-          CACHE_NUMBER: 1
-        with:
-          path: ~/pip
-          key: pip-${{ env.CACHE_NUMBER }}-${{ hashFiles('environment.yml') }}
-      - name: Install Miniconda
-        uses: conda-incubator/setup-miniconda@v2
+        uses: conda-incubator/setup-miniconda@v3
         with:
           python-version: '3.10'
           activate-environment: botty
           channel-priority: strict
           environment-file: environment.yml
-          use-only-tar-bz2: true # Needed for caching
-      - name: Activate conda
+          use-only-tar-bz2: true
+
+      - name: Download test assets
         shell: powershell
         run: |
-          C:\Miniconda\condabin\conda.bat init powershell
-          set PYTHONPATH=./src
-      - name: Pytest & Coverage
+          C:\Miniconda\condabin\conda.bat activate botty
+          python -c "import utils.download_test_assets"
+
+      - name: Pytest
         shell: powershell
         run: |
           C:\Miniconda\condabin\conda.bat activate botty
           python -c "import sys; print(sys.version)"
-          coverage run --source=./src -m pytest -v -s
-      - name: Coverage Report Generation
+          python -m pytest test/smoke_test.py test/nip/ test/game_stats_test.py test/closest_non_hud_test.py test/transmute/ -v -s
+
+      - name: Coverage
         shell: powershell
         run: |
           C:\Miniconda\condabin\conda.bat activate botty
           coverage xml
+
+  build:
+    needs: test
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Miniconda Python 3.10
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          python-version: '3.10'
+          activate-environment: botty
+          channel-priority: strict
+          environment-file: environment.yml
+          use-only-tar-bz2: true
+
+      - name: Build exe
+        shell: powershell
+        run: |
+          C:\Miniconda\condabin\conda.bat activate botty
+          python build.py --conda_path C:\Miniconda --random_name
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: botty-build
+          path: botty_v*/
+          retention-days: 7

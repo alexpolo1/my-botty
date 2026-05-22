@@ -17,6 +17,9 @@ import bnip.actions as bnip_actions
 PATH='test/assets/hovered_items'
 screen.set_window_position(0, 0)
 
+if not os.path.isdir(PATH):
+    pytest.skip("test assets not available", allow_module_level=True)
+
 @cache
 def load_hovered_items() -> dict:
     test_objs = {}
