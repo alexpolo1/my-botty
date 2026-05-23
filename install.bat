@@ -35,6 +35,20 @@ exit /b 1
 echo Found conda: %CONDA_EXE%
 echo.
 
+:: --- Test conda works (catches broken base env, missing pywin32, etc.) ---
+echo Testing conda...
+"%CONDA_EXE%" --version >nul 2>&1
+if %errorlevel% neq 0 (
+    echo.
+    echo ERROR: conda found but failed to run. Your conda installation may be broken.
+    echo Try re-installing Miniforge: https://github.com/conda-forge/miniforge
+    echo.
+    pause
+    exit /b 1
+)
+echo conda is working.
+echo.
+
 :: --- Create or update the botty env ---
 "%CONDA_EXE%" env list | findstr /C:"botty" >nul 2>&1
 if %errorlevel% equ 0 (
@@ -50,6 +64,43 @@ if %errorlevel% neq 0 (
     echo ERROR: conda env create/update failed. See output above.
     pause
     exit /b 1
+)
+
+:: --- Verify botty env has Python ---
+set "PYTHON="
+for %%C in (
+    "%USERPROFILE%\miniforge3\envs\botty\python.exe"
+    "%USERPROFILE%\miniconda3\envs\botty\python.exe"
+    "%USERPROFILE%\anaconda3\envs\botty\python.exe"
+    "%ProgramData%\miniforge3\envs\botty\python.exe"
+    "%ProgramData%\miniconda3\envs\botty\python.exe"
+    "%ProgramData%\anaconda3\envs\botty\python.exe"
+) do (
+    if exist %%C (
+        set "PYTHON=%%~C"
+        goto :env_created
+    )
+)
+
+echo.
+echo ERROR: botty env was created but python.exe was not found.
+echo This usually means the env build failed. Check output above.
+pause
+exit /b 1
+
+:env_created
+echo Botty Python: %PYTHON%
+
+:: --- Smoke test: import key dependencies ---
+echo.
+echo Verifying dependencies...
+"%PYTHON%" -c "import cv2, mss, numpy, tesserocr, discord, transitions, rapidfuzz" >nul 2>&1
+if %errorlevel% neq 0 (
+    echo.
+    echo WARNING: Some imports failed. Try running install.bat again, or check:
+    echo   development.md for manual troubleshooting.
+) else (
+    echo All key dependencies verified.
 )
 
 echo.
