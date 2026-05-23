@@ -1,19 +1,10 @@
 @echo off
 setlocal
+set "BOTTY_DIR=%~dp0"
+cd /d "%BOTTY_DIR%"
 
-:: Detect which conda we have and activate the botty env
-set "PYTHON="
-if exist "C:\Users\%USERNAME%\miniforge3\envs\botty\python.exe" set "PYTHON=C:\Users\%USERNAME%\miniforge3\envs\botty\python.exe"
-if exist "C:\Users\%USERNAME%\miniconda3\envs\botty\python.exe" set "PYTHON=C:\Users\%USERNAME%\miniconda3\envs\botty\python.exe"
-if exist "C:\Users\%USERNAME%\anaconda3\envs\botty\python.exe" set "PYTHON=C:\Users\%USERNAME%\anaconda3\envs\botty\python.exe"
-
-if "%PYTHON%"=="" (
-echo ERROR: Could not find botty conda environment.
-echo Create it first: conda env create -f environment.yml
-pause
-exit /b 1
-)
+call "%BOTTY_DIR%find_python.bat"
 
 echo Launching Botty ...
-%PYTHON% src\main.py
+%PYTHON% "%BOTTY_DIR%src\main.py"
 pause
