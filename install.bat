@@ -104,17 +104,14 @@ echo Installing tesserocr wheel...
 "%PYTHON%" -m pip install --force-reinstall "%~dp0dependencies\tesserocr-2.5.2-cp310-cp310-win_amd64.whl" >nul 2>&1
 
 :: --- Smoke test: import key dependencies ---
-:: Note: os.add_dll_directory (not ctypes.WinDLL) is the correct mechanism.
-:: Python 3.8+ loads .pyd files with LOAD_LIBRARY_SEARCH_USER_DIRS which
-:: searches user-registered dirs for the pyd AND all its transitive deps.
 echo.
 echo Verifying dependencies...
-"%PYTHON%" -c "import os,sys;[os.add_dll_directory(d) for d in [os.path.join(sys.prefix,'Library',x) for x in ['bin','mingw-w64\\bin','usr\\bin']] if os.path.isdir(d)];import cv2,mss,numpy,tesserocr,discord,transitions,rapidfuzz" >nul 2>&1
+"%PYTHON%" -c "import os,sys,ctypes;d=[x for x in [os.path.join(sys.prefix,'Library',s) for s in ['bin','mingw-w64\\bin','usr\\bin']] if os.path.isdir(x)];[os.add_dll_directory(x) for x in d];f=ctypes.windll.kernel32.LoadLibraryExW;f.restype=ctypes.c_void_p;f.argtypes=[ctypes.c_wchar_p,ctypes.c_void_p,ctypes.c_ulong];[f(os.path.join(x,'tesseract51.dll'),None,0x1000) for x in d if os.path.isfile(os.path.join(x,'tesseract51.dll'))];import cv2,mss,numpy,tesserocr,discord,transitions,rapidfuzz" >nul 2>&1
 if %errorlevel% neq 0 (
     echo.
     echo WARNING: Dependency check failed. Running diagnostics...
     echo.
-    "%PYTHON%" -c "import os,sys; lb=os.path.join(sys.prefix,'Library','bin'); dlls=[f for f in (os.listdir(lb) if os.path.isdir(lb) else []) if any(k in f.lower() for k in ['tess','lepton'])]; print('  Tesseract DLLs in Library/bin:',dlls or 'NONE'); [os.add_dll_directory(d) for d in [os.path.join(sys.prefix,'Library',x) for x in ['bin','mingw-w64\\bin','usr\\bin']] if os.path.isdir(d)]; import tesserocr; print('  tesserocr import: OK')" 2>&1
+    "%PYTHON%" -c "import os,sys,ctypes;lb=os.path.join(sys.prefix,'Library','bin');dlls=[f for f in (os.listdir(lb) if os.path.isdir(lb) else []) if any(k in f.lower() for k in ['tess','lepton'])];print('  Tesseract DLLs in Library/bin:',dlls or 'NONE');d=[x for x in [os.path.join(sys.prefix,'Library',s) for s in ['bin','mingw-w64\\bin','usr\\bin']] if os.path.isdir(x)];[os.add_dll_directory(x) for x in d];f=ctypes.windll.kernel32.LoadLibraryExW;f.restype=ctypes.c_void_p;f.argtypes=[ctypes.c_wchar_p,ctypes.c_void_p,ctypes.c_ulong];t=os.path.join(lb,'tesseract51.dll');h=f(t,None,0x1000) if os.path.isfile(t) else None;print('  LoadLibraryExW tesseract51.dll:','OK' if h else 'FAILED');import tesserocr;print('  tesserocr import: OK')" 2>&1
     echo.
     echo *** Do NOT run "pip install tesserocr" manually - it builds from source and
     echo *** will always fail on Windows. Re-run install.bat to fix dependencies.
