@@ -149,6 +149,7 @@ class Config:
             "d2r_path": _default_iff(self._select_val("general", "d2r_path"), "", r"C:\Program Files (x86)\Diablo II Resurrected"),
             "restart_d2r_when_stuck": bool(int(self._select_val("general", "restart_d2r_when_stuck"))),
             "hardcore": bool(int(self._select_val("general", "hardcore"))),
+            "auto_login": bool(int(self._select_val("general", "auto_login"))),
             "bnet_name": self._select_val("general", "bnet_name"),
             "bnet_pass": self._select_val("general", "bnet_pass"),
             "char_name": self._select_val("general", "char_name"),
@@ -424,10 +425,11 @@ class Config:
         opts = self._select_val("advanced_options", "launch_options").replace(
             "<name>", only_lowercase_letters(self.general["name"].lower())
         )
-        bnet_name = self.general.get("bnet_name", "")
-        bnet_pass = self.general.get("bnet_pass", "")
-        if bnet_name and bnet_pass:
-            opts += f" -bnetname {bnet_name} -bnetpass {bnet_pass}"
+        if self.general.get("auto_login", False):
+            bnet_name = self.general.get("bnet_name", "")
+            bnet_pass = self.general.get("bnet_pass", "")
+            if bnet_name and bnet_pass:
+                opts += f" -bnetname {bnet_name} -bnetpass {bnet_pass}"
         return opts
 
 if __name__ == "__main__":

@@ -88,16 +88,14 @@ def main():
         print(f"ERROR: Unkown logg_lvl {Config().advanced_options['logg_lvl']}. Must be one of [info, debug]")
     startup_checks()
 
-    # Auto-launch D2R if not already running
+    # Auto-launch D2R only when explicitly enabled in params.ini (auto_login=1)
     from utils.restart import process_exists, restart_game
     if not process_exists("D2R.exe"):
-        if Config().general.get("bnet_name", "") and Config().general.get("bnet_pass", ""):
+        if Config().general["auto_login"]:
             Logger.info("D2R is not running, launching with auto-login...")
             restart_game(Config().general["d2r_path"], Config().advanced_options["launch_options"])
         else:
-            Logger.info("D2R is not running. No auto-login configured - please launch D2R and log in, then press the resume key to start.")
-            # Don't auto-launch without credentials; user will start manually
-            # Still show the UI and wait for resume key
+            Logger.info("D2R is not running and auto_login=0 — please launch D2R manually, then press the resume key to start.")
     else:
         Logger.info("D2R is already running")
 
