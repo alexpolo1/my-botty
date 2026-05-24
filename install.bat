@@ -94,7 +94,7 @@ echo Botty Python: %PYTHON%
 :: --- Smoke test: import key dependencies ---
 echo.
 echo Verifying dependencies...
-"%PYTHON%" -c "import cv2, mss, numpy, tesserocr, discord, transitions, rapidfuzz" >nul 2>&1
+"%PYTHON%" -c "import os,sys;[os.add_dll_directory(p) for p in [os.path.join(sys.prefix,'Library',d) for d in ['bin','mingw-w64\\bin','usr\\bin']] if os.path.isdir(p)];import cv2,mss,numpy,tesserocr,discord,transitions,rapidfuzz" >nul 2>&1
 if %errorlevel% neq 0 (
     echo.
     echo WARNING: Some imports failed. Try running install.bat again, or check:

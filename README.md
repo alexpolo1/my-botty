@@ -4,7 +4,33 @@
 
 Pixelbot for Diablo 2 Resurrected. This project is for informational and educational purposes only.
 
+## Installation (first time)
+
+**Step 1 — Install Miniforge** (only needed once, skip if you already have conda/Miniconda)
+Download and run the installer from: https://github.com/conda-forge/miniforge/releases/latest
+Pick the Windows x86_64 `.exe`. Keep defaults; tick "Add to PATH" if asked.
+
+**Step 2 — Download Botty**
+Click the green **Code** button on this GitHub page → **Download ZIP**. Extract the ZIP anywhere (e.g. `C:\botty`).
+
+**Step 3 — Install dependencies**
+Double-click **`install.bat`** inside the extracted folder. It will create the `botty` conda environment and install everything. This takes a few minutes the first time.
+
+**Step 4 — Configure**
+Open `config\params.ini` in Notepad and set at minimum:
+- `[char] type=` — your build (`sorceress`, `hammerdin`, `paladin`, `trapsin`, …)
+- `[routes] order=` — which bosses to farm (e.g. `run_pindle`)
+- Hotkeys under your build's section to match your D2R keybinds
+
+**Step 5 — Start**
+Double-click **`run_botty.bat`**. Switch to D2R, go to the hero selection screen, then press **F11** to start. Press **F12** to stop.
+
+> D2R must be in **English** and running at **720p** window mode.
+
+---
+
 ## Getting started & Prerequisites
+
 - D2R needs to be in English Language,
 - Botty currently works with 720p D2R window (will be adjusted automatically on auto settings)
 
@@ -22,8 +48,6 @@ Check the documentation for **params.ini** further down. Different Sorc builds, 
 Open up D2R and wait till you are at the hero selection screen. Make sure the char you running with is selected and will be in any of Act 3, 4 or 5 in the respective difficulty you set in the **params.ini** once the bot starts the game.
 
 ### 4) Start Botty
-
-Refer to [development.md](development.md) for setup instructions. Once the conda environment is created:
 
 - **Quick start**: Double-click `run_botty.bat` (auto-detects your conda env)
 - **Manual**: `conda activate botty` then `python src\main.py`
