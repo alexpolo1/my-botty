@@ -2,6 +2,8 @@ import logging
 import io
 import os
 import sys
+import threading
+import traceback
 import warnings
 from version import __version__
 from colorama import Fore, Back, Style, init
@@ -63,6 +65,32 @@ class Logger:
         Logger.logger.error(data)
 
     @staticmethod
+    def exception(data: str):
+        if Logger.logger is None:
+            Logger.init()
+        Logger.logger.exception(data)
+
+    @staticmethod
+    def install_exception_hooks():
+        def log_uncaught_exception(exc_type, exc_value, exc_traceback):
+            if issubclass(exc_type, KeyboardInterrupt):
+                sys.__excepthook__(exc_type, exc_value, exc_traceback)
+                return
+            Logger.error(
+                "Uncaught exception:\n"
+                + "".join(traceback.format_exception(exc_type, exc_value, exc_traceback))
+            )
+
+        def log_thread_exception(args):
+            Logger.error(
+                f"Uncaught exception in thread {args.thread.name}:\n"
+                + "".join(traceback.format_exception(args.exc_type, args.exc_value, args.exc_traceback))
+            )
+
+        sys.excepthook = log_uncaught_exception
+        threading.excepthook = log_thread_exception
+
+    @staticmethod
     def init(lvl = logging.DEBUG):
         """
         Setup logger for StringIO, console and file handler
@@ -104,6 +132,7 @@ class Logger:
         Logger.logger.addHandler(Logger.string_handler)
         Logger.logger.addHandler(Logger.console_handler)
         Logger.logger.addHandler(Logger.file_handler)
+        Logger.install_exception_hooks()
 
         # redirect stderr & stdout to logger, e.g. print("...")
         # would have to implement all the std func such as write() flush() etc.

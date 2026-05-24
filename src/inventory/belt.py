@@ -11,13 +11,49 @@ from utils.misc import cut_roi, wait, color_filter
 from config import Config
 from screen import convert_abs_to_monitor, convert_monitor_to_screen, convert_screen_to_monitor, grab
 from input_layer import keyboard
-import os
+
+def _belt_toggle_keys() -> list[str]:
+    keys = [
+        Config().char.get("show_belt", ""),
+        "n",
+        "k",
+        "`",
+        "~",
+    ]
+    deduped = []
+    for key in keys:
+        if key and key not in deduped:
+            deduped.append(key)
+    return deduped
+
+def _try_open_with_key(key: str) -> bool:
+    Logger.debug(f"Trying to open belt with key: {key}")
+    keyboard.send(key)
+    return wait_until_hidden(ScreenObjects.BeltExpandable, 1.5)
+
+def _try_open_with_click() -> bool:
+    Logger.debug("Trying to open belt by clicking the belt expand control")
+    x, y, w, h = Config().ui_roi["gamebar_belt_expandable"]
+    pos_m = convert_screen_to_monitor((x + w / 2, y + h / 2))
+    mouse.move(*pos_m, randomize=2)
+    mouse.click(button="left")
+    return wait_until_hidden(ScreenObjects.BeltExpandable, 1.5)
 
 def open(img: np.ndarray = None) -> np.ndarray:
     img = grab() if img is None else img
     if is_visible(ScreenObjects.BeltExpandable, img) and Config().char["belt_rows"] > 1:
-        keyboard.send(Config().char["show_belt"])
-        if not wait_until_hidden(ScreenObjects.BeltExpandable, 1):
+        opened = False
+        for key in _belt_toggle_keys():
+            if _try_open_with_key(key):
+                if key != Config().char.get("show_belt"):
+                    Logger.info(f"Recovered belt hotkey using '{key}'")
+                    Config().char["show_belt"] = key
+                opened = True
+                break
+        if not opened:
+            opened = _try_open_with_click()
+        if not opened:
+            Logger.warning("Could not open belt after key and click recovery attempts")
             return None
         img = grab()
     return img
@@ -107,10 +143,12 @@ def update_pot_needs():
         try:
             potion_type = _potion_type(_cut_potion_img(img, column, 0))
         except TypeError:
-            Logger.error("Could not find potions in belt. Most likely due to \"show_belt\" in params.ini having the incorrect hotkey.")
-            Logger.error("Closing in 10 seconds..")
-            wait(10)
-            os._exit(1)
+            Logger.warning("Could not read belt potions after recovery attempts. Will restock conservatively and continue.")
+            consumables.set_needs("health", Config().char["belt_hp_columns"] * Config().char["belt_rows"])
+            consumables.set_needs("mana", Config().char["belt_mp_columns"] * Config().char["belt_rows"])
+            consumables.set_needs("rejuv", Config().char["belt_rejuv_columns"] * Config().char["belt_rows"])
+            view.return_to_play()
+            return
         if potion_type and potion_type != "empty":
             rows_left[potion_type] -= 1
             if rows_left[potion_type] < 0:

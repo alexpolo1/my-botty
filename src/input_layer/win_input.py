@@ -97,6 +97,9 @@ user32.GetSystemMetrics.argtypes = [wintypes.INT]
 user32.MapVirtualKeyW.restype = wintypes.UINT
 user32.MapVirtualKeyW.argtypes = [wintypes.UINT, wintypes.UINT]
 
+user32.VkKeyScanW.restype = wintypes.SHORT
+user32.VkKeyScanW.argtypes = [wintypes.WCHAR]
+
 # ─── VK code mapping ───
 
 # Extended keys (require KEYEVENTF_EXTENDEDKEY flag)
@@ -184,14 +187,15 @@ def _get_vk(key_name: str):
         return VK_MAP[key_name]
     # Single character
     if len(key_name) == 1:
-        vk = ord(key_name)
-        # Digit keys 0-9 map to VK_0 (0x0B) through VK_9 (0x13)
+        # Digit keys 0-9 map to VK_0 (0x30) through VK_9 (0x39)
         if '0' <= key_name <= '9':
-            return 0x0B + ord(key_name) - ord('0')
+            return ord(key_name)
         # Letter keys map directly to their ASCII value (uppercase)
         if 'a' <= key_name <= 'z':
             return ord(key_name.upper())
-        return vk
+        scanned = user32.VkKeyScanW(key_name)
+        if scanned != -1:
+            return scanned & 0xFF
     # Try pywin32 style (vk_key)
     return None
 
@@ -218,6 +222,12 @@ def key_press(vk: int):
     """Press and release a key."""
     key_down(vk)
     key_up(vk)
+
+def char_press(ch: str):
+    """Type a character directly as Unicode."""
+    codepoint = ord(ch)
+    _send_input(_make_keyboard_input(0, KEYEVENTF_UNICODE, codepoint))
+    _send_input(_make_keyboard_input(0, KEYEVENTF_UNICODE | KEYEVENTF_KEYUP, codepoint))
 
 def send_key(key: str, down=True, up=True):
     """Press and/or release a key by name."""
@@ -297,45 +307,24 @@ def get_cursor_pos():
 def send_text(text: str, delay: float = 0.05):
     """Send text character by character using the active keyboard layout."""
     for ch in text:
-        if ch == ' ':
-            vk = 0x20  # VK_SPACE
-            key_press(vk)
-        elif ch.isalpha():
-            vk = ord(ch.upper())
-            if ch.isupper():
-                key_down(0xA0)  # left shift
-                key_press(vk)
-                key_up(0xA0)
-            else:
-                key_press(vk)
-        elif '0' <= ch <= '9':
-            vk = 0x0B + ord(ch) - ord('0')
-            if ch in '0123456789':
-                key_down(0xA0)  # shift for digits on some layouts
-                key_press(vk)
-                key_up(0xA0)
-            else:
-                key_press(vk)
+        scanned = user32.VkKeyScanW(ch)
+        if scanned == -1:
+            char_press(ch)
         else:
-            # Punctuation: use MapVirtualKey to get the correct VK for the active layout
-            # First try without shift
-            vk = user32.MapVirtualKeyW(ord(ch), 3)  # MAPVK_VK_TO_CHAR -> MAPVK_VSC_TO_VK
-            if vk == 0:
-                # Try: get scan code from char, then vk from scan code
-                # Fallback: send via PostMessage to target window
-                vk = _get_vk(ch)
-            if vk is None or vk == 0:
-                # Last resort: try with shift
-                vk = user32.MapVirtualKeyW(ord(ch.upper()), 3) if ch.islower() else user32.MapVirtualKeyW(ord(ch), 3)
-            if vk is None or vk == 0:
-                continue
-            # Check if shift is needed by testing if the char without shift matches
-            char_without_shift = user32.MapVirtualKeyW(vk, 3)
-            if char_without_shift != ord(ch.lower()):
-                key_down(0xA0)  # left shift
-                key_press(vk)
-                key_up(0xA0)
-            else:
-                key_press(vk)
+            vk = scanned & 0xFF
+            shift_state = (scanned >> 8) & 0xFF
+            modifiers = []
+            if shift_state & 1:
+                modifiers.append(0xA0)  # left shift
+            if shift_state & 2:
+                modifiers.append(0xA2)  # left ctrl
+            if shift_state & 4:
+                modifiers.append(0xA4)  # left alt
+
+            for modifier in modifiers:
+                key_down(modifier)
+            key_press(vk)
+            for modifier in reversed(modifiers):
+                key_up(modifier)
         from utils.misc import wait as _wait
         _wait(delay, delay * 1.2)

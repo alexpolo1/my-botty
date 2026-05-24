@@ -77,10 +77,25 @@ def _find_key_file(d2r_path: str, char_name: str) -> str | None:
     return None
 
 
+CHAR_BINDING_SLOTS = {
+    1: "inventory_screen",
+    8: "show_items",
+    23: "potion1",
+    24: "potion2",
+    25: "potion3",
+    26: "potion4",
+    36: "stand_still",
+    41: "show_belt",
+    44: "weapon_switch",
+    59: "force_move",
+}
+
+
 def _parse_binary(filepath: str) -> tuple:
-    """Returns (skills_dict, non_skill_keys_list)."""
+    """Returns (skills_dict, non_skill_keys_list, char_bindings_dict)."""
     skills = {}
     non_skill_keys = []
+    char_bindings = {}
 
     with open(filepath, "rb") as f:
         data = f.read()
@@ -98,12 +113,37 @@ def _parse_binary(filepath: str) -> tuple:
         key_name = vk_to_name(vk)
         if key_name is None:
             continue
+        if slot in CHAR_BINDING_SLOTS:
+            config_key = CHAR_BINDING_SLOTS[slot]
+            normalized = _normalize_key(key_name)
+            if (
+                config_key not in char_bindings
+                or (config_key == "show_items" and action == 0)
+                or (config_key != "show_items" and action == 1)
+            ):
+                char_bindings[config_key] = normalized
         if action == 1:
             skills[slot] = key_name
         elif action == 0:
             non_skill_keys.append(key_name)
 
-    return skills, non_skill_keys
+    return skills, non_skill_keys, char_bindings
+
+
+def _apply_char_bindings(char_cfg: dict, bindings: dict) -> None:
+    for config_key, detected_key in bindings.items():
+        current_key = _normalize_key(str(char_cfg.get(config_key, "")))
+        if not current_key:
+            Logger.info(
+                f"Using detected key binding for {config_key}: "
+                f"{char_cfg.get(config_key, '')!r} -> {detected_key!r}"
+            )
+            char_cfg[config_key] = detected_key
+        elif current_key != detected_key:
+            Logger.debug(
+                f"Keeping configured key binding for {config_key}: "
+                f"{current_key!r} (detected {detected_key!r})"
+            )
 
 
 def apply_key_bindings(config_instance) -> None:
@@ -118,12 +158,15 @@ def apply_key_bindings(config_instance) -> None:
         return
 
     Logger.info(f"Reading key bindings from: {key_file}")
-    skills, non_skill_keys = _parse_binary(key_file)
+    skills, non_skill_keys, char_bindings = _parse_binary(key_file)
 
     if skills:
         Logger.info(f"Skill slots: {skills}")
     if non_skill_keys:
         Logger.info(f"Non-skill keys: {non_skill_keys}")
+    if char_bindings:
+        Logger.info(f"Detected character key bindings: {char_bindings}")
+        _apply_char_bindings(config_instance.char, char_bindings)
 
     # Validate: check if configured skill hotkeys match game bindings
     char_type = config_instance.char.get("type", "")

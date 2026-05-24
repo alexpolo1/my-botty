@@ -1,4 +1,5 @@
 import itertools
+import json
 from game_stats import GameStats
 from input_layer import keyboard
 import cv2
@@ -311,7 +312,12 @@ def inspect_items(inp_img: np.ndarray = None, close_window: bool = True, game_st
                     if item_box is not None:
                         log_item(item_box, item_properties)
                         # decide whether to keep item
-                        box.keep, expression = should_keep(item_properties.as_dict())
+                        item_data = item_properties.as_dict()
+                        try:
+                            box.keep, expression = should_keep(item_data)
+                        except Exception:
+                            Logger.error(f"Failed to evaluate keep rules for item data:\n{json.dumps(item_data, indent=2, default=str)}")
+                            raise
 
                         # make sure it's not a consumable
                         # TODO: logic for trying to add potion to belt if there are needs
