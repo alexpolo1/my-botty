@@ -3,8 +3,8 @@
 # This must run BEFORE any import that might trigger tesserocr loading.
 import os, sys
 if sys.platform == "win32":
+    import ctypes
     _conda_dll_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "conda_env", "Library", "bin")
-    # Also check the conda env where this python lives (sys.prefix is reliable on Windows)
     for _dll_candidate in [
         _conda_dll_dir,
         os.path.join(sys.prefix, "Library", "bin"),
@@ -13,6 +13,12 @@ if sys.platform == "win32":
     ]:
         if os.path.isdir(_dll_candidate):
             os.add_dll_directory(_dll_candidate)
+    # Pre-load tesseract51.dll by absolute path so Windows anchors its transitive
+    # deps (leptonica, zlib, etc.) to Library\bin. os.add_dll_directory alone is
+    # insufficient: transitive deps of a user-dir DLL are not searched there.
+    _tess = os.path.join(sys.prefix, "Library", "bin", "tesseract51.dll")
+    if os.path.isfile(_tess):
+        ctypes.WinDLL(_tess)
 
 from dataclasses import dataclass
 from input_layer import keyboard

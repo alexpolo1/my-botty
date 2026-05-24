@@ -1,6 +1,7 @@
 # Fix: On Windows, Python 3.8+ requires os.add_dll_directory for conda-forge DLLs
 import os, sys
 if sys.platform == "win32":
+    import ctypes
     for _dll_dir in [
         os.path.join(sys.prefix, "Library", "bin"),
         os.path.join(sys.prefix, "Library", "mingw-w64", "bin"),
@@ -8,6 +9,9 @@ if sys.platform == "win32":
     ]:
         if os.path.isdir(_dll_dir):
             os.add_dll_directory(_dll_dir)
+    _tess = os.path.join(sys.prefix, "Library", "bin", "tesseract51.dll")
+    if os.path.isfile(_tess):
+        ctypes.WinDLL(_tess)
 
 from beautifultable import BeautifulTable
 import logging

@@ -1,7 +1,8 @@
 import os
 import sys
 if os.name == 'nt':
-    # Python 3.8+ requires explicit DLL directories; conda puts tesseract/leptonica in Library\bin
+    import ctypes
+    # Add all conda DLL dirs so Python's loader can find them
     for _dll_dir in [
         os.path.join(sys.prefix, 'Library', 'bin'),
         os.path.join(sys.prefix, 'Library', 'mingw-w64', 'bin'),
@@ -9,6 +10,16 @@ if os.name == 'nt':
     ]:
         if os.path.isdir(_dll_dir):
             os.add_dll_directory(_dll_dir)
+    # Pre-load tesseract51.dll by absolute path so Windows anchors it to
+    # Library\bin when resolving its own transitive deps (leptonica, zlib, etc.).
+    # os.add_dll_directory alone is not enough: when Python loads the .pyd via
+    # LOAD_LIBRARY_SEARCH_USER_DIRS, Windows finds tesseract51.dll there, but
+    # then resolves tesseract's transitive deps using only System32 — not the
+    # user DLL dirs. Loading by absolute path first puts tesseract in the cache
+    # with Library\bin as its home, fixing the transitive search.
+    _tess = os.path.join(sys.prefix, 'Library', 'bin', 'tesseract51.dll')
+    if os.path.isfile(_tess):
+        ctypes.WinDLL(_tess)
 from tesserocr import PyTessBaseAPI, OEM
 import numpy as np
 import cv2

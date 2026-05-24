@@ -99,15 +99,15 @@ echo Installing tesserocr wheel...
 :: --- Smoke test: import key dependencies ---
 echo.
 echo Verifying dependencies...
-"%PYTHON%" -c "import os,sys;[os.add_dll_directory(p) for p in [os.path.join(sys.prefix,'Library',d) for d in ['bin','mingw-w64\\bin','usr\\bin']] if os.path.isdir(p)];import cv2,mss,numpy,tesserocr,discord,transitions,rapidfuzz" >nul 2>&1
+"%PYTHON%" -c "import os,sys,ctypes;lb=os.path.join(sys.prefix,'Library','bin');[os.add_dll_directory(os.path.join(sys.prefix,'Library',d)) for d in ['bin','mingw-w64\\bin','usr\\bin'] if os.path.isdir(os.path.join(sys.prefix,'Library',d))];ctypes.WinDLL(os.path.join(lb,'tesseract51.dll')) if os.path.isfile(os.path.join(lb,'tesseract51.dll')) else None;import cv2,mss,numpy,tesserocr,discord,transitions,rapidfuzz" >nul 2>&1
 if %errorlevel% neq 0 (
     echo.
     echo WARNING: Dependency check failed. Running diagnostics...
     echo.
-    "%PYTHON%" -c "import os,sys; lb=os.path.join(sys.prefix,'Library','bin'); print('  Prefix:',sys.prefix); print('  Library/bin exists:',os.path.isdir(lb)); dlls=[f for f in (os.listdir(lb) if os.path.isdir(lb) else []) if any(k in f.lower() for k in ['tess','lepton'])]; print('  Tesseract DLLs found:',dlls if dlls else 'NONE - re-run install.bat'); [os.add_dll_directory(os.path.join(sys.prefix,'Library',d)) for d in ['bin','mingw-w64\\bin','usr\\bin'] if os.path.isdir(os.path.join(sys.prefix,'Library',d))]; __import__('tesserocr')" 2>&1
+    "%PYTHON%" -c "import os,sys,ctypes; lb=os.path.join(sys.prefix,'Library','bin'); print('  Prefix:',sys.prefix); dlls=[f for f in (os.listdir(lb) if os.path.isdir(lb) else []) if any(k in f.lower() for k in ['tess','lepton'])]; print('  Tesseract DLLs in Library/bin:',dlls or 'NONE'); [os.add_dll_directory(os.path.join(sys.prefix,'Library',d)) for d in ['bin','mingw-w64\\bin','usr\\bin'] if os.path.isdir(os.path.join(sys.prefix,'Library',d))]; t=os.path.join(lb,'tesseract51.dll'); r=ctypes.WinDLL(t) if os.path.isfile(t) else None; print('  ctypes load tesseract51.dll:','OK' if r else 'skipped'); __import__('tesserocr'); print('  tesserocr import: OK')" 2>&1
     echo.
-    echo If you see "NONE" above, re-run install.bat once more to let conda finish.
-    echo If the error persists, see development.md for manual steps.
+    echo *** Do NOT run "pip install tesserocr" manually - it builds from source and
+    echo *** will always fail on Windows. Re-run install.bat to fix dependencies.
 ) else (
     echo All key dependencies verified.
 )
