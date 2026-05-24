@@ -5,7 +5,7 @@ dependencies:
   - python=3.10
   - pywin32
   - pip
-  - leptonica
+  - leptonica=1.78.0  # pinned: tesserocr wheel links against leptonica-1.78.0.dll
   - tesseract=5.1.0
   - pkg-config
   - rapidfuzz=2.15.1

@@ -91,14 +91,23 @@ exit /b 1
 :env_created
 echo Botty Python: %PYTHON%
 
+:: --- Force-reinstall the tesserocr wheel so the correct binary is always used ---
+echo.
+echo Installing tesserocr wheel...
+"%PYTHON%" -m pip install --force-reinstall "%~dp0dependencies\tesserocr-2.5.2-cp310-cp310-win_amd64.whl" >nul 2>&1
+
 :: --- Smoke test: import key dependencies ---
 echo.
 echo Verifying dependencies...
 "%PYTHON%" -c "import os,sys;[os.add_dll_directory(p) for p in [os.path.join(sys.prefix,'Library',d) for d in ['bin','mingw-w64\\bin','usr\\bin']] if os.path.isdir(p)];import cv2,mss,numpy,tesserocr,discord,transitions,rapidfuzz" >nul 2>&1
 if %errorlevel% neq 0 (
     echo.
-    echo WARNING: Some imports failed. Try running install.bat again, or check:
-    echo   development.md for manual troubleshooting.
+    echo WARNING: Dependency check failed. Running diagnostics...
+    echo.
+    "%PYTHON%" -c "import os,sys; lb=os.path.join(sys.prefix,'Library','bin'); print('  Prefix:',sys.prefix); print('  Library/bin exists:',os.path.isdir(lb)); dlls=[f for f in (os.listdir(lb) if os.path.isdir(lb) else []) if any(k in f.lower() for k in ['tess','lepton'])]; print('  Tesseract DLLs found:',dlls if dlls else 'NONE - re-run install.bat'); [os.add_dll_directory(os.path.join(sys.prefix,'Library',d)) for d in ['bin','mingw-w64\\bin','usr\\bin'] if os.path.isdir(os.path.join(sys.prefix,'Library',d))]; __import__('tesserocr')" 2>&1
+    echo.
+    echo If you see "NONE" above, re-run install.bat once more to let conda finish.
+    echo If the error persists, see development.md for manual steps.
 ) else (
     echo All key dependencies verified.
 )
