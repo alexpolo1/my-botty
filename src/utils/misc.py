@@ -91,7 +91,10 @@ class WindowSpec:
         if self.process_name_regex is not None:
             _, process_id = GetWindowThreadProcessId(hwnd)
             if process_id > 0:
-                result = result and Regex(self.process_name_regex).matches(psutil.Process(process_id).name())
+                try:
+                    result = result and Regex(self.process_name_regex).matches(psutil.Process(process_id).name())
+                except psutil.NoSuchProcess:
+                    result = False
         if self.title_regex is None and self.process_name_regex is None:
             result = False
         return result

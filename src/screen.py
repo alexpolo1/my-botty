@@ -111,10 +111,15 @@ def convert_monitor_to_screen(screen_coord: tuple[float, float]) -> tuple[float,
     return (screen_coord[0] - monitor_roi["left"], screen_coord[1] - monitor_roi["top"])
 
 def convert_screen_to_monitor(screen_coord: tuple[float, float]) -> tuple[float, float]:
-    global monitor_roi
+    global monitor_roi, monitor_x_range, monitor_y_range
     if screen_coord is None:
         Logger.error("convert_screen_to_monitor: empty coordinates passed")
         return None
+    if monitor_x_range is None or monitor_y_range is None:
+        Logger.warning("convert_screen_to_monitor: D2R window not yet located, returning unclamped coordinates")
+        x = int(screen_coord[0] + monitor_roi["left"])
+        y = int(screen_coord[1] + monitor_roi["top"])
+        return (x, y)
     x = screen_coord[0] + monitor_roi["left"]
     y = screen_coord[1] + monitor_roi["top"]
     return (np.clip(x, *monitor_x_range), np.clip(y, *monitor_y_range))

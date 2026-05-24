@@ -102,7 +102,7 @@ def main():
     print(f"============ Botty {__version__} [name: {Config().general['name']}] ============")
     print("\nFor gettings started and documentation\nplease read https://github.com/aeon0/botty\n")
     table = BeautifulTable()
-    table.set_style(BeautifulTable.STYLE_BOX_ROUNDED)
+    table.set_style(BeautifulTable.STYLE_DEFAULT)
     table.rows.append([Config().advanced_options['select_runs_key'], "Select boss / farm runs"])
     table.rows.append([Config().advanced_options['restore_settings_from_backup_key'], "Restore D2R settings from backup"])
     table.rows.append([Config().advanced_options['settings_backup_key'], "Backup D2R current settings"])
@@ -111,7 +111,12 @@ def main():
     table.rows.append([Config().advanced_options['resume_key'], "Start / Pause Botty"])
     table.rows.append([Config().advanced_options['exit_key'], "Stop bot"])
     table.columns.header = ["hotkey", "action"]
-    print(table)
+    try:
+        print(table)
+    except UnicodeEncodeError:
+        # Fallback for terminals without UTF-8 support
+        for row in table.rows:
+            print(f"  {row[0]:<10} {row[1]}")
     print("\n")
 
     keyboard.add_hotkey(Config().advanced_options['select_runs_key'], lambda: open_run_selector(Config()))
