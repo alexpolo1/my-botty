@@ -1,12 +1,19 @@
 """
 Run-selector GUI — opened via hotkey from the botty console.
-Updates Config().routes and Config().routes_order in-memory; no file changes.
-Takes effect on the next game (Bot is re-created each game in run_bot()).
+Lets the user pick character and boss/farm runs.
+Updates Config() in-memory; no file changes. Takes effect on the next game.
 """
 import tkinter as tk
 from tkinter import messagebox
 
-# All supported runs in display order, with friendly labels
+# ── Character options ────────────────────────────────────────────────────────
+CHAR_OPTIONS = [
+    ("blizz_sorc",  "Blizzard Sorceress"),
+    ("fohdin",      "Fist of Heavens Paladin"),
+    ("hammerdin",   "Hammerdin"),
+]
+
+# ── Boss / farm run options ──────────────────────────────────────────────────
 ALL_RUNS = [
     ("run_pindle",         "Pindleskin (A5)"),
     ("run_eldritch_shenk", "Eldritch + Shenk (A5)"),
@@ -27,9 +34,20 @@ _ROUTE_ALIASES = {
     "run_eldritch":       "run_shenk",
 }
 
+# ── Colours ──────────────────────────────────────────────────────────────────
+BG_DARK   = "#1a1a2e"
+BG_MID    = "#16213e"
+BG_RADIO  = "#0f3460"
+FG_GOLD   = "#e2b96e"
+FG_LIGHT  = "#d4d4d4"
+FG_DIM    = "#888888"
+RED       = "#e63946"
+RED_HOV   = "#c1121f"
+GREY      = "#444444"
+GREY_HOV  = "#333333"
 
-def _currently_enabled(config) -> set:
-    """Return the set of display-keys (from ALL_RUNS) that are currently active."""
+
+def _currently_enabled_runs(config) -> set:
     enabled = set()
     for key, _ in ALL_RUNS:
         internal = _ROUTE_ALIASES.get(key, key)
@@ -40,79 +58,116 @@ def _currently_enabled(config) -> set:
     return enabled
 
 
+def _current_char(config) -> str:
+    """Return the char type key from config, defaulting to the first option."""
+    current = config.char.get("type", "")
+    known = {k for k, _ in CHAR_OPTIONS}
+    return current if current in known else CHAR_OPTIONS[0][0]
+
+
 def open_run_selector(config) -> None:
     """
-    Open the run-selector window (non-blocking from the hotkey perspective —
-    tkinter mainloop blocks the calling thread, which is fine since the hotkey
-    callback runs in its own thread via the keyboard library).
-
-    Mutates config.routes and config.routes_order on confirmation and prints
-    the new selection to the console.
+    Open the selector window (blocks the hotkey callback thread via mainloop).
+    Mutates config.char["type"], config.routes, and config.routes_order on Apply.
     """
-    currently_on = _currently_enabled(config)
+    currently_on   = _currently_enabled_runs(config)
+    current_char   = _current_char(config)
 
     root = tk.Tk()
-    root.title("Botty — Select Runs")
+    root.title("Botty — Character & Runs")
     root.resizable(False, False)
-    # Keep the window on top so it's visible over D2R
     root.attributes("-topmost", True)
 
-    # ── header ──────────────────────────────────────────────────────────────
-    header = tk.Frame(root, bg="#1a1a2e", pady=8)
+    def section_label(parent, text):
+        tk.Label(
+            parent, text=text,
+            bg=BG_DARK, fg=FG_GOLD,
+            font=("Segoe UI", 10, "bold"),
+            anchor="w", padx=4,
+        ).pack(fill=tk.X, pady=(6, 2))
+
+    # ── Header ───────────────────────────────────────────────────────────────
+    header = tk.Frame(root, bg=BG_DARK, pady=8)
     header.pack(fill=tk.X)
     tk.Label(
-        header, text="Select boss / farm runs",
-        bg="#1a1a2e", fg="#e2b96e",
-        font=("Segoe UI", 13, "bold"),
+        header, text="Botty Setup",
+        bg=BG_DARK, fg=FG_GOLD,
+        font=("Segoe UI", 14, "bold"),
     ).pack()
     tk.Label(
         header, text="(takes effect on next game)",
-        bg="#1a1a2e", fg="#888",
+        bg=BG_DARK, fg=FG_DIM,
         font=("Segoe UI", 8),
     ).pack()
 
-    # ── checkboxes ──────────────────────────────────────────────────────────
-    body = tk.Frame(root, bg="#16213e", padx=20, pady=12)
+    # ── Body ─────────────────────────────────────────────────────────────────
+    body = tk.Frame(root, bg=BG_DARK, padx=16, pady=4)
     body.pack(fill=tk.BOTH)
 
-    vars_: list[tuple[str, tk.BooleanVar]] = []
+    # ── Character section ─────────────────────────────────────────────────────
+    section_label(body, "Character")
+    char_frame = tk.Frame(body, bg=BG_MID, padx=12, pady=8)
+    char_frame.pack(fill=tk.X)
+
+    char_var = tk.StringVar(value=current_char)
+    for key, label in CHAR_OPTIONS:
+        rb = tk.Radiobutton(
+            char_frame, text=label, variable=char_var, value=key,
+            bg=BG_MID, fg=FG_LIGHT, selectcolor=BG_RADIO,
+            activebackground=BG_MID, activeforeground=FG_GOLD,
+            font=("Segoe UI", 10),
+            anchor="w",
+        )
+        rb.pack(fill=tk.X, pady=1)
+
+    # ── Runs section ──────────────────────────────────────────────────────────
+    section_label(body, "Boss / Farm Runs")
+    runs_frame = tk.Frame(body, bg=BG_MID, padx=12, pady=8)
+    runs_frame.pack(fill=tk.X)
+
+    run_vars: list[tuple[str, tk.BooleanVar]] = []
     for key, label in ALL_RUNS:
         var = tk.BooleanVar(value=(key in currently_on))
         cb = tk.Checkbutton(
-            body, text=label, variable=var,
-            bg="#16213e", fg="#d4d4d4", selectcolor="#0f3460",
-            activebackground="#16213e", activeforeground="#e2b96e",
+            runs_frame, text=label, variable=var,
+            bg=BG_MID, fg=FG_LIGHT, selectcolor=BG_RADIO,
+            activebackground=BG_MID, activeforeground=FG_GOLD,
             font=("Segoe UI", 10),
             anchor="w",
         )
         cb.pack(fill=tk.X, pady=1)
-        vars_.append((key, var))
+        run_vars.append((key, var))
 
-    # ── buttons ─────────────────────────────────────────────────────────────
-    btn_frame = tk.Frame(root, bg="#1a1a2e", pady=8)
+    # ── Buttons ───────────────────────────────────────────────────────────────
+    btn_frame = tk.Frame(root, bg=BG_DARK, pady=10)
     btn_frame.pack(fill=tk.X)
 
     def on_apply():
-        selected_keys = [k for k, v in vars_ if v.get()]
-        if not selected_keys:
+        selected_runs = [k for k, v in run_vars if v.get()]
+        if not selected_runs:
             messagebox.showwarning("No runs selected", "Please select at least one run.", parent=root)
             return
 
-        # Build new routes dict and order list
+        # Apply character
+        chosen_char = char_var.get()
+        config.char["type"] = chosen_char
+
+        # Apply routes
         new_routes = {}
         new_order = []
-        for key in selected_keys:
+        for key in selected_runs:
             new_routes[key] = True
             internal = _ROUTE_ALIASES.get(key, key)
             new_routes[internal] = True
             if internal not in new_order:
                 new_order.append(internal)
-
         config.routes = new_routes
         config.routes_order = new_order
 
-        friendly = [label for k, label in ALL_RUNS if k in selected_keys]
-        print(f"\n[Run Selector] Runs updated: {', '.join(friendly)}")
+        char_label  = next(l for k, l in CHAR_OPTIONS if k == chosen_char)
+        run_labels  = [l for k, l in ALL_RUNS if k in selected_runs]
+        print(f"\n[Selector] Character : {char_label}")
+        print(f"[Selector] Runs      : {', '.join(run_labels)}")
         print("(takes effect on next game)\n")
 
         root.destroy()
@@ -122,13 +177,13 @@ def open_run_selector(config) -> None:
 
     tk.Button(
         btn_frame, text="Apply", command=on_apply,
-        bg="#e63946", fg="white", activebackground="#c1121f",
+        bg=RED, fg="white", activebackground=RED_HOV,
         font=("Segoe UI", 10, "bold"), relief=tk.FLAT, padx=16, pady=4,
     ).pack(side=tk.RIGHT, padx=12)
 
     tk.Button(
         btn_frame, text="Cancel", command=on_cancel,
-        bg="#444", fg="white", activebackground="#333",
+        bg=GREY, fg="white", activebackground=GREY_HOV,
         font=("Segoe UI", 10), relief=tk.FLAT, padx=12, pady=4,
     ).pack(side=tk.RIGHT, padx=4)
 
