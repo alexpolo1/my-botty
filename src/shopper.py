@@ -2,13 +2,14 @@
 import os, sys
 if sys.platform == "win32":
     import ctypes
-    for _dll_dir in [
+    _conda_dll_dirs = [d for d in [
         os.path.join(sys.prefix, "Library", "bin"),
         os.path.join(sys.prefix, "Library", "mingw-w64", "bin"),
         os.path.join(sys.prefix, "Library", "usr", "bin"),
-    ]:
-        if os.path.isdir(_dll_dir):
-            os.add_dll_directory(_dll_dir)
+    ] if os.path.isdir(d)]
+    for _d in _conda_dll_dirs:
+        os.add_dll_directory(_d)
+    os.environ['PATH'] = os.pathsep.join(_conda_dll_dirs) + os.pathsep + os.environ.get('PATH', '')
     _tess = os.path.join(sys.prefix, "Library", "bin", "tesseract51.dll")
     if os.path.isfile(_tess):
         ctypes.WinDLL(_tess)

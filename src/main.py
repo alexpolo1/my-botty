@@ -4,18 +4,16 @@
 import os, sys
 if sys.platform == "win32":
     import ctypes
-    _conda_dll_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "conda_env", "Library", "bin")
-    for _dll_candidate in [
-        _conda_dll_dir,
+    _bundled = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "conda_env", "Library", "bin")
+    _conda_dll_dirs = [d for d in [
+        _bundled,
         os.path.join(sys.prefix, "Library", "bin"),
         os.path.join(sys.prefix, "Library", "mingw-w64", "bin"),
         os.path.join(sys.prefix, "Library", "usr", "bin"),
-    ]:
-        if os.path.isdir(_dll_candidate):
-            os.add_dll_directory(_dll_candidate)
-    # Pre-load tesseract51.dll by absolute path so Windows anchors its transitive
-    # deps (leptonica, zlib, etc.) to Library\bin. os.add_dll_directory alone is
-    # insufficient: transitive deps of a user-dir DLL are not searched there.
+    ] if os.path.isdir(d)]
+    for _d in _conda_dll_dirs:
+        os.add_dll_directory(_d)
+    os.environ['PATH'] = os.pathsep.join(_conda_dll_dirs) + os.pathsep + os.environ.get('PATH', '')
     _tess = os.path.join(sys.prefix, "Library", "bin", "tesseract51.dll")
     if os.path.isfile(_tess):
         ctypes.WinDLL(_tess)
