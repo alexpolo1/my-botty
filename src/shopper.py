@@ -1,9 +1,13 @@
 # Fix: On Windows, Python 3.8+ requires os.add_dll_directory for conda-forge DLLs
 import os, sys
 if sys.platform == "win32":
-    _dll_dir = os.path.join(os.path.dirname(os.path.dirname(sys.executable)), "Library", "bin")
-    if os.path.isdir(_dll_dir):
-        os.add_dll_directory(_dll_dir)
+    for _dll_dir in [
+        os.path.join(sys.prefix, "Library", "bin"),
+        os.path.join(sys.prefix, "Library", "mingw-w64", "bin"),
+        os.path.join(sys.prefix, "Library", "usr", "bin"),
+    ]:
+        if os.path.isdir(_dll_dir):
+            os.add_dll_directory(_dll_dir)
 
 from beautifultable import BeautifulTable
 import logging

@@ -4,11 +4,15 @@
 import os, sys
 if sys.platform == "win32":
     _conda_dll_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "conda_env", "Library", "bin")
-    # Also check the conda env where this python lives
-    if not os.path.isdir(_conda_dll_dir):
-        _conda_dll_dir = os.path.join(os.path.dirname(os.path.dirname(sys.executable)), "Library", "bin")
-    if os.path.isdir(_conda_dll_dir):
-        os.add_dll_directory(_conda_dll_dir)
+    # Also check the conda env where this python lives (sys.prefix is reliable on Windows)
+    for _dll_candidate in [
+        _conda_dll_dir,
+        os.path.join(sys.prefix, "Library", "bin"),
+        os.path.join(sys.prefix, "Library", "mingw-w64", "bin"),
+        os.path.join(sys.prefix, "Library", "usr", "bin"),
+    ]:
+        if os.path.isdir(_dll_candidate):
+            os.add_dll_directory(_dll_candidate)
 
 from dataclasses import dataclass
 from input_layer import keyboard

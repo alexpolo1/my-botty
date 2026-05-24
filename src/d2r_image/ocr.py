@@ -5,6 +5,7 @@ if os.name == 'nt':
     for _dll_dir in [
         os.path.join(sys.prefix, 'Library', 'bin'),
         os.path.join(sys.prefix, 'Library', 'mingw-w64', 'bin'),
+        os.path.join(sys.prefix, 'Library', 'usr', 'bin'),
     ]:
         if os.path.isdir(_dll_dir):
             os.add_dll_directory(_dll_dir)
