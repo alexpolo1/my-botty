@@ -91,27 +91,21 @@ exit /b 1
 :env_created
 echo Botty Python: %PYTHON%
 
-:: Prepend conda DLL dirs to PATH at the process level so the Windows DLL
-:: loader finds tesseract51.dll's transitive deps (leptonica, zlib, etc.)
-:: when ctypes loads it. os.environ['PATH'] set from inside Python is too late.
-for %%F in ("%PYTHON%") do set "_CONDA_ENV=%%~dpF"
-set "_CONDA_ENV=%_CONDA_ENV:~0,-1%"
-set "PATH=%_CONDA_ENV%\Library\bin;%_CONDA_ENV%\Library\mingw-w64\bin;%_CONDA_ENV%\Library\usr\bin;%PATH%"
-
 :: --- Force-reinstall the tesserocr wheel so the correct binary is always used ---
 echo.
 echo Installing tesserocr wheel...
 "%PYTHON%" -m pip install --force-reinstall "%~dp0dependencies\tesserocr-2.5.2-cp310-cp310-win_amd64.whl" >nul 2>&1
 
-:: --- Smoke test: import key dependencies ---
+:: --- Smoke test via conda run (activates the full env like "conda activate botty") ---
+:: This is the only reliable way to ensure all DLL transitive deps are resolved.
 echo.
 echo Verifying dependencies...
-"%PYTHON%" -c "import os,sys,ctypes;d=[x for x in [os.path.join(sys.prefix,'Library',s) for s in ['bin','mingw-w64\\bin','usr\\bin']] if os.path.isdir(x)];[os.add_dll_directory(x) for x in d];f=ctypes.windll.kernel32.LoadLibraryExW;f.restype=ctypes.c_void_p;f.argtypes=[ctypes.c_wchar_p,ctypes.c_void_p,ctypes.c_ulong];[f(os.path.join(x,'tesseract51.dll'),None,0x1000) for x in d if os.path.isfile(os.path.join(x,'tesseract51.dll'))];import cv2,mss,numpy,tesserocr,discord,transitions,rapidfuzz" >nul 2>&1
+"%CONDA_EXE%" run -n botty python -c "import cv2,mss,numpy,tesserocr,discord,transitions,rapidfuzz" >nul 2>&1
 if %errorlevel% neq 0 (
     echo.
     echo WARNING: Dependency check failed. Running diagnostics...
     echo.
-    "%PYTHON%" -c "import os,sys,ctypes;lb=os.path.join(sys.prefix,'Library','bin');dlls=[f for f in (os.listdir(lb) if os.path.isdir(lb) else []) if any(k in f.lower() for k in ['tess','lepton'])];print('  Tesseract DLLs in Library/bin:',dlls or 'NONE');d=[x for x in [os.path.join(sys.prefix,'Library',s) for s in ['bin','mingw-w64\\bin','usr\\bin']] if os.path.isdir(x)];[os.add_dll_directory(x) for x in d];f=ctypes.windll.kernel32.LoadLibraryExW;f.restype=ctypes.c_void_p;f.argtypes=[ctypes.c_wchar_p,ctypes.c_void_p,ctypes.c_ulong];t=os.path.join(lb,'tesseract51.dll');h=f(t,None,0x1000) if os.path.isfile(t) else None;print('  LoadLibraryExW tesseract51.dll:','OK' if h else 'FAILED');import tesserocr;print('  tesserocr import: OK')" 2>&1
+    "%CONDA_EXE%" run -n botty python -c "import tesserocr; print('  tesserocr: OK')" 2>&1
     echo.
     echo *** Do NOT run "pip install tesserocr" manually - it builds from source and
     echo *** will always fail on Windows. Re-run install.bat to fix dependencies.
