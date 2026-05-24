@@ -90,17 +90,17 @@ class PickIt:
             wait(0.16, 0.16) #wait 4 frames for items to refresh
             items, img = PickIt._locate_items()
             tele_success = False
-            for i in items:
-                if item.Name == i.Name:
+            for ground_item in items:
+                if item.Name == ground_item.Name:
                     tele_success = True
-                    Logger.info(f"Teled to pickup item {i.Name} and now at distance {i.Distance}")
-                    char.pick_up_item((i.CenterMonitor['x'], i.CenterMonitor['y']), item_name=i.Name, distance=i.Distance, force_run=True)
+                    Logger.info(f"Teled to pickup item {ground_item.Name} and now at distance {ground_item.Distance}")
+                    char.pick_up_item((ground_item.CenterMonitor['x'], ground_item.CenterMonitor['y']), item_name=ground_item.Name, distance=ground_item.Distance, force_run=True)
                     # Wait for the pickup animation to complete before moving on
                     # Issue #939: bot was teleporting away before item was actually grabbed
                     wait(0.2, 0.3)
                     break
             if not tele_success:
-                Logger.warning(f"Failed to scan item {i.Name} after tele.")
+                Logger.warning(f"Failed to scan item '{item.Name}' after tele. Items visible: {len(items)}")
         return PickedUpResult.PickedUp
 
     def _pick_up_item(self, char: IChar, item: GroundItem) -> PickedUpResult:

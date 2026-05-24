@@ -58,11 +58,14 @@ class BlizzSorc(Sorceress):
     def kill_pindle(self) -> bool:
         pindle_pos_abs = convert_screen_to_abs(Config().path["pindle_end"][0])
         cast_pos_abs = [pindle_pos_abs[0] * 0.9, pindle_pos_abs[1] * 0.9]
+        # Static reduces pack HP immediately so the sorc isn't standing in them for 9 full attack cycles
+        self._cast_static()
         for _ in range(int(Config().char["atk_len_pindle"])):
             self._blizzard(cast_pos_abs, spray=11)
             self._ice_blast(cast_pos_abs, spray=11)
-        # Move to items
-        wait(self._cast_duration, self._cast_duration + 0.2)
+        # Wait for the last blizzard to fully land (~1.8s fall duration) and all
+        # enemies to die before teleporting into the loot area.
+        wait(1.5, 2.0)
         self._pather.traverse_nodes_fixed("pindle_end", self)
         return True
 
