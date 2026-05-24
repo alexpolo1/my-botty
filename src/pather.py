@@ -521,34 +521,26 @@ class Pather:
             error_msg = "Teleport is required for static pathing"
             Logger.error(error_msg)
             raise ValueError(error_msg)
+
+        # Charged teleport icons don't match the TELE_ACTIVE template, so char.move()'s
+        # template check fails and it falls back to walking.  Select the skill once and
+        # then pass force_tp=True for every hop to bypass the template check entirely.
+        use_force_tp = False
         if char.capabilities.can_teleport_with_charges and not char.capabilities.can_teleport_natively:
-            Logger.debug("traverse_nodes_fixed: arming teleport charges before fixed-path traversal")
+            Logger.debug("traverse_nodes_fixed: using charge-based teleport (force_tp mode)")
             char.select_tp()
-        char.pre_move(wait_tp = True)
+            use_force_tp = True
+
+        char.pre_move(wait_tp=True)
         if type(key) == str:
             path = Config().path[key]
         else:
             path = key
         i = 0
-        #stuck_count = 0
         while i < len(path):
             x_m, y_m = convert_screen_to_monitor(path[i])
-            #x_m += int(random.random() * 6 - 3)
-            #y_m += int(random.random() * 6 - 3)
-            #t0 = grab(force_new=True)
-            char.move((x_m, y_m))
-            #t1 = grab(force_new=True)
-            # check difference between the two frames to determine if tele was good or not
-            #diff = cv2.absdiff(t0, t1)
-            #diff = cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY)
-            #_, mask = cv2.threshold(diff, 13, 255, cv2.THRESH_BINARY)
-            #score = (float(np.sum(mask)) / mask.size) * (1/255.0)
+            char.move((x_m, y_m), force_tp=use_force_tp)
             i += 1
-            #if score <= 0.15:
-            #    Logger.debug(f"Teleport cancel detected: ({score:.4f})")
-
-        # if type(key) == str and ("_save_dist" in key or "_end" in key):
-        #     cv2.imwrite(f"./log/screenshots/info/nil_path_{key}_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
         return True
 
 
