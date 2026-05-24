@@ -1,28 +1,17 @@
 import os
 import sys
 if os.name == 'nt':
-    import ctypes
-    # Collect all conda DLL dirs that exist
-    _conda_dll_dirs = [d for d in [
+    # Python 3.8+ loads .pyd files with LOAD_LIBRARY_SEARCH_USER_DIRS, which
+    # searches directories registered via os.add_dll_directory() — including
+    # all transitive DLL dependencies. This is the correct mechanism for
+    # making tesserocr find tesseract51.dll and leptonica without conda activate.
+    for _d in [
         os.path.join(sys.prefix, 'Library', 'bin'),
         os.path.join(sys.prefix, 'Library', 'mingw-w64', 'bin'),
         os.path.join(sys.prefix, 'Library', 'usr', 'bin'),
-    ] if os.path.isdir(d)]
-    # 1) os.add_dll_directory: lets Python find tesserocr's direct deps when
-    #    loading the .pyd via LOAD_LIBRARY_SEARCH_USER_DIRS.
-    for _d in _conda_dll_dirs:
-        os.add_dll_directory(_d)
-    # 2) Prepend to PATH: when ctypes.WinDLL loads tesseract51.dll by absolute
-    #    path, Windows resolves *that DLL's* own transitive deps (leptonica,
-    #    zlib, libpng, …) using the standard search order: app-dir → System32
-    #    → Windows-dir → cwd → PATH. Those libs live in Library\bin, not
-    #    System32, so without PATH they won't be found.
-    os.environ['PATH'] = os.pathsep.join(_conda_dll_dirs) + os.pathsep + os.environ.get('PATH', '')
-    # 3) Pre-load tesseract51.dll now (PATH is set, so all its deps resolve).
-    #    Once it's in the DLL cache the .pyd import below reuses it.
-    _tess = os.path.join(sys.prefix, 'Library', 'bin', 'tesseract51.dll')
-    if os.path.isfile(_tess):
-        ctypes.WinDLL(_tess)
+    ]:
+        if os.path.isdir(_d):
+            os.add_dll_directory(_d)
 from tesserocr import PyTessBaseAPI, OEM
 import numpy as np
 import cv2

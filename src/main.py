@@ -1,22 +1,17 @@
 # Fix: On Windows, Python 3.8+ requires os.add_dll_directory for conda-forge DLLs
 # that tesserocr depends on (tesseract51.dll, leptonica-1.78.0.dll).
 # This must run BEFORE any import that might trigger tesserocr loading.
+# os.add_dll_directory registers dirs with LOAD_LIBRARY_SEARCH_USER_DIRS,
+# which applies to the .pyd and all its transitive DLL dependencies.
 import os, sys
 if sys.platform == "win32":
-    import ctypes
-    _bundled = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "conda_env", "Library", "bin")
-    _conda_dll_dirs = [d for d in [
-        _bundled,
+    for _d in [
         os.path.join(sys.prefix, "Library", "bin"),
         os.path.join(sys.prefix, "Library", "mingw-w64", "bin"),
         os.path.join(sys.prefix, "Library", "usr", "bin"),
-    ] if os.path.isdir(d)]
-    for _d in _conda_dll_dirs:
-        os.add_dll_directory(_d)
-    os.environ['PATH'] = os.pathsep.join(_conda_dll_dirs) + os.pathsep + os.environ.get('PATH', '')
-    _tess = os.path.join(sys.prefix, "Library", "bin", "tesseract51.dll")
-    if os.path.isfile(_tess):
-        ctypes.WinDLL(_tess)
+    ]:
+        if os.path.isdir(_d):
+            os.add_dll_directory(_d)
 
 from dataclasses import dataclass
 from input_layer import keyboard

@@ -1,18 +1,14 @@
 # Fix: On Windows, Python 3.8+ requires os.add_dll_directory for conda-forge DLLs
+# that tesserocr depends on (tesseract51.dll, leptonica-1.78.0.dll).
 import os, sys
 if sys.platform == "win32":
-    import ctypes
-    _conda_dll_dirs = [d for d in [
+    for _d in [
         os.path.join(sys.prefix, "Library", "bin"),
         os.path.join(sys.prefix, "Library", "mingw-w64", "bin"),
         os.path.join(sys.prefix, "Library", "usr", "bin"),
-    ] if os.path.isdir(d)]
-    for _d in _conda_dll_dirs:
-        os.add_dll_directory(_d)
-    os.environ['PATH'] = os.pathsep.join(_conda_dll_dirs) + os.pathsep + os.environ.get('PATH', '')
-    _tess = os.path.join(sys.prefix, "Library", "bin", "tesseract51.dll")
-    if os.path.isfile(_tess):
-        ctypes.WinDLL(_tess)
+    ]:
+        if os.path.isdir(_d):
+            os.add_dll_directory(_d)
 
 from beautifultable import BeautifulTable
 import logging
