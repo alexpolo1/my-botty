@@ -522,7 +522,8 @@ class Pather:
             Logger.error(error_msg)
             raise ValueError(error_msg)
         if char.capabilities.can_teleport_with_charges and not char.capabilities.can_teleport_natively:
-            Logger.debug("traverse_nodes_fixed: using charge-based teleport (charges may deplete mid-path)")
+            Logger.debug("traverse_nodes_fixed: arming teleport charges before fixed-path traversal")
+            char.select_tp()
         char.pre_move(wait_tp = True)
         if type(key) == str:
             path = Config().path[key]

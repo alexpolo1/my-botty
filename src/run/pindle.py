@@ -48,7 +48,9 @@ class Pindle:
         if not template_finder.search_and_wait(["PINDLE_0", "PINDLE_1"], threshold=0.65, timeout=20).valid:
             return False
         # move to pindle
-        if self._char.capabilities.can_teleport_natively:
+        # Charges-based teleport (e.g. blizz sorc with tele charges) must also use the fixed
+        # path so it teleports through Pindle's minion pack instead of walking into them.
+        if self._char.capabilities.can_teleport_natively or self._char.capabilities.can_teleport_with_charges:
             self._pather.traverse_nodes_fixed("pindle_safe_dist", self._char)
         else:
             if not self._pather.traverse_nodes((Location.A5_PINDLE_START, Location.A5_PINDLE_SAFE_DIST), self._char):
