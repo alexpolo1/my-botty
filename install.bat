@@ -91,10 +91,10 @@ exit /b 1
 :env_created
 echo Botty Python: %PYTHON%
 
-:: --- Force-reinstall the tesserocr wheel so the correct binary is always used ---
+:: --- Remove old pip-installed tesserocr wheel if present (replaced by conda-forge package) ---
 echo.
-echo Installing tesserocr wheel...
-"%PYTHON%" -m pip install --force-reinstall "%~dp0dependencies\tesserocr-2.5.2-cp310-cp310-win_amd64.whl" >nul 2>&1
+echo Removing old pip-installed tesserocr if present...
+"%PYTHON%" -m pip uninstall tesserocr -y >nul 2>&1
 
 :: --- Smoke test via conda run (activates the full env like "conda activate botty") ---
 :: This is the only reliable way to ensure all DLL transitive deps are resolved.

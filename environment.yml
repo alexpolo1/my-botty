@@ -5,8 +5,9 @@ dependencies:
   - python=3.10
   - pywin32
   - pip
-  - leptonica=1.78.0  # pinned: tesserocr wheel links against leptonica-1.78.0.dll
-  - tesseract=5.1.0
+  - tesserocr   # conda-forge build — compiled against conda-forge tesseract/leptonica,
+                # so all DLL deps are resolved automatically within the env
+  - tesseract   # version chosen by conda to match tesserocr
   - pkg-config
   - rapidfuzz=2.15.1
   - pip:
@@ -31,7 +32,6 @@ dependencies:
     - pillow
     - discord.py
     - parse
-    - dependencies/tesserocr-2.5.2-cp310-cp310-win_amd64.whl
     - typing_extensions
     - colorama
     - dataclasses-json

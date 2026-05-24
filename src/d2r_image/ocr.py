@@ -1,27 +1,15 @@
 import os
 import sys
 if os.name == 'nt':
-    import ctypes
-    _dll_dirs = [d for d in [
+    # Register conda DLL dirs so Python's .pyd loader (LOAD_LIBRARY_SEARCH_USER_DIRS)
+    # can find tesserocr's dependencies (tesseract, leptonica, etc.)
+    for _d in [
         os.path.join(sys.prefix, 'Library', 'bin'),
         os.path.join(sys.prefix, 'Library', 'mingw-w64', 'bin'),
         os.path.join(sys.prefix, 'Library', 'usr', 'bin'),
-    ] if os.path.isdir(d)]
-    # Register dirs for Python's .pyd loader
-    for _d in _dll_dirs:
-        os.add_dll_directory(_d)
-    # Preload tesseract51.dll via LoadLibraryExW with LOAD_LIBRARY_SEARCH_DEFAULT_DIRS.
-    # Unlike ctypes.WinDLL/LoadLibraryW, this flag propagates to the ENTIRE
-    # transitive dep chain (leptonica, mingw runtimes, etc.), resolving them
-    # all via the user DLL dirs registered above.
-    _LoadLibEx = ctypes.windll.kernel32.LoadLibraryExW
-    _LoadLibEx.restype = ctypes.c_void_p
-    _LoadLibEx.argtypes = [ctypes.c_wchar_p, ctypes.c_void_p, ctypes.c_ulong]
-    for _d in _dll_dirs:
-        _tess = os.path.join(_d, 'tesseract51.dll')
-        if os.path.isfile(_tess):
-            _LoadLibEx(_tess, None, 0x1000)  # LOAD_LIBRARY_SEARCH_DEFAULT_DIRS
-            break
+    ]:
+        if os.path.isdir(_d):
+            os.add_dll_directory(_d)
 from tesserocr import PyTessBaseAPI, OEM
 import numpy as np
 import cv2
