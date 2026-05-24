@@ -29,9 +29,9 @@ test_cases = {
     69: "e",       # force_move
     87: "w",       # weapon_switch
     16: "capslock",  # stand_still
-    256: "alt",    # show_items
-    52: "5",       # teleport
-    53: "6",       # town_portal
+    256: "left alt",    # show_items
+    52: "4",
+    53: "5",
     116: "f5",     # conviction
     117: "f6",     # foh
     118: "f7",     # holy_bolt
@@ -54,7 +54,7 @@ print(f"  Result: {ok} passed, {fail} failed")
 print("\n2. Finding key file:")
 config = Config()
 d2r_path = config.general["d2r_path"]
-char_name = config.general["name"]
+char_name = config.general.get("char_name") or config.general["name"]
 print(f"  D2R path: {d2r_path}")
 print(f"  Character: {char_name}")
 
