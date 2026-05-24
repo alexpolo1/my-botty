@@ -24,6 +24,7 @@ from game_controller import GameController
 from utils.graphic_debugger import GraphicDebuggerController
 from utils.misc import restore_d2r_window_visibility
 from utils.auto_settings import adjust_settings, backup_settings, restore_settings_from_backup
+from ui.run_selector import open_run_selector
 
 @dataclass
 class Controllers():
@@ -104,6 +105,7 @@ def main():
     print("\nFor gettings started and documentation\nplease read https://github.com/aeon0/botty\n")
     table = BeautifulTable()
     table.set_style(BeautifulTable.STYLE_BOX_ROUNDED)
+    table.rows.append([Config().advanced_options['select_runs_key'], "Select boss / farm runs"])
     table.rows.append([Config().advanced_options['restore_settings_from_backup_key'], "Restore D2R settings from backup"])
     table.rows.append([Config().advanced_options['settings_backup_key'], "Backup D2R current settings"])
     table.rows.append([Config().advanced_options['auto_settings_key'], "Adjust D2R settings"])
@@ -114,6 +116,7 @@ def main():
     print(table)
     print("\n")
 
+    keyboard.add_hotkey(Config().advanced_options['select_runs_key'], lambda: open_run_selector(Config()))
     keyboard.add_hotkey(Config().advanced_options['auto_settings_key'], lambda: adjust_settings())
     keyboard.add_hotkey(Config().advanced_options['graphic_debugger_key'], lambda: start_or_stop_graphic_debugger(controllers))
     keyboard.add_hotkey(Config().advanced_options['restore_settings_from_backup_key'], lambda: restore_settings_from_backup())

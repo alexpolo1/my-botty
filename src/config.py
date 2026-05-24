@@ -359,6 +359,7 @@ class Config:
             "auto_settings_key": self._select_val("advanced_options", "auto_settings_key"),
             "restore_settings_from_backup_key": self._select_val("advanced_options", "restore_settings_from_backup_key"),
             "settings_backup_key": self._select_val("advanced_options", "settings_backup_key"),
+            "select_runs_key": self._select_val("advanced_options", "select_runs_key"),
             "graphic_debugger_key": self._select_val("advanced_options", "graphic_debugger_key"),
             "hwnd_window_title": _default_iff(Config()._select_val("advanced_options", "hwnd_window_title"), ''),
             "hwnd_window_process": _default_iff(Config()._select_val("advanced_options", "hwnd_window_process"), ''),
