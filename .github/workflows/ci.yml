@@ -70,6 +70,38 @@ jobs:
           C:\Miniconda\condabin\conda.bat activate botty
           python build.py --conda_path C:\Miniconda
 
+      - name: Launch smoke test (built executables)
+        shell: powershell
+        run: |
+          $ErrorActionPreference = "Stop"
+          $BOTTY_DIR = Get-ChildItem -Directory -Name | Where-Object { $_ -match '^botty_v' } | Select-Object -First 1
+          if (-not $BOTTY_DIR) { throw "No botty_v* build directory found." }
+
+          $mainExe = Join-Path $BOTTY_DIR "main.exe"
+          $shopperExe = Join-Path $BOTTY_DIR "shopper.exe"
+          if (-not (Test-Path $mainExe)) { throw "Missing $mainExe" }
+          if (-not (Test-Path $shopperExe)) { throw "Missing $shopperExe" }
+
+          $procs = @()
+          try {
+            $mainProc = Start-Process -FilePath $mainExe -PassThru -WindowStyle Hidden
+            Start-Sleep -Seconds 6
+            if ($mainProc.HasExited) { throw "main.exe exited early with code $($mainProc.ExitCode)" }
+            $procs += $mainProc
+
+            $shopperProc = Start-Process -FilePath $shopperExe -PassThru -WindowStyle Hidden
+            Start-Sleep -Seconds 6
+            if ($shopperProc.HasExited) { throw "shopper.exe exited early with code $($shopperProc.ExitCode)" }
+            $procs += $shopperProc
+          }
+          finally {
+            foreach ($p in $procs) {
+              if ($p -and -not $p.HasExited) {
+                Stop-Process -Id $p.Id -Force
+              }
+            }
+          }
+
       - name: Prepare release zip
         shell: powershell
         run: |
