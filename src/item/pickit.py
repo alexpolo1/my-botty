@@ -194,10 +194,16 @@ class PickIt:
                 cached_pickup = self._cached_pickit_items[item.ID]
                 if (not cached_pickup) and self._force_pickup_gold(item):
                     cached_pickup = True
+                    raw_expression = "pick_gold=1 (gold pickup override)"
+                if (not cached_pickup) and self._force_pickup_rare_for_gold(item):
+                    cached_pickup = True
+                    raw_expression = "pick_rares_for_gold=1 (rare quality override)"
                 if cached_pickup and not (self._ignore_consumable(item) or self._ignore_gold(item)):
                     Logger.debug(f"Pick up expression: {raw_expression}")
                     Logger.info(f"Attempt to pick up {item.Name} at distance {item.Distance}")
                     pick_up_res = self._pick_up_item(char, item)
+                elif not cached_pickup:
+                    Logger.debug(f"Skip item {item.Name} at distance {item.Distance}: cached no matching pickit rule")
             else:
                 item_dict = item.as_dict()
                 # if the item shouldn't be ignored, check if it should be picked up
