@@ -41,6 +41,7 @@ class GameStats:
         self._starting_exp = 0
         self._current_exp = 1
         self._current_lvl = 0
+        self._exp_logging_disabled = False
         os.makedirs("log/stats", exist_ok=True)
 
     def _log_event(self, event_type: str, data: dict | None = None):
@@ -168,7 +169,20 @@ class GameStats:
         self._persist_snapshot()
 
     def log_exp(self):
-        exp = player_bar.get_experience()
+        if self._exp_logging_disabled:
+            return
+
+        try:
+            exp = player_bar.get_experience()
+        except RuntimeError as e:
+            self._exp_logging_disabled = True
+            Logger.warning(f"XP tracking disabled for this session: {e}")
+            self._log_event("exp_tracking_disabled", {"reason": str(e)})
+            self._persist_snapshot()
+            return
+        except Exception as e:
+            Logger.warning(f"Failed to log exp: {e}")
+            return
 
         if exp[1] > 0:
             curr_lvl = get_level(exp[1])['lvl']
