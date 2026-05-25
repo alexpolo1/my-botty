@@ -209,5 +209,17 @@ if ($failedImports.Count -eq 0) {
 }
 
 Write-Check "FAIL" "Dependency check failed. Missing/broken: $($failedImports -join ', ')"
-Write-Host "Suggested fix: run install.bat from repo root, then run this check again." -ForegroundColor Yellow
+Write-Host ""
+Write-Host "Suggested fix steps:" -ForegroundColor Yellow
+Write-Host "  1) From repo root, run: .\install.bat" -ForegroundColor Yellow
+Write-Host "  2) Re-run this check: .\check_dependencies.bat" -ForegroundColor Yellow
+Write-Host ""
+Write-Host "Manual fallback (if install.bat fails):" -ForegroundColor Yellow
+Write-Host "  conda create -n botty -y python=3.10" -ForegroundColor Yellow
+Write-Host "  conda activate botty" -ForegroundColor Yellow
+Write-Host "  python -m pip install -r requirements.txt" -ForegroundColor Yellow
+Write-Host "  python -m pip install dependencies\tesserocr-2.5.2-cp310-cp310-win_amd64.whl" -ForegroundColor Yellow
+Write-Host "  .\check_dependencies.bat" -ForegroundColor Yellow
+Write-Host ""
+Write-Host "Important: Botty OCR expects the botty env + tesserocr. Python 3.13 envs usually fail OCR setup." -ForegroundColor Yellow
 exit 1
