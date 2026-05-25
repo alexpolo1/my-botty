@@ -1,0 +1,22 @@
+; Personal overrides for your local machine/user.
+; This file is tracked as an example.
+; Copy to config/custom.ini and edit values there.
+;
+; Botty auto-loads config/custom.ini when present.
+
+[general]
+; name=botty
+; custom_message_hook=
+; custom_loot_message_hook=
+
+[char]
+; type=blizz_sorc
+; atk_len_pindle=3.0
+; show_items=alt
+
+[sorceress]
+; teleport=t
+
+[blizz_sorc]
+; blizzard=f1
+; ice_blast=f2

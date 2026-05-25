@@ -7,7 +7,7 @@ import traceback
 import discord
 from version import __version__
 import numpy as np
-from discord import Webhook, SyncWebhook, Color
+from discord import SyncWebhook, Color
 import json
 class DiscordEmbeds(GenericApi):
     def __init__(self):
@@ -22,7 +22,7 @@ class DiscordEmbeds(GenericApi):
             hook_url = Config().general['custom_message_hook']
         if hook_url:
             try:
-                hook = Webhook.from_url(hook_url, adapter=SyncWebhook(), )
+                hook = SyncWebhook.from_url(hook_url)
             except BaseException as e:
                 Logger.warning(f"Your custom_message_hook URL {hook_url} is invalid, Discord updates will not be sent")
                 Logger.error(f"Error initializing webhook {hook_url}: {e}")
@@ -95,6 +95,8 @@ class DiscordEmbeds(GenericApi):
         self._send_embed(e, self._webhook)
 
     def _send_embed(self, e, webhook, file = None):
+        if webhook is None:
+            return
         e.set_footer(text=f'Botty v.{__version__} by Aeon')
         e.timestamp=datetime.datetime.now(datetime.timezone.utc)
         try:

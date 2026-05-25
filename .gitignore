@@ -15,6 +15,7 @@ botty_v*/
 custom.ini
 config/custom.ini
 config/custom.*.ini
+config/*.local.ini
 .vscode
 .vs/
 test/assets/
@@ -36,3 +37,9 @@ pickit_screenshots/
 *.log
 log/
 blizzpw.txt
+
+# Local user/workspace files
+.claude/
+GEMINI.md
+botty_v*.zip
+test_config_load.py
