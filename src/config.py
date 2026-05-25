@@ -290,6 +290,7 @@ class Config:
             "runs_per_repair": False if not self._select_val("char", "runs_per_repair") else int(self._select_val("char", "runs_per_repair")),
             "gamble_items": False if not self._select_val("char", "gamble_items") else self._select_val("char", "gamble_items").replace(" ","").split(","),
             "sell_junk": bool(int(self._select_val("char", "sell_junk"))),
+            "protect_shields_from_sell": bool(int(self._select_optional("char", "protect_shields_from_sell", "1"))),
             "pick_rares_for_gold": bool(int(self._select_optional("char", "pick_rares_for_gold", "0"))),
             "pick_gold": bool(int(self._select_optional("char", "pick_gold", "1"))),
             "enable_no_pickup": bool(int(self._select_val("char", "enable_no_pickup"))),

@@ -35,6 +35,7 @@ class BoxInfo:
     pos: tuple = None
     column: int = None
     row: int = None
+    name: str = ""
     need_id: bool = False
     sell: bool = False
     keep: bool = False
@@ -288,6 +289,7 @@ def inspect_items(inp_img: np.ndarray = None, close_window: bool = True, game_st
                     pos = (x_m, y_m),
                     column = slot[2],
                     row = slot[1],
+                    name = item_name,
                     sell = sell,
                     need_id = False,
                     keep = False
@@ -378,6 +380,17 @@ def transfer_items(items: list, action: str = "drop", img: np.ndarray = None) ->
             filtered = [ item for item in items if item.keep == False and item.sell == False ]
         case "sell":
             filtered = [ item for item in items if item.keep == False and item.sell == True ]
+            if Config().char.get("protect_shields_from_sell", True):
+                safe_filtered = []
+                for item in filtered:
+                    item_name = (item.name or "").lower()
+                    if "shield" in item_name:
+                        Logger.warning(f"Blocked sell for protected item: {item.name} at {item.pos}")
+                        # keep this item out of the sell path
+                        item.sell = False
+                        continue
+                    safe_filtered.append(item)
+                filtered = safe_filtered
             if not left_panel_open:
                 Logger.error(f"transfer_items: Can't perform, vendor is not open")
         case "stash":
@@ -425,7 +438,8 @@ def transfer_items(items: list, action: str = "drop", img: np.ndarray = None) ->
                     wait(0.2, 0.3)
                     mouse.release(button="left")
                 # item successfully transferred, delete from list
-                Logger.debug(f"Confirmed {action} at position {item.pos}")
+                item_label = f" '{item.name}'" if item.name else ""
+                Logger.debug(f"Confirmed {action}{item_label} at position {item.pos}")
                 for cnt, o_item in enumerate(items):
                     if o_item.pos == item.pos:
                         items.pop(cnt)
