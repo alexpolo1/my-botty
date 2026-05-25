@@ -27,6 +27,10 @@ Double-click **`run_botty.bat`**. Switch to D2R, go to the hero selection screen
 
 > D2R must be in **English** and running at **720p** window mode.
 
+Optional personal setup:
+- Copy `.env.example` to `.env` in the repo root and set personal values there.
+- `.env` is git-ignored so multiple testers can use different local values without git conflicts.
+
 ---
 
 ## Getting started & Prerequisites
@@ -53,6 +57,15 @@ Open up D2R and wait till you are at the hero selection screen. Make sure the ch
 - **Manual**: `conda activate botty` then `python src\main.py`
 
 After starting, focus your D2R window and press the start key (default f11). You can always force stop botty with f12. Note: Botty will use the /nopickup command in the first game to avoid pickup up trash while traversing. This command will only allow item pickup when "show items" is active.
+
+### Stability and safety updates
+
+- XP OCR parsing now tolerates common OCR mistakes (`I/l/| -> 1`, `O/o -> 0`, mixed-case "experience").
+- XP status math no longer throws on early-session edge cases; unavailable projections show as `n/a`.
+- Routine repair is best-effort for native-teleport builds to reduce fail spirals when NPC detection is flaky.
+- Repair fallback from A5 now attempts A4 from Larzuk location for better path reliability.
+- Discord message sending now guards invalid embed payloads and has a plain-text fallback.
+- Selling now logs item names (not just positions) and shields are protected by default.
 
 ## Development
 
