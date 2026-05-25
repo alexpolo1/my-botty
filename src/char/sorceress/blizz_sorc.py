@@ -4,6 +4,7 @@ from input_layer import mouse
 from logger import Logger
 from utils.misc import wait, rotate_vec, unit_vector
 import random
+import time
 from pather import Location
 import numpy as np
 from screen import convert_abs_to_monitor, grab, convert_screen_to_abs
@@ -26,6 +27,8 @@ class BlizzSorc(Sorceress):
         #Nihlathak Bottom Left
         self._pather.offset_node(500, (-150, 200))
         self._pather.offset_node(501, (10, -33))
+        self._blizz_cycle_duration = 1.8 + (self._action_frame / 25.0)
+        self._last_blizz_cast = 0
 
     def _ice_blast(self, cast_pos_abs: tuple[float, float], delay: tuple[float, float] = (0.16, 0.23), spray: float = 10):
         keyboard.send(Config().char["stand_still"], do_release=False)
@@ -49,6 +52,13 @@ class BlizzSorc(Sorceress):
         y = cast_pos_abs[1] + (random.random() * 2 * spray - spray)
         cast_pos_monitor = convert_abs_to_monitor((x, y))
         mouse.move(*cast_pos_monitor)
+
+        now = time.time()
+        while (now - self._last_blizz_cast) < self._blizz_cycle_duration:
+            wait(0.04)
+            now = time.time()
+        self._last_blizz_cast = now
+
         click_tries = random.randint(2, 4)
         for _ in range(click_tries):
             mouse.press(button="right")

@@ -23,15 +23,18 @@ class FoHdin(Paladin):
         self._last_foh_cast = 0
 
     def _cast_foh(self, cast_pos_abs: tuple[float, float], spray: int = 10, min_duration: float = 0, aura: str = "conviction"):
-        #wait one frame until the foh cooldown has expired
-        now = time.time()
-        while (now - self._last_foh_cast) < self._foh_cycle_duration:
-            wait(0.04)
+        start = time.time()
+        while True:
+            # Wait until the FoH cooldown has expired before each click.
             now = time.time()
-        self._last_foh_cast = now 
-        rt = self._cast_skill_with_aura(skill_name = "foh", cast_pos_abs = cast_pos_abs, spray = spray, min_duration = min_duration, aura = aura)
-        self._last_foh_cast = self._last_click_cast 
-        return rt
+            while (now - self._last_foh_cast) < self._foh_cycle_duration:
+                wait(0.04)
+                now = time.time()
+            self._last_foh_cast = now
+            rt = self._cast_skill_with_aura(skill_name = "foh", cast_pos_abs = cast_pos_abs, spray = spray, aura = aura)
+            self._last_foh_cast = self._last_click_cast
+            if not min_duration or (time.time() - start) >= min_duration:
+                return rt
 
     def _cast_holy_bolt(self, cast_pos_abs: tuple[float, float], spray: int = 10, min_duration: float = 0, aura: str = "concentration"):
         #if skill is bound : concentration, use concentration, otherwise move on with conviction. alternatively use redemption whilst holybolting. conviction does not help holy bolt (its magic damage)
