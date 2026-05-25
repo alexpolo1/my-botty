@@ -91,7 +91,7 @@ exit /b 1
 :env_created
 echo Botty Python: %PYTHON%
 
-:: --- Remove old pip-installed tesserocr wheel if present (replaced by conda-forge package) ---
+:: --- Remove old pip-installed tesserocr wheel if present (we may reinstall from bundled wheel below) ---
 echo.
 echo Removing old pip-installed tesserocr if present...
 "%PYTHON%" -m pip uninstall tesserocr -y >nul 2>&1
@@ -106,13 +106,36 @@ if %errorlevel% neq 0 (
     echo WARNING: Dependency check failed. Running diagnostics...
     echo.
     "%CONDA_EXE%" run -n botty python -c "import tesserocr; print('  tesserocr: OK')" 2>&1
+    if %errorlevel% neq 0 (
+        echo.
+        echo tesserocr is missing from conda environment. Trying bundled wheel fallback...
+        if exist "dependencies\tesserocr-2.5.2-cp310-cp310-win_amd64.whl" (
+            "%CONDA_EXE%" run -n botty python -m pip install --force-reinstall --no-deps "dependencies\tesserocr-2.5.2-cp310-cp310-win_amd64.whl"
+            if %errorlevel% neq 0 (
+                echo.
+                echo ERROR: Bundled tesserocr wheel install failed.
+            ) else (
+                echo Bundled tesserocr wheel installed, re-checking imports...
+                "%CONDA_EXE%" run -n botty python -c "import cv2,mss,numpy,tesserocr,discord,transitions,rapidfuzz" >nul 2>&1
+                if %errorlevel% equ 0 (
+                    echo All key dependencies verified after wheel fallback.
+                    goto :install_done
+                )
+            )
+        ) else (
+            echo.
+            echo ERROR: Missing fallback wheel:
+            echo   dependencies\tesserocr-2.5.2-cp310-cp310-win_amd64.whl
+        )
+    )
     echo.
     echo *** Do NOT run "pip install tesserocr" manually - it builds from source and
-    echo *** will always fail on Windows. Re-run install.bat to fix dependencies.
+    echo *** will usually fail on Windows. Re-run install.bat to fix dependencies.
 ) else (
     echo All key dependencies verified.
 )
 
+:install_done
 echo.
 echo ============================================
 echo  Installation complete!
