@@ -30,6 +30,30 @@ function Test-PythonImport {
     return ($code -eq 0)
 }
 
+function Get-RequirementPackageNames {
+    param(
+        [string]$RequirementsPath
+    )
+    $names = @()
+    if (-not (Test-Path $RequirementsPath)) {
+        return $names
+    }
+    foreach ($line in Get-Content $RequirementsPath) {
+        $trim = $line.Trim()
+        if (-not $trim -or $trim.StartsWith("#")) { continue }
+        # Strip inline comments.
+        $trim = ($trim -split "#")[0].Trim()
+        if (-not $trim) { continue }
+        # Strip environment markers.
+        $trim = ($trim -split ";")[0].Trim()
+        if (-not $trim) { continue }
+        # Extract package name before version/operator extras.
+        $name = ($trim -split "[<>=!~\[\]\s]")[0].Trim()
+        if ($name) { $names += $name }
+    }
+    return ($names | Select-Object -Unique)
+}
+
 $repoRoot = Resolve-Path (Join-Path $PSScriptRoot "..")
 Set-Location $repoRoot
 
@@ -116,6 +140,35 @@ if (Test-PythonImport -PythonExe $pythonExe -ModuleName "tesserocr") {
 } else {
     Write-Check "FAIL" "tesserocr missing. Run install.bat in the botty repo."
     $failedImports += "tesserocr"
+}
+
+# requirements.txt package check
+$requirementsPath = Join-Path $repoRoot "requirements.txt"
+if (Test-Path $requirementsPath) {
+    Write-Host ""
+    Write-Host "--- requirements.txt package check ---" -ForegroundColor Cyan
+    $reqMissing = @()
+    $reqPkgs = Get-RequirementPackageNames -RequirementsPath $requirementsPath
+    foreach ($pkg in $reqPkgs) {
+        $prevEap = $ErrorActionPreference
+        $ErrorActionPreference = "Continue"
+        cmd /c "$pythonExe -m pip show $pkg" *> $null
+        $pkgCode = $LASTEXITCODE
+        $ErrorActionPreference = $prevEap
+        if ($pkgCode -eq 0) {
+            Write-Check "PASS" "pip package '$pkg' installed"
+        } else {
+            Write-Check "FAIL" "pip package '$pkg' missing"
+            $reqMissing += $pkg
+        }
+    }
+    if ($reqMissing.Count -gt 0) {
+        Write-Host "Missing requirements packages: $($reqMissing -join ', ')" -ForegroundColor Yellow
+        Write-Host "Install with: $pythonExe -m pip install -r requirements.txt" -ForegroundColor Yellow
+        $failedImports += ($reqMissing | ForEach-Object { "pip:$($_)" })
+    }
+} else {
+    Write-Check "WARN" "requirements.txt not found, skipping pip package check"
 }
 
 # Read d2r_path from params.ini
