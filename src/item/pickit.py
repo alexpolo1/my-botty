@@ -201,7 +201,12 @@ class PickIt:
             else:
                 item_dict = item.as_dict()
                 # if the item shouldn't be ignored, check if it should be picked up
-                if not (self._ignore_gold(item) or self._ignore_consumable(item)):
+                ignored_gold = self._ignore_gold(item)
+                ignored_consumable = self._ignore_consumable(item)
+                if ignored_gold or ignored_consumable:
+                    reason = "gold_disabled_or_full" if ignored_gold else "consumable_not_needed"
+                    Logger.debug(f"Skip item {item.Name} at distance {item.Distance}: {reason}")
+                else:
                     pickup, raw_expression = should_pickup(item_dict)
                     if not pickup and self._force_pickup_gold(item):
                         pickup = True
@@ -210,6 +215,8 @@ class PickIt:
                         pickup = True
                         raw_expression = "pick_rares_for_gold=1 (rare quality override)"
                     self._cached_pickit_items[item.ID] = pickup
+                    if not pickup:
+                        Logger.debug(f"Skip item {item.Name} at distance {item.Distance}: no matching pickit rule")
                 if pickup:
                     Logger.debug(f"Pick up expression: {raw_expression}")
                     Logger.info(f"Attempt to pick up {item.Name} at distance {item.Distance}")

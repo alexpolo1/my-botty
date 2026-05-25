@@ -578,116 +578,152 @@ class Bot:
     def on_run_level(self):
         res = False
         self._do_runs["run_level"] = False
-        self._game_stats.update_location("Lvl")
+        self._game_stats.update_location("Level")
+        self._game_stats.log_run_started("run_level")
         self._curr_loc = self._level.approach(self._curr_loc, not self._pre_buffed)
         if self._curr_loc:
             set_pause_state(False)
             res = self._level.battle()
+        picked = res[1] if isinstance(res, tuple) and len(res) > 1 else None
+        self._game_stats.log_run_finished("run_level", not bool(res), picked)
         self._ending_run_helper(res)
 
     def on_run_pindle(self):
         res = False
         self._do_runs["run_pindle"] = False
-        self._game_stats.update_location("Pin")
+        self._game_stats.update_location("Pindle")
+        self._game_stats.log_run_started("run_pindle")
         self._curr_loc = self._pindle.approach(self._curr_loc, not self._pre_buffed)
         if self._curr_loc:
             set_pause_state(False)
             res = self._pindle.battle()
+        picked = res[1] if isinstance(res, tuple) and len(res) > 1 else None
+        self._game_stats.log_run_finished("run_pindle", not bool(res), picked)
         self._ending_run_helper(res)
 
     def on_run_shenk(self):
         res = False
         self._do_runs["run_shenk"] = False
+        self._game_stats.log_run_started("run_shenk")
         self._curr_loc = self._shenk.approach(self._curr_loc)
         if self._curr_loc:
             set_pause_state(False)
             res = self._shenk.battle(Config().routes.get("run_eldritch_shenk"), not self._pre_buffed, self._game_stats)
+        picked = res[1] if isinstance(res, tuple) and len(res) > 1 else None
+        self._game_stats.log_run_finished("run_shenk", not bool(res), picked)
         self._ending_run_helper(res)
 
     def on_run_trav(self):
         res = False
         self._do_runs["run_trav"] = False
-        self._game_stats.update_location("Trav")
+        self._game_stats.update_location("Travincal")
+        self._game_stats.log_run_started("run_trav")
         self._curr_loc = self._trav.approach(self._curr_loc)
         if self._curr_loc:
             set_pause_state(False)
             res = self._trav.battle(not self._pre_buffed)
+        picked = res[1] if isinstance(res, tuple) and len(res) > 1 else None
+        self._game_stats.log_run_finished("run_trav", not bool(res), picked)
         self._ending_run_helper(res)
 
     def on_run_nihlathak(self):
         res = False
         self._do_runs["run_nihlathak"] = False
-        self._game_stats.update_location("Nihl")
+        self._game_stats.update_location("Nihlathak")
+        self._game_stats.log_run_started("run_nihlathak")
         self._curr_loc = self._nihlathak.approach(self._curr_loc)
         if self._curr_loc:
             set_pause_state(False)
             res = self._nihlathak.battle(True)
+        picked = res[1] if isinstance(res, tuple) and len(res) > 1 else None
+        self._game_stats.log_run_finished("run_nihlathak", not bool(res), picked)
         self._ending_run_helper(res)
 
     def on_run_arcane(self):
         res = False
         self._do_runs["run_arcane"] = False
-        self._game_stats.update_location("Arc")
+        self._game_stats.update_location("Arcane")
+        self._game_stats.log_run_started("run_arcane")
         self._curr_loc = self._arcane.approach(self._curr_loc)
         if self._curr_loc:
             set_pause_state(False)
             res = self._arcane.battle(not self._pre_buffed)
+        picked = res[1] if isinstance(res, tuple) and len(res) > 1 else None
+        self._game_stats.log_run_finished("run_arcane", not bool(res), picked)
         self._ending_run_helper(res)
 
     def on_run_diablo(self):
         res = False
         self._do_runs["run_diablo"] = False
-        self._game_stats.update_location("Dia")
+        self._game_stats.update_location("Diablo")
+        self._game_stats.log_run_started("run_diablo")
         self._curr_loc = self._diablo.approach(self._curr_loc)
         if self._curr_loc:
             set_pause_state(False)
             res = self._diablo.battle(not self._pre_buffed)
+        picked = res[1] if isinstance(res, tuple) and len(res) > 1 else None
+        self._game_stats.log_run_finished("run_diablo", not bool(res), picked)
         self._ending_run_helper(res)
 
     def on_run_vizier(self):
         res = False
         self._do_runs["run_vizier"] = False
-        self._game_stats.update_location("Dia")
+        self._game_stats.update_location("Vizier")
+        self._game_stats.log_run_started("run_vizier")
         self._curr_loc = self._vizier.approach(self._curr_loc)
         if self._curr_loc:
             set_pause_state(False)
             res = self._vizier.battle(not self._pre_buffed)
+        picked = res[1] if isinstance(res, tuple) and len(res) > 1 else None
+        self._game_stats.log_run_finished("run_vizier", not bool(res), picked)
         self._ending_run_helper(res)
     def on_run_baal(self):
         res = False
         self._do_runs["run_baal"] = False
-        self._game_stats.update_location("Baa")
+        self._game_stats.update_location("Baal")
+        self._game_stats.log_run_started("run_baal")
         self._curr_loc = self._baal.approach(self._curr_loc)
         if self._curr_loc:
             set_pause_state(False)
             res = self._baal.battle(not self._pre_buffed)
+        picked = res[1] if isinstance(res, tuple) and len(res) > 1 else None
+        self._game_stats.log_run_finished("run_baal", not bool(res), picked)
         self._ending_run_helper(res)
     def on_run_mephisto(self):
         res = False
         self._do_runs["run_mephisto"] = False
-        self._game_stats.update_location("Mep")
+        self._game_stats.update_location("Mephisto")
+        self._game_stats.log_run_started("run_mephisto")
         self._curr_loc = self._mephisto.approach(self._curr_loc)
         if self._curr_loc:
             set_pause_state(False)
             res = self._mephisto.battle(not self._pre_buffed)
+        picked = res[1] if isinstance(res, tuple) and len(res) > 1 else None
+        self._game_stats.log_run_finished("run_mephisto", not bool(res), picked)
         self._ending_run_helper(res)
     def on_run_andariel(self):
         res = False
         self._do_runs["run_andariel"] = False
-        self._game_stats.update_location("And")
+        self._game_stats.update_location("Andariel")
+        self._game_stats.log_run_started("run_andariel")
         self._curr_loc = self._andariel.approach(self._curr_loc)
         if self._curr_loc:
             set_pause_state(False)
             res = self._andariel.battle(not self._pre_buffed)
+        picked = res[1] if isinstance(res, tuple) and len(res) > 1 else None
+        self._game_stats.log_run_finished("run_andariel", not bool(res), picked)
         self._ending_run_helper(res)
     def on_run_countess(self):
         res = False
         self._do_runs["run_countess"] = False
-        self._game_stats.update_location("Cou")
+        self._game_stats.update_location("Countess")
+        self._game_stats.log_run_started("run_countess")
         self._curr_loc = self._countess.approach(self._curr_loc)
         if self._curr_loc:
             set_pause_state(False)
             res = self._countess.battle(not self._pre_buffed)
+        picked = res[1] if isinstance(res, tuple) and len(res) > 1 else None
+        self._game_stats.log_run_finished("run_countess", not bool(res), picked)
         self._ending_run_helper(res)
 
 

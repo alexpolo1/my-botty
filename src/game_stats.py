@@ -3,6 +3,8 @@ import numpy as np
 import time
 import threading
 import inspect
+import json
+import os
 from beautifultable import BeautifulTable
 
 from logger import Logger
@@ -34,19 +36,46 @@ class GameStats:
         self._location_stats = {}
         self._location_stats["totals"] = { "items": 0, "deaths": 0, "chickens": 0, "merc_deaths": 0, "failed_runs": 0 }
         self._stats_filename = f'stats_{time.strftime("%Y%m%d_%H%M%S")}.log'
+        self._events_filename = f'events_{time.strftime("%Y%m%d_%H%M%S")}.jsonl'
         self._nopickup_active = False
         self._starting_exp = 0
         self._current_exp = 1
         self._current_lvl = 0
+        os.makedirs("log/stats", exist_ok=True)
+
+    def _log_event(self, event_type: str, data: dict | None = None):
+        payload = {
+            "ts": time.strftime("%Y-%m-%dT%H:%M:%S"),
+            "event": event_type,
+            "game": self._game_counter,
+            "run": self._run_counter,
+            "location": self._location,
+        }
+        if data:
+            payload.update(data)
+        try:
+            with open(file=f"log/stats/{self._events_filename}", mode="a", encoding="utf-8") as f:
+                f.write(json.dumps(payload, ensure_ascii=True) + "\n")
+        except Exception as e:
+            Logger.warning(f"Failed to write structured event log: {e}")
 
     def update_location(self, loc: str):
         if self._location != loc:
+            previous_location = self._location
             self._location = str(loc)
             self.populate_location_stat()
+            self._log_event("location_changed", {"from": previous_location, "to": self._location})
 
     def populate_location_stat(self):
         if self._location not in self._location_stats:
-            self._location_stats[self._location] = { "items": [], "deaths": 0, "chickens": 0, "merc_deaths": 0, "failed_runs": 0 }
+            self._location_stats[self._location] = {
+                "items": [],
+                "item_counts": {},
+                "deaths": 0,
+                "chickens": 0,
+                "merc_deaths": 0,
+                "failed_runs": 0
+            }
 
     def log_item_keep(self, item_name: str, send_message: bool, img: np.ndarray, ocr_text: str = '', expression: str = '', item_props: dict = {}):
         filtered_substrings = [" POTION", " OF IDENTIFY", " OF TOWN PORTAL", " AMETHYST", " RUBY", " TOPAZ", " EMERALD", " SAPPHIRE", " DIAMOND"]
@@ -56,7 +85,12 @@ class GameStats:
         if self._location is not None and not skip_log:
             Logger.debug(f"Stashed and logged: {item_name}")
             self._location_stats[self._location]["items"].append(item_name)
+            item_counts = self._location_stats[self._location]["item_counts"]
+            item_counts[item_name] = item_counts.get(item_name, 0) + 1
             self._location_stats["totals"]["items"] += 1
+            self._log_event("item_kept", {"item_name": item_name, "expression": expression})
+        elif self._location is not None and skip_log:
+            self._log_event("item_kept_filtered", {"item_name": item_name, "reason": "filtered"})
 
         if send_message and self._messenger.enabled and not skip_log:
             if expression[0] != "@":
@@ -67,6 +101,7 @@ class GameStats:
         if self._location is not None:
             self._location_stats[self._location]["deaths"] += 1
             self._location_stats["totals"]["deaths"] += 1
+            self._log_event("death")
 
         if self._messenger.enabled:
             self._messenger.send_death(self._location, img)
@@ -76,6 +111,7 @@ class GameStats:
         if self._location is not None:
             self._location_stats[self._location]["chickens"] += 1
             self._location_stats["totals"]["chickens"] += 1
+            self._log_event("chicken")
 
         if Config().general["discord_log_chicken"] and self._messenger.enabled:
             self._messenger.send_chicken(self._location, img)
@@ -85,6 +121,7 @@ class GameStats:
         if self._location is not None:
             self._location_stats[self._location]["merc_deaths"] += 1
             self._location_stats["totals"]["merc_deaths"] += 1
+            self._log_event("merc_death")
 
     def log_start_game(self):
         if self._game_counter > 0:
@@ -95,6 +132,7 @@ class GameStats:
         self._game_counter += 1
         self._timer = time.time()
         Logger.info(f"Starting game #{self._game_counter}")
+        self._log_event("game_started")
 
     def log_end_game(self, failed: bool = False):
         elapsed_time = 0
@@ -109,9 +147,11 @@ class GameStats:
                 self._location_stats["totals"]["failed_runs"] += 1
             self._failed_game_time += elapsed_time
             Logger.warning(f"End failed game: Elapsed time: {elapsed_time:.2f}s Fails: {self._consecutive_runs_failed}")
+            self._log_event("game_ended", {"failed": True, "elapsed_seconds": round(elapsed_time, 2)})
         else:
             self._consecutive_runs_failed = 0
             Logger.info(f"End game. Elapsed time: {elapsed_time:.2f}s")
+            self._log_event("game_ended", {"failed": False, "elapsed_seconds": round(elapsed_time, 2)})
 
     def log_exp(self):
         exp = player_bar.get_experience()
@@ -150,6 +190,15 @@ class GameStats:
 
     def get_consecutive_runs_failed(self):
         return self._consecutive_runs_failed
+
+    def log_run_started(self, run_name: str):
+        self._log_event("run_started", {"run_name": run_name})
+
+    def log_run_finished(self, run_name: str, failed: bool, picked_up_items: bool | None = None):
+        payload = {"run_name": run_name, "failed": failed}
+        if picked_up_items is not None:
+            payload["picked_up_items"] = picked_up_items
+        self._log_event("run_finished", payload)
 
     def _create_msg(self):
         elapsed_time = time.time() - self._start_time
@@ -228,6 +277,11 @@ class GameStats:
             msg += f"\n  {location}:"
             for item_name in stats["items"]:
                 msg += f"\n    {item_name}"
+            if len(stats["item_counts"]) > 0:
+                msg += "\n    Item counts:"
+                sorted_counts = sorted(stats["item_counts"].items(), key=lambda x: x[1], reverse=True)
+                for item_name, count in sorted_counts:
+                    msg += f"\n      {item_name}: {count}"
 
         with open(file=f"log/stats/{self._stats_filename}", mode="w+", encoding="utf-8") as f:
             f.write(msg)

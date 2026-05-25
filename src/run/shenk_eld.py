@@ -38,7 +38,7 @@ class ShenkEld:
 
     def battle(self, do_shenk: bool, do_pre_buff: bool, game_stats) -> bool | tuple[Location, bool]:
         # Eldritch
-        game_stats.update_location("Eld")
+        game_stats.update_location("Eldritch")
         if not template_finder.search_and_wait(["ELDRITCH_0", "ELDRITCH_0_V2", "ELDRITCH_0_V3", "ELDRITCH_START", "ELDRITCH_START_V2"], threshold=0.65, timeout=20).valid:
             return False
         if do_pre_buff:
@@ -57,7 +57,7 @@ class ShenkEld:
         # Shenk
         if do_shenk:
             Logger.info("Run Shenk")
-            game_stats.update_location("Shk")
+            game_stats.update_location("Shenk")
             self._curr_loc = Location.A5_SHENK_START
             #Do a pre_move() to try and select tele.  Force a wait for tele to be selected so we don't walk to shenk!
             self._char.pre_move(wait_tp=True)
