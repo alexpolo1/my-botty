@@ -1,10 +1,39 @@
-from config import Config
+import re
 from screen import convert_screen_to_monitor, grab
 from input_layer import mouse
 from utils.misc import cut_roi, wait
 from logger import Logger
 from config import Config
 from d2r_image import ocr
+
+def _parse_ocr_int(token: str) -> int:
+    # Handle common OCR mistakes for numeric fields.
+    normalized = (
+        token.replace(",", "")
+        .replace(".", "")
+        .replace("I", "1")
+        .replace("l", "1")
+        .replace("|", "1")
+        .replace("O", "0")
+        .replace("o", "0")
+    )
+    return int(normalized)
+
+
+def _extract_experience_values(text: str):
+    upper = (text or "").upper()
+    # Keep only number-like tokens from OCR and parse current/required XP from the first pair.
+    tokens = re.findall(r"[0-9Il|Oo][0-9Il|Oo,\.]*", upper)
+    numbers = []
+    for token in tokens:
+        try:
+            numbers.append(_parse_ocr_int(token))
+        except Exception:
+            continue
+    if len(numbers) >= 2:
+        return numbers[0], numbers[1]
+    return 0, 0
+
 
 def get_experience():
     # mouseover exp bar
@@ -31,15 +60,13 @@ def get_experience():
         correct_words = False
     )[0]
 
-    split_text = ocr_result.text.split(' ')
-
     try:
-        split_text = split_text[split_text.index("EXPERIENCE:"):]
-        current_exp = int(split_text[1].replace(',', '').replace('.', ''))
-        required_exp = int(split_text[3].replace(',', '').replace('.', ''))
+        current_exp, required_exp = _extract_experience_values(ocr_result.text)
+        if required_exp <= 0:
+            raise ValueError(f"invalid required xp parsed from OCR: '{ocr_result.text}'")
         return current_exp, required_exp
     except Exception as e:
-        Logger.warning(f"EXP OCR Error: {split_text}. Exception: {e}")
+        Logger.warning(f"EXP OCR Error: '{ocr_result.text}'. Exception: {e}")
         return 0,0
 
 
