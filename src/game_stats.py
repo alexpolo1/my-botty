@@ -59,12 +59,20 @@ class GameStats:
         except Exception as e:
             Logger.warning(f"Failed to write structured event log: {e}")
 
+    def _persist_snapshot(self):
+        # Keep a crash-resilient human-readable snapshot updated throughout a session.
+        try:
+            self._save_stats_to_file()
+        except Exception as e:
+            Logger.warning(f"Failed to persist stats snapshot: {e}")
+
     def update_location(self, loc: str):
         if self._location != loc:
             previous_location = self._location
             self._location = str(loc)
             self.populate_location_stat()
             self._log_event("location_changed", {"from": previous_location, "to": self._location})
+            self._persist_snapshot()
 
     def populate_location_stat(self):
         if self._location not in self._location_stats:
@@ -89,6 +97,7 @@ class GameStats:
             item_counts[item_name] = item_counts.get(item_name, 0) + 1
             self._location_stats["totals"]["items"] += 1
             self._log_event("item_kept", {"item_name": item_name, "expression": expression})
+            self._persist_snapshot()
         elif self._location is not None and skip_log:
             self._log_event("item_kept_filtered", {"item_name": item_name, "reason": "filtered"})
 
@@ -102,6 +111,7 @@ class GameStats:
             self._location_stats[self._location]["deaths"] += 1
             self._location_stats["totals"]["deaths"] += 1
             self._log_event("death")
+            self._persist_snapshot()
 
         if self._messenger.enabled:
             self._messenger.send_death(self._location, img)
@@ -112,6 +122,7 @@ class GameStats:
             self._location_stats[self._location]["chickens"] += 1
             self._location_stats["totals"]["chickens"] += 1
             self._log_event("chicken")
+            self._persist_snapshot()
 
         if Config().general["discord_log_chicken"] and self._messenger.enabled:
             self._messenger.send_chicken(self._location, img)
@@ -122,6 +133,7 @@ class GameStats:
             self._location_stats[self._location]["merc_deaths"] += 1
             self._location_stats["totals"]["merc_deaths"] += 1
             self._log_event("merc_death")
+            self._persist_snapshot()
 
     def log_start_game(self):
         if self._game_counter > 0:
@@ -133,6 +145,7 @@ class GameStats:
         self._timer = time.time()
         Logger.info(f"Starting game #{self._game_counter}")
         self._log_event("game_started")
+        self._persist_snapshot()
 
     def log_end_game(self, failed: bool = False):
         elapsed_time = 0
@@ -152,6 +165,7 @@ class GameStats:
             self._consecutive_runs_failed = 0
             Logger.info(f"End game. Elapsed time: {elapsed_time:.2f}s")
             self._log_event("game_ended", {"failed": False, "elapsed_seconds": round(elapsed_time, 2)})
+        self._persist_snapshot()
 
     def log_exp(self):
         exp = player_bar.get_experience()
@@ -199,6 +213,7 @@ class GameStats:
         if picked_up_items is not None:
             payload["picked_up_items"] = picked_up_items
         self._log_event("run_finished", payload)
+        self._persist_snapshot()
 
     def log_run_completed(self):
         status_runs = Config().general.get("discord_status_runs")
