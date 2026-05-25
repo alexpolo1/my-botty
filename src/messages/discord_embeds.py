@@ -110,6 +110,9 @@ class DiscordEmbeds(GenericApi):
     def _send_embed(self, e, webhook, file = None):
         if webhook is None:
             return
+        if e is None:
+            Logger.error("Error sending Discord embed: embed payload is None")
+            return
         e.set_footer(text=f'Botty v.{__version__} by Aeon')
         e.timestamp=datetime.datetime.now(datetime.timezone.utc)
         try:

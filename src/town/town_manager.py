@@ -227,13 +227,28 @@ class TownManager:
         # check if we can rapair in current act
         if self._acts[curr_act].can_trade_and_repair():
             new_loc = self._acts[curr_act].open_trade_and_repair_menu(curr_loc)
-            if not new_loc: return False, False
-            if items:
-                items = personal.transfer_items(items, "sell")
-            vendor.repair()
-            wait(0.1, 0.2)
-            common.close()
-            return new_loc, items
+            if new_loc:
+                if items:
+                    items = personal.transfer_items(items, "sell")
+                vendor.repair()
+                wait(0.1, 0.2)
+                common.close()
+                return new_loc, items
+            if curr_act == Location.A5_TOWN_START:
+                Logger.warning("A5 repair failed, attempting Act 4 Halbu fallback")
+                new_loc = self.go_to_act(4, curr_loc)
+                if not new_loc:
+                    return False, False
+                new_loc = self._acts[Location.A4_TOWN_START].open_trade_and_repair_menu(new_loc)
+                if not new_loc:
+                    return False, False
+                if items:
+                    items = personal.transfer_items(items, "sell")
+                vendor.repair()
+                wait(0.1, 0.2)
+                common.close()
+                return new_loc, items
+            return False, False
         new_loc = self.go_to_act(5, curr_loc)
         if not new_loc: return False, False
         new_loc = self._acts[Location.A5_TOWN_START].open_trade_and_repair_menu(new_loc)
