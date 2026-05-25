@@ -98,6 +98,14 @@ class PickIt:
         return item.NTIPAliasQuality == rare_quality or str(item.Quality).lower() == "rare"
 
     @staticmethod
+    def _force_pickup_gold(item: GroundItem) -> bool:
+        # Treat pick_gold as an explicit pickup override, independent of BNIP thresholds.
+        if not Config().char.get("pick_gold", True):
+            return False
+        display_name = str(item.BaseItem.get("DisplayName", "")).lower() if item.BaseItem else ""
+        return display_name == "gold"
+
+    @staticmethod
     def _yoink_item(item: GroundItem, char: IChar) -> PickedUpResult:
         if not char.pick_up_item((item.CenterMonitor['x'], item.CenterMonitor['y']), item_name=item.Name, distance=item.Distance):
             wait(0.16, 0.16) #wait 4 frames for items to refresh
@@ -183,7 +191,10 @@ class PickIt:
             pickup, raw_expression = (False, "")
             # Check if we already decided whether this item type should be picked
             if item.ID in self._cached_pickit_items:
-                if self._cached_pickit_items[item.ID] and not (self._ignore_consumable(item) or self._ignore_gold(item)):
+                cached_pickup = self._cached_pickit_items[item.ID]
+                if (not cached_pickup) and self._force_pickup_gold(item):
+                    cached_pickup = True
+                if cached_pickup and not (self._ignore_consumable(item) or self._ignore_gold(item)):
                     Logger.debug(f"Pick up expression: {raw_expression}")
                     Logger.info(f"Attempt to pick up {item.Name} at distance {item.Distance}")
                     pick_up_res = self._pick_up_item(char, item)
@@ -192,6 +203,9 @@ class PickIt:
                 # if the item shouldn't be ignored, check if it should be picked up
                 if not (self._ignore_gold(item) or self._ignore_consumable(item)):
                     pickup, raw_expression = should_pickup(item_dict)
+                    if not pickup and self._force_pickup_gold(item):
+                        pickup = True
+                        raw_expression = "pick_gold=1 (gold pickup override)"
                     if not pickup and self._force_pickup_rare_for_gold(item):
                         pickup = True
                         raw_expression = "pick_rares_for_gold=1 (rare quality override)"
