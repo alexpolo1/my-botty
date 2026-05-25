@@ -36,7 +36,7 @@ Double-click **`run_botty.bat`**. Switch to D2R, go to the hero selection screen
 
 ### 1) Graphics and Gameplay Settings
 
-All settings will automatically be set when you execute `main.exe` and press the hotkey for "Adjust D2R settings" (default f9). It is not a 100% thing, in rare cases you might still have to fiddle around with your brightness. I suggest using the "Graphic Debugger" to verify your settings.
+All settings will automatically be set when you execute `main.exe` and press the hotkey for "Adjust D2R settings" (default **ctrl+f9**). It is not a 100% thing, in rare cases you might still have to fiddle around with your brightness. I suggest using the "Graphic Debugger" to verify your settings.
 **Note**: Make sure that no other external programs adapt your graphics settings (HDR, Geforce Experience, etc.)
 
 ### 2) Supported builds
@@ -221,6 +221,32 @@ python tools/click_recorder.py playback  # replay with human-like timing
 ```
 
 Records mouse clicks with timestamps and replays them with configurable speed and repeat count.
+
+### Asset Manager
+
+A comprehensive tool for managing bot assets (templates). It helps with inventorying, auditing, searching, and optimizing template images.
+
+```bash
+python asset_manager.py inventory  # List all templates
+python asset_manager.py audit      # Check for missing/low-quality templates
+python asset_manager.py search <name>  # Search for a specific template
+python asset_manager.py quality    # Analyze template quality (SNR, contrast)
+python asset_manager.py batch resize 64x64  # Batch process templates
+```
+
+Features include similarity checking (to find duplicates), automatic cropping, and validation of template paths.
+
+### Asset Extractor
+
+A workflow tool for capturing and cropping new templates from D2R screenshots. Designed to work alongside an AI agent for rapid asset generation.
+
+```bash
+python asset_extractor.py
+```
+
+- **F1**: Capture D2R screen to `screenshots/debug/latest.png`.
+- **F2**: Crop entities using an AI-generated `latest_annotations.json` file.
+- **F3**: List all currently extracted assets.
 
 ### Builds
 || [sorceress]   | Descriptions                                                                  |

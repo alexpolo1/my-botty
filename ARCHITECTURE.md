@@ -34,14 +34,14 @@ main.py (main thread)
 
 ### Input Layer (`src/input_layer/`)
 
-Native Windows API input replacement (no kernel drivers):
+Native Windows API input replacement designed to evade kernel-level anti-cheat (Warden). It bypasses common Python libraries like `pyautogui` or `pynput` which can be easily detected.
 
 | File | Purpose |
 |---|---|
-| `win_input.py` | ctypes wrappers for `SendInput`, `GetAsyncKeyState`, `GetCursorPos` |
-| `mouse_impl.py` | Humanized mouse with Bezier curves, Gaussian distortion, endpoint wobble |
-| `hotkey.py` | Polling-based hotkey manager (replaces `keyboard.add_hotkey`) |
-| `__init__.py` | Drop-in API: `from input_layer import keyboard, mouse` |
+| `win_input.py` | Low-level `ctypes` wrappers for `SendInput`, `GetAsyncKeyState`, `GetCursorPos`. Uses standard Windows user-mode APIs. |
+| `mouse_impl.py` | Humanized mouse controller. Features include: Bezier curve trajectories, Gaussian noise (hand tremor), endpoint wobble, and randomized arrival-to-click delays. |
+| `hotkey.py` | Polling-based hotkey manager that avoids global hooks. All polling intervals include micro-jitter. |
+| `__init__.py` | Drop-in API that shims standard input calls with stealth timing and variable duration automatically. |
 
 All key presses include stealth micro-pauses and variable press duration automatically.
 
@@ -162,12 +162,15 @@ Singleton that merges config files in priority order:
 
 Supports variable substitution via `[variables]` sections.
 
-### Stealth (`src/utils/stealth.py`)
+### Stealth System (`src/utils/stealth.py`)
 
-Three-tier stealth system:
-- **Tier 1 (Input)**: Micro-pauses, click variance, key press duration, endpoint wobble
-- **Tier 2 (Behavior)**: Wrong waypoint chance, skill mistake chance, skill hesitation
-- **Tier 3 (Session)**: AFK breaks, run skipping, personality seed per character
+A multi-tiered approach to mimicking human behavior and evading detection:
+
+- **Tier 1: Input Stealth**: Automatic micro-pauses (20-120ms), variable key press durations (20-200ms), and non-linear mouse paths via `input_layer`.
+- **Tier 2: Behavioral Stealth**: Probabilistic "mistakes" such as clicking the wrong waypoint (2.5% chance) or skill hesitation (80-300ms) before casting.
+- **Tier 3: Session Stealth**: Randomized run durations (+/-15%), AFK breaks (2-12 mins), and shuffling of farming routes between rotations.
+
+All timing across the bot is routed through `utils.misc.wait()`, which applies Gaussian jitter to every sleep call.
 
 ### Utilities (`src/utils/`)
 
@@ -180,6 +183,17 @@ Three-tier stealth system:
 | `graphic_debugger.py` | Visual debugging overlay |
 | `node_recorder.py` | Record new path nodes |
 | `stealth.py` | Stealth behavior randomization |
+
+### Auxiliary Tools
+
+Standalone tools located in the root directory for project maintenance and development:
+
+- `asset_manager.py`: Unified interface for auditing, searching, and optimizing template assets.
+- `asset_extractor.py`: Screenshot capture and AI-assisted entity cropping workflow.
+- `build.py`: PyInstaller wrapper for building production executables.
+- `desktop_snap.py`: Lightweight tool for capturing full desktop screenshots.
+- `quest_debug.py`: Debugging interface for the questing system.
+- `screenshot_tool.py`: Simple utility for taking D2R client area screenshots.
 
 ## Data Flow
 
