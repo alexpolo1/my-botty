@@ -6,6 +6,7 @@ from pather import Pather, Location
 import template_finder
 from utils.misc import wait
 from ui_manager import ScreenObjects, is_visible
+from logger import Logger
 
 
 class A5(IAct):
@@ -63,13 +64,30 @@ class A5(IAct):
 
     def open_trade_and_repair_menu(self, curr_loc: Location) -> Location | bool:
         if not self._pather.traverse_nodes((curr_loc, Location.A5_LARZUK), self._char, force_move=True): return False
+        Logger.debug("A5 repair: reached Larzuk area, opening NPC menu")
         for _ in range(2):
             if open_npc_menu(Npc.LARZUK):
                 press_npc_btn(Npc.LARZUK, "trade_repair")
                 wait(0.2, 0.3)
                 # Verify vendor panel is open before continuing.
                 if is_visible(ScreenObjects.GoldBtnVendor):
+                    Logger.debug("A5 repair: vendor panel opened via npc menu flow")
                     return Location.A5_LARZUK
+        Logger.warning("A5 repair: npc menu flow failed, falling back to direct Larzuk template click")
+        # Fallback: click Larzuk directly by template and then press trade/repair.
+        if self._char.select_by_template(
+            ["LARZUK_FRONT", "LARZUK_BACK", "LARZUK_SIDE", "LARZUK_SIDE_2", "LARZUK_SIDE_3"],
+            success_func=lambda: is_visible(ScreenObjects.NPCDialogue),
+            timeout=6.0,
+            threshold=0.35,
+            telekinesis=False,
+        ):
+            press_npc_btn(Npc.LARZUK, "trade_repair")
+            wait(0.2, 0.3)
+            if is_visible(ScreenObjects.GoldBtnVendor):
+                Logger.debug("A5 repair: vendor panel opened via direct template fallback")
+                return Location.A5_LARZUK
+        Logger.error("A5 repair: failed to open trade/repair menu with Larzuk")
         return False
 
     def open_wp(self, curr_loc: Location) -> bool:
