@@ -119,6 +119,11 @@ class DiscordEmbeds(GenericApi):
             webhook.send(embed=e, file=file, username=Config().general['name'])
         except BaseException as err:
             Logger.error(f"Error sending Discord embed: {err}")
+            # Fallback: try plain text so status signals still arrive even if embed serialization fails.
+            try:
+                webhook.send(content=f"{Config().general['name']}: Botty notification (embed fallback)", username=Config().general['name'])
+            except BaseException as err2:
+                Logger.error(f"Error sending Discord fallback message: {err2}")
 
     def _get_Item_Color(self, item):
         if "magic_" in item:

@@ -236,7 +236,9 @@ class TownManager:
                 return new_loc, items
             if curr_act == Location.A5_TOWN_START:
                 Logger.warning("A5 repair failed, attempting Act 4 Halbu fallback")
-                new_loc = self.go_to_act(4, curr_loc)
+                # We already traversed to Larzuk before failure, so start fallback from Larzuk
+                # to avoid reusing a stale town-start location.
+                new_loc = self.go_to_act(4, Location.A5_LARZUK)
                 if not new_loc:
                     return False, False
                 new_loc = self._acts[Location.A4_TOWN_START].open_trade_and_repair_menu(new_loc)

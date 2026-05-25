@@ -448,7 +448,12 @@ class Bot:
             if self._curr_loc:
                 items = result_items
             if not self._curr_loc:
-                return self.trigger_or_stop("end_game", failed=True)
+                # Keep maintenance best-effort for stability: avoid killing runs on flaky NPC/vendor detection.
+                if need_refill_teleport and self._char.capabilities.can_teleport_with_charges and not self._char.capabilities.can_teleport_natively:
+                    Logger.error("Repair failed and teleport charges are required. Ending game.")
+                    return self.trigger_or_stop("end_game", failed=True)
+                Logger.warning("Repair/vendor interaction failed; skipping maintenance and continuing run.")
+                self._curr_loc = Location.A5_TOWN_START
 
         # Check if merc needs to be revived
         if not is_visible(ScreenObjects.MercIcon) and Config().char["use_merc"]:
