@@ -2,6 +2,7 @@ import cv2
 import os
 import json
 import pytest
+import importlib.util
 from dataclasses import asdict
 from d2r_image import processing
 from d2r_image.data_models import GroundItemList
@@ -15,6 +16,9 @@ import utils.download_test_assets # downloads assets if they don't already exist
 
 PATH='test/assets/ground_loot'
 screen.set_window_position(0, 0)
+
+if importlib.util.find_spec("tesserocr") is None:
+    pytest.skip("tesserocr not installed in this environment", allow_module_level=True)
 
 if not os.path.isdir(PATH):
     pytest.skip("test assets not available", allow_module_level=True)

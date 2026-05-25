@@ -10,7 +10,11 @@ if os.name == 'nt':
     ]:
         if os.path.isdir(_d):
             os.add_dll_directory(_d)
-from tesserocr import PyTessBaseAPI, OEM
+try:
+    from tesserocr import PyTessBaseAPI, OEM
+except Exception:
+    PyTessBaseAPI = None
+    OEM = None
 import numpy as np
 import cv2
 from utils.misc import erode_to_black, find_best_match
@@ -56,6 +60,11 @@ def image_to_text(
     if type(images) == np.ndarray:
         images = [images]
     results = []
+    if PyTessBaseAPI is None or OEM is None:
+        raise RuntimeError(
+            "tesserocr is not available. Install OCR deps (recommended: Python 3.10 env "
+            "plus dependencies/tesserocr-2.5.2-cp310-cp310-win_amd64.whl)."
+        )
 
     with PyTessBaseAPI(psm=psm, oem=OEM.LSTM_ONLY, path=f"assets/tessdata", lang=model ) as api:
         api.ReadConfigFile("assets/tessdata/ocr_config.txt")
