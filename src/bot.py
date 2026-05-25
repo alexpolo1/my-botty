@@ -558,6 +558,7 @@ class Bot:
     def _ending_run_helper(self, res: bool | tuple[Location, bool]):
         self._game_stats._run_counter += 1
         self._game_stats.log_exp()
+        self._game_stats.log_run_completed()
         # either fill member variables with result data or mark run as failed
         failed_run = True
         if res:

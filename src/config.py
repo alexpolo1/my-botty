@@ -155,6 +155,7 @@ class Config:
             "custom_message_hook": self._select_val("general", "custom_message_hook"),
             "custom_loot_message_hook": self._select_val("general", "custom_loot_message_hook"),
             "discord_status_count": False if not self._select_val("general", "discord_status_count") else int(self._select_val("general", "discord_status_count")),
+            "discord_status_runs": False if not self._select_optional("general", "discord_status_runs", "") else int(self._select_optional("general", "discord_status_runs", "")),
             "discord_log_chicken": bool(int(self._select_val("general", "discord_log_chicken"))),
             "info_screenshots": bool(int(self._select_val("general", "info_screenshots"))),
             "pickit_screenshots": bool(int(self._select_val("general", "pickit_screenshots"))),

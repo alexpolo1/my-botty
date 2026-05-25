@@ -200,6 +200,11 @@ class GameStats:
             payload["picked_up_items"] = picked_up_items
         self._log_event("run_finished", payload)
 
+    def log_run_completed(self):
+        status_runs = Config().general.get("discord_status_runs")
+        if status_runs and (self._run_counter - 1) > 0 and (self._run_counter - 1) % status_runs == 0:
+            self._send_status_update()
+
     def _create_msg(self):
         elapsed_time = time.time() - self._start_time
         elapsed_time_str = hms(elapsed_time)

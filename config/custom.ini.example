@@ -8,6 +8,7 @@
 ; name=botty
 ; custom_message_hook=
 ; custom_loot_message_hook=
+; discord_status_runs=10
 
 [char]
 ; type=blizz_sorc
