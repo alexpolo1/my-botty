@@ -63,9 +63,14 @@ class A5(IAct):
 
     def open_trade_and_repair_menu(self, curr_loc: Location) -> Location | bool:
         if not self._pather.traverse_nodes((curr_loc, Location.A5_LARZUK), self._char, force_move=True): return False
-        open_npc_menu(Npc.LARZUK)
-        press_npc_btn(Npc.LARZUK, "trade_repair")
-        return Location.A5_LARZUK
+        for _ in range(2):
+            if open_npc_menu(Npc.LARZUK):
+                press_npc_btn(Npc.LARZUK, "trade_repair")
+                wait(0.2, 0.3)
+                # Verify vendor panel is open before continuing.
+                if is_visible(ScreenObjects.GoldBtnVendor):
+                    return Location.A5_LARZUK
+        return False
 
     def open_wp(self, curr_loc: Location) -> bool:
         if not self._pather.traverse_nodes((curr_loc, Location.A5_WP), self._char, force_move=True): return False

@@ -469,14 +469,21 @@ def update_tome_key_needs(img: np.ndarray = None, item_type: str = "tp") -> bool
     wait(0.2, 0.2)
     hovered_item = grab(True)
     # get the item description box
-    item_properties, item_box = d2r_image.get_hovered_item(hovered_item)
+    try:
+        item_properties, item_box = d2r_image.get_hovered_item(hovered_item)
+    except Exception as e:
+        Logger.error(f"update_tome_key_needs: Failed to read hovered item for {item_type}. Exception: {e}")
+        return False
     if item_box is not None:
         try:
+            if item_properties is None or getattr(item_properties, "NTIPAliasStat", None) is None:
+                Logger.debug(f"update_tome_key_needs: Missing item properties for {item_type}, skip quantity parse")
+                return True
             quantity = int(item_properties.NTIPAliasStat[NTIP_STATS["quantity"]])
             max_quantity = int(item_properties.NTIPAliasStat[NTIP_STATS["quantitymax"]])
             consumables.set_needs(item_type, max_quantity - quantity)
         except Exception as e:
-            Logger.error(f"update_tome_key_needs: unable to parse quantity for {item_type}. Exception: {e}")
+            Logger.debug(f"update_tome_key_needs: unable to parse quantity for {item_type}. Exception: {e}")
     else:
         Logger.error(f"update_tome_key_needs: Failed to capture item description box for {item_type}")
         if Config().general["info_screenshots"]:
