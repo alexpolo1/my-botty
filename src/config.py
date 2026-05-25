@@ -91,6 +91,18 @@ class Config:
             wait(10)
             os._exit(1)
 
+    def _normalize_difficulty(self, value: str) -> str:
+        normalized = (value or "").strip().lower()
+        # Accept common variants/typos instead of silently falling through to Hell.
+        if normalized in {"normal", "norm", "n"}:
+            return "normal"
+        if normalized in {"nightmare", "night", "nm", "nigthmare", "nigtmare"}:
+            return "nightmare"
+        if normalized in {"hell", "h"}:
+            return "hell"
+        Logger.warning(f"Unknown difficulty '{value}', defaulting to 'hell'")
+        return "hell"
+
     def turn_off_goldpickup(self):
         Logger.info("All stash tabs and character are full of gold, turn off gold pickup")
         with config_lock:
@@ -138,7 +150,7 @@ class Config:
             "max_runtime_before_break_m": float(_default_iff(self._select_val("general", "max_runtime_before_break_m"), '', 0)),
             "break_length_m": float(_default_iff(self._select_val("general", "break_length_m"), '', 0)),
             "randomize_runs": bool(int(self._select_val("general", "randomize_runs"))),
-            "difficulty": self._select_val("general", "difficulty"),
+            "difficulty": self._normalize_difficulty(self._select_val("general", "difficulty")),
             "message_api_type": self._select_val("general", "message_api_type"),
             "custom_message_hook": self._select_val("general", "custom_message_hook"),
             "custom_loot_message_hook": self._select_val("general", "custom_loot_message_hook"),

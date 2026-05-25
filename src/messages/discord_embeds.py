@@ -10,22 +10,35 @@ import numpy as np
 from discord import SyncWebhook, Color
 import json
 class DiscordEmbeds(GenericApi):
+    _logged_webhook_errors = set()
+
     def __init__(self):
         self._file = None
         self._psnURL = "https://i.psnprofiles.com/games/3bffee/trophies/"
         self._webhook = self._get_webhook(Config().general["custom_message_hook"])
         self._loot_webhook = self._get_webhook(Config().general["custom_loot_message_hook"])
 
+    def _log_webhook_error_once(self, hook_url: str, reason: str):
+        key = (hook_url, reason)
+        if key in self._logged_webhook_errors:
+            return
+        self._logged_webhook_errors.add(key)
+        Logger.warning(f"Discord webhook disabled for URL '{hook_url}': {reason}")
+
     def _get_webhook(self, hook_url: str):
         hook = None
         if not hook_url:
             hook_url = Config().general['custom_message_hook']
+        hook_url = (hook_url or "").strip().strip('"').strip("'")
         if hook_url:
+            # Basic local validation catches hidden whitespace/typos quickly.
+            if not hook_url.startswith(("https://discord.com/api/webhooks/", "https://discordapp.com/api/webhooks/")):
+                self._log_webhook_error_once(hook_url, "URL does not look like a Discord webhook")
+                return None
             try:
                 hook = SyncWebhook.from_url(hook_url)
-            except BaseException as e:
-                Logger.warning(f"Your custom_message_hook URL {hook_url} is invalid, Discord updates will not be sent")
-                Logger.error(f"Error initializing webhook {hook_url}: {e}")
+            except Exception as e:
+                self._log_webhook_error_once(hook_url, f"{type(e).__name__}: {e}")
         return hook
 
     def send_item(self, item: str, image:  np.ndarray, location: str, ocr_text: str = '', bnip_keep_expression: str = '', item_props: dict = {}):

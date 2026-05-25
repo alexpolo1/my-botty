@@ -1,5 +1,31 @@
 // Revised V6
 // By Sosa, Gleed, Legit
+//
+// ========================= BNIP QUICK SETUP =========================
+// This file controls what loot Botty keeps.
+//
+// Rule format:
+// [Filter A] && [Filter B] # [Stat Filter(s)]
+//
+// Enable / disable:
+// - Active rule: starts directly with [Name]/[Type]/etc.
+// - Disabled rule: starts with // (commented out).
+//
+// Safe editing workflow:
+// 1) Duplicate a nearby rule.
+// 2) Keep your copy commented (//...) until ready.
+// 3) Uncomment one change at a time and test.
+//
+// Practical tips:
+// - Keep broad "pick everything" rules near the top only when intended.
+// - Put strict high-value rules above broader catch-all variants.
+// - Use config/custom.ini for local bot behavior overrides;
+//   use this BNIP for loot logic only.
+//
+// Optional local BNIP:
+// - Place custom .bnip files in config/bnip/.
+// - Botty loads those first; falls back to this file if none exist.
+// ================================================================
 
 //==================================================================//
 //<<<<<<<<<<<<<<<<<<<<<<<<<<++++ Misc ++++>>>>>>>>>>>>>>>>>>>>>>>>>>//
