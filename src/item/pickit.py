@@ -17,6 +17,7 @@ from item.consumables import ITEM_CONSUMABLES_MAP
 from logger import Logger
 from bnip.actions import should_pickup
 from bnip.NTIPAliasType import NTIPAliasType as NTIP_TYPES
+from bnip.NTIPAliasQuality import NTIPAliasQuality as NTIP_QUALITY
 from screen import grab, convert_abs_to_monitor
 from ui_manager import ScreenObjects, is_visible
 from input_layer import mouse
@@ -83,6 +84,16 @@ class PickIt:
             consumables.increment_need(item.Name.lower(), -1)
             return True
         return False
+
+    @staticmethod
+    def _force_pickup_rare_for_gold(item: GroundItem) -> bool:
+        # Optional gold-farming mode: pick all rares and let vendor flow sell junk.
+        if not Config().char.get("pick_rares_for_gold", False):
+            return False
+        if not Config().char.get("sell_junk", False):
+            return False
+        rare_quality = int(NTIP_QUALITY["rare"])
+        return item.NTIPAliasQuality == rare_quality or str(item.Quality).lower() == "rare"
 
     @staticmethod
     def _yoink_item(item: GroundItem, char: IChar) -> PickedUpResult:
@@ -179,6 +190,9 @@ class PickIt:
                 # if the item shouldn't be ignored, check if it should be picked up
                 if not (self._ignore_gold(item) or self._ignore_consumable(item)):
                     pickup, raw_expression = should_pickup(item_dict)
+                    if not pickup and self._force_pickup_rare_for_gold(item):
+                        pickup = True
+                        raw_expression = "pick_rares_for_gold=1 (rare quality override)"
                     self._cached_pickit_items[item.ID] = pickup
                 if pickup:
                     Logger.debug(f"Pick up expression: {raw_expression}")
