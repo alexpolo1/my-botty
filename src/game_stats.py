@@ -42,6 +42,7 @@ class GameStats:
         self._current_exp = 1
         self._current_lvl = 0
         self._exp_logging_disabled = False
+        self._exp_logging_error_warned = False
         os.makedirs("log/stats", exist_ok=True)
 
     def _log_event(self, event_type: str, data: dict | None = None):
@@ -181,7 +182,11 @@ class GameStats:
             self._persist_snapshot()
             return
         except Exception as e:
-            Logger.warning(f"Failed to log exp: {e}")
+            if not self._exp_logging_error_warned:
+                Logger.warning(f"Failed to log exp (will continue silently): {e}")
+                self._exp_logging_error_warned = True
+            else:
+                Logger.debug(f"Failed to log exp: {e}")
             return
 
         if exp[1] > 0:
