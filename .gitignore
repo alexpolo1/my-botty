@@ -20,6 +20,9 @@ config/*.local.ini
 .vs/
 test/assets/
 .venv
+.env
+.env.*
+!.env.example
 *.bak
 .coverage
 htmlcov/

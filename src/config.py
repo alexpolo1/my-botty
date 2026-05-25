@@ -48,6 +48,7 @@ class Config:
     basic_ranged = {}
 
     _instance = None
+    _env_overrides = {}
 
     def __new__(cls):
         if cls._instance is None:
@@ -91,6 +92,38 @@ class Config:
             wait(10)
             os._exit(1)
 
+    @staticmethod
+    def _load_env_overrides():
+        env_map = {}
+        env_file = ".env"
+        if os.path.exists(env_file):
+            try:
+                with open(env_file, "r", encoding="utf-8") as f:
+                    for raw_line in f:
+                        line = raw_line.strip()
+                        if not line or line.startswith("#"):
+                            continue
+                        if line.lower().startswith("export "):
+                            line = line[7:].strip()
+                        if "=" not in line:
+                            continue
+                        key, value = line.split("=", 1)
+                        key = key.strip()
+                        value = value.strip().strip('"').strip("'")
+                        if key:
+                            env_map[key] = value
+            except Exception as e:
+                Logger.warning(f"Failed to read .env file: {e}")
+        # OS environment variables should win over .env file values.
+        env_map.update(dict(os.environ))
+        return env_map
+
+    def _env_override(self, key: str, current_value):
+        env_key = f"BOTTY_{key.upper()}"
+        if env_key in self._env_overrides:
+            return self._env_overrides[env_key]
+        return current_value
+
     def _normalize_difficulty(self, value: str) -> str:
         normalized = (value or "").strip().lower()
         # Accept common variants/typos instead of silently falling through to Hell.
@@ -114,6 +147,7 @@ class Config:
 
     def load_data(self):
         Logger.debug("Loading config")
+        self._env_overrides = self._load_env_overrides()
         self.configs = {
             "config": {"parser": configparser.ConfigParser(), "vars": {}},
             "game": {"parser": configparser.ConfigParser(), "vars": {}},
@@ -167,6 +201,12 @@ class Config:
             "bnet_pass": self._select_val("general", "bnet_pass"),
             "char_name": self._select_val("general", "char_name"),
         }
+        self.general["name"] = self._env_override("name", self.general["name"])
+        self.general["custom_message_hook"] = self._env_override("custom_message_hook", self.general["custom_message_hook"])
+        self.general["custom_loot_message_hook"] = self._env_override("custom_loot_message_hook", self.general["custom_loot_message_hook"])
+        self.general["bnet_name"] = self._env_override("bnet_name", self.general["bnet_name"])
+        self.general["bnet_pass"] = self._env_override("bnet_pass", self.general["bnet_pass"])
+        self.general["char_name"] = self._env_override("char_name", self.general["char_name"])
 
         self.stealth = {
             "wait_jitter_min": float(self._select_optional("stealth", "wait_jitter_min", "0.85")),
