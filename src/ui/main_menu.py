@@ -6,6 +6,7 @@ from logger import Logger
 from ui import error_screens
 from ui_manager import detect_screen_object, is_visible, select_screen_object_match, ScreenObjects
 import template_finder
+from screen import grab
 
 MAIN_MENU_MARKERS = ["MAIN_MENU_TOP_LEFT","MAIN_MENU_TOP_LEFT_DARK"]
 TOWN_MARKERS = ["A5_TOWN_0", "A5_TOWN_1", "A4_TOWN_4", "A4_TOWN_5", "A3_TOWN_0", "A3_TOWN_1", "A2_TOWN_0", "A2_TOWN_1", "A2_TOWN_10", "A1_TOWN_1", "A1_TOWN_3"]
@@ -33,7 +34,7 @@ def start_game() -> bool:
                     break
             else:
                 # If we're already in town (e.g. previous game wasn't fully exited), continue flow.
-                if template_finder.search(TOWN_MARKERS).valid:
+                if template_finder.search(TOWN_MARKERS, grab(), best_match=True).valid:
                     Logger.warning("start_game: Already in town, skipping game creation")
                     return True
                 Logger.error("start_game: No play button found, not on main menu screen")
@@ -54,7 +55,7 @@ def start_game() -> bool:
                 error_screens.handle_error()
                 keyboard.release(difficulty_key)
                 break
-            if template_finder.search(TOWN_MARKERS).valid:
+            if template_finder.search(TOWN_MARKERS, grab(), best_match=True).valid:
                 keyboard.release(difficulty_key)
                 Logger.warning("start_game: Detected town while creating game, continuing")
                 return True
