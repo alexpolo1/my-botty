@@ -63,6 +63,8 @@ class GameController:
                     bot=self.bot,
                     health_manager=self.health_manager,
                     death_manager=self.death_manager,
+                    timeout=8.0,
+                    allow_force_kill=False,
                 )
                 self.bot._stash_mutex.release()
                 # clean up key presses that might be pressed in the bot_thread after killing
@@ -151,6 +153,8 @@ class GameController:
                 bot=self.bot,
                 health_manager=self.health_manager,
                 death_manager=self.death_manager,
+                timeout=8.0,
+                allow_force_kill=False,
             )
         if self.game_controller_thread:
             # game_controller_thread runs run_bot() which checks self.bot._stopping
@@ -159,6 +163,8 @@ class GameController:
                 bot=self.bot,
                 health_manager=self.health_manager,
                 death_manager=self.death_manager,
+                timeout=8.0,
+                allow_force_kill=False,
             )
         self.is_running = False
 

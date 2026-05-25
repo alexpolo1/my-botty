@@ -183,6 +183,7 @@ def cooperative_shutdown(
     health_manager=None,
     death_manager=None,
     timeout=5.0,
+    allow_force_kill=True,
 ):
     """
     Cooperatively shut down a thread by signalling the owning objects, then join.
@@ -207,6 +208,12 @@ def cooperative_shutdown(
     thread.join(timeout=timeout)
 
     if thread.is_alive():
+        if not allow_force_kill:
+            Logger.warning(
+                f"Thread '{thread.name}' did not exit within {timeout}s; "
+                "continuing without force-kill to avoid unsafe async exceptions."
+            )
+            return
         Logger.warning(
             f"Thread '{thread.name}' did not exit within {timeout}s; "
             "falling back to force kill (PyThreadState_SetAsyncExc)."
