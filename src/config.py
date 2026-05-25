@@ -250,6 +250,7 @@ class Config:
             "gamble_items": False if not self._select_val("char", "gamble_items") else self._select_val("char", "gamble_items").replace(" ","").split(","),
             "sell_junk": bool(int(self._select_val("char", "sell_junk"))),
             "pick_rares_for_gold": bool(int(self._select_optional("char", "pick_rares_for_gold", "0"))),
+            "pick_gold": bool(int(self._select_optional("char", "pick_gold", "1"))),
             "enable_no_pickup": bool(int(self._select_val("char", "enable_no_pickup"))),
             "safer_routines": bool(int(self._select_val("char", "safer_routines"))),
         }

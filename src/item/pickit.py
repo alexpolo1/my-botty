@@ -65,6 +65,8 @@ class PickIt:
 
     @staticmethod
     def _ignore_gold(item: GroundItem):
+        if not Config().char.get("pick_gold", True) and str(item.BaseItem["DisplayName"]).lower() == "gold":
+            return True
         if personal.get_inventory_gold_full() and str(item.BaseItem["DisplayName"]).lower() == "gold":
             # Logger.debug("Gold is full, skip gold")
             return True
