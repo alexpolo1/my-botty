@@ -262,22 +262,29 @@ class GameStats:
         if curr_lvl["lvl"] < 99:
             try:
                 exp_gained = self._current_exp - curr_lvl['exp']
-                per_to_lvl = exp_gained / curr_lvl["xp_to_next"]
                 gained_exp = self._current_exp - self._starting_exp
-                exp_per_second = gained_exp / good_games_time
+                xp_to_next = curr_lvl["xp_to_next"]
+                if xp_to_next <= 0 or good_games_time <= 0 or good_games_count <= 0:
+                    raise ValueError("invalid XP/session denominator")
+                per_to_lvl = exp_gained / xp_to_next
+                exp_per_second = gained_exp / good_games_time if gained_exp > 0 else 0
                 exp_per_hour = round(exp_per_second * 3600, 1)
                 exp_per_game = round(gained_exp / float(good_games_count), 1)
-                exp_needed = curr_lvl['xp_to_next'] - exp_gained
-                time_to_lvl = exp_needed / exp_per_second
-                games_to_lvl = exp_needed / exp_per_game
+                exp_needed = max(0, xp_to_next - exp_gained)
                 msg += f'\nPercent to Level: {math.ceil(per_to_lvl*100)}%'
                 msg += f'\nXP Gained: {gained_exp:,}'
                 msg += f'\nXP Per Hour: {exp_per_hour:,}'
                 msg += f'\nXP Per Game: {exp_per_game:,}'
-                msg += f'\nTime Needed To Level: {hms(time_to_lvl)}'
-                msg += f'\nGames Needed To Level: {math.ceil(games_to_lvl):,}'
-            except:
-                Logger.warning("Failed to log exp")
+                if exp_per_second > 0:
+                    msg += f'\nTime Needed To Level: {hms(exp_needed / exp_per_second)}'
+                else:
+                    msg += f'\nTime Needed To Level: n/a'
+                if exp_per_game > 0:
+                    msg += f'\nGames Needed To Level: {math.ceil(exp_needed / exp_per_game):,}'
+                else:
+                    msg += f'\nGames Needed To Level: n/a'
+            except Exception as e:
+                Logger.debug(f"Skipping XP projection in status report: {e}")
 
         table = BeautifulTable()
         table.set_style(BeautifulTable.STYLE_BOX_ROUNDED)
