@@ -113,6 +113,13 @@ class DiscordEmbeds(GenericApi):
         if e is None:
             Logger.error("Error sending Discord embed: embed payload is None")
             return
+        # Pre-validate embed serialization once here so we never enter the send path
+        # with a broken payload that can spam exceptions.
+        try:
+            _ = e.to_dict()
+        except BaseException as err:
+            Logger.error(f"Error sending Discord embed: invalid embed payload ({err})")
+            return
         e.set_footer(text=f'Botty v.{__version__} by Aeon')
         e.timestamp=datetime.datetime.now(datetime.timezone.utc)
         try:

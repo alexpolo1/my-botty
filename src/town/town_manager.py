@@ -224,7 +224,23 @@ class TownManager:
     def repair(self, curr_loc: Location, items: list = None):
         curr_act = TownManager.get_act_from_location(curr_loc)
         if curr_act is None: return False, False
+        repair_preference = (Config().char.get("repair_npc") or "a4_halbu").lower()
         # check if we can rapair in current act
+        if curr_act == Location.A5_TOWN_START and repair_preference in ["a4_halbu", "halbu", "act4"]:
+            Logger.info("Repair preference is Act 4 Halbu. Skipping Larzuk flow for stability.")
+            new_loc = self.go_to_act(4, curr_loc)
+            if not new_loc:
+                return False, False
+            new_loc = self._acts[Location.A4_TOWN_START].open_trade_and_repair_menu(new_loc)
+            if not new_loc:
+                return False, False
+            if items:
+                items = personal.transfer_items(items, "sell")
+            vendor.repair()
+            wait(0.1, 0.2)
+            common.close()
+            return new_loc, items
+
         if self._acts[curr_act].can_trade_and_repair():
             new_loc = self._acts[curr_act].open_trade_and_repair_menu(curr_loc)
             if new_loc:

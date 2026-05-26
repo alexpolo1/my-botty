@@ -28,6 +28,7 @@ inv_gold_full = False
 messenger = Messenger()
 
 nontradable_items = ["key of ", "essense of", "wirt's", "jade figurine"]
+_last_tome_missing_log_ts = {"tp": 0.0, "id": 0.0}
 
 @dataclass
 class BoxInfo:
@@ -470,7 +471,11 @@ def update_tome_key_needs(img: np.ndarray = None, item_type: str = "tp") -> bool
                 return True
             # else the tome exists and is not empty, continue
         else:
-            Logger.debug(f"update_tome_key_needs: could not find {item_type}")
+            now = time.time()
+            last_ts = _last_tome_missing_log_ts.get(item_type, 0.0)
+            if now - last_ts >= 60.0:
+                Logger.debug(f"update_tome_key_needs: could not find {item_type} (throttled)")
+                _last_tome_missing_log_ts[item_type] = now
             return False
     elif item_type.lower() in ["key"]:
         match = template_finder.search("INV_KEY", img, roi = Config().ui_roi["restricted_inventory_area"])

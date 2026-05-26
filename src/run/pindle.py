@@ -40,7 +40,12 @@ class Pindle:
             self._char.pre_buff()
         found_loading_screen_func = lambda: loading.wait_for_loading_screen(2.0)
         if not self._char.select_by_template("A5_RED_PORTAL", found_loading_screen_func, telekinesis=False):
-            return False
+            Logger.warning("Pindle approach: first red portal click failed, retrying from town start")
+            if not self._pather.traverse_nodes((Location.A5_TOWN_START, Location.A5_NIHLATHAK_PORTAL), self._char):
+                return False
+            wait(0.5, 0.7)
+            if not self._char.select_by_template("A5_RED_PORTAL", found_loading_screen_func, telekinesis=False):
+                return False
         return Location.A5_PINDLE_START
 
     def battle(self) -> bool | tuple[Location, bool]:

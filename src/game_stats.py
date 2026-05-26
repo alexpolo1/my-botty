@@ -18,6 +18,30 @@ from ui import player_bar
 
 
 class GameStats:
+    _TOP_VALUABLE_ITEMS = (
+        "ZOD RUNE",
+        "JAH RUNE",
+        "BER RUNE",
+        "CHAM RUNE",
+        "LO RUNE",
+        "SUR RUNE",
+        "TYRAEL'S MIGHT",
+        "DEATH'S WEB",
+        "GRIFFON'S EYE",
+        "DEATH'S FATHOM",
+        "RAINBOW FACET",
+        "HIGH LORD'S WRATH",
+        "MARA'S KALEIDOSCOPE",
+        "THE STONE OF JORDAN",
+        "BUL-KATHOS' WEDDING BAND",
+        "WAR TRAVELER",
+        "HARLEQUIN CREST",
+        "ARACHNID MESH",
+        "ANDARIEL'S VISAGE",
+        "HERALD OF ZAKARUM",
+        "THE REAPER'S TOLL",
+    )
+
     def __init__(self):
         self._messenger = Messenger()
         self._start_time = time.time()
@@ -34,7 +58,15 @@ class GameStats:
         self._failed_game_time = 0
         self._location = None
         self._location_stats = {}
-        self._location_stats["totals"] = { "items": 0, "deaths": 0, "chickens": 0, "merc_deaths": 0, "failed_runs": 0 }
+        self._location_stats["totals"] = {
+            "items": 0,
+            "deaths": 0,
+            "chickens": 0,
+            "merc_deaths": 0,
+            "failed_runs": 0,
+            "runes": 0,
+        }
+        self._valuable_item_counts = {name: 0 for name in self._TOP_VALUABLE_ITEMS}
         self._stats_filename = f'stats_{time.strftime("%Y%m%d_%H%M%S")}.log'
         self._events_filename = f'events_{time.strftime("%Y%m%d_%H%M%S")}.jsonl'
         self._nopickup_active = False
@@ -81,23 +113,44 @@ class GameStats:
             self._location_stats[self._location] = {
                 "items": [],
                 "item_counts": {},
+                "rune_counts": {},
+                "valuable_counts": {},
                 "deaths": 0,
                 "chickens": 0,
                 "merc_deaths": 0,
                 "failed_runs": 0
             }
 
+    @staticmethod
+    def _normalize_item_name(item_name: str) -> str:
+        return " ".join((item_name or "").strip().upper().split())
+
+    @staticmethod
+    def _is_rune(item_name: str) -> bool:
+        return GameStats._normalize_item_name(item_name).endswith(" RUNE")
+
     def log_item_keep(self, item_name: str, send_message: bool, img: np.ndarray, ocr_text: str = '', expression: str = '', item_props: dict = {}):
         filtered_substrings = [" POTION", " OF IDENTIFY", " OF TOWN PORTAL", " AMETHYST", " RUBY", " TOPAZ", " EMERALD", " SAPPHIRE", " DIAMOND"]
         filtered_matches = ["DIAMOND", "AMETHYST", "RUBY", "TOPAZ", "EMERALD", "SAPPHIRE", "ARROWS", "BOLTS",
                             "CHIPPED SKULL", "FLAWED SKULL", "SKULL", "FLAWLESS SKULL", "PERFECT SKULL"]
         skip_log = any(substring in item_name for substring in filtered_substrings) or any(match == item_name.strip() for match in filtered_matches)
+        normalized_name = self._normalize_item_name(item_name)
         if self._location is not None and not skip_log:
             Logger.debug(f"Stashed and logged: {item_name}")
             self._location_stats[self._location]["items"].append(item_name)
             item_counts = self._location_stats[self._location]["item_counts"]
             item_counts[item_name] = item_counts.get(item_name, 0) + 1
             self._location_stats["totals"]["items"] += 1
+            if self._is_rune(item_name):
+                rune_counts = self._location_stats[self._location]["rune_counts"]
+                rune_counts[normalized_name] = rune_counts.get(normalized_name, 0) + 1
+                self._location_stats["totals"]["runes"] += 1
+                self._log_event("rune_kept", {"item_name": normalized_name})
+            if normalized_name in self._valuable_item_counts:
+                valuable_counts = self._location_stats[self._location]["valuable_counts"]
+                valuable_counts[normalized_name] = valuable_counts.get(normalized_name, 0) + 1
+                self._valuable_item_counts[normalized_name] += 1
+                self._log_event("valuable_item_kept", {"item_name": normalized_name})
             self._log_event("item_kept", {"item_name": item_name, "expression": expression})
             self._persist_snapshot()
         elif self._location is not None and skip_log:
@@ -258,6 +311,7 @@ class GameStats:
         msg += f'\nGames: {self._game_counter}'
         msg += f'\nAvg Game Length: {avg_length_str}'
         msg += f'\nCurrent Level: {curr_lvl["lvl"]}'
+        msg += f'\nRunes Kept: {self._location_stats["totals"]["runes"]}'
 
         if curr_lvl["lvl"] < 99:
             try:
@@ -328,6 +382,20 @@ class GameStats:
                 sorted_counts = sorted(stats["item_counts"].items(), key=lambda x: x[1], reverse=True)
                 for item_name, count in sorted_counts:
                     msg += f"\n      {item_name}: {count}"
+            if len(stats["rune_counts"]) > 0:
+                msg += "\n    Rune counts:"
+                sorted_runes = sorted(stats["rune_counts"].items(), key=lambda x: x[1], reverse=True)
+                for rune_name, count in sorted_runes:
+                    msg += f"\n      {rune_name}: {count}"
+            if len(stats["valuable_counts"]) > 0:
+                msg += "\n    Top-10 valuable item counts:"
+                sorted_valuables = sorted(stats["valuable_counts"].items(), key=lambda x: x[1], reverse=True)
+                for valuable_name, count in sorted_valuables:
+                    msg += f"\n      {valuable_name}: {count}"
+
+        msg += "\n\nTop-10 valuable items (session totals):"
+        for item_name in self._TOP_VALUABLE_ITEMS:
+            msg += f"\n  {item_name}: {self._valuable_item_counts[item_name]}"
 
         with open(file=f"log/stats/{self._stats_filename}", mode="w+", encoding="utf-8") as f:
             f.write(msg)

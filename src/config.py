@@ -297,6 +297,7 @@ class Config:
             "cs_mob_detect": bool(int(self._select_val("char", "cs_mob_detect"))),
             "runs_per_stash": False if not self._select_val("char", "runs_per_stash") else int(self._select_val("char", "runs_per_stash")),
             "runs_per_repair": False if not self._select_val("char", "runs_per_repair") else int(self._select_val("char", "runs_per_repair")),
+            "repair_npc": self._select_optional("char", "repair_npc", "a4_halbu").strip().lower(),
             "gamble_items": False if not self._select_val("char", "gamble_items") else self._select_val("char", "gamble_items").replace(" ","").split(","),
             "sell_junk": bool(int(self._select_val("char", "sell_junk"))),
             "protect_shields_from_sell": bool(int(self._select_optional("char", "protect_shields_from_sell", "1"))),

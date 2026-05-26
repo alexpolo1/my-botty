@@ -78,8 +78,8 @@ class A5(IAct):
         if self._char.select_by_template(
             ["LARZUK_FRONT", "LARZUK_BACK", "LARZUK_SIDE", "LARZUK_SIDE_2", "LARZUK_SIDE_3"],
             success_func=lambda: is_visible(ScreenObjects.NPCDialogue),
-            timeout=6.0,
-            threshold=0.35,
+            timeout=4.0,
+            threshold=0.42,
             telekinesis=False,
         ):
             press_npc_btn(Npc.LARZUK, "trade_repair")
@@ -91,9 +91,16 @@ class A5(IAct):
         return False
 
     def open_wp(self, curr_loc: Location) -> bool:
-        if not self._pather.traverse_nodes((curr_loc, Location.A5_WP), self._char, force_move=True): return False
-        wait(0.5, 0.7)
         found_wp_func = lambda: is_visible(ScreenObjects.WaypointLabel)
+        if self._pather.traverse_nodes((curr_loc, Location.A5_WP), self._char, force_move=True):
+            wait(0.5, 0.7)
+            if self._char.select_by_template("A5_WP", found_wp_func, telekinesis=True):
+                return True
+        # Recovery path after failed vendor/menu interactions: restart from known town start.
+        Logger.warning("A5 waypoint open failed, retrying from town start anchor")
+        if not self._pather.traverse_nodes((Location.A5_TOWN_START, Location.A5_WP), self._char, force_move=True):
+            return False
+        wait(0.6, 0.8)
         return self._char.select_by_template("A5_WP", found_wp_func, telekinesis=True)
 
     def wait_for_tp(self) -> Location | bool:
