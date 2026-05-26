@@ -2,6 +2,25 @@
   "enabled": true,
   "notes": "Day 3 ladder snapshot pricing. Values are per item in fg.",
   "rules": [
+    { "name": "El Rune", "match": "exact", "pattern": "EL RUNE", "fg": 3 },
+    { "name": "Eld Rune", "match": "exact", "pattern": "ELD RUNE", "fg": 3 },
+    { "name": "Tir Rune", "match": "exact", "pattern": "TIR RUNE", "fg": 3 },
+    { "name": "Nef Rune", "match": "exact", "pattern": "NEF RUNE", "fg": 3 },
+    { "name": "Eth Rune", "match": "exact", "pattern": "ETH RUNE", "fg": 3 },
+    { "name": "Ith Rune", "match": "exact", "pattern": "ITH RUNE", "fg": 3 },
+    { "name": "Tal Rune", "match": "exact", "pattern": "TAL RUNE", "fg": 5 },
+    { "name": "Ral Rune", "match": "exact", "pattern": "RAL RUNE", "fg": 6 },
+    { "name": "Ort Rune", "match": "exact", "pattern": "ORT RUNE", "fg": 8 },
+    { "name": "Amn Rune", "match": "exact", "pattern": "AMN RUNE", "fg": 10 },
+    { "name": "Sol Rune", "match": "exact", "pattern": "SOL RUNE", "fg": 20 },
+    { "name": "Shael Rune", "match": "exact", "pattern": "SHAEL RUNE", "fg": 10 },
+    { "name": "Dol Rune", "match": "exact", "pattern": "DOL RUNE", "fg": 10 },
+    { "name": "Hel Rune", "match": "exact", "pattern": "HEL RUNE", "fg": 10 },
+    { "name": "Io Rune", "match": "exact", "pattern": "IO RUNE", "fg": 12 },
+    { "name": "Ko Rune", "match": "exact", "pattern": "KO RUNE", "fg": 12 },
+    { "name": "Lum Rune", "match": "exact", "pattern": "LUM RUNE", "fg": 12 },
+    { "name": "Fal Rune", "match": "exact", "pattern": "FAL RUNE", "fg": 20 },
+
     { "name": "Cham Rune", "match": "exact", "pattern": "CHAM RUNE", "fg": 800 },
     { "name": "Lo Rune", "match": "exact", "pattern": "LO RUNE", "fg": 900 },
     { "name": "Ohm Rune", "match": "exact", "pattern": "OHM RUNE", "fg": 600 },
@@ -55,6 +74,8 @@
     { "name": "Pcomb SK", "match": "contains", "pattern": "PALADIN COMBAT", "fg": 200 },
     { "name": "Cold SK", "match": "contains", "pattern": "COLD SKILLS", "fg": 250 },
     { "name": "Java SK", "match": "contains", "pattern": "JAVELIN", "fg": 200 },
-    { "name": "Light SK", "match": "contains", "pattern": "LIGHTNING SKILLS", "fg": 200 }
+    { "name": "Light SK", "match": "contains", "pattern": "LIGHTNING SKILLS", "fg": 200 },
+
+    { "name": "Eth War Scythe 4os (Insight base)", "match": "contains", "pattern": "ETH WAR SCYTHE", "fg": 25 }
   ]
 }

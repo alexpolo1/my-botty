@@ -15,6 +15,10 @@ class FGPriceTracker:
     def _normalize(text: str) -> str:
         return " ".join((text or "").strip().upper().split())
 
+    @staticmethod
+    def _compact(text: str) -> str:
+        return "".join(ch for ch in (text or "").upper() if ch.isalnum())
+
     def _load(self):
         cfg_candidates = [self._cfg_path, os.path.join("..", self._cfg_path)]
         cfg_path = next((p for p in cfg_candidates if os.path.exists(p)), None)
@@ -45,11 +49,13 @@ class FGPriceTracker:
         if not self._enabled or not self._rules:
             return None, None
         normalized = self._normalize(item_name)
+        compact = self._compact(item_name)
         for rule in self._rules:
             if rule["match"] == "contains":
                 if rule["pattern"] in normalized:
                     return rule["fg"], rule["name"] or rule["pattern"]
             else:
-                if normalized == rule["pattern"]:
+                # Be tolerant to OCR/style variants like "ELRUNE" vs "EL RUNE".
+                if normalized == rule["pattern"] or compact == self._compact(rule["pattern"]):
                     return rule["fg"], rule["name"] or rule["pattern"]
         return None, None

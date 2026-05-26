@@ -1,0 +1,69 @@
+{
+  "generated_at": "2026-05-26T11:03:35.048241+00:00",
+  "mode": "offline",
+  "offline_dir": "data\\d2jsp_pages",
+  "ladder_start_date": "2026-05-20",
+  "days": 14,
+  "topics_scanned": 21,
+  "estimates": {
+    "day_1": {},
+    "day_2": {},
+    "day_3": {},
+    "day_4": {},
+    "day_5": {},
+    "day_6": {},
+    "day_7": {
+      "CTA": {
+        "median_fg": 1199.0,
+        "samples": 1
+      },
+      "Topic:Buy 2 Chaos Gc For 100 Fg": {
+        "median_fg": 100.0,
+        "samples": 2
+      },
+      "Cham Rune": {
+        "median_fg": 30.0,
+        "samples": 5
+      },
+      "Topic:Demon Skills Amulet And Skillers": {
+        "median_fg": 125.0,
+        "samples": 3
+      },
+      "Aldur's Advance": {
+        "median_fg": 25.0,
+        "samples": 3
+      },
+      "Ist Rune": {
+        "median_fg": 100.0,
+        "samples": 8
+      },
+      "Gul Rune": {
+        "median_fg": 65.0,
+        "samples": 4
+      },
+      "Topic:Mf Goldwrap, Nagel, Chancies": {
+        "median_fg": 35.0,
+        "samples": 3
+      },
+      "Dual Leech Ring": {
+        "median_fg": 70.0,
+        "samples": 1
+      },
+      "Unid Anni": {
+        "median_fg": 575.0,
+        "samples": 2
+      },
+      "Stealth RW": {
+        "median_fg": 10.0,
+        "samples": 1
+      }
+    },
+    "day_8": {},
+    "day_9": {},
+    "day_10": {},
+    "day_11": {},
+    "day_12": {},
+    "day_13": {},
+    "day_14": {}
+  }
+}

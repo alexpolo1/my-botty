@@ -5,6 +5,7 @@ import threading
 import inspect
 import json
 import os
+import re
 from beautifultable import BeautifulTable
 
 from logger import Logger
@@ -138,7 +139,11 @@ class GameStats:
 
     @staticmethod
     def _is_rune(item_name: str) -> bool:
-        return GameStats._normalize_item_name(item_name).endswith(" RUNE")
+        normalized = GameStats._normalize_item_name(item_name)
+        if normalized.endswith(" RUNE"):
+            return True
+        compact = re.sub(r"[^A-Z0-9]", "", normalized)
+        return compact.endswith("RUNE")
 
     def log_item_keep(self, item_name: str, send_message: bool, img: np.ndarray, ocr_text: str = '', expression: str = '', item_props: dict = {}):
         filtered_substrings = [" POTION", " OF IDENTIFY", " OF TOWN PORTAL", " AMETHYST", " RUBY", " TOPAZ", " EMERALD", " SAPPHIRE", " DIAMOND"]
@@ -384,7 +389,7 @@ class GameStats:
             self._location_stats["totals"]["failed_runs"]
         ])
 
-        table.columns.header = ["Run", "I", "C", "D", "MD", "F"]
+        table.columns.header = ["Run", "I", "C", "D", "MD", "FR"]
 
         msg += f"\n{str(table)}\n"
         return msg
