@@ -5,6 +5,7 @@ import re
 import statistics
 import time
 from html import unescape
+from http.cookiejar import MozillaCookieJar
 from pathlib import Path
 
 import requests
@@ -12,6 +13,33 @@ import requests
 
 BASE_URL = "https://forums.d2jsp.org"
 FORUM_PATH = "/forum.php?f=271"
+
+
+BROWSER_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+    "Accept-Language": "en-DK,en;q=0.9,da-DK;q=0.8,da;q=0.7,en-GB;q=0.6,en-US;q=0.5",
+    "Referer": "https://www.google.com/",
+    "DNT": "1",
+    "Upgrade-Insecure-Requests": "1",
+    "sec-ch-ua": '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"',
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": '"Windows"',
+    "sec-fetch-dest": "document",
+    "sec-fetch-mode": "navigate",
+    "sec-fetch-site": "cross-site",
+    "sec-fetch-user": "?1",
+}
+
+
+def make_session(cookie_path: str = "") -> requests.Session:
+    session = requests.Session()
+    session.headers.update(BROWSER_HEADERS)
+    if cookie_path and Path(cookie_path).exists():
+        cookiejar = MozillaCookieJar(cookie_path)
+        cookiejar.load(ignore_discard=True, ignore_expires=True)
+        session.cookies = cookiejar
+    return session
 
 
 ITEM_PATTERNS = {
@@ -93,13 +121,19 @@ def is_topic_page(html_text: str) -> bool:
 
 
 def parse_forum_topic_links(html_text: str) -> list[str]:
-    links = re.findall(r'href="(/topic\.php\?t=\d+[^"]*)"', html_text)
+    # d2jsp uses relative paths: href="topic.php?t=123&f=271"
+    # also handle absolute paths: href="/topic.php?t=123"
+    # Use non-capturing group to avoid findall returning only the group
+    links = re.findall(r'href="((?:/)?topic\.php\?t=\d+[^"]*)"', html_text)
     unique = []
     seen = set()
     for link in links:
-        if link not in seen:
-            seen.add(link)
-            unique.append(link)
+        # Normalize: strip leading slash, remove &v=1 (view-only variant)
+        norm = link.lstrip("/")
+        norm = re.sub(r'&v=\d+', '', norm)
+        if norm not in seen:
+            seen.add(norm)
+            unique.append(norm)
     return unique
 
 
@@ -149,12 +183,15 @@ def scrape_day_estimates(
     max_forum_pages: int,
     max_topics: int,
     delay_s: float,
-    cookie_header: str = "",
+    cookie_path: str = "",
 ) -> dict:
-    session = requests.Session()
-    session.headers.update({"User-Agent": "Mozilla/5.0 (compatible; botty-fg-scraper/1.0)"})
-    if cookie_header:
-        session.headers.update({"Cookie": cookie_header})
+    session = make_session(cookie_path)
+
+    # Warm up: hit root first to establish Cloudflare session
+    try:
+        session.get(f"{BASE_URL}/", timeout=20)
+    except Exception:
+        pass
 
     topic_urls: list[str] = []
     for page_idx in range(max_forum_pages):
@@ -167,9 +204,16 @@ def scrape_day_estimates(
                 "Scraping is blocked from this environment/IP. "
                 "Run this tool from a browser-authenticated environment or provide exported topic data."
             )
+        if is_blocked_page(r.text):
+            raise RuntimeError(
+                "d2jsp returned a Cloudflare challenge page. "
+                "Your cookies may be stale — export fresh cookies from your browser and rerun."
+            )
         r.raise_for_status()
         links = parse_forum_topic_links(r.text)
         for link in links:
+            if not link.startswith("/"):
+                link = "/" + link
             full = f"{BASE_URL}{link}"
             if full not in topic_urls:
                 topic_urls.append(full)
@@ -208,7 +252,7 @@ def scrape_day_estimates(
         buckets[day_idx][item].extend(prices[:3])
 
     result = {
-        "generated_at": dt.datetime.now(dt.UTC).isoformat(),
+        "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
         "ladder_start_date": ladder_start.isoformat(),
         "days": days,
         "topics_scanned": processed,
@@ -291,7 +335,7 @@ def scrape_day_estimates_offline(
         buckets[day_idx][item].extend(prices[:3])
 
     result = {
-        "generated_at": dt.datetime.now(dt.UTC).isoformat(),
+        "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
         "mode": "offline",
         "offline_dir": str(offline_path),
         "ladder_start_date": ladder_start.isoformat(),
@@ -322,7 +366,7 @@ def main():
     parser.add_argument("--max-topics", type=int, default=800, help="Hard cap for topic pages to fetch")
     parser.add_argument("--delay-s", type=float, default=0.35, help="Delay between requests (seconds)")
     parser.add_argument("--offline-dir", default="", help="Parse local saved .html files instead of live scraping")
-    parser.add_argument("--cookie", default="", help="Raw Cookie header for authenticated scraping (e.g. 'member_id=...; msec=...')")
+    parser.add_argument("--cookie-path", default="cookies.txt", help="Path to Netscape cookie jar file (default: cookies.txt)")
     parser.add_argument("--out", default="config/fg_daily_estimates.json", help="Output JSON path")
     args = parser.parse_args()
 
@@ -340,7 +384,7 @@ def main():
             max_forum_pages=args.max_forum_pages,
             max_topics=args.max_topics,
             delay_s=args.delay_s,
-            cookie_header=args.cookie,
+            cookie_path=args.cookie_path,
         )
 
     out_path = Path(args.out)
