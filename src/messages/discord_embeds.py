@@ -116,7 +116,13 @@ class DiscordEmbeds(GenericApi):
         e.set_footer(text=f'Botty v.{__version__} by Aeon')
         e.timestamp=datetime.datetime.now(datetime.timezone.utc)
         try:
-            webhook.send(embed=e, file=file, username=Config().general['name'])
+            send_kwargs = {
+                "embed": e,
+                "username": Config().general['name'],
+            }
+            if file is not None:
+                send_kwargs["file"] = file
+            webhook.send(**send_kwargs)
         except BaseException as err:
             Logger.error(f"Error sending Discord embed: {err}")
             # Fallback: try plain text so status signals still arrive even if embed serialization fails.
