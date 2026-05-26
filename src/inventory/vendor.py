@@ -98,7 +98,7 @@ def gamble():
         Logger.warning("gamble: gamble vendor window not detected")
         return False
 
-def buy_item(template_name: str, quantity: int = 1, img: np.ndarray = None, shift_click: bool = False) -> bool:
+def buy_item(template_name: str, quantity: int = 1, img: np.ndarray = None, shift_click: bool = False, log_missing: bool = True) -> bool:
     """
     Buy desired item from vendors. Vendor inventory needs to be open!
     :param template_name: Name of template for desired item to buy; e.g., SUPER_MANA_POTION
@@ -139,5 +139,6 @@ def buy_item(template_name: str, quantity: int = 1, img: np.ndarray = None, shif
         else:
             Logger.error("buy_item: Quantity not specified")
             return False
-    Logger.error(f"buy_item: Desired item {template_name} not found")
+    if log_missing:
+        Logger.error(f"buy_item: Desired item {template_name} not found")
     return False

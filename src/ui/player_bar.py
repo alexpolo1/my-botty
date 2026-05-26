@@ -22,7 +22,30 @@ def _parse_ocr_int(token: str) -> int:
 
 def _extract_experience_values(text: str):
     upper = (text or "").upper()
-    # Keep only number-like tokens from OCR and parse current/required XP from the first pair.
+    # Prefer parsing left/right side around "/" to avoid grabbing stray OCR digits.
+    if "/" in upper:
+        left, right = upper.split("/", 1)
+        left_tokens = re.findall(r"[0-9Il|Oo][0-9Il|Oo,\.]*", left)
+        right_tokens = re.findall(r"[0-9Il|Oo][0-9Il|Oo,\.]*", right)
+        left_val = 0
+        right_val = 0
+        if left_tokens:
+            try:
+                left_val = max((_parse_ocr_int(t) for t in left_tokens), default=0)
+            except Exception:
+                left_val = 0
+        if right_tokens:
+            try:
+                right_val = max((_parse_ocr_int(t) for t in right_tokens), default=0)
+            except Exception:
+                right_val = 0
+        if left_val > 0 and right_val > 0:
+            # Common OCR artifact: one extra trailing digit on current XP.
+            while left_val > right_val and left_val >= 10:
+                left_val //= 10
+            return left_val, right_val
+
+    # Fallback parser when slash split fails.
     tokens = re.findall(r"[0-9Il|Oo][0-9Il|Oo,\.]*", upper)
     numbers = []
     for token in tokens:
@@ -31,7 +54,10 @@ def _extract_experience_values(text: str):
         except Exception:
             continue
     if len(numbers) >= 2:
-        return numbers[0], numbers[1]
+        current_exp, required_exp = numbers[0], numbers[1]
+        while current_exp > required_exp and current_exp >= 10:
+            current_exp //= 10
+        return current_exp, required_exp
     return 0, 0
 
 

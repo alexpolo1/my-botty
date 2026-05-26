@@ -1,0 +1,60 @@
+{
+  "enabled": true,
+  "notes": "Day 3 ladder snapshot pricing. Values are per item in fg.",
+  "rules": [
+    { "name": "Cham Rune", "match": "exact", "pattern": "CHAM RUNE", "fg": 800 },
+    { "name": "Lo Rune", "match": "exact", "pattern": "LO RUNE", "fg": 900 },
+    { "name": "Ohm Rune", "match": "exact", "pattern": "OHM RUNE", "fg": 600 },
+    { "name": "Vex Rune", "match": "exact", "pattern": "VEX RUNE", "fg": 400 },
+    { "name": "Gul Rune", "match": "exact", "pattern": "GUL RUNE", "fg": 200 },
+    { "name": "Ist Rune", "match": "exact", "pattern": "IST RUNE", "fg": 200 },
+    { "name": "Mal Rune", "match": "exact", "pattern": "MAL RUNE", "fg": 120 },
+    { "name": "Um Rune", "match": "exact", "pattern": "UM RUNE", "fg": 90 },
+    { "name": "Pul Rune", "match": "exact", "pattern": "PUL RUNE", "fg": 50 },
+    { "name": "Lem Rune", "match": "exact", "pattern": "LEM RUNE", "fg": 70 },
+
+    { "name": "Unid Anni", "match": "contains", "pattern": "UNID ANNI", "fg": 400 },
+    { "name": "Unid Diablo Charm", "match": "contains", "pattern": "UNID DIABOLOS", "fg": 2500 },
+    { "name": "Unid Mephisto Charm", "match": "contains", "pattern": "UNID MEPHISTOS", "fg": 1500 },
+    { "name": "Unid Baal Charm", "match": "contains", "pattern": "UNID BAALOS", "fg": 1500 },
+    { "name": "Unid Gheed", "match": "contains", "pattern": "UNID GHEED", "fg": 650 },
+    { "name": "Unid Arach", "match": "contains", "pattern": "UNID ARACH", "fg": 500 },
+    { "name": "Unid Andy", "match": "contains", "pattern": "UNID ANDY", "fg": 300 },
+    { "name": "Unid War Traveler", "match": "contains", "pattern": "UNID WT", "fg": 500 },
+    { "name": "Unid Death's Fathom", "match": "contains", "pattern": "UNID DF", "fg": 800 },
+    { "name": "Unid Griffon", "match": "contains", "pattern": "UNID GRIFFON", "fg": 2000 },
+    { "name": "Unid CoA", "match": "contains", "pattern": "UNID COA", "fg": 600 },
+    { "name": "Unid Eth Andy", "match": "contains", "pattern": "UNID ETH ANDY", "fg": 2000 },
+    { "name": "Unid Eth Titans", "match": "contains", "pattern": "UNID ETH TITANS", "fg": 1000 },
+    { "name": "Unid Eth Treks", "match": "contains", "pattern": "UNID ETH TREKS", "fg": 700 },
+
+    { "name": "Shako", "match": "contains", "pattern": "HARLEQUIN CREST", "fg": 400 },
+    { "name": "Occy", "match": "contains", "pattern": "THE OCCULUS", "fg": 250 },
+    { "name": "Highlord", "match": "contains", "pattern": "HIGHLORD", "fg": 300 },
+    { "name": "Mara 30", "match": "contains", "pattern": "MARA 30", "fg": 1200 },
+    { "name": "Mara 29", "match": "contains", "pattern": "MARA 29", "fg": 900 },
+    { "name": "Mara 27", "match": "contains", "pattern": "MARA 27", "fg": 750 },
+    { "name": "Mara 26", "match": "contains", "pattern": "MARA 26", "fg": 600 },
+    { "name": "Mara 20", "match": "contains", "pattern": "MARA 20", "fg": 500 },
+    { "name": "BK 5", "match": "contains", "pattern": "BK 5", "fg": 600 },
+    { "name": "BK 4", "match": "contains", "pattern": "BK 4", "fg": 400 },
+    { "name": "BK 3", "match": "contains", "pattern": "BK 3", "fg": 300 },
+
+    { "name": "5/5 Light Facet", "match": "contains", "pattern": "5/5 LIGHT FACET", "fg": 500 },
+    { "name": "5/5 Cold Facet", "match": "contains", "pattern": "5/5 COLD FACET", "fg": 500 },
+
+    { "name": "Latent Crack of the Heavens", "match": "contains", "pattern": "CRACK OF THE HEAVENS", "fg": 1000 },
+    { "name": "Latent Black Cleft", "match": "contains", "pattern": "BLACK CLEFT", "fg": 650 },
+    { "name": "Latent Bone Break", "match": "contains", "pattern": "BONE BREAK", "fg": 650 },
+    { "name": "Latent Flame Rift", "match": "contains", "pattern": "FLAME RIFT", "fg": 800 },
+
+    { "name": "5@res SC", "match": "contains", "pattern": "5 RESIST", "fg": 300 },
+    { "name": "20life SC", "match": "contains", "pattern": "20 LIFE", "fg": 100 },
+    { "name": "7mf SC", "match": "contains", "pattern": "7 MF", "fg": 100 },
+
+    { "name": "Pcomb SK", "match": "contains", "pattern": "PALADIN COMBAT", "fg": 200 },
+    { "name": "Cold SK", "match": "contains", "pattern": "COLD SKILLS", "fg": 250 },
+    { "name": "Java SK", "match": "contains", "pattern": "JAVELIN", "fg": 200 },
+    { "name": "Light SK", "match": "contains", "pattern": "LIGHTNING SKILLS", "fg": 200 }
+  ]
+}

@@ -132,7 +132,17 @@ class FoHdin(Paladin):
         pindle_pos_abs = convert_screen_to_abs(Config().path["pindle_end"][0])
 
         cast_pos_abs = [pindle_pos_abs[0] * 0.80, pindle_pos_abs[1] * 0.80]
-        self._generic_foh_attack_sequence(default_target_abs=cast_pos_abs, min_duration=atk_len_dur, max_duration=atk_len_dur, default_spray=10, target_detect=False, foh_to_holy_bolt_ratio=1)
+        # Pindle is a short burst fight: favor repeated FoH casts over Holy Bolt alternation.
+        # Also enforce a minimum cast window so we don't exit after a single FoH on low atk_len values.
+        pindle_attack_window = max(atk_len_dur, self._foh_cycle_duration * 3)
+        self._generic_foh_attack_sequence(
+            default_target_abs=cast_pos_abs,
+            min_duration=pindle_attack_window,
+            max_duration=pindle_attack_window,
+            default_spray=10,
+            target_detect=False,
+            foh_to_holy_bolt_ratio=0,
+        )
 
         if self.capabilities.can_teleport_natively:
             self._pather.traverse_nodes_fixed("pindle_end", self)

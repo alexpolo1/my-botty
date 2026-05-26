@@ -101,8 +101,10 @@ class TownManager:
             if not (new_loc and common.wait_for_left_inventory()): return False, items
             img=grab()
             def buy_best_available_potion(potion_templates: list[str], quantity: int, shift_click: bool) -> bool:
-                for template_name in potion_templates:
-                    if vendor.buy_item(template_name=template_name, quantity=quantity, shift_click=shift_click, img=img):
+                for idx, template_name in enumerate(potion_templates):
+                    # Intermediate fallback checks should not spam "not found" errors.
+                    log_missing = idx == (len(potion_templates) - 1)
+                    if vendor.buy_item(template_name=template_name, quantity=quantity, shift_click=shift_click, img=img, log_missing=log_missing):
                         if template_name not in ["SUPER_HEALING_POTION", "SUPER_MANA_POTION"]:
                             Logger.info(f"buy_consumables: Falling back to {template_name.replace('_', ' ')}")
                         return True

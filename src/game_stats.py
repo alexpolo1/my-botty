@@ -10,6 +10,7 @@ from beautifultable import BeautifulTable
 from logger import Logger
 from config import Config
 from messages import Messenger
+from fg_price_tracker import FGPriceTracker
 from utils.misc import hms
 from utils.levels import get_level, get_level_from_exp
 from version import __version__
@@ -65,13 +66,18 @@ class GameStats:
             "merc_deaths": 0,
             "failed_runs": 0,
             "runes": 0,
+            "fg_estimated": 0.0,
         }
         self._valuable_item_counts = {name: 0 for name in self._TOP_VALUABLE_ITEMS}
+        self._fg_tracker = FGPriceTracker()
+        self._fg_item_counts = {}
+        self._fg_item_totals = {}
         self._stats_filename = f'stats_{time.strftime("%Y%m%d_%H%M%S")}.log'
         self._events_filename = f'events_{time.strftime("%Y%m%d_%H%M%S")}.jsonl'
+        self._mini_stats_filename = f'mini_stats_{time.strftime("%Y%m%d_%H%M%S")}.json'
         self._nopickup_active = False
         self._starting_exp = 0
-        self._current_exp = 1
+        self._current_exp = 0
         self._current_lvl = 0
         self._exp_logging_disabled = False
         self._exp_logging_error_warned = False
@@ -99,6 +105,7 @@ class GameStats:
         # Keep a crash-resilient human-readable snapshot updated throughout a session.
         try:
             self._save_stats_to_file()
+            self._save_mini_stats_to_file()
         except Exception as e:
             Logger.warning(f"Failed to persist stats snapshot: {e}")
 
@@ -117,6 +124,8 @@ class GameStats:
                 "item_counts": {},
                 "rune_counts": {},
                 "valuable_counts": {},
+                "fg_item_counts": {},
+                "fg_item_totals": {},
                 "deaths": 0,
                 "chickens": 0,
                 "merc_deaths": 0,
@@ -137,6 +146,8 @@ class GameStats:
                             "CHIPPED SKULL", "FLAWED SKULL", "SKULL", "FLAWLESS SKULL", "PERFECT SKULL"]
         skip_log = any(substring in item_name for substring in filtered_substrings) or any(match == item_name.strip() for match in filtered_matches)
         normalized_name = self._normalize_item_name(item_name)
+        fg_value = None
+        fg_name = None
         if self._location is not None and not skip_log:
             Logger.debug(f"Stashed and logged: {item_name}")
             self._location_stats[self._location]["items"].append(item_name)
@@ -153,6 +164,16 @@ class GameStats:
                 valuable_counts[normalized_name] = valuable_counts.get(normalized_name, 0) + 1
                 self._valuable_item_counts[normalized_name] += 1
                 self._log_event("valuable_item_kept", {"item_name": normalized_name})
+            fg_value, fg_name = self._fg_tracker.estimate(normalized_name)
+            if fg_value is not None and fg_name:
+                fg_counts = self._location_stats[self._location]["fg_item_counts"]
+                fg_totals = self._location_stats[self._location]["fg_item_totals"]
+                fg_counts[fg_name] = fg_counts.get(fg_name, 0) + 1
+                fg_totals[fg_name] = fg_totals.get(fg_name, 0.0) + fg_value
+                self._fg_item_counts[fg_name] = self._fg_item_counts.get(fg_name, 0) + 1
+                self._fg_item_totals[fg_name] = self._fg_item_totals.get(fg_name, 0.0) + fg_value
+                self._location_stats["totals"]["fg_estimated"] += fg_value
+                self._log_event("fg_item_kept", {"item_name": normalized_name, "fg_name": fg_name, "fg_value": fg_value})
             self._log_event("item_kept", {"item_name": item_name, "expression": expression})
             self._persist_snapshot()
         elif self._location is not None and skip_log:
@@ -160,7 +181,10 @@ class GameStats:
 
         if send_message and self._messenger.enabled and not skip_log:
             if expression[0] != "@":
-                self._messenger.send_item(item_name, img, self._location, ocr_text, expression, item_props)
+                expression_with_fg = expression
+                if fg_value is not None and fg_name:
+                    expression_with_fg = f"{expression} | est_fg={fg_value:.1f}"
+                self._messenger.send_item(item_name, img, self._location, ocr_text, expression_with_fg, item_props)
 
     def log_death(self, img: str):
         self._death_counter += 1
@@ -307,15 +331,16 @@ class GameStats:
         avg_length = good_games_time / float(good_games_count)
         avg_length_str = hms(avg_length)
 
-        curr_lvl = get_level(self._current_lvl)
+        curr_lvl = get_level(self._current_lvl) if self._current_lvl > 0 else { "lvl": 0, "exp": 0, "xp_to_next": 0 }
 
         msg = f'\nSession length: {elapsed_time_str}'
         msg += f'\nGames: {self._game_counter}'
         msg += f'\nAvg Game Length: {avg_length_str}'
-        msg += f'\nCurrent Level: {curr_lvl["lvl"]}'
+        msg += f'\nCurrent Level: {curr_lvl["lvl"] if curr_lvl["lvl"] > 0 else "n/a"}'
         msg += f'\nRunes Kept: {self._location_stats["totals"]["runes"]}'
+        msg += f'\nEstimated FG: {self._location_stats["totals"]["fg_estimated"]:.1f}'
 
-        if curr_lvl["lvl"] < 99:
+        if curr_lvl["lvl"] > 0 and curr_lvl["lvl"] < 99 and self._current_exp > 0:
             try:
                 exp_gained = self._current_exp - curr_lvl['exp']
                 gained_exp = self._current_exp - self._starting_exp
@@ -400,13 +425,55 @@ class GameStats:
                 sorted_valuables = sorted(stats["valuable_counts"].items(), key=lambda x: x[1], reverse=True)
                 for valuable_name, count in sorted_valuables:
                     msg += f"\n      {valuable_name}: {count}"
+            if len(stats["fg_item_totals"]) > 0:
+                msg += "\n    FG tracked items:"
+                sorted_fg = sorted(stats["fg_item_totals"].items(), key=lambda x: x[1], reverse=True)
+                for fg_name, fg_total in sorted_fg:
+                    count = stats["fg_item_counts"].get(fg_name, 0)
+                    msg += f"\n      {fg_name}: {count}x, {fg_total:.1f} fg"
 
         msg += "\n\nTop-10 valuable items (session totals):"
         for item_name in self._TOP_VALUABLE_ITEMS:
             msg += f"\n  {item_name}: {self._valuable_item_counts[item_name]}"
+        if len(self._fg_item_totals) > 0:
+            msg += "\n\nFG tracker (session totals):"
+            sorted_fg_totals = sorted(self._fg_item_totals.items(), key=lambda x: x[1], reverse=True)
+            for fg_name, fg_total in sorted_fg_totals:
+                count = self._fg_item_counts.get(fg_name, 0)
+                msg += f"\n  {fg_name}: {count}x, {fg_total:.1f} fg"
 
         with open(file=f"log/stats/{self._stats_filename}", mode="w+", encoding="utf-8") as f:
             f.write(msg)
+
+    def _save_mini_stats_to_file(self):
+        top_items = sorted(
+            self._fg_item_totals.items(),
+            key=lambda x: x[1],
+            reverse=True
+        )[:10]
+        payload = {
+            "ts": time.strftime("%Y-%m-%dT%H:%M:%S"),
+            "session_seconds": round(time.time() - self._start_time, 2),
+            "games": self._game_counter,
+            "run_counter": self._run_counter,
+            "runs_failed_total": self._runs_failed,
+            "runs_failed_consecutive": self._consecutive_runs_failed,
+            "current_level": self._current_lvl if self._current_lvl > 0 else None,
+            "current_exp": self._current_exp if self._current_exp > 0 else None,
+            "runes_kept": self._location_stats["totals"]["runes"],
+            "estimated_fg_total": round(self._location_stats["totals"]["fg_estimated"], 1),
+            "current_location": self._location,
+            "top_fg_items": [
+                {
+                    "item": item_name,
+                    "count": self._fg_item_counts.get(item_name, 0),
+                    "fg_total": round(fg_total, 1),
+                }
+                for item_name, fg_total in top_items
+            ],
+        }
+        with open(file=f"log/stats/{self._mini_stats_filename}", mode="w+", encoding="utf-8") as f:
+            json.dump(payload, f, indent=2)
 
 
 if __name__ == "__main__":
