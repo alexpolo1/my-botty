@@ -136,7 +136,10 @@ order=run_pindle, run_eldritch
 
 | [routes]     | Descriptions                                                             |
 | ------------ | ------------------------------------------------------------------------ |
-| order        | List of runs botty should do. These will be run in the the order listed unless `randomize_runs` is set to 1. Possible runs: </br> run_trav, run_pindle, run_eldritch, run_eldritch_shenk, run_nihlathak (requires teleport), run_arcane (requires teleport), run_diablo (requires teleport, only hammardin)
+| order        | Comma-delimited run list. If `randomize_runs=0`, Botty executes left-to-right. If `randomize_runs=1`, enabled runs are shuffled each game. Possible runs: </br> run_trav, run_pindle, run_eldritch, run_eldritch_shenk, run_nihlathak (teleport strongly recommended), run_arcane (teleport strongly recommended), run_diablo (teleport recommended), run_vizier, run_andariel, run_countess, run_mephisto, run_baal |
+
+Hammerdin keyrun example (stable-first):
+`order=run_countess, run_arcane, run_nihlathak`
 
 | [char]             | Descriptions |
 | ------------------ | -------------------------------------------------------------------------------------------------|
