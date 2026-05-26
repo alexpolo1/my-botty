@@ -3,6 +3,7 @@ import string
 import threading
 import numpy as np
 import os
+import re
 from dataclasses import dataclass
 from logger import Logger
 config_lock = threading.Lock()
@@ -86,12 +87,28 @@ class Config:
                 if var_name in found_val:
                     var_val = self.configs[found_in]["vars"][var_name]
                     found_val = found_val.replace(var_name, var_val)
-            return found_val
+            return self._resolve_env_references(found_val)
         except KeyError:
             Logger.error(f"Key '{key}' not found in section '{section}'")
             Logger.error("Closing in 10 seconds..")
             wait(10)
             os._exit(1)
+
+    def _resolve_env_references(self, value: str):
+        if not isinstance(value, str):
+            return value
+
+        # Supported inline env reference formats in ini files:
+        #   ${BOTTY_CUSTOM_MESSAGE_HOOK}
+        #   ${ENV:BOTTY_CUSTOM_MESSAGE_HOOK}
+        def repl(match):
+            token = (match.group(1) or "").strip()
+            if token.upper().startswith("ENV:"):
+                token = token[4:].strip()
+            return self._env_overrides.get(token, "")
+
+        resolved = re.sub(r"\$\{([^}]+)\}", repl, value)
+        return resolved
 
     @staticmethod
     def _load_env_overrides():

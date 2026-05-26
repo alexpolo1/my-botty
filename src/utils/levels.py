@@ -105,3 +105,23 @@ def get_level(index: int):
         return levels[index]
     except:
         return { "lvl":0, "exp":0, "xp_to_next":0 }
+
+
+def get_level_from_exp(current_exp: int):
+    """Resolve character level from current absolute XP value."""
+    try:
+        exp_val = int(current_exp)
+    except Exception:
+        return { "lvl":0, "exp":0, "xp_to_next":0 }
+    if exp_val < 0:
+        return { "lvl":0, "exp":0, "xp_to_next":0 }
+    resolved = levels[1]
+    for lvl in range(1, 100):
+        lvl_info = levels.get(lvl)
+        if not lvl_info:
+            continue
+        if exp_val >= lvl_info["exp"]:
+            resolved = lvl_info
+        else:
+            break
+    return resolved

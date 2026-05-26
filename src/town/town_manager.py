@@ -100,26 +100,35 @@ class TownManager:
             new_loc = self._acts[curr_act].open_trade_menu(curr_loc)
             if not (new_loc and common.wait_for_left_inventory()): return False, items
             img=grab()
+            def buy_best_available_potion(potion_templates: list[str], quantity: int, shift_click: bool) -> bool:
+                for template_name in potion_templates:
+                    if vendor.buy_item(template_name=template_name, quantity=quantity, shift_click=shift_click, img=img):
+                        if template_name not in ["SUPER_HEALING_POTION", "SUPER_MANA_POTION"]:
+                            Logger.info(f"buy_consumables: Falling back to {template_name.replace('_', ' ')}")
+                        return True
+                return False
             # Buy HP pots
             if consumables.get_needs("health") > 0:
                 can_shift_click = not sum([ x > 0 for x in [consumables.get_needs("health"), consumables.get_needs("mana"), consumables.get_needs("rejuv")]]) > 1
-                if vendor.buy_item(template_name = "SUPER_HEALING_POTION", quantity = consumables.get_needs("health"), shift_click = can_shift_click, img=img):
+                if buy_best_available_potion(
+                    ["SUPER_HEALING_POTION", "GREATER_HEALING_POTION", "HEALING_POTION", "LIGHT_HEALING_POTION", "MINOR_HEALING_POTION"],
+                    quantity=consumables.get_needs("health"),
+                    shift_click=can_shift_click,
+                ):
                     consumables.set_needs("health", 0)
                 else:
-                    if vendor.buy_item(template_name="GREATER_HEALING_POTION", quantity = consumables.get_needs("health"), shift_click = can_shift_click, img=img):
-                        consumables.set_needs("health", 0)
-                    else:
-                        Logger.error("buy_consumables: Error purchasing health potions")
+                    Logger.error("buy_consumables: Error purchasing health potions")
             # Buy mana pots
             if consumables.get_needs("mana") > 0:
                 can_shift_click = not sum([ x > 0 for x in [consumables.get_needs("health"), consumables.get_needs("mana"), consumables.get_needs("rejuv")]]) > 1
-                if vendor.buy_item(template_name="SUPER_MANA_POTION", quantity = consumables.get_needs("mana"), shift_click = can_shift_click, img=img):
+                if buy_best_available_potion(
+                    ["SUPER_MANA_POTION", "GREATER_MANA_POTION", "MANA_POTION", "LIGHT_MANA_POTION", "MINOR_MANA_POTION"],
+                    quantity=consumables.get_needs("mana"),
+                    shift_click=can_shift_click,
+                ):
                     consumables.set_needs("mana", 0)
                 else:
-                    if vendor.buy_item(template_name="GREATER_MANA_POTION", quantity = consumables.get_needs("mana"), shift_click = can_shift_click, img=img):
-                        consumables.set_needs("mana", 0)
-                    else:
-                        Logger.error("buy_consumables: Error purchasing mana potions")
+                    Logger.error("buy_consumables: Error purchasing mana potions")
             # Buy TP scrolls
             if consumables.get_needs("tp") > 0:
                 if vendor.buy_item(template_name="INV_SCROLL_TP", shift_click = True, img=img):

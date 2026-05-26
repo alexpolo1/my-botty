@@ -11,7 +11,7 @@ from logger import Logger
 from config import Config
 from messages import Messenger
 from utils.misc import hms
-from utils.levels import get_level
+from utils.levels import get_level, get_level_from_exp
 from version import __version__
 
 from ui import player_bar
@@ -75,6 +75,8 @@ class GameStats:
         self._current_lvl = 0
         self._exp_logging_disabled = False
         self._exp_logging_error_warned = False
+        self._last_status_report_game = 0
+        self._last_status_report_run = 0
         os.makedirs("log/stats", exist_ok=True)
 
     def _log_event(self, event_type: str, data: dict | None = None):
@@ -193,9 +195,11 @@ class GameStats:
     def log_start_game(self):
         if self._game_counter > 0:
             self._save_stats_to_file()
-            if Config().general["discord_status_count"] and self._game_counter % Config().general["discord_status_count"] == 0:
-                # every discord_status_count game send a message update about current status
-                self._send_status_update()
+            # Legacy game-based status updates are only used when run-based updates are disabled.
+            if not Config().general.get("discord_status_runs"):
+                if Config().general["discord_status_count"] and self._game_counter % Config().general["discord_status_count"] == 0:
+                    # every discord_status_count game send a message update about current status
+                    self._send_status_update()
         self._game_counter += 1
         self._timer = time.time()
         Logger.info(f"Starting game #{self._game_counter}")
@@ -242,16 +246,14 @@ class GameStats:
                 Logger.debug(f"Failed to log exp: {e}")
             return
 
-        if exp[1] > 0:
-            curr_lvl = get_level(exp[1])['lvl']
-            if curr_lvl > 0:
-                self._current_lvl = curr_lvl-1
-
         if self._starting_exp == 0:
             self._starting_exp = exp[0]
 
         if exp[0] > 0:
             self._current_exp = exp[0]
+            curr_lvl = get_level_from_exp(self._current_exp)["lvl"]
+            if curr_lvl > 0:
+                self._current_lvl = curr_lvl
 
     def pause_timer(self):
         if self._timer is None or self._paused:
@@ -363,9 +365,15 @@ class GameStats:
         return msg
 
     def _send_status_update(self):
+        # Prevent duplicate status updates for the same game/run counters.
+        if self._last_status_report_game == self._game_counter and self._last_status_report_run == self._run_counter:
+            Logger.debug("Skip duplicate Discord status update for same game/run counters")
+            return
         msg = f"Status Report\n{self._create_msg()}\nVersion: {__version__}"
         if self._messenger.enabled:
             self._messenger.send_message(msg)
+            self._last_status_report_game = self._game_counter
+            self._last_status_report_run = self._run_counter
 
     def _save_stats_to_file(self):
         msg = self._create_msg()
