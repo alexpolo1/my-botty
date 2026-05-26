@@ -16,23 +16,40 @@ class Messenger:
             self._message_api = None
         self.enabled = Config().general["message_api_type"] and Config().general["custom_message_hook"]
 
+    def _event_enabled(self, event_key: str) -> bool:
+        # Event filtering currently applies to Discord event stream controls.
+        if Config().general["message_api_type"] != "discord":
+            return True
+        return bool(Config().discord_events.get(event_key, True))
 
     def send_item(self, item: str, image:  np.ndarray, location: str, ocr_text: str = '', bnip_keep_expression: str = '', item_props = {}):
+        if not self._event_enabled("item_keep"):
+            return
         self._message_api.send_item(item, image, location, ocr_text, bnip_keep_expression, item_props)
 
     def send_death(self, location: str, image_path: str = None):
+        if not self._event_enabled("death"):
+            return
         self._message_api.send_death(location, image_path)
 
     def send_chicken(self, location: str, image_path: str = None):
+        if not self._event_enabled("chicken"):
+            return
         self._message_api.send_chicken(location, image_path)
 
     def send_stash(self):
+        if not self._event_enabled("stash_full"):
+            return
         self._message_api.send_stash()
 
     def send_gold(self):
+        if not self._event_enabled("gold_full"):
+            return
         self._message_api.send_gold()
 
     def send_message(self, msg: str):
+        if not self._event_enabled("status"):
+            return
         self._message_api.send_message(msg)
 
 if __name__ == "__main__":

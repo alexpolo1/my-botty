@@ -19,6 +19,7 @@ class Config:
     # config data
     general = {}
     advanced_options = {}
+    discord_events = {}
     gamble = {}
     ui_roi = {}
     ui_pos = {}
@@ -207,6 +208,14 @@ class Config:
         self.general["bnet_name"] = self._env_override("bnet_name", self.general["bnet_name"])
         self.general["bnet_pass"] = self._env_override("bnet_pass", self.general["bnet_pass"])
         self.general["char_name"] = self._env_override("char_name", self.general["char_name"])
+        self.discord_events = {
+            "status": bool(int(self._select_optional("discord_events", "status", "1"))),
+            "item_keep": bool(int(self._select_optional("discord_events", "item_keep", "1"))),
+            "death": bool(int(self._select_optional("discord_events", "death", "1"))),
+            "chicken": bool(int(self._select_optional("discord_events", "chicken", "1"))),
+            "stash_full": bool(int(self._select_optional("discord_events", "stash_full", "1"))),
+            "gold_full": bool(int(self._select_optional("discord_events", "gold_full", "1"))),
+        }
 
         self.stealth = {
             "wait_jitter_min": float(self._select_optional("stealth", "wait_jitter_min", "0.85")),
