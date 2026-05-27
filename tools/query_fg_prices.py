@@ -42,16 +42,6 @@ def main():
 
     conn = sqlite3.connect(str(DB_PATH))
 
-    # Default: show all prices sorted by price desc
-    if not any([args.top, args.cheapest, args.trend, args.sellers, args.day, args.min, args.max, args.item]):
-        rows = query(conn, "SELECT day, item, median_fg, samples FROM prices ORDER BY median_fg DESC")
-        print(f"{'Day':<5} {'Item':<25} {'Price':>8} {'Samples':>8}")
-        print("-" * 50)
-        for r in rows:
-            print(f"{r[0]:<5} {r[1]:<25} {r[2]:>8.1f} {r[3]:>8}")
-        print(f"\nTotal: {len(rows)} items")
-        return
-
     # Top N most expensive
     if args.top:
         rows = query(conn, "SELECT day, item, median_fg, samples FROM prices ORDER BY median_fg DESC LIMIT ?", (args.top,))
@@ -60,6 +50,7 @@ def main():
         print("-" * 50)
         for r in rows:
             print(f"{r[0]:<5} {r[1]:<25} {r[2]:>8.1f} {r[3]:>8}")
+        conn.close()
         return
 
     # Cheapest seller
@@ -75,6 +66,7 @@ def main():
                 print(f"{r[0]:<25} {r[1]:<20} {r[2]:>8.1f}")
         else:
             print(f"No sellers found for '{args.cheapest}' (seller data may not be populated yet)")
+        conn.close()
         return
 
     # Price trend
@@ -90,6 +82,7 @@ def main():
                 print(f"{r[0]:<30} {r[1]:>8.1f} {r[2]:>8}")
         else:
             print(f"No price data for '{args.trend}'")
+        conn.close()
         return
 
     # All sellers for item
@@ -105,6 +98,7 @@ def main():
                 print(f"{r[0]:<25} {r[1]:<20} {r[2]:>8.1f}")
         else:
             print(f"No sellers found for '{args.sellers}'")
+        conn.close()
         return
 
     # Specific day
@@ -120,9 +114,10 @@ def main():
                 print(f"{r[0]:<25} {r[1]:>8.1f} {r[2]:>8}")
         else:
             print(f"No data for day {args.day}")
+        conn.close()
         return
 
-    # Price range filters
+    # Price range filters or item name filter
     conditions = []
     params = []
     if args.min is not None:
@@ -135,13 +130,24 @@ def main():
         conditions.append("item LIKE ?")
         params.append(f"%{args.item}%")
 
-    where = " AND ".join(conditions) if conditions else "1=1"
+    if not conditions:
+        # Default: show all prices sorted by price desc
+        rows = query(conn, "SELECT day, item, median_fg, samples FROM prices ORDER BY median_fg DESC")
+        print(f"{'Day':<5} {'Item':<25} {'Price':>8} {'Samples':>8}")
+        print("-" * 50)
+        for r in rows:
+            print(f"{r[0]:<5} {r[1]:<25} {r[2]:>8.1f} {r[3]:>8}")
+        print(f"\nTotal: {len(rows)} items")
+        conn.close()
+        return
+
+    where = " AND ".join(conditions)
     rows = query(conn, f"SELECT day, item, median_fg, samples FROM prices WHERE {where} ORDER BY median_fg DESC", params)
 
     if rows:
         filters = []
-        if args.min: filters.append(f">= {args.min} FG")
-        if args.max: filters.append(f"<= {args.max} FG")
+        if args.min is not None: filters.append(f">= {args.min} FG")
+        if args.max is not None: filters.append(f"<= {args.max} FG")
         if args.item: filters.append(f"like '{args.item}'")
         print(f"Items ({', '.join(filters)}):")
         print(f"{'Day':<5} {'Item':<25} {'Price':>8} {'Samples':>8}")
