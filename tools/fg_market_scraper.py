@@ -165,21 +165,23 @@ def extract_posters_with_prices(topic_html: str) -> list[dict]:
     # Then capture everything until the next username block as the post content
     user_blocks = []
     # Pattern: member link with username, then the post content until next member link
-    parts = re.split(r'(<a\s+href="/member\.php\?m=\d+"[^>]*>([^<]*)</a>)', clean)
+    parts = re.split(r'(<a[^>]*href="user\.php\?i=\d+"[^>]*>([^<]*)</a>)', clean)
 
+    # re.split with 2 capturing groups returns:
+    # [prefix, group1(full), group2(user), between, group1, group2, ...]
+    # So every 4 elements after index 0 is one user block
     i = 1
-    while i < len(parts) - 1:
-        # parts[i] = full match, parts[i+1] = href attr, parts[i+2] = username, parts[i+3] = post body
-        username = parts[i + 2].strip()
-        if i + 3 < len(parts):
-            post_body = parts[i + 3]
-            # Extract prices from this post's body
+    while i + 2 < len(parts):
+        full_match = parts[i]
+        username = parts[i + 1].strip()
+        post_body = parts[i + 2] if i + 2 < len(parts) else ""
+        if username:
             post_text = re.sub(r"<[^>]+>", " ", post_body)
             post_text = unescape(post_text)
             prices = parse_prices(post_text)
             if prices:
                 user_blocks.append({"user": username, "prices": prices})
-        i += 4
+        i += 3
 
     return user_blocks
 
