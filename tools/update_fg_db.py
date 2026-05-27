@@ -98,9 +98,9 @@ def main():
 
     # Price changes vs previous scrape
     prev_scrape = c.execute(
-        "SELECT scraped_at FROM meta WHERE key='generated_at' AND scraped_at != ?",
+        "SELECT DISTINCT scraped_at FROM prices WHERE scraped_at != ? ORDER BY scraped_at DESC LIMIT 1",
         (scraped_at,)
-    ).fetchall()
+    ).fetchone()
     if prev_scrape:
         print("\n=== PRICE CHANGES VS PREVIOUS SCRAPE ===")
         for row in c.execute(
