@@ -1,20 +1,88 @@
 {
-  "generated_at": "2026-05-26T23:12:56.103141+00:00",
+  "generated_at": "2026-05-27T06:57:04.066788+00:00",
   "ladder_start_date": "2026-05-27",
   "days": 14,
-  "topics_scanned": 30,
+  "topics_scanned": 500,
   "estimates": {
     "day_1": {
-      "Ohm Rune": {
-        "median_fg": 150.0,
-        "samples": 3
+      "Unid Torch": {
+        "median_fg": 550.0,
+        "samples": 5
       },
-      "Cham Rune": {
-        "median_fg": 150.0,
-        "samples": 3
+      "Lem Rune": {
+        "median_fg": 30.0,
+        "samples": 1
+      },
+      "Sorc Torch": {
+        "median_fg": 235.0,
+        "samples": 6
+      },
+      "Mal Rune": {
+        "median_fg": 75.0,
+        "samples": 12
+      },
+      "Ist Rune": {
+        "median_fg": 50.0,
+        "samples": 14
+      },
+      "Mara": {
+        "median_fg": 350.0,
+        "samples": 7
       },
       "Griffon": {
-        "median_fg": 1800.0,
+        "median_fg": 400.0,
+        "samples": 17
+      },
+      "Ohm Rune": {
+        "median_fg": 400.0,
+        "samples": 1
+      },
+      "War Traveler": {
+        "median_fg": 345.0,
+        "samples": 4
+      },
+      "Shako": {
+        "median_fg": 300.0,
+        "samples": 16
+      },
+      "Um Rune": {
+        "median_fg": 5.0,
+        "samples": 4
+      },
+      "Cham Rune": {
+        "median_fg": 250.0,
+        "samples": 8
+      },
+      "Arach": {
+        "median_fg": 300.0,
+        "samples": 11
+      },
+      "Vex Rune": {
+        "median_fg": 142.5,
+        "samples": 6
+      },
+      "Gul Rune": {
+        "median_fg": 82.5,
+        "samples": 6
+      },
+      "Stealth RW": {
+        "median_fg": 5.0,
+        "samples": 3
+      },
+      "Highlord": {
+        "median_fg": 200.0,
+        "samples": 3
+      },
+      "Lo Rune": {
+        "median_fg": 662.5,
+        "samples": 2
+      },
+      "Pul Rune": {
+        "median_fg": 147.5,
+        "samples": 4
+      },
+      "CTA": {
+        "median_fg": 180.0,
         "samples": 1
       }
     },
