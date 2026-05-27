@@ -152,6 +152,38 @@ def parse_prices(text: str) -> list[float]:
     return values
 
 
+def extract_posters_with_prices(topic_html: str) -> list[dict]:
+    """Extract username + price pairs from a d2jsp topic page.
+    Returns list of {'user': str, 'prices': [float]}.
+    d2jsp structure: username appears in a link, followed by 'Member', 'Posts:', then the post body with prices.
+    """
+    # Remove script/style tags
+    clean = re.sub(r"<script.*?</script>", " ", topic_html, flags=re.IGNORECASE | re.DOTALL)
+    clean = re.sub(r"<style.*?</style>", " ", clean, flags=re.IGNORECASE | re.DOTALL)
+
+    # Find all username blocks: <a href="/member.php?m=...">username</a> ... Member ... Posts: ...
+    # Then capture everything until the next username block as the post content
+    user_blocks = []
+    # Pattern: member link with username, then the post content until next member link
+    parts = re.split(r'(<a\s+href="/member\.php\?m=\d+"[^>]*>([^<]*)</a>)', clean)
+
+    i = 1
+    while i < len(parts) - 1:
+        # parts[i] = full match, parts[i+1] = href attr, parts[i+2] = username, parts[i+3] = post body
+        username = parts[i + 2].strip()
+        if i + 3 < len(parts):
+            post_body = parts[i + 3]
+            # Extract prices from this post's body
+            post_text = re.sub(r"<[^>]+>", " ", post_body)
+            post_text = unescape(post_text)
+            prices = parse_prices(post_text)
+            if prices:
+                user_blocks.append({"user": username, "prices": prices})
+        i += 4
+
+    return user_blocks
+
+
 def detect_item(text: str) -> str | None:
     lower = text.lower()
     for name, patterns in ITEM_PATTERNS.items():
@@ -278,6 +310,7 @@ def scrape_day_estimates(
 
     topic_urls = topic_urls[:max_topics]
     buckets: dict[int, dict[str, list[float]]] = {d: {} for d in range(1, days + 1)}
+    user_cheapest: dict[str, dict] = {}
     processed = 0
 
     for topic_url in topic_urls:
@@ -389,8 +422,9 @@ def scrape_day_estimates(
                     items_found.add(item_name)
                     break
 
-        # Parse all FG prices
+        # Parse all FG prices and extract per-user data
         prices = parse_prices(text)
+        user_prices = extract_posters_with_prices(all_html)
 
         if not items_found or not prices:
             continue
@@ -402,12 +436,22 @@ def scrape_day_estimates(
             # Keep first few prices per item per topic
             buckets[day_idx][item].extend(prices[:3])
 
+            # Also track per-user cheapest prices
+            for up in user_prices:
+                for p in up["prices"][:3]:
+                    user_key = f"{item}__{up['user']}"
+                    if user_key not in user_cheapest:
+                        user_cheapest[user_key] = {"item": item, "user": up["user"], "price": p}
+                    elif p < user_cheapest[user_key]["price"]:
+                        user_cheapest[user_key]["price"] = p
+
     result = {
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
         "ladder_start_date": ladder_start.isoformat(),
         "days": days,
         "topics_scanned": processed,
         "estimates": {},
+        "sellers": [],
     }
 
     for day_idx in range(1, days + 1):
@@ -421,6 +465,11 @@ def scrape_day_estimates(
                 "median_fg": round(float(median_fg), 1),
                 "samples": len(samples),
             }
+
+    # Deduplicate sellers: keep cheapest per (item, user)
+    seller_list = list(user_cheapest.values())
+    seller_list.sort(key=lambda s: s["price"])
+    result["sellers"] = seller_list
     return result
 
 
