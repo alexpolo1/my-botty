@@ -1,89 +1,105 @@
 {
-  "generated_at": "2026-05-27T06:57:04.066788+00:00",
+  "generated_at": "2026-05-27T07:46:08.992595+00:00",
   "ladder_start_date": "2026-05-27",
   "days": 14,
-  "topics_scanned": 500,
+  "topics_scanned": 1500,
   "estimates": {
     "day_1": {
-      "Unid Torch": {
-        "median_fg": 550.0,
-        "samples": 5
+      "Ist Rune": {
+        "median_fg": 90.0,
+        "samples": 41
       },
-      "Lem Rune": {
-        "median_fg": 30.0,
-        "samples": 1
-      },
-      "Sorc Torch": {
-        "median_fg": 235.0,
-        "samples": 6
+      "Highlord": {
+        "median_fg": 190.0,
+        "samples": 13
       },
       "Mal Rune": {
         "median_fg": 75.0,
-        "samples": 12
-      },
-      "Ist Rune": {
-        "median_fg": 50.0,
-        "samples": 14
-      },
-      "Mara": {
-        "median_fg": 350.0,
-        "samples": 7
-      },
-      "Griffon": {
-        "median_fg": 400.0,
         "samples": 17
       },
-      "Ohm Rune": {
-        "median_fg": 400.0,
-        "samples": 1
-      },
-      "War Traveler": {
-        "median_fg": 345.0,
-        "samples": 4
+      "Pul Rune": {
+        "median_fg": 50.0,
+        "samples": 13
       },
       "Shako": {
-        "median_fg": 300.0,
-        "samples": 16
-      },
-      "Um Rune": {
-        "median_fg": 5.0,
-        "samples": 4
+        "median_fg": 250.0,
+        "samples": 31
       },
       "Cham Rune": {
-        "median_fg": 250.0,
-        "samples": 8
+        "median_fg": 175.0,
+        "samples": 12
       },
-      "Arach": {
-        "median_fg": 300.0,
-        "samples": 11
-      },
-      "Vex Rune": {
-        "median_fg": 142.5,
-        "samples": 6
+      "Griffon": {
+        "median_fg": 425.0,
+        "samples": 20
       },
       "Gul Rune": {
-        "median_fg": 82.5,
-        "samples": 6
+        "median_fg": 110.0,
+        "samples": 28
       },
-      "Stealth RW": {
-        "median_fg": 5.0,
-        "samples": 3
+      "Mara": {
+        "median_fg": 30.0,
+        "samples": 15
       },
-      "Highlord": {
-        "median_fg": 200.0,
-        "samples": 3
+      "Arach": {
+        "median_fg": 350.0,
+        "samples": 30
       },
-      "Lo Rune": {
-        "median_fg": 662.5,
-        "samples": 2
+      "Unid Anni": {
+        "median_fg": 350.0,
+        "samples": 9
       },
-      "Pul Rune": {
-        "median_fg": 147.5,
-        "samples": 4
+      "Sorc Torch": {
+        "median_fg": 325.0,
+        "samples": 10
       },
       "CTA": {
-        "median_fg": 180.0,
+        "median_fg": 500.0,
+        "samples": 6
+      },
+      "War Traveler": {
+        "median_fg": 200.0,
+        "samples": 17
+      },
+      "Vex Rune": {
+        "median_fg": 280.0,
+        "samples": 17
+      },
+      "5/5 Facet": {
+        "median_fg": 50.0,
         "samples": 1
+      },
+      "Stealth RW": {
+        "median_fg": 20.0,
+        "samples": 6
+      },
+      "Unid Torch": {
+        "median_fg": 490.0,
+        "samples": 5
+      },
+      "Um Rune": {
+        "median_fg": 40.0,
+        "samples": 20
+      },
+      "Lem Rune": {
+        "median_fg": 30.0,
+        "samples": 2
+      },
+      "Ohm Rune": {
+        "median_fg": 450.0,
+        "samples": 4
+      },
+      "Lo Rune": {
+        "median_fg": 650.0,
+        "samples": 19
+      },
+      "Pcomb SK": {
+        "median_fg": 500.0,
+        "samples": 1
+      },
+      "BK Ring": {
+        "median_fg": 42.5,
+        "samples": 10
       }
     },
     "day_2": {},
