@@ -20,59 +20,70 @@ from collections import defaultdict
 from datetime import datetime, timedelta
 
 # FG prices from config (matches what the bot uses)
+# Used both for fg_item_kept events AND to estimate FG from item_kept events
 FG_PRICES = {
-    "El Rune": 0,
-    "Eld Rune": 0,
-    "Tir Rune": 1,
-    "Nef Rune": 1,
-    "Eth Rune": 3,
-    "Ith Rune": 3,
-    "Ral Rune": 6,
-    "Ort Rune": 8,
-    "Thul Rune": 2,
-    "Amn Rune": 10,
-    "Shael Rune": 10,
-    "Ber Rune": 15,
-    "Jah Rune": 20,
-    "Koh Rune": 25,
-    "Vex Rune": 30,
-    "Pul Rune": 40,
-    "Um Rune": 50,
-    "Mal Rune": 60,
-    "Lo Rune": 80,
-    "Sur Rune": 100,
-    "Ber Rune": 15,
-    "Jah Rune": 20,
-    "Zod Rune": 200,
-    # Non-rune items the bot tracks
-    "Sander's Riprap": 5,
-    "Magefist": 5,
-    "Frostburn": 3,
-    "Wanderer's Shoes": 3,
-    "Arachnid's Mesh": 50,
-    "Death's Web": 80,
-    "Griffon's Eye": 80,
-    "Death's Fathom": 100,
-    "Herald of Zakarum": 100,
-    "The Reaper's Toll": 120,
-    "High Lord's Wrath": 150,
-    "Mara's Kaleidoscope": 200,
-    "The Stone of Jordan": 200,
-    "Bul-Kathos' Wedding Band": 200,
-    "War Traveler": 150,
-    "Harlequin Crest": 200,
-    "Andariel's Visage": 80,
-    "Tyrael's Might": 150,
-    "Rainbow Facet": 100,
+    "EL RUNE": 0,
+    "ELD RUNE": 0,
+    "TIR RUNE": 1,
+    "NEF RUNE": 1,
+    "ETH RUNE": 3,
+    "ITH RUNE": 3,
+    "RAL RUNE": 6,
+    "ORT RUNE": 8,
+    "THUL RUNE": 2,
+    "AMN RUNE": 10,
+    "SHAEL RUNE": 10,
+    "BER RUNE": 15,
+    "JAH RUNE": 20,
+    "KOH RUNE": 25,
+    "VEX RUNE": 30,
+    "PUL RUNE": 40,
+    "UM RUNE": 50,
+    "MAL RUNE": 60,
+    "LO RUNE": 80,
+    "SUR RUNE": 100,
+    "ZOD RUNE": 200,
+    # Unique/set items
+    "SANDER'S RIPRAP": 5,
+    "MAGEFIST": 5,
+    "FROSTBURN": 3,
+    "WANDERER'S SHOES": 3,
+    "ARACHNID'S MESH": 50,
+    "DEATH'S WEB": 80,
+    "GRIFFON'S EYE": 80,
+    "DEATH'S FATHOM": 100,
+    "HERALD OF ZAKARUM": 100,
+    "THE REAPER'S TOLL": 120,
+    "HIGH LORD'S WRATH": 150,
+    "MARA'S KALEIDOSCOPE": 200,
+    "THE STONE OF JORDAN": 200,
+    "BUL-KATHOS' WEDDING BAND": 200,
+    "WAR TRAVELER": 150,
+    "HARLEQUIN CREST": 200,
+    "ANDARIEL'S VISAGE": 80,
+    "TYRAEL'S MIGHT": 150,
+    "RAINBOW FACET": 100,
+    "TAL RASHA'S HORADRIC CREST": 10,
+    "TAL RASHA's TOQUE": 8,
+    "TAL RASHA's HEADDRESS": 10,
+    "TAL RASHA's WRATH": 12,
+    "TAL RASHA's ADVOCACY": 10,
+    "TAL RASHA's GUARDIAN": 8,
+    "TAL RASHA's SIGNET": 8,
 }
 
-# Reverse map: item_name from logs -> FG key
-# Log item names are uppercase like "ETH RUNE", "SHAEL RUNE"
-ITEM_TO_FG = {}
-for fg_name, price in FG_PRICES.items():
-    ITEM_TO_FG[fg_name.upper().replace(" ", " ")] = (fg_name, price)
-    # Also handle common variants
-    ITEM_TO_FG[fg_name.upper()] = (fg_name, price)
+
+def estimate_fg_for_item(item_name):
+    """Estimate FG value for an item name from item_kept events (pre-FG-tracking)."""
+    name_upper = item_name.upper()
+    # Direct match
+    if name_upper in FG_PRICES:
+        return FG_PRICES[name_upper]
+    # Try matching rune names (e.g. "ETH RUNE" -> "ETH RUNE")
+    for fg_name, price in FG_PRICES.items():
+        if fg_name.upper() == name_upper:
+            return price
+    return None
 
 
 def find_stats_dir():
@@ -141,13 +152,22 @@ def parse_event_files(stats_dir, start_time, end_time):
                     fg_val = ev.get("fg_value", 0)
                     fg_name = ev.get("fg_name", "Unknown")
                     total_fg += fg_val
-                    item_counts[fg_name]["count"] += 1
-                    item_counts[fg_name]["fg"] += fg_val
+                    # Normalize key to uppercase for dedup with item_kept
+                    key = fg_name.upper()
+                    item_counts[key]["count"] += 1
+                    item_counts[key]["fg"] += fg_val
 
-                elif event == "item_kept" and "fg_item_kept" not in event:
-                    # Non-FG tracked item kept
+                elif event == "item_kept":
+                    # Non-FG tracked item kept (pre-fg_item_kept events)
                     item_name = ev.get("item_name", "Unknown")
                     all_items_kept.append(item_name)
+                    # Estimate FG for items we know the price of
+                    est_fg = estimate_fg_for_item(item_name)
+                    if est_fg is not None and est_fg > 0:
+                        total_fg += est_fg
+                        key = item_name.upper()
+                        item_counts[key]["count"] += 1
+                        item_counts[key]["fg"] += est_fg
 
                 elif event == "item_kept_filtered":
                     # Item was kept but filtered out (gems, skulls, etc.)
