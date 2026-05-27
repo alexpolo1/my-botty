@@ -18,6 +18,7 @@ config/custom.*.ini
 config/*.local.ini
 .vscode
 .vs/
+log/fg_reports/
 test/assets/
 .venv
 .env
