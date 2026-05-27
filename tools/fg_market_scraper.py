@@ -152,36 +152,43 @@ def parse_prices(text: str) -> list[float]:
     return values
 
 
-def extract_posters_with_prices(topic_html: str) -> list[dict]:
+def extract_posters_with_prices(topic_html: str, topic_url: str = "") -> list[dict]:
     """Extract username + price pairs from a d2jsp topic page.
-    Returns list of {'user': str, 'prices': [float]}.
+    Returns list of {'user': str, 'prices': [float], 'post_id': str, 'topic_url': str}.
     d2jsp structure: username appears in a link, followed by 'Member', 'Posts:', then the post body with prices.
     """
     # Remove script/style tags
     clean = re.sub(r"<script.*?</script>", " ", topic_html, flags=re.IGNORECASE | re.DOTALL)
     clean = re.sub(r"<style.*?</style>", " ", clean, flags=re.IGNORECASE | re.DOTALL)
 
-    # Find all username blocks: <a href="/member.php?m=...">username</a> ... Member ... Posts: ...
-    # Then capture everything until the next username block as the post content
+    # Find all username blocks — try to capture post anchor ID if present
+    # Pattern: <a name="p123456" href="user.php?i=...">username</a> OR <a href="user.php?i=...">username</a>
     user_blocks = []
-    # Pattern: member link with username, then the post content until next member link
-    parts = re.split(r'(<a[^>]*href="user\.php\?i=\d+"[^>]*>([^<]*)</a>)', clean)
+    # Match: optional name anchor, then href with user.php, then username
+    matches = list(re.finditer(r'<a(?:\s+name="p(\d+)")?\s+[^>]*href="user\.php\?i=\d+"[^>]*>([^<]*)</a>', clean))
+    
+    if not matches:
+        return user_blocks
 
-    # re.split with 2 capturing groups returns:
-    # [prefix, group1(full), group2(user), between, group1, group2, ...]
-    # So every 4 elements after index 0 is one user block
-    i = 1
-    while i + 2 < len(parts):
-        full_match = parts[i]
-        username = parts[i + 1].strip()
-        post_body = parts[i + 2] if i + 2 < len(parts) else ""
+    for idx, m in enumerate(matches):
+        post_id = m.group(1) if m.group(1) else ""
+        username = m.group(2).strip()
+        # Post body is everything between this match and the next
+        start = m.end()
+        end = matches[idx + 1].start() if idx + 1 < len(matches) else len(clean)
+        post_body = clean[start:end]
+        
         if username:
             post_text = re.sub(r"<[^>]+>", " ", post_body)
             post_text = unescape(post_text)
             prices = parse_prices(post_text)
             if prices:
-                user_blocks.append({"user": username, "prices": prices})
-        i += 3
+                user_blocks.append({
+                    "user": username,
+                    "prices": prices,
+                    "post_id": post_id,
+                    "topic_url": topic_url
+                })
 
     return user_blocks
 
@@ -426,7 +433,7 @@ def scrape_day_estimates(
 
         # Parse all FG prices and extract per-user data
         prices = parse_prices(text)
-        user_prices = extract_posters_with_prices(all_html)
+        user_prices = extract_posters_with_prices(all_html, topic_url)
 
         if not items_found or not prices:
             continue
@@ -438,14 +445,16 @@ def scrape_day_estimates(
             # Keep first few prices per item per topic
             buckets[day_idx][item].extend(prices[:3])
 
-            # Also track per-user cheapest prices
+            # Also track per-user cheapest prices with post link
             for up in user_prices:
                 for p in up["prices"][:3]:
                     user_key = f"{item}__{up['user']}"
+                    post_link = f"https://forums.d2jsp.org{up['topic_url']}#p{up['post_id']}"
                     if user_key not in user_cheapest:
-                        user_cheapest[user_key] = {"item": item, "user": up["user"], "price": p}
+                        user_cheapest[user_key] = {"item": item, "user": up["user"], "price": p, "post_link": post_link}
                     elif p < user_cheapest[user_key]["price"]:
                         user_cheapest[user_key]["price"] = p
+                        user_cheapest[user_key]["post_link"] = post_link
 
     result = {
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),

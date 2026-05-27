@@ -56,14 +56,14 @@ def main():
     # Cheapest seller
     if args.cheapest:
         rows = query(conn,
-            "SELECT item, user, price FROM sellers WHERE item LIKE ? ORDER BY price ASC LIMIT 5",
+            "SELECT item, user, price, post_link FROM sellers WHERE item LIKE ? ORDER BY price ASC LIMIT 5",
             (f"%{args.cheapest}%",))
         if rows:
             print(f"Cheapest sellers for '{args.cheapest}':")
-            print(f"{'Item':<25} {'Seller':<20} {'Price':>8}")
-            print("-" * 55)
+            print(f"{'Item':<25} {'Seller':<20} {'Price':>8}  {'Link'}")
+            print("-" * 80)
             for r in rows:
-                print(f"{r[0]:<25} {r[1]:<20} {r[2]:>8.1f}")
+                print(f"{r[0]:<25} {r[1]:<20} {r[2]:>8.1f}  {r[3]}")
         else:
             print(f"No sellers found for '{args.cheapest}' (seller data may not be populated yet)")
         conn.close()
@@ -88,14 +88,14 @@ def main():
     # All sellers for item
     if args.sellers:
         rows = query(conn,
-            "SELECT item, user, price FROM sellers WHERE item LIKE ? ORDER BY price ASC",
+            "SELECT item, user, price, post_link FROM sellers WHERE item LIKE ? ORDER BY price ASC",
             (f"%{args.sellers}%",))
         if rows:
             print(f"All sellers for '{args.sellers}':")
-            print(f"{'Item':<25} {'Seller':<20} {'Price':>8}")
-            print("-" * 55)
+            print(f"{'Item':<25} {'Seller':<20} {'Price':>8}  {'Link'}")
+            print("-" * 80)
             for r in rows:
-                print(f"{r[0]:<25} {r[1]:<20} {r[2]:>8.1f}")
+                print(f"{r[0]:<25} {r[1]:<20} {r[2]:>8.1f}  {r[3]}")
         else:
             print(f"No sellers found for '{args.sellers}'")
         conn.close()

@@ -38,6 +38,7 @@ def main():
         item TEXT,
         user TEXT,
         price REAL,
+        post_link TEXT,
         scraped_at TEXT
     )''')
     c.execute('''CREATE TABLE IF NOT EXISTS meta (
@@ -62,8 +63,8 @@ def main():
     # Insert sellers
     for seller in data.get('sellers', []):
         c.execute(
-            'INSERT INTO sellers (item, user, price, scraped_at) VALUES (?, ?, ?, ?)',
-            (seller['item'], seller['user'], seller['price'], scraped_at)
+            'INSERT INTO sellers (item, user, price, post_link, scraped_at) VALUES (?, ?, ?, ?, ?)',
+            (seller.get('item', ''), seller.get('user', ''), seller.get('price', 0), seller.get('post_link', ''), scraped_at)
         )
 
     # Update meta
@@ -84,10 +85,10 @@ def main():
 
     print("\n=== CHEAPEST SELLERS PER ITEM ===")
     for row in c.execute(
-        "SELECT item, user, price FROM sellers WHERE scraped_at=? ORDER BY item, price",
+        "SELECT item, user, price, post_link FROM sellers WHERE scraped_at=? ORDER BY item, price",
         (scraped_at,)
     ):
-        print(f"  {row[0]}: {row[1]} @ {row[2]} FG")
+        print(f"  {row[0]}: {row[1]} @ {row[2]} FG - {row[3]}")
 
     print("\n=== ITEMS WITH MOST SELLERS ===")
     for row in c.execute(
@@ -105,7 +106,7 @@ def main():
         print("\n=== PRICE CHANGES VS PREVIOUS SCRAPE ===")
         for row in c.execute(
             "SELECT p1.item, p1.median_fg, p2.median_fg FROM prices p1 JOIN prices p2 ON p1.item=p2.item WHERE p1.scraped_at=? AND p2.scraped_at=? ORDER BY p2.median_fg - p1.median_fg",
-            (prev_scrape[0][0], scraped_at)
+            (prev_scrape[0], scraped_at)
         ):
             diff = row[2] - row[1]
             sign = '+' if diff > 0 else ''
