@@ -53,15 +53,20 @@ ITEM_PATTERNS = {
     "Um Rune": [r"\bum\b"],
     "Pul Rune": [r"\bpul\b"],
     "Lem Rune": [r"\blem\b"],
+    "Ber Rune": [r"\bber\b"],
+    "Jah Rune": [r"\bjah\b"],
+    "Koh Rune": [r"\bkoh\b"],
     "Unid Anni": [r"\bunid\s+anni\b", r"\bunid\s+annihilus\b"],
     "Unid Torch": [r"\bunid\s+(diab?olos|mephistos|baalos|torch)\b", r"\bunid\s+torch\b"],
+    "Sorc Torch": [r"\bsorc\s+torch\b", r"\bsorc\s+torc?h\b"],
+    "Pala Torch": [r"\bpala\s+torch\b"],
     "Griffon": [r"\bgriffon"],
     "Shako": [r"\bshako\b", r"\bharlequin crest\b"],
-    "Mara": [r"\bmara"],
-    "Highlord": [r"\bhighlord"],
+    "Mara": [r"\bmara\b"],
+    "Highlord": [r"\bhighlord\b"],
     "BK Ring": [r"\bbk\b", r"\bbul[\s\-']*kathos"],
-    "War Traveler": [r"\bwar traveler\b", r"\bwt\b"],
-    "Death's Fathom": [r"\bdeath'?s fathom\b", r"\bdf\b"],
+    "War Traveler": [r"\bwar traveler\b"],
+    "Death's Fathom": [r"\bdeath'?s fathom\b"],
     "Arach": [r"\barach", r"\barachnid mesh\b"],
     "5/5 Facet": [r"\b5\s*/\s*5\b.*\bfacet\b"],
     "Pcomb SK": [r"\bpcomb\b", r"\bpaladin combat\b"],
@@ -69,11 +74,61 @@ ITEM_PATTERNS = {
     "Java SK": [r"\bjava sk\b", r"\bjavelin\b"],
     "Light SK": [r"\blight sk\b", r"\blightning skills\b"],
     "CTA": [r"\bcta\b", r"\bcall to arms\b"],
-    "Sorc Torch": [r"\bsorc torch\b", r"\bsorc\s+torc?h\b"],
     "Stealth RW": [r"\bstealth\b"],
     "Dual Leech Ring": [r"\bdual leech ring\b"],
     "Aldur's Advance": [r"\baldur'?s advance\b"],
-    "Shako": [r"\bshako\b"],
+    "Viper Gorge": [r"\bviper\b"],
+    "Insight": [r"\binsight\b"],
+    "Fury": [r"\bfury\b"],
+    "Red Tape": [r"\bred tape\b"],
+    "Thresher": [r"\bthresher\b"],
+    "Conviction": [r"\bconviction\b"],
+    "Sanctuary": [r"\bsanctuary\b"],
+    "Spirit": [r"\bspirit\b"],
+    "Hope's Fall": [r"\bhope'?s fall\b"],
+    "Grief": [r"\bgrief\b"],
+    "Witching Hour": [r"\bwitching\b"],
+    "Crow": [r"\bcrow\b"],
+    "Wind": [r"\bwind\b"],
+    "Monarch": [r"\bmonarch\b"],
+    "Sacred": [r"\bsacred\b"],
+    "Guardian's Light": [r"\bguardian\b", r"\blight jewel\b"],
+    "Oculus": [r"\boculus\b"],
+    "Vampire Gaze": [r"\bvampire gaze\b", r"\bvamp\b"],
+    "Hellfire": [r"\bhellfire\b"],
+    "Torch of the Fanatic": [r"\btof\b", r"\btorch of the fanatic\b"],
+    "Light Jewel": [r"\blight jewel\b"],
+    "Omen": [r"\bomen\b"],
+    "Enigma": [r"\benigma\b"],
+    "Ward": [r"\bward\b"],
+    "Crescent": [r"\bcrescent\b"],
+    "Night": [r"\bnight\b"],
+    "Blessed": [r"\bblessed\b"],
+    "Fortitude": [r"\bfortitude\b"],
+    "Herod": [r"\bherod\b"],
+    "Skin": [r"\bskin\b"],
+    "Treachery": [r"\btreachery\b"],
+    "Martyr": [r"\bmartyr\b"],
+    "Cyclone": [r"\bcyclone\b"],
+    "Oath": [r"\boath\b"],
+    "Kurtz": [r"\bkurtz\b"],
+    "Moser": [r"\bmoser\b"],
+    "Mithril": [r"\bmithril\b"],
+    "Fist": [r"\bfist\b"],
+    "Grave": [r"\bgrave\b"],
+    "Troll": [r"\btroll\b"],
+    "Honor": [r"\bhonor\b"],
+    "Doom": [r"\bdoom\b"],
+    "Famine": [r"\bfamine\b"],
+    "Pestilence": [r"\bpestilence\b"],
+    "Bulwark": [r"\bbulwark\b"],
+    "Mjolnir": [r"\bmjolnir\b"],
+    "Giant": [r"\bgiant\b"],
+    "Manticore": [r"\bmanticore\b"],
+    "Spiketh": [r"\bspiketh\b"],
+    "Bone": [r"\bbone\b"],
+    "Black": [r"\bblack\b"],
+    "White": [r"\bwhite\b"],
 }
 
 
@@ -232,24 +287,120 @@ def scrape_day_estimates(
         except Exception:
             continue
         html = r.text
-        text = normalize_text(html)
-        item = detect_item(text)
-        prices = parse_prices(text)
-        post_dt = parse_topic_datetime(html)
+        if is_blocked_page(html):
+            continue
+
+        # Paginate through all pages of this topic
+        all_text = html
+        all_html = html
+        prev_text = normalize_text(html)
+        topic_id_match = re.search(r't=(\d+)', topic_url)
+        topic_id = topic_id_match.group(1) if topic_id_match else None
+        if topic_id:
+            # Fetch subsequent pages (o=25, o=50, etc.)
+            for page_offset in range(25, 200, 25):
+                next_url = f"{BASE_URL}/topic.php?t={topic_id}&f=271&o={page_offset}"
+                try:
+                    r2 = session.get(next_url, timeout=20)
+                    if r2.status_code != 200:
+                        break
+                    page_text = normalize_text(r2.text)
+                    # Stop if we hit the last page (same content as previous page)
+                    if page_text == prev_text:
+                        break
+                    prev_text = page_text
+                    all_text += " " + page_text
+                    all_html += " " + r2.text
+                    time.sleep(delay_s)
+                except Exception:
+                    break
+
+        text = normalize_text(all_text)
+        title = parse_topic_title(all_html)
+        post_dt = parse_topic_datetime(all_html)
         processed += 1
         time.sleep(delay_s)
 
-        if not item or not prices or not post_dt:
+        if not post_dt:
             continue
 
         day_idx = (post_dt.date() - ladder_start).days + 1
         if day_idx < 1 or day_idx > days:
             continue
 
-        if item not in buckets[day_idx]:
-            buckets[day_idx][item] = []
-        # Keep first few to avoid huge noisy post lists.
-        buckets[day_idx][item].extend(prices[:3])
+        # Detect ALL items in this topic (multi-item topics are common)
+        items_found = set()
+        # Check body text
+        for name, patterns in ITEM_PATTERNS.items():
+            for pat in patterns:
+                if re.search(pat, text, re.IGNORECASE):
+                    items_found.add(name)
+                    break
+        # Check title
+        for name, patterns in ITEM_PATTERNS.items():
+            for pat in patterns:
+                if re.search(pat, title, re.IGNORECASE):
+                    items_found.add(name)
+                    break
+        # Check filename stem for generic titles
+        if not items_found:
+            # Try to detect from title keywords (only specific, non-generic terms)
+            title_lower = title.lower()
+            for kw, item_name in [
+                ('sorc torch', 'Sorc Torch'),
+                ('pala torch', 'Unid Torch'), ('torch', 'Unid Torch'),
+                ('annihilus', 'Unid Anni'), ('anni', 'Unid Anni'),
+                ('shako', 'Shako'), ('griffon', 'Griffon'), ('arach', 'Arach'),
+                ('mara', 'Mara'), ('highlord', 'Highlord'),
+                ('war traveler', 'War Traveler'),
+                ('cta', 'CTA'), ('call to arms', 'CTA'),
+                ('stealth', 'Stealth RW'), ('leech ring', 'Dual Leech Ring'),
+                ('aldur', "Aldur's Advance"), ('facet', '5/5 Facet'),
+                ('pcomb', 'Pcomb SK'), ('cold sk', 'Cold SK'),
+                ('java', 'Java SK'), ('light sk', 'Light SK'),
+                ('viper', 'Viper Gorge'), ('insight', 'Insight'),
+                ('fury', 'Fury'), ('red tape', 'Red Tape'),
+                ('thresher', 'Thresher'), ('conviction', 'Conviction'),
+                ('sanctuary', 'Sanctuary'), ('spirit', 'Spirit'),
+                ("hope's fall", "Hope's Fall"), ('hopes fall', "Hope's Fall"),
+                ('grief', 'Grief'), ('witching', 'Witching Hour'),
+                ('crow', 'Crow'), ('wind', 'Wind'),
+                ('monarch', 'Monarch'), ('sacred', 'Sacred'),
+                ('guardian', "Guardian's Light"), ('light jewel', 'Light Jewel'),
+                ('oculus', 'Oculus'), ('vampire', 'Vampire Gaze'),
+                ('hellfire', 'Hellfire'), ('tof', 'Torch of the Fanatic'),
+                ('omen', 'Omen'), ('enigma', 'Enigma'),
+                ('ward', 'Ward'), ('crescent', 'Crescent'),
+                ('night', 'Night'), ('blessed', 'Blessed'),
+                ('fortitude', 'Fortitude'), ('herod', 'Herod'),
+                ('treachery', 'Treachery'), ('martyr', 'Martyr'),
+                ('cyclone', 'Cyclone'), ('oath', 'Oath'),
+                ('kurtz', 'Kurtz'), ('moser', 'Moser'),
+                ('mithril', 'Mithril'), ('fist', 'Fist'),
+                ('grave', 'Grave'), ('troll', 'Troll'),
+                ('honor', 'Honor'), ('doom', 'Doom'),
+                ('famine', 'Famine'), ('pestilence', 'Pestilence'),
+                ('bulwark', 'Bulwark'), ('mjolnir', 'Mjolnir'),
+                ('giant', 'Giant'), ('manticore', 'Manticore'),
+                ('spiketh', 'Spiketh'), ('bone', 'Bone'),
+                ('black', 'Black'), ('white', 'White'),
+            ]:
+                if kw in title_lower:
+                    items_found.add(item_name)
+                    break
+
+        # Parse all FG prices
+        prices = parse_prices(text)
+
+        if not items_found or not prices:
+            continue
+
+        # Distribute prices across all detected items
+        for item in items_found:
+            if item not in buckets[day_idx]:
+                buckets[day_idx][item] = []
+            # Keep first few prices per item per topic
+            buckets[day_idx][item].extend(prices[:3])
 
     result = {
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
