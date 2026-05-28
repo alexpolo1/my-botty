@@ -5,6 +5,7 @@ import sys
 import threading
 import traceback
 import warnings
+from logging.handlers import TimedRotatingFileHandler
 from version import __version__
 from colorama import Fore, Back, Style, init
 import time
@@ -118,8 +119,14 @@ class Logger:
         Logger.console_handler = logging.StreamHandler(sys.stdout)
         Logger.console_handler.setLevel(Logger._logger_level)
 
-        # Setup the file handler
-        Logger.file_handler = logging.FileHandler(Logger._current_log_file_path, 'a')
+        # Setup the file handler (rotating — daily, keeps 7 days)
+        Logger.file_handler = TimedRotatingFileHandler(
+            Logger._current_log_file_path,
+            when='midnight',
+            interval=1,
+            backupCount=7,
+            encoding='utf-8'
+        )
         Logger.file_handler.setLevel(Logger._logger_level)
 
         # Optionally add a formatter

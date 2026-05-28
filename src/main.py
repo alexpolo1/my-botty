@@ -52,8 +52,14 @@ def start_or_stop_graphic_debugger(controllers: Controllers):
         controllers.game.stop()
         controllers.debugger.start()
 
-def on_exit():
-    Logger.info(f'Force Exit')
+def on_exit(controllers: Controllers):
+    Logger.info('Force Exit')
+    # Generate session report before exiting
+    if controllers.game.game_stats:
+        try:
+            controllers.game.game_stats._save_session_report()
+        except Exception as e:
+            Logger.warning(f"Failed to save session report: {e}")
     screen.stop_detecting_window()
     restore_d2r_window_visibility()
     os._exit(1)
@@ -73,7 +79,7 @@ def startup_checks():
 
 def main():
     # Create folder for debug screenshots if they dont exist yet
-    for dir_name in ["log", "log/stats", "log/screenshots", "log/screenshots/info", "log/screenshots/items", "log/screenshots/pickit", "log/screenshots/generated"]:
+    for dir_name in ["log", "log/stats", "log/runs", "log/screenshots", "log/screenshots/info", "log/screenshots/items", "log/screenshots/pickit", "log/screenshots/generated"]:
         os.makedirs(dir_name, exist_ok=True)
 
     controllers = Controllers(
@@ -125,7 +131,7 @@ def main():
     keyboard.add_hotkey(Config().advanced_options['restore_settings_from_backup_key'], lambda: restore_settings_from_backup())
     keyboard.add_hotkey(Config().advanced_options['settings_backup_key'], lambda: backup_settings())
     keyboard.add_hotkey(Config().advanced_options['resume_key'], lambda: start_or_pause_bot(controllers))
-    keyboard.add_hotkey(Config().advanced_options["exit_key"], lambda: on_exit())
+    keyboard.add_hotkey(Config().advanced_options["exit_key"], lambda: on_exit(controllers))
     keyboard.wait()
 
 

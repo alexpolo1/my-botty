@@ -507,6 +507,116 @@ class GameStats:
         with open(file=f"log/stats/{self._mini_stats_filename}", mode="w+", encoding="utf-8") as f:
             json.dump(payload, f, indent=2)
 
+    def _save_session_report(self):
+        """Save a session report to log/runs/ with date-based rotation."""
+        os.makedirs("log/runs", exist_ok=True)
+        elapsed_time = time.time() - self._start_time
+        elapsed_time_str = hms(elapsed_time)
+        good_games_count = self._game_counter - self._runs_failed
+        good_games_time = elapsed_time - self._failed_game_time
+        if good_games_count == 0:
+            good_games_count = 1
+        avg_length = good_games_time / float(good_games_count)
+        avg_length_str = hms(avg_length)
+
+        curr_lvl = get_level(self._current_lvl) if self._current_lvl > 0 else {"lvl": 0, "exp": 0, "xp_to_next": 0}
+
+        lines = []
+        lines.append("=" * 50)
+        lines.append("BOTTY SESSION REPORT")
+        lines.append("=" * 50)
+        lines.append(f"Date:       {time.strftime('%Y-%m-%d %H:%M:%S')}")
+        lines.append(f"Version:    {__version__}")
+        lines.append(f"Session:    {elapsed_time_str}")
+        lines.append(f"Games:      {self._game_counter}")
+        lines.append(f"Failed:     {self._runs_failed}")
+        lines.append(f"Avg Game:   {avg_length_str}")
+        lines.append(f"Level:      {curr_lvl['lvl'] if curr_lvl['lvl'] > 0 else 'n/a'}")
+        lines.append(f"Runes:      {self._location_stats['totals']['runes']}")
+        lines.append(f"Est FG:     {self._location_stats['totals']['fg_estimated']:.1f}")
+        lines.append(f"Gold Stashed (Session): {self._format_gold(self._location_stats['totals']['gold_stashed'])}")
+        lines.append(f"Gold In Stash:          {self._format_gold(self._gold_in_stash)}")
+        lines.append(f"Deaths:     {self._death_counter}")
+        lines.append(f"Chickens:   {self._chicken_counter}")
+        lines.append(f"Merc Deaths:{self._merc_death_counter}")
+
+        if curr_lvl["lvl"] > 0 and curr_lvl["lvl"] < 99 and self._current_exp > 0:
+            gained_exp = self._current_exp - self._starting_exp
+            if good_games_time > 0:
+                exp_per_hour = round((gained_exp / good_games_time) * 3600, 1)
+                lines.append(f"XP Gained:  {gained_exp:,}")
+                lines.append(f"XP/Hour:    {exp_per_hour:,}")
+
+        lines.append("")
+        lines.append("Per-Run Stats:")
+        lines.append(f"{'Run':<20} {'Items':>6} {'Chick':>5} {'Death':>5} {'MercD':>5} {'Fail':>4} {'Gold':>14}")
+        lines.append("-" * 60)
+        for location in self._location_stats:
+            if location == "totals":
+                continue
+            stats = self._location_stats[location]
+            lines.append(f"{location:<20} {len(stats['items']):>6} {stats['chickens']:>5} {stats['deaths']:>5} {stats['merc_deaths']:>5} {stats['failed_runs']:>4} {self._format_gold(stats.get('gold_stashed', 0)):>14}")
+        totals = self._location_stats["totals"]
+        total_items = sum(len(self._location_stats[loc]["items"]) for loc in self._location_stats if loc != "totals")
+        lines.append("-" * 60)
+        lines.append(f"{'TOTAL':<20} {total_items:>6} {totals['chickens']:>5} {totals['deaths']:>5} {totals['merc_deaths']:>5} {totals['failed_runs']:>4} {self._format_gold(totals['gold_stashed']):>14}")
+
+        if len(self._fg_item_totals) > 0:
+            lines.append("")
+            lines.append("FG Tracker (Session Totals):")
+            sorted_fg = sorted(self._fg_item_totals.items(), key=lambda x: x[1], reverse=True)
+            for fg_name, fg_total in sorted_fg:
+                count = self._fg_item_counts.get(fg_name, 0)
+                lines.append(f"  {fg_name}: {count}x, {fg_total:.1f} fg")
+
+        lines.append("")
+        lines.append("=" * 50)
+
+        report_content = "\n".join(lines)
+
+        # Save with date-based filename
+        report_filename = f"run_{time.strftime('%Y%m%d_%H%M%S')}.txt"
+        report_path = f"log/runs/{report_filename}"
+        with open(report_path, "w", encoding="utf-8") as f:
+            f.write(report_content)
+
+        Logger.info(f"Session report saved to {report_path}")
+
+        # Also save a JSON version for easy parsing
+        json_payload = {
+            "ts": time.strftime("%Y-%m-%dT%H:%M:%S"),
+            "version": __version__,
+            "session_seconds": round(elapsed_time, 2),
+            "games": self._game_counter,
+            "runs_failed": self._runs_failed,
+            "avg_game_length": round(avg_length, 2),
+            "current_level": self._current_lvl if self._current_lvl > 0 else None,
+            "runes_kept": self._location_stats["totals"]["runes"],
+            "estimated_fg": round(self._location_stats["totals"]["fg_estimated"], 1),
+            "gold_stashed_total": self._gold_stashed_total,
+            "gold_in_stash": self._gold_in_stash,
+            "deaths": self._death_counter,
+            "chickens": self._chicken_counter,
+            "merc_deaths": self._merc_death_counter,
+            "xp_gained": self._current_exp - self._starting_exp if self._current_exp > 0 else 0,
+            "locations": {}
+        }
+        for location in self._location_stats:
+            if location == "totals":
+                continue
+            stats = self._location_stats[location]
+            json_payload["locations"][location] = {
+                "items": len(stats["items"]),
+                "chickens": stats["chickens"],
+                "deaths": stats["deaths"],
+                "merc_deaths": stats["merc_deaths"],
+                "failed_runs": stats["failed_runs"],
+                "gold_stashed": stats.get("gold_stashed", 0)
+            }
+        json_path = f"log/runs/{report_filename.replace('.txt', '.json')}"
+        with open(json_path, "w", encoding="utf-8") as f:
+            json.dump(json_payload, f, indent=2)
+
 
 if __name__ == "__main__":
     game_stats = GameStats()
