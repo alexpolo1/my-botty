@@ -2,15 +2,47 @@ import logging
 import io
 import os
 import sys
+import shutil
 import threading
 import traceback
 import warnings
+import zipfile
 from logging.handlers import TimedRotatingFileHandler
 from version import __version__
 from colorama import Fore, Back, Style, init
 import time
 
 init()
+
+class ArchiveRotatingFileHandler(TimedRotatingFileHandler):
+    """TimedRotatingFileHandler that zips rotated files into log/archive/."""
+
+    def doRollover(self):
+        # Let the parent rotate the file (creates log.txt.1, etc.)
+        super().doRollover()
+
+        # Archive directory
+        archive_dir = os.path.join("log", "archive")
+        os.makedirs(archive_dir, exist_ok=True)
+
+        # Zip all rotated backup files into log/archive/
+        base_file = self.baseFilename  # e.g. "log/log.txt"
+        for i in range(1, self.backupCount + 1):
+            rotated = f"{base_file}.{i}"
+            if os.path.exists(rotated):
+                # Build zip name from the rotated file suffix
+                # log.txt.1 -> log_20260528.zip (use modification time)
+                mtime = os.path.getmtime(rotated)
+                zip_name = f"log_{time.strftime('%Y%m%d_%H%M%S', time.localtime(mtime))}.zip"
+                zip_path = os.path.join(archive_dir, zip_name)
+                try:
+                    with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zf:
+                        zf.write(rotated, os.path.basename(rotated))
+                    os.remove(rotated)
+                except Exception as e:
+                    # If zipping fails, leave the rotated file in place
+                    pass
+
 
 class CustomFormatter(logging.Formatter):
     _format = f'[{__version__} %(asctime)s] %(levelname)-10s %(message)s'
@@ -119,8 +151,8 @@ class Logger:
         Logger.console_handler = logging.StreamHandler(sys.stdout)
         Logger.console_handler.setLevel(Logger._logger_level)
 
-        # Setup the file handler (rotating — daily, keeps 7 days)
-        Logger.file_handler = TimedRotatingFileHandler(
+        # Setup the file handler (rotating — daily, archives to log/archive/)
+        Logger.file_handler = ArchiveRotatingFileHandler(
             Logger._current_log_file_path,
             when='midnight',
             interval=1,
