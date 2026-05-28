@@ -306,8 +306,8 @@ class Bot:
     def on_start_from_town(self):
         self._curr_loc = self._town_manager.wait_for_town_spawn()
         if not self._curr_loc:
-            Logger.error("Could not detect game creation and ending game.")
-            return self.trigger_or_stop("end_game", failed=True)
+            Logger.warning("Could not detect town spawn — defaulting to A1_TOWN_START. Run will waypoint to correct act.")
+            self._curr_loc = Location.A1_TOWN_START
         
         # Handle picking up corpse in case of death
         if (corpse_present := is_visible(ScreenObjects.Corpse)):
@@ -386,9 +386,11 @@ class Bot:
                 Logger.info("ID items at cain")
                 self._curr_loc = self._town_manager.identify(self._curr_loc)
                 if not self._curr_loc:
-                    return self.trigger_or_stop("end_game", failed=True)
-                # recheck inventory
-                items = personal.inspect_items(game_stats=self._game_stats)
+                    Logger.warning("Could not identify items (Cain not available). Continuing without ID.")
+                    self._curr_loc = Location.A1_TOWN_START
+                else:
+                    # recheck inventory
+                    items = personal.inspect_items(game_stats=self._game_stats)
         keep_items = any([item.keep for item in items]) if items else None
         sell_items = any([item.sell for item in items]) if items else None
         stash_gold = personal.get_inventory_gold_full()
@@ -419,7 +421,7 @@ class Bot:
         if keep_items or stash_gold:
             Logger.info("Stashing items")
             prev_loc = self._curr_loc
-            self._curr_loc, result_items = self._town_manager.stash(self._curr_loc, items=items)
+            self._curr_loc, result_items = self._town_manager.stash(self._curr_loc, items=items, game_stats=self._game_stats)
             sell_items = any([item.sell for item in result_items]) if result_items else None
             #Acquire mutex to prevent controller from killing thread during transmutes
             self._stash_mutex.acquire() 

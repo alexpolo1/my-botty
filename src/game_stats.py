@@ -68,7 +68,10 @@ class GameStats:
             "failed_runs": 0,
             "runes": 0,
             "fg_estimated": 0.0,
+            "gold_stashed": 0,
         }
+        self._gold_in_stash = 0
+        self._gold_stashed_total = 0
         self._valuable_item_counts = {name: 0 for name in self._TOP_VALUABLE_ITEMS}
         self._fg_tracker = FGPriceTracker()
         self._fg_item_counts = {}
@@ -130,7 +133,8 @@ class GameStats:
                 "deaths": 0,
                 "chickens": 0,
                 "merc_deaths": 0,
-                "failed_runs": 0
+                "failed_runs": 0,
+                "gold_stashed": 0
             }
 
     @staticmethod
@@ -220,6 +224,20 @@ class GameStats:
             self._location_stats["totals"]["merc_deaths"] += 1
             self._log_event("merc_death")
             self._persist_snapshot()
+
+    def log_gold_stashed(self, gold_amount: int):
+        if self._location is not None:
+            self._location_stats[self._location]["gold_stashed"] += gold_amount
+            self._location_stats["totals"]["gold_stashed"] += gold_amount
+            self._gold_stashed_total += gold_amount
+            self._log_event("gold_stashed", {"amount": gold_amount})
+            self._persist_snapshot()
+
+    def log_gold_in_stash(self, gold_amount: int):
+        self._gold_in_stash = gold_amount
+
+    def _format_gold(self, amount: int) -> str:
+        return f"{amount:,}"
 
     def log_start_game(self):
         if self._game_counter > 0:
@@ -344,6 +362,8 @@ class GameStats:
         msg += f'\nCurrent Level: {curr_lvl["lvl"] if curr_lvl["lvl"] > 0 else "n/a"}'
         msg += f'\nRunes Kept: {self._location_stats["totals"]["runes"]}'
         msg += f'\nEstimated FG: {self._location_stats["totals"]["fg_estimated"]:.1f}'
+        msg += f'\nGold Stashed (Session): {self._format_gold(self._location_stats["totals"]["gold_stashed"])}'
+        msg += f'\nGold In Stash: {self._format_gold(self._gold_in_stash)}'
 
         if curr_lvl["lvl"] > 0 and curr_lvl["lvl"] < 99 and self._current_exp > 0:
             try:
@@ -436,6 +456,8 @@ class GameStats:
                 for fg_name, fg_total in sorted_fg:
                     count = stats["fg_item_counts"].get(fg_name, 0)
                     msg += f"\n      {fg_name}: {count}x, {fg_total:.1f} fg"
+            if stats.get("gold_stashed", 0) > 0:
+                msg += f"\n    Gold stashed: {self._format_gold(stats['gold_stashed'])}"
 
         msg += "\n\nTop-10 valuable items (session totals):"
         for item_name in self._TOP_VALUABLE_ITEMS:
@@ -446,6 +468,9 @@ class GameStats:
             for fg_name, fg_total in sorted_fg_totals:
                 count = self._fg_item_counts.get(fg_name, 0)
                 msg += f"\n  {fg_name}: {count}x, {fg_total:.1f} fg"
+        msg += f"\n\nGold (session totals):"
+        msg += f"\n  Total stashed: {self._format_gold(self._gold_stashed_total)}"
+        msg += f"\n  In stash now: {self._format_gold(self._gold_in_stash)}"
 
         with open(file=f"log/stats/{self._stats_filename}", mode="w+", encoding="utf-8") as f:
             f.write(msg)
@@ -467,6 +492,8 @@ class GameStats:
             "current_exp": self._current_exp if self._current_exp > 0 else None,
             "runes_kept": self._location_stats["totals"]["runes"],
             "estimated_fg_total": round(self._location_stats["totals"]["fg_estimated"], 1),
+            "gold_stashed_total": self._gold_stashed_total,
+            "gold_in_stash": self._gold_in_stash,
             "current_location": self._location,
             "top_fg_items": [
                 {

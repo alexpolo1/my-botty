@@ -75,7 +75,7 @@ def inventory_has_items(img: np.ndarray = None, close_window = False) -> bool:
     return False
 
 
-def stash_all_items(items: list = None):
+def stash_all_items(items: list = None, game_stats = None):
     """
     Stashing all items in inventory. Stash UI must be open when calling the function.
     """
@@ -96,6 +96,17 @@ def stash_all_items(items: list = None):
             common.select_tab(gold_tab)
             wait(0.7, 1)
             stash_full_of_gold = False
+            # Read gold amounts before stashing
+            gold_in_stash_before = 0
+            gold_on_char_before = 0
+            try:
+                gold_in_stash_before = common.read_gold(grab(), "stash")
+            except:
+                pass
+            try:
+                gold_on_char_before = common.read_gold(grab(), "inventory")
+            except:
+                pass
             # Try to read gold count with OCR
             try: 
                 gold_amount = common.read_gold(grab(), "stash")
@@ -116,6 +127,18 @@ def stash_all_items(items: list = None):
                     Logger.error("stash_all_items(): deposit button not detected, failed to stash gold")
                 # if 0 gold becomes visible in personal inventory then the stash tab still has room for gold
                 stash_full_of_gold = not wait_until_visible(ScreenObjects.GoldNone, 2).valid
+                # Read gold after stashing to track earnings
+                if game_stats is not None:
+                    try:
+                        gold_in_stash_after = common.read_gold(grab(), "stash")
+                        gold_on_char_after = common.read_gold(grab(), "inventory")
+                        gold_stashed_amount = gold_in_stash_after - gold_in_stash_before
+                        if gold_stashed_amount > 0:
+                            Logger.info(f"Gold stashed: {gold_stashed_amount:,} (stash now: {gold_in_stash_after:,})")
+                            game_stats.log_gold_stashed(gold_stashed_amount)
+                            game_stats.log_gold_in_stash(gold_in_stash_after)
+                    except Exception as e:
+                        Logger.debug(f"Failed to read gold after stashing: {e}")
             if stash_full_of_gold:
                 Logger.debug("Stash tab is full of gold, selecting next stash tab.")
                 stash.set_curr_stash(gold = (stash.get_curr_stash()["gold"] + 1))
@@ -126,7 +149,7 @@ def stash_all_items(items: list = None):
                     vendor.set_gamble_status(True)
                 else:
                     # move to next stash tab
-                    return stash_all_items(items=items)
+                    return stash_all_items(items=items, game_stats=game_stats)
             else:
                 set_inventory_gold_full(False)
     if not items:
