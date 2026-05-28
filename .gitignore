@@ -18,7 +18,12 @@ config/custom.*.ini
 config/*.local.ini
 .vscode
 .vs/
-log/fg_reports/
+# Logs and run reports
+log/
+log/archive/
+log/runs/
+log/stats/
+*.log
 test/assets/
 .venv
 .env
@@ -38,8 +43,6 @@ loot_screenshots/
 pickit_screenshots/
 *info_log_parsed.txt
 *info_*.png
-*.log
-log/
 blizzpw.txt
 
 # Local user/workspace files
