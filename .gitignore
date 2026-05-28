@@ -29,6 +29,12 @@ log/stats/
 data/d2jsp_pages/
 data/d2jsp_topic_urls.txt
 
+# Debug files
+debug_forum.html
+
+# Generated config data
+config/fg_daily_estimates.json
+
 # Screenshots (debug/test captures)
 screenshots/
 
