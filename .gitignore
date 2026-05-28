@@ -24,6 +24,20 @@ log/archive/
 log/runs/
 log/stats/
 *.log
+
+# Scraped data (cached web pages, URLs)
+data/d2jsp_pages/
+data/d2jsp_topic_urls.txt
+
+# Screenshots (debug/test captures)
+screenshots/
+
+# Tools dev cache
+tools/__pycache__/
+
+# Build artifacts
+botty_v*/
+botty_v*.zip
 test/assets/
 .venv
 .env
@@ -48,5 +62,4 @@ blizzpw.txt
 # Local user/workspace files
 .claude/
 GEMINI.md
-botty_v*.zip
 test_config_load.py
