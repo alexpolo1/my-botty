@@ -44,7 +44,7 @@ tools/__pycache__/
 # Build artifacts
 botty_v*/
 botty_v*.zip
-test/assets/
+
 .venv
 .env
 .env.*

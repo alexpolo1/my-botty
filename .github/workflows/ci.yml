@@ -21,14 +21,6 @@ jobs:
           environment-file: environment.yml
           use-only-tar-bz2: false
 
-      - name: Download test assets
-        shell: powershell
-        env:
-          PYTHONPATH: ./src
-        run: |
-          C:\Miniconda\condabin\conda.bat activate botty
-          python -c "import utils.download_test_assets"
-
       - name: Pytest
         shell: powershell
         env:
