@@ -129,6 +129,11 @@ ITEM_PATTERNS = {
     "Bone": [r"\bbone\b"],
     "Black": [r"\bblack\b"],
     "White": [r"\bwhite\b"],
+    "Key": [r"\bkey\b", r"\bkeys\b", r"\bportal key\b"],
+    "Simple Key": [r"\bsimple key\b"],
+    "Destruction Key": [r"\bdestruction key\b"],
+    "Terror Key": [r"\bterror key\b"],
+    "Hate Key": [r"\bhate key\b"],
 }
 
 
@@ -426,6 +431,11 @@ def scrape_day_estimates(
                 ('giant', 'Giant'), ('manticore', 'Manticore'),
                 ('spiketh', 'Spiketh'), ('bone', 'Bone'),
                 ('black', 'Black'), ('white', 'White'),
+                ('key', 'Key'), ('keys', 'Key'), ('portal key', 'Key'),
+                ('simple key', 'Simple Key'),
+                ('destruction key', 'Destruction Key'),
+                ('terror key', 'Terror Key'),
+                ('hate key', 'Hate Key'),
             ]:
                 if kw in title_lower:
                     items_found.add(item_name)
@@ -474,13 +484,11 @@ def scrape_day_estimates(
             median_fg = statistics.median(samples)
             result["estimates"][day_key][item] = {
                 "median_fg": round(float(median_fg), 1),
+                "avg_fg": round(float(statistics.mean(samples)), 1),
+                "min_fg": round(float(min(samples)), 1),
+                "max_fg": round(float(max(samples)), 1),
                 "samples": len(samples),
             }
-
-    # Deduplicate sellers: keep cheapest per (item, user)
-    seller_list = list(user_cheapest.values())
-    seller_list.sort(key=lambda s: s["price"])
-    result["sellers"] = seller_list
     return result
 
 
@@ -520,30 +528,47 @@ def scrape_day_estimates_offline(
             continue
         text = normalize_text(html)
         title = parse_topic_title(html)
-        item = (
-            detect_item(text)
-            or detect_item(title)
-            or detect_item(html_file.stem.replace("-", " "))
-            or fallback_item_from_title(title)
-        )
-        prices = parse_prices(text)
-        if not prices:
-            prices = parse_prices(title)
         # Offline mode uses file save timestamp as authoritative collection time.
         # Page content may contain many unrelated historical dates that pollute parsing.
         post_dt = dt.datetime.fromtimestamp(html_file.stat().st_mtime)
         processed += 1
 
-        if not item or not prices or not post_dt:
+        if not post_dt:
             continue
 
         day_idx = (post_dt.date() - ladder_start).days + 1
         if day_idx < 1 or day_idx > days:
             continue
 
-        if item not in buckets[day_idx]:
-            buckets[day_idx][item] = []
-        buckets[day_idx][item].extend(prices[:3])
+        # Detect ALL items in this topic (multi-item topics are common)
+        items_found = set()
+        for name, patterns in ITEM_PATTERNS.items():
+            for pat in patterns:
+                if re.search(pat, text, re.IGNORECASE):
+                    items_found.add(name)
+                    break
+        for name, patterns in ITEM_PATTERNS.items():
+            for pat in patterns:
+                if re.search(pat, title, re.IGNORECASE):
+                    items_found.add(name)
+                    break
+        if not items_found:
+            stem_item = detect_item(html_file.stem.replace("-", " "))
+            if stem_item:
+                items_found.add(stem_item)
+        # Skip fallback_item_from_title — it creates Topic: noise buckets
+
+        prices = parse_prices(text)
+        if not prices:
+            prices = parse_prices(title)
+
+        if not items_found or not prices:
+            continue
+
+        for item in items_found:
+            if item not in buckets[day_idx]:
+                buckets[day_idx][item] = []
+            buckets[day_idx][item].extend(prices[:3])
 
     result = {
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
@@ -564,6 +589,9 @@ def scrape_day_estimates_offline(
             median_fg = statistics.median(samples)
             result["estimates"][day_key][item] = {
                 "median_fg": round(float(median_fg), 1),
+                "avg_fg": round(float(statistics.mean(samples)), 1),
+                "min_fg": round(float(min(samples)), 1),
+                "max_fg": round(float(max(samples)), 1),
                 "samples": len(samples),
             }
     return result

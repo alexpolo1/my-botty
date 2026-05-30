@@ -605,51 +605,51 @@ class Bot:
 
     def on_run_level(self):
         self._game_stats.update_location("Level")
-        self._run_wrapper("run_level", self._level, (self._curr_loc, not self._pre_buffed), ())
+        self._run_wrapper("run_level", self._level, (not self._pre_buffed,), ())
 
     def on_run_pindle(self):
         self._game_stats.update_location("Pindle")
-        self._run_wrapper("run_pindle", self._pindle, (self._curr_loc, not self._pre_buffed), ())
+        self._run_wrapper("run_pindle", self._pindle, (not self._pre_buffed,), ())
 
     def on_run_shenk(self):
         self._game_stats.update_location("Shenk")
-        self._run_wrapper("run_shenk", self._shenk, (self._curr_loc,), (Config().routes.get("run_eldritch_shenk"), not self._pre_buffed, self._game_stats))
+        self._run_wrapper("run_shenk", self._shenk, (), (Config().routes.get("run_eldritch_shenk"), not self._pre_buffed, self._game_stats))
 
     def on_run_trav(self):
         self._game_stats.update_location("Travincal")
-        self._run_wrapper("run_trav", self._trav, (self._curr_loc,), (not self._pre_buffed,))
+        self._run_wrapper("run_trav", self._trav, (), (not self._pre_buffed,))
 
     def on_run_nihlathak(self):
         self._game_stats.update_location("Nihlathak")
-        self._run_wrapper("run_nihlathak", self._nihlathak, (self._curr_loc,), (True,))
+        self._run_wrapper("run_nihlathak", self._nihlathak, (), (True,))
 
     def on_run_arcane(self):
         self._game_stats.update_location("Arcane")
-        self._run_wrapper("run_arcane", self._arcane, (self._curr_loc,), (not self._pre_buffed,))
+        self._run_wrapper("run_arcane", self._arcane, (), (not self._pre_buffed,))
 
     def on_run_diablo(self):
         self._game_stats.update_location("Diablo")
-        self._run_wrapper("run_diablo", self._diablo, (self._curr_loc,), (not self._pre_buffed,))
+        self._run_wrapper("run_diablo", self._diablo, (), (not self._pre_buffed,))
 
     def on_run_vizier(self):
         self._game_stats.update_location("Vizier")
-        self._run_wrapper("run_vizier", self._vizier, (self._curr_loc,), (not self._pre_buffed,))
+        self._run_wrapper("run_vizier", self._vizier, (), (not self._pre_buffed,))
 
     def on_run_baal(self):
         self._game_stats.update_location("Baal")
-        self._run_wrapper("run_baal", self._baal, (self._curr_loc,), (not self._pre_buffed,))
+        self._run_wrapper("run_baal", self._baal, (not self._pre_buffed,), ())
 
     def on_run_mephisto(self):
         self._game_stats.update_location("Mephisto")
-        self._run_wrapper("run_mephisto", self._mephisto, (self._curr_loc,), (not self._pre_buffed,))
+        self._run_wrapper("run_mephisto", self._mephisto, (not self._pre_buffed,), ())
 
     def on_run_andariel(self):
         self._game_stats.update_location("Andariel")
-        self._run_wrapper("run_andariel", self._andariel, (self._curr_loc,), (not self._pre_buffed,))
+        self._run_wrapper("run_andariel", self._andariel, (not self._pre_buffed,), ())
 
     def on_run_countess(self):
         self._game_stats.update_location("Countess")
-        self._run_wrapper("run_countess", self._countess, (self._curr_loc,), (not self._pre_buffed,))
+        self._run_wrapper("run_countess", self._countess, (not self._pre_buffed,), ())
 
 
 

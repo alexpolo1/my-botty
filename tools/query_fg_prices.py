@@ -42,14 +42,16 @@ def main():
 
     conn = sqlite3.connect(str(DB_PATH))
 
-    # Top N most expensive
+    # Top N most expensive (latest scrape)
     if args.top:
-        rows = query(conn, "SELECT day, item, median_fg, samples FROM prices ORDER BY median_fg DESC LIMIT ?", (args.top,))
-        print(f"Top {args.top} most expensive:")
-        print(f"{'Day':<5} {'Item':<25} {'Price':>8} {'Samples':>8}")
-        print("-" * 50)
+        latest = query(conn, "SELECT MAX(scrape_seq) FROM prices")
+        seq = latest[0][0] or 1
+        rows = query(conn, "SELECT scrape_seq, item, median_fg, avg_fg, min_fg, max_fg, samples FROM prices WHERE scrape_seq=? ORDER BY median_fg DESC LIMIT ?", (seq, args.top))
+        print(f"Top {args.top} most expensive (scrape #{seq}):")
+        print(f"{'#':<5} {'Item':<25} {'Med':>7} {'Avg':>7} {'Min':>6} {'Max':>7} {'N':>5}")
+        print("-" * 65)
         for r in rows:
-            print(f"{r[0]:<5} {r[1]:<25} {r[2]:>8.1f} {r[3]:>8}")
+            print(f"{r[0]:<5} {r[1]:<25} {r[2]:>7.0f} {r[3]:>7.0f} {r[4]:>6.0f} {r[5]:>7.0f} {r[6]:>5}")
         conn.close()
         return
 
@@ -72,14 +74,14 @@ def main():
     # Price trend
     if args.trend:
         rows = query(conn,
-            "SELECT scraped_at, median_fg, samples FROM prices WHERE item LIKE ? ORDER BY scraped_at",
+            "SELECT scrape_seq, scraped_at, median_fg, samples FROM prices WHERE item LIKE ? ORDER BY scrape_seq",
             (f"%{args.trend}%",))
         if rows:
             print(f"Price trend for '{args.trend}':")
-            print(f"{'Scraped At':<30} {'Price':>8} {'Samples':>8}")
-            print("-" * 50)
+            print(f"{'#':<5} {'Scraped At':<30} {'Price':>8} {'Samples':>8}")
+            print("-" * 60)
             for r in rows:
-                print(f"{r[0]:<30} {r[1]:>8.1f} {r[2]:>8}")
+                print(f"{r[0]:<5} {r[1]:<30} {r[2]:>8.1f} {r[3]:>8}")
         else:
             print(f"No price data for '{args.trend}'")
         conn.close()
@@ -101,19 +103,19 @@ def main():
         conn.close()
         return
 
-    # Specific day
+    # Specific scrape_seq or day
     if args.day is not None:
         rows = query(conn,
-            "SELECT item, median_fg, samples FROM prices WHERE day = ? ORDER BY median_fg DESC",
+            "SELECT scrape_seq, item, median_fg, avg_fg, min_fg, max_fg, samples FROM prices WHERE scrape_seq = ? ORDER BY median_fg DESC",
             (args.day,))
         if rows:
-            print(f"Day {args.day} prices:")
-            print(f"{'Item':<25} {'Price':>8} {'Samples':>8}")
-            print("-" * 45)
+            print(f"Scrape #{args.day} prices:")
+            print(f"{'#':<5} {'Item':<25} {'Med':>7} {'Avg':>7} {'Min':>6} {'Max':>7} {'N':>5}")
+            print("-" * 65)
             for r in rows:
-                print(f"{r[0]:<25} {r[1]:>8.1f} {r[2]:>8}")
+                print(f"{r[0]:<5} {r[1]:<25} {r[2]:>7.0f} {r[3]:>7.0f} {r[4]:>6.0f} {r[5]:>7.0f} {r[6]:>5}")
         else:
-            print(f"No data for day {args.day}")
+            print(f"No data for scrape #{args.day}")
         conn.close()
         return
 
@@ -131,29 +133,35 @@ def main():
         params.append(f"%{args.item}%")
 
     if not conditions:
-        # Default: show all prices sorted by price desc
-        rows = query(conn, "SELECT day, item, median_fg, samples FROM prices ORDER BY median_fg DESC")
-        print(f"{'Day':<5} {'Item':<25} {'Price':>8} {'Samples':>8}")
-        print("-" * 50)
+        # Default: show latest scrape
+        latest = query(conn, "SELECT MAX(scrape_seq) FROM prices")
+        seq = latest[0][0] or 1
+        rows = query(conn, "SELECT scrape_seq, item, median_fg, avg_fg, min_fg, max_fg, samples FROM prices WHERE scrape_seq=? ORDER BY median_fg DESC", (seq,))
+        print(f"Latest prices (scrape #{seq}):")
+        print(f"{'#':<5} {'Item':<25} {'Med':>7} {'Avg':>7} {'Min':>6} {'Max':>7} {'N':>5}")
+        print("-" * 65)
         for r in rows:
-            print(f"{r[0]:<5} {r[1]:<25} {r[2]:>8.1f} {r[3]:>8}")
+            print(f"{r[0]:<5} {r[1]:<25} {r[2]:>7.0f} {r[3]:>7.0f} {r[4]:>6.0f} {r[5]:>7.0f} {r[6]:>5}")
         print(f"\nTotal: {len(rows)} items")
         conn.close()
         return
 
     where = " AND ".join(conditions)
-    rows = query(conn, f"SELECT day, item, median_fg, samples FROM prices WHERE {where} ORDER BY median_fg DESC", params)
+    latest = query(conn, "SELECT MAX(scrape_seq) FROM prices")
+    seq = latest[0][0] or 1
+    params.insert(0, seq)
+    rows = query(conn, f"SELECT scrape_seq, item, median_fg, avg_fg, min_fg, max_fg, samples FROM prices WHERE scrape_seq=? AND {where} ORDER BY median_fg DESC", params)
 
     if rows:
         filters = []
         if args.min is not None: filters.append(f">= {args.min} FG")
         if args.max is not None: filters.append(f"<= {args.max} FG")
         if args.item: filters.append(f"like '{args.item}'")
-        print(f"Items ({', '.join(filters)}):")
-        print(f"{'Day':<5} {'Item':<25} {'Price':>8} {'Samples':>8}")
-        print("-" * 50)
+        print(f"Items ({', '.join(filters)}) from scrape #{seq}:")
+        print(f"{'#':<5} {'Item':<25} {'Med':>7} {'Avg':>7} {'Min':>6} {'Max':>7} {'N':>5}")
+        print("-" * 65)
         for r in rows:
-            print(f"{r[0]:<5} {r[1]:<25} {r[2]:>8.1f} {r[3]:>8}")
+            print(f"{r[0]:<5} {r[1]:<25} {r[2]:>7.0f} {r[3]:>7.0f} {r[4]:>6.0f} {r[5]:>7.0f} {r[6]:>5}")
         print(f"\nTotal: {len(rows)} items")
     else:
         print("No items found matching criteria")

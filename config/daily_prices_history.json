@@ -1,0 +1,6032 @@
+[
+  {
+    "generated_at": "2026-05-30T15:59:25.074468+00:00",
+    "date": "2026-05-30",
+    "traderie_listings_scanned": 500,
+    "traderie_items": 182,
+    "fg_items": 57,
+    "merged_items": 220,
+    "prices": {
+      "3x3 Key Set": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            },
+            "Jah Rune": {
+              "count": 1,
+              "median": 50,
+              "mean": 50,
+              "min": 50,
+              "max": 50
+            }
+          },
+          "overall": {
+            "median": 36.0,
+            "mean": 36,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Alma Negra": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Small Charm": {
+              "count": 1,
+              "median": 0.5,
+              "mean": 0.5,
+              "min": 0.5,
+              "max": 0.5
+            }
+          },
+          "overall": {
+            "median": 0.5,
+            "mean": 0.5,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Amulet": {
+        "traderie": {
+          "total_listings": 7,
+          "currencies": {
+            "Fal Rune": {
+              "count": 2,
+              "median": 7.0,
+              "mean": 7,
+              "min": 7,
+              "max": 7
+            },
+            "Perfect Amethyst": {
+              "count": 4,
+              "median": 2.0,
+              "mean": 2,
+              "min": 1,
+              "max": 3
+            },
+            "Lem Rune": {
+              "count": 3,
+              "median": 8,
+              "mean": 8,
+              "min": 8,
+              "max": 8
+            },
+            "Ral Rune": {
+              "count": 1,
+              "median": 3,
+              "mean": 3,
+              "min": 3,
+              "max": 3
+            }
+          },
+          "overall": {
+            "median": 5.0,
+            "mean": 4.9,
+            "count": 10
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Andariel's Visage": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Jah Rune": {
+              "count": 1,
+              "median": 100,
+              "mean": 100,
+              "min": 100,
+              "max": 100
+            },
+            "Lo Rune": {
+              "count": 1,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            }
+          },
+          "overall": {
+            "median": 65.0,
+            "mean": 65,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Angelic Halo": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ral Rune": {
+              "count": 1,
+              "median": 6,
+              "mean": 6,
+              "min": 6,
+              "max": 6
+            },
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Random Gems": {
+              "count": 1,
+              "median": 3,
+              "mean": 3,
+              "min": 3,
+              "max": 3
+            }
+          },
+          "overall": {
+            "median": 3,
+            "mean": 3.3,
+            "count": 3
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Annihilus": {
+        "traderie": {
+          "total_listings": 5,
+          "currencies": {
+            "Ist Rune": {
+              "count": 2,
+              "median": 15.0,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            },
+            "Ber Rune": {
+              "count": 1,
+              "median": 60,
+              "mean": 60,
+              "min": 60,
+              "max": 60
+            },
+            "Ohm Rune": {
+              "count": 1,
+              "median": 25,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            },
+            "Jah Rune": {
+              "count": 1,
+              "median": 50,
+              "mean": 50,
+              "min": 50,
+              "max": 50
+            }
+          },
+          "overall": {
+            "median": 25,
+            "mean": 33,
+            "count": 5
+          }
+        },
+        "fg": {
+          "median_fg": 40.0,
+          "avg_fg": 124.9,
+          "min_fg": 10.0,
+          "max_fg": 450.0,
+          "samples": 47
+        },
+        "fg_name": "Unid Anni"
+      },
+      "Arachnid Mesh": {
+        "traderie": {
+          "total_listings": 4,
+          "currencies": {
+            "Vex Rune": {
+              "count": 2,
+              "median": 22.0,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            },
+            "Ohm Rune": {
+              "count": 2,
+              "median": 25.0,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            },
+            "Ist Rune": {
+              "count": 2,
+              "median": 22.5,
+              "mean": 22.5,
+              "min": 15,
+              "max": 30
+            }
+          },
+          "overall": {
+            "median": 23.5,
+            "mean": 23.2,
+            "count": 6
+          }
+        },
+        "fg": {
+          "median_fg": 50.0,
+          "avg_fg": 295.5,
+          "min_fg": 5.0,
+          "max_fg": 2000.0,
+          "samples": 150
+        },
+        "fg_name": "Arach"
+      },
+      "Archon Staff": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Jah Rune": {
+              "count": 2,
+              "median": 50.0,
+              "mean": 50,
+              "min": 50,
+              "max": 50
+            },
+            "Ber Rune": {
+              "count": 2,
+              "median": 60.0,
+              "mean": 60,
+              "min": 60,
+              "max": 60
+            }
+          },
+          "overall": {
+            "median": 55.0,
+            "mean": 55,
+            "count": 4
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Arm of King Leoric": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 1,
+            "mean": 1,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Arreat's Face": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            }
+          },
+          "overall": {
+            "median": 15,
+            "mean": 15,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Ars Al'Diabolos": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Jah Rune": {
+              "count": 1,
+              "median": 1900,
+              "mean": 1900,
+              "min": 1900,
+              "max": 1900
+            }
+          },
+          "overall": {
+            "median": 1900,
+            "mean": 1900,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Ars Tor'Baalos": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Lo Rune": {
+              "count": 1,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            },
+            "Ohm Rune": {
+              "count": 1,
+              "median": 25,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            },
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            }
+          },
+          "overall": {
+            "median": 25,
+            "mean": 25.7,
+            "count": 3
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Astreon's Iron Ward": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ber Rune": {
+              "count": 1,
+              "median": 60,
+              "mean": 60,
+              "min": 60,
+              "max": 60
+            }
+          },
+          "overall": {
+            "median": 60,
+            "mean": 60,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Bane's Oathmaker": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ral Rune": {
+              "count": 1,
+              "median": 3,
+              "mean": 3,
+              "min": 3,
+              "max": 3
+            },
+            "Hel Rune": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Ko Rune": {
+              "count": 1,
+              "median": 4,
+              "mean": 4,
+              "min": 4,
+              "max": 4
+            },
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 2.0,
+            "mean": 2.2,
+            "count": 4
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Bartuc's Cut-Throat": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Um Rune": {
+              "count": 1,
+              "median": 10,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            }
+          },
+          "overall": {
+            "median": 10,
+            "mean": 10,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Ber Rune": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Jah Rune": {
+              "count": 1,
+              "median": 50,
+              "mean": 50,
+              "min": 50,
+              "max": 50
+            },
+            "Lo Rune": {
+              "count": 1,
+              "median": 90,
+              "mean": 90,
+              "min": 90,
+              "max": 90
+            }
+          },
+          "overall": {
+            "median": 70.0,
+            "mean": 70,
+            "count": 2
+          }
+        },
+        "fg": {
+          "median_fg": 90.0,
+          "avg_fg": 515.0,
+          "min_fg": 5.0,
+          "max_fg": 2150.0,
+          "samples": 52
+        },
+        "fg_name": "Ber Rune"
+      },
+      "Blade": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Jah Rune": {
+              "count": 1,
+              "median": 100,
+              "mean": 100,
+              "min": 100,
+              "max": 100
+            }
+          },
+          "overall": {
+            "median": 100,
+            "mean": 100,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Blood Ring": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Jah Rune": {
+              "count": 2,
+              "median": 275.0,
+              "mean": 275,
+              "min": 150,
+              "max": 400
+            }
+          },
+          "overall": {
+            "median": 275.0,
+            "mean": 275,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Bone": {
+        "traderie": {
+          "total_listings": 3,
+          "currencies": {
+            "Jah Rune": {
+              "count": 4,
+              "median": 50.0,
+              "mean": 75,
+              "min": 50,
+              "max": 150
+            },
+            "Ber Rune": {
+              "count": 2,
+              "median": 60.0,
+              "mean": 60,
+              "min": 60,
+              "max": 60
+            },
+            "Sur Rune": {
+              "count": 2,
+              "median": 1.5,
+              "mean": 1.5,
+              "min": 1,
+              "max": 2
+            },
+            "Lo Rune": {
+              "count": 1,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            }
+          },
+          "overall": {
+            "median": 50,
+            "mean": 50.3,
+            "count": 9
+          }
+        },
+        "fg": {
+          "median_fg": 50.0,
+          "avg_fg": 188.3,
+          "min_fg": 10.0,
+          "max_fg": 550.0,
+          "samples": 64
+        },
+        "fg_name": "Bone"
+      },
+      "Bone Visage": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Um Rune": {
+              "count": 1,
+              "median": 10,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            },
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            },
+            "Fal Rune": {
+              "count": 1,
+              "median": 7,
+              "mean": 7,
+              "min": 7,
+              "max": 7
+            },
+            "Gul Rune": {
+              "count": 1,
+              "median": 18,
+              "mean": 18,
+              "min": 18,
+              "max": 18
+            }
+          },
+          "overall": {
+            "median": 11.0,
+            "mean": 11.8,
+            "count": 4
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Bonehew": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Lem Rune": {
+              "count": 1,
+              "median": 8,
+              "mean": 8,
+              "min": 8,
+              "max": 8
+            }
+          },
+          "overall": {
+            "median": 8,
+            "mean": 8,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Breath of the Dying": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Jah Rune": {
+              "count": 2,
+              "median": 275.0,
+              "mean": 275,
+              "min": 250,
+              "max": 300
+            },
+            "Ber Rune": {
+              "count": 1,
+              "median": 60,
+              "mean": 60,
+              "min": 60,
+              "max": 60
+            }
+          },
+          "overall": {
+            "median": 250,
+            "mean": 203.3,
+            "count": 3
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Broad Sword": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Amn Rune": {
+              "count": 1,
+              "median": 25,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            }
+          },
+          "overall": {
+            "median": 25,
+            "mean": 25,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Bul-Kathos' Nightmare": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Korlic's Pain": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            }
+          },
+          "overall": {
+            "median": 6.5,
+            "mean": 6.5,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Bul-Kathos' Sacred Charge": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 1,
+            "mean": 1,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Burning Essence of Terror": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Charged Essence of Hatred": {
+              "count": 1,
+              "median": 10,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            }
+          },
+          "overall": {
+            "median": 10,
+            "mean": 10,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Call to Arms": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ohm Rune": {
+              "count": 1,
+              "median": 25,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            }
+          },
+          "overall": {
+            "median": 25,
+            "mean": 25,
+            "count": 1
+          }
+        },
+        "fg": {
+          "median_fg": 200.0,
+          "avg_fg": 356.2,
+          "min_fg": 10.0,
+          "max_fg": 2700.0,
+          "samples": 72
+        },
+        "fg_name": "CTA"
+      },
+      "Caster Amulet": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Ber Rune": {
+              "count": 1,
+              "median": 60,
+              "mean": 60,
+              "min": 60,
+              "max": 60
+            },
+            "Jah Rune": {
+              "count": 1,
+              "median": 50,
+              "mean": 50,
+              "min": 50,
+              "max": 50
+            }
+          },
+          "overall": {
+            "median": 55.0,
+            "mean": 55,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Cerebus' Bite": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Lem Rune": {
+              "count": 1,
+              "median": 8,
+              "mean": 8,
+              "min": 8,
+              "max": 8
+            }
+          },
+          "overall": {
+            "median": 8,
+            "mean": 8,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Cham Rune": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ber Rune": {
+              "count": 2,
+              "median": 60.0,
+              "mean": 60,
+              "min": 60,
+              "max": 60
+            },
+            "Lo Rune": {
+              "count": 2,
+              "median": 30.0,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            },
+            "Vex Rune": {
+              "count": 2,
+              "median": 22.0,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            }
+          },
+          "overall": {
+            "median": 30.0,
+            "mean": 37.3,
+            "count": 6
+          }
+        },
+        "fg": {
+          "median_fg": 50.0,
+          "avg_fg": 232.9,
+          "min_fg": 40.0,
+          "max_fg": 650.0,
+          "samples": 14
+        },
+        "fg_name": "Cham Rune"
+      },
+      "Charged Essence of Hatred": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Festering Essence of Destruction": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Burning Essence of Terror": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 1.0,
+            "mean": 1,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Circlet": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Jah Rune": {
+              "count": 2,
+              "median": 200.0,
+              "mean": 200,
+              "min": 50,
+              "max": 350
+            },
+            "Ber Rune": {
+              "count": 3,
+              "median": 60,
+              "mean": 80,
+              "min": 60,
+              "max": 120
+            }
+          },
+          "overall": {
+            "median": 60,
+            "mean": 128,
+            "count": 5
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Colossus Blade": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Vex Rune": {
+              "count": 1,
+              "median": 44,
+              "mean": 44,
+              "min": 44,
+              "max": 44
+            },
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            }
+          },
+          "overall": {
+            "median": 29.5,
+            "mean": 29.5,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Colossus Sword": {
+        "traderie": {
+          "total_listings": 3,
+          "currencies": {
+            "Pul Rune": {
+              "count": 2,
+              "median": 9.0,
+              "mean": 9,
+              "min": 9,
+              "max": 9
+            },
+            "Um Rune": {
+              "count": 1,
+              "median": 10,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            },
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            }
+          },
+          "overall": {
+            "median": 9.5,
+            "mean": 10.8,
+            "count": 4
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Colossus Voulge": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Sol Rune": {
+              "count": 1,
+              "median": 6,
+              "mean": 6,
+              "min": 6,
+              "max": 6
+            },
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 2,
+              "mean": 2,
+              "min": 2,
+              "max": 2
+            }
+          },
+          "overall": {
+            "median": 4.0,
+            "mean": 4,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Crescent Moon": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            }
+          },
+          "overall": {
+            "median": 15,
+            "mean": 15,
+            "count": 1
+          }
+        },
+        "fg": {
+          "median_fg": 10.0,
+          "avg_fg": 8.3,
+          "min_fg": 5.0,
+          "max_fg": 10.0,
+          "samples": 9
+        },
+        "fg_name": "Crescent"
+      },
+      "Crown of Thieves": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Key of Terror": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Key of Destruction": {
+              "count": 2,
+              "median": 1.0,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 1,
+            "mean": 1,
+            "count": 3
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Cryptic Axe": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Ral Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            },
+            "Perfect Amethyst": {
+              "count": 3,
+              "median": 2,
+              "mean": 2.3,
+              "min": 2,
+              "max": 3
+            },
+            "Random Minor Key": {
+              "count": 2,
+              "median": 1.0,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 2.0,
+            "mean": 4,
+            "count": 6
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Crystal Sword": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Pul Rune": {
+              "count": 1,
+              "median": 9,
+              "mean": 9,
+              "min": 9,
+              "max": 9
+            },
+            "Um Rune": {
+              "count": 1,
+              "median": 10,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            },
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            },
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 2,
+              "mean": 2,
+              "min": 2,
+              "max": 2
+            }
+          },
+          "overall": {
+            "median": 9.5,
+            "mean": 8.2,
+            "count": 4
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Death's Fathom": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ber Rune": {
+              "count": 1,
+              "median": 60,
+              "mean": 60,
+              "min": 60,
+              "max": 60
+            }
+          },
+          "overall": {
+            "median": 60,
+            "mean": 60,
+            "count": 1
+          }
+        },
+        "fg": {
+          "median_fg": 50.0,
+          "avg_fg": 115.0,
+          "min_fg": 35.0,
+          "max_fg": 400.0,
+          "samples": 20
+        },
+        "fg_name": "Death's Fathom"
+      },
+      "Death's Touch": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ral Rune": {
+              "count": 1,
+              "median": 3,
+              "mean": 3,
+              "min": 3,
+              "max": 3
+            }
+          },
+          "overall": {
+            "median": 3,
+            "mean": 3,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Demonhide Gloves": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            }
+          },
+          "overall": {
+            "median": 15,
+            "mean": 15,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Diadem": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Small Charm": {
+              "count": 1,
+              "median": 2.0,
+              "mean": 2.0,
+              "min": 2.0,
+              "max": 2.0
+            }
+          },
+          "overall": {
+            "median": 2.0,
+            "mean": 2.0,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Dracul's Grasp": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            }
+          },
+          "overall": {
+            "median": 15,
+            "mean": 15,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Dreadfang": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "3x3 Key Set": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Lo Rune": {
+              "count": 1,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            }
+          },
+          "overall": {
+            "median": 15.5,
+            "mean": 15.5,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Dusk Shroud": {
+        "traderie": {
+          "total_listings": 3,
+          "currencies": {
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            },
+            "Um Rune": {
+              "count": 1,
+              "median": 10,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            },
+            "Pul Rune": {
+              "count": 1,
+              "median": 9,
+              "mean": 9,
+              "min": 9,
+              "max": 9
+            },
+            "Ist Rune": {
+              "count": 2,
+              "median": 15.0,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            }
+          },
+          "overall": {
+            "median": 12,
+            "mean": 12.2,
+            "count": 5
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Dwarf Star": {
+        "traderie": {
+          "total_listings": 3,
+          "currencies": {
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            },
+            "Key of Terror": {
+              "count": 2,
+              "median": 1.5,
+              "mean": 1.5,
+              "min": 1,
+              "max": 2
+            }
+          },
+          "overall": {
+            "median": 2,
+            "mean": 5,
+            "count": 3
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Eschuta's Temper": {
+        "traderie": {
+          "total_listings": 3,
+          "currencies": {
+            "Jah Rune": {
+              "count": 4,
+              "median": 75.0,
+              "mean": 87.5,
+              "min": 50,
+              "max": 150
+            },
+            "Ber Rune": {
+              "count": 1,
+              "median": 60,
+              "mean": 60,
+              "min": 60,
+              "max": 60
+            }
+          },
+          "overall": {
+            "median": 60,
+            "mean": 82,
+            "count": 5
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Faith": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Jah Rune": {
+              "count": 1,
+              "median": 100,
+              "mean": 100,
+              "min": 100,
+              "max": 100
+            }
+          },
+          "overall": {
+            "median": 100,
+            "mean": 100,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Flail": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 1,
+            "mean": 1,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Frostburn": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 1,
+            "mean": 1,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Gheed's Fortune": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Lo Rune": {
+              "count": 1,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            }
+          },
+          "overall": {
+            "median": 30,
+            "mean": 30,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Goblin Toe": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 2,
+              "mean": 2,
+              "min": 2,
+              "max": 2
+            }
+          },
+          "overall": {
+            "median": 2,
+            "mean": 2,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Gold": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            },
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            },
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            }
+          },
+          "overall": {
+            "median": 22,
+            "mean": 21.3,
+            "count": 3
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Goldwrap": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Lem Rune": {
+              "count": 1,
+              "median": 8,
+              "mean": 8,
+              "min": 8,
+              "max": 8
+            },
+            "Ko Rune": {
+              "count": 1,
+              "median": 8,
+              "mean": 8,
+              "min": 8,
+              "max": 8
+            }
+          },
+          "overall": {
+            "median": 8.0,
+            "mean": 8,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Grand Charm": {
+        "traderie": {
+          "total_listings": 33,
+          "currencies": {
+            "Ist Rune": {
+              "count": 8,
+              "median": 15.0,
+              "mean": 18.8,
+              "min": 15,
+              "max": 30
+            },
+            "Jah Rune": {
+              "count": 14,
+              "median": 50.0,
+              "mean": 121.4,
+              "min": 50,
+              "max": 650
+            },
+            "Ber Rune": {
+              "count": 8,
+              "median": 60.0,
+              "mean": 60,
+              "min": 60,
+              "max": 60
+            },
+            "Lo Rune": {
+              "count": 6,
+              "median": 30.0,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            },
+            "Grand Charm": {
+              "count": 1,
+              "median": 5,
+              "mean": 5,
+              "min": 5,
+              "max": 5
+            },
+            "Perfect Amethyst": {
+              "count": 2,
+              "median": 1.0,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Gul Rune": {
+              "count": 1,
+              "median": 18,
+              "mean": 18,
+              "min": 18,
+              "max": 18
+            },
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            },
+            "Um Rune": {
+              "count": 2,
+              "median": 10.0,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            },
+            "Pul Rune": {
+              "count": 1,
+              "median": 9,
+              "mean": 9,
+              "min": 9,
+              "max": 9
+            },
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            },
+            "Ohm Rune": {
+              "count": 1,
+              "median": 25,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            }
+          },
+          "overall": {
+            "median": 30.0,
+            "mean": 57.0,
+            "count": 46
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Grand Crown": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            }
+          },
+          "overall": {
+            "median": 12,
+            "mean": 12,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Great Hauberk": {
+        "traderie": {
+          "total_listings": 3,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            },
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            },
+            "Key of Terror": {
+              "count": 1,
+              "median": 2,
+              "mean": 2,
+              "min": 2,
+              "max": 2
+            },
+            "Key of Hate": {
+              "count": 1,
+              "median": 2,
+              "mean": 2,
+              "min": 2,
+              "max": 2
+            },
+            "Key of Destruction": {
+              "count": 1,
+              "median": 2,
+              "mean": 2,
+              "min": 2,
+              "max": 2
+            }
+          },
+          "overall": {
+            "median": 2,
+            "mean": 6.6,
+            "count": 5
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Griffon's Eye": {
+        "traderie": {
+          "total_listings": 12,
+          "currencies": {
+            "Jah Rune": {
+              "count": 13,
+              "median": 300,
+              "mean": 369.2,
+              "min": 100,
+              "max": 900
+            },
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            },
+            "Ber Rune": {
+              "count": 3,
+              "median": 60,
+              "mean": 60,
+              "min": 60,
+              "max": 60
+            },
+            "Zod Rune": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Lo Rune": {
+              "count": 1,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            }
+          },
+          "overall": {
+            "median": 100,
+            "mean": 264.9,
+            "count": 19
+          }
+        },
+        "fg": {
+          "median_fg": 50.0,
+          "avg_fg": 345.8,
+          "min_fg": 10.0,
+          "max_fg": 2200.0,
+          "samples": 79
+        },
+        "fg_name": "Griffon"
+      },
+      "Griswold's Valor": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            }
+          },
+          "overall": {
+            "median": 22,
+            "mean": 22,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Guardian Angel": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 2,
+              "mean": 2,
+              "min": 2,
+              "max": 2
+            }
+          },
+          "overall": {
+            "median": 2,
+            "mean": 2,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Guardian's Thunder": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Jah Rune": {
+              "count": 1,
+              "median": 100,
+              "mean": 100,
+              "min": 100,
+              "max": 100
+            },
+            "Ber Rune": {
+              "count": 1,
+              "median": 120,
+              "mean": 120,
+              "min": 120,
+              "max": 120
+            },
+            "Ohm Rune": {
+              "count": 1,
+              "median": 25,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            }
+          },
+          "overall": {
+            "median": 100,
+            "mean": 81.7,
+            "count": 3
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Gul Rune": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Mal Rune": {
+              "count": 1,
+              "median": 24,
+              "mean": 24,
+              "min": 24,
+              "max": 24
+            },
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            }
+          },
+          "overall": {
+            "median": 19.5,
+            "mean": 19.5,
+            "count": 2
+          }
+        },
+        "fg": {
+          "median_fg": 50.0,
+          "avg_fg": 218.2,
+          "min_fg": 10.0,
+          "max_fg": 1800.0,
+          "samples": 56
+        },
+        "fg_name": "Gul Rune"
+      },
+      "Halberd": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Ral Rune": {
+              "count": 1,
+              "median": 9,
+              "mean": 9,
+              "min": 9,
+              "max": 9
+            },
+            "Lum Rune": {
+              "count": 1,
+              "median": 4,
+              "mean": 4,
+              "min": 4,
+              "max": 4
+            }
+          },
+          "overall": {
+            "median": 4,
+            "mean": 4.7,
+            "count": 3
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Hand of Justice": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ber Rune": {
+              "count": 1,
+              "median": 60,
+              "mean": 60,
+              "min": 60,
+              "max": 60
+            },
+            "Jah Rune": {
+              "count": 1,
+              "median": 50,
+              "mean": 50,
+              "min": 50,
+              "max": 50
+            }
+          },
+          "overall": {
+            "median": 55.0,
+            "mean": 55,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Harlequin Crest": {
+        "traderie": {
+          "total_listings": 3,
+          "currencies": {
+            "Ist Rune": {
+              "count": 3,
+              "median": 15,
+              "mean": 20,
+              "min": 15,
+              "max": 30
+            },
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            },
+            "Mal Rune": {
+              "count": 1,
+              "median": 24,
+              "mean": 24,
+              "min": 24,
+              "max": 24
+            }
+          },
+          "overall": {
+            "median": 22,
+            "mean": 21.2,
+            "count": 5
+          }
+        },
+        "fg": {
+          "median_fg": 50.0,
+          "avg_fg": 252.5,
+          "min_fg": 5.0,
+          "max_fg": 2700.0,
+          "samples": 103
+        },
+        "fg_name": "Shako"
+      },
+      "Heaven's Light": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Um Rune": {
+              "count": 1,
+              "median": 10,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            }
+          },
+          "overall": {
+            "median": 10,
+            "mean": 10,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Hel Rune": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            }
+          },
+          "overall": {
+            "median": 12,
+            "mean": 12,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Hellfire Torch": {
+        "traderie": {
+          "total_listings": 16,
+          "currencies": {
+            "Ber Rune": {
+              "count": 6,
+              "median": 60.0,
+              "mean": 70,
+              "min": 60,
+              "max": 120
+            },
+            "Lo Rune": {
+              "count": 5,
+              "median": 30,
+              "mean": 36,
+              "min": 30,
+              "max": 60
+            },
+            "Ohm Rune": {
+              "count": 6,
+              "median": 50.0,
+              "mean": 50,
+              "min": 25,
+              "max": 75
+            },
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 5,
+              "mean": 5,
+              "min": 5,
+              "max": 5
+            },
+            "Jah Rune": {
+              "count": 4,
+              "median": 50.0,
+              "mean": 50,
+              "min": 50,
+              "max": 50
+            },
+            "Sur Rune": {
+              "count": 3,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Ist Rune": {
+              "count": 7,
+              "median": 15,
+              "mean": 64.3,
+              "min": 15,
+              "max": 180
+            },
+            "Vex Rune": {
+              "count": 3,
+              "median": 132,
+              "mean": 95.3,
+              "min": 22,
+              "max": 132
+            },
+            "Gul Rune": {
+              "count": 2,
+              "median": 18.0,
+              "mean": 18,
+              "min": 18,
+              "max": 18
+            }
+          },
+          "overall": {
+            "median": 30,
+            "mean": 50.8,
+            "count": 37
+          }
+        },
+        "fg": null,
+        "fg_name": "Hellfire"
+      },
+      "Hellslayer": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            }
+          },
+          "overall": {
+            "median": 22,
+            "mean": 22,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Herald of Zakarum": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            },
+            "Um Rune": {
+              "count": 1,
+              "median": 10,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            },
+            "Pul Rune": {
+              "count": 1,
+              "median": 9,
+              "mean": 9,
+              "min": 9,
+              "max": 9
+            }
+          },
+          "overall": {
+            "median": 10,
+            "mean": 11.3,
+            "count": 3
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Hexfire": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 2,
+              "mean": 2,
+              "min": 2,
+              "max": 2
+            }
+          },
+          "overall": {
+            "median": 2,
+            "mean": 2,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Highlord's Wrath": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            }
+          },
+          "overall": {
+            "median": 15,
+            "mean": 15,
+            "count": 1
+          }
+        },
+        "fg": {
+          "median_fg": 47.5,
+          "avg_fg": 151.0,
+          "min_fg": 5.0,
+          "max_fg": 690.0,
+          "samples": 48
+        },
+        "fg_name": "Highlord"
+      },
+      "Horazon's Hold": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Ral Rune": {
+              "count": 1,
+              "median": 6,
+              "mean": 6,
+              "min": 6,
+              "max": 6
+            }
+          },
+          "overall": {
+            "median": 3.5,
+            "mean": 3.5,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Horazon's Secrets": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Um Rune": {
+              "count": 1,
+              "median": 10,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            },
+            "Mal Rune": {
+              "count": 2,
+              "median": 12.0,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            },
+            "The Oculus": {
+              "count": 2,
+              "median": 1.0,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Ist Rune": {
+              "count": 2,
+              "median": 15.0,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            },
+            "Tal Rasha's Fine-Spun Cloth": {
+              "count": 2,
+              "median": 1.0,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 10,
+            "mean": 7.6,
+            "count": 9
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Humongous": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Amn Rune": {
+              "count": 1,
+              "median": 10,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            }
+          },
+          "overall": {
+            "median": 10,
+            "mean": 10,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Immortal King's Pillar": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 1,
+            "mean": 1,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Immortal King's Will": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Lem Rune": {
+              "count": 1,
+              "median": 8,
+              "mean": 8,
+              "min": 8,
+              "max": 8
+            }
+          },
+          "overall": {
+            "median": 8,
+            "mean": 8,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Ist Rune": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            },
+            "Um Rune": {
+              "count": 1,
+              "median": 10,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            }
+          },
+          "overall": {
+            "median": 11.0,
+            "mean": 11,
+            "count": 2
+          }
+        },
+        "fg": {
+          "median_fg": 50.0,
+          "avg_fg": 106.9,
+          "min_fg": 5.0,
+          "max_fg": 400.0,
+          "samples": 156
+        },
+        "fg_name": "Ist Rune"
+      },
+      "Jalal's Mane": {
+        "traderie": {
+          "total_listings": 3,
+          "currencies": {
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Lem Rune": {
+              "count": 2,
+              "median": 8.0,
+              "mean": 8,
+              "min": 8,
+              "max": 8
+            }
+          },
+          "overall": {
+            "median": 8,
+            "mean": 5.7,
+            "count": 3
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Jewel": {
+        "traderie": {
+          "total_listings": 3,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            },
+            "Pul Rune": {
+              "count": 1,
+              "median": 9,
+              "mean": 9,
+              "min": 9,
+              "max": 9
+            },
+            "Jah Rune": {
+              "count": 1,
+              "median": 9000,
+              "mean": 9000,
+              "min": 9000,
+              "max": 9000
+            }
+          },
+          "overall": {
+            "median": 15,
+            "mean": 3008,
+            "count": 3
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Key of Destruction": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            },
+            "Gul Rune": {
+              "count": 1,
+              "median": 18,
+              "mean": 18,
+              "min": 18,
+              "max": 18
+            },
+            "Key of Hate": {
+              "count": 1,
+              "median": 4,
+              "mean": 4,
+              "min": 4,
+              "max": 4
+            }
+          },
+          "overall": {
+            "median": 15,
+            "mean": 12.3,
+            "count": 3
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Key of Hate": {
+        "traderie": {
+          "total_listings": 4,
+          "currencies": {
+            "Perfect Amethyst": {
+              "count": 2,
+              "median": 5.0,
+              "mean": 5,
+              "min": 5,
+              "max": 5
+            },
+            "Worusk's End": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Festering Essence of Destruction": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Burning Essence of Terror": {
+              "count": 1,
+              "median": 5,
+              "mean": 5,
+              "min": 5,
+              "max": 5
+            },
+            "Charged Essence of Hatred": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            },
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            },
+            "Random Minor Key": {
+              "count": 1,
+              "median": 3,
+              "mean": 3,
+              "min": 3,
+              "max": 3
+            },
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            },
+            "Gul Rune": {
+              "count": 1,
+              "median": 18,
+              "mean": 18,
+              "min": 18,
+              "max": 18
+            },
+            "Token of Absolution": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 5,
+            "mean": 7.4,
+            "count": 11
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Key of Terror": {
+        "traderie": {
+          "total_listings": 5,
+          "currencies": {
+            "Perfect Amethyst": {
+              "count": 2,
+              "median": 4.5,
+              "mean": 4.5,
+              "min": 4,
+              "max": 5
+            },
+            "Key of Destruction": {
+              "count": 2,
+              "median": 1.0,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            },
+            "Ral Rune": {
+              "count": 1,
+              "median": 24,
+              "mean": 24,
+              "min": 24,
+              "max": 24
+            },
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            }
+          },
+          "overall": {
+            "median": 5,
+            "mean": 8.9,
+            "count": 7
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Kira's Guardian": {
+        "traderie": {
+          "total_listings": 4,
+          "currencies": {
+            "Mal Rune": {
+              "count": 3,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            },
+            "Um Rune": {
+              "count": 1,
+              "median": 10,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            }
+          },
+          "overall": {
+            "median": 12.0,
+            "mean": 11.5,
+            "count": 4
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Kris": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Lo Rune": {
+              "count": 1,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            },
+            "Key of Terror": {
+              "count": 1,
+              "median": 2,
+              "mean": 2,
+              "min": 2,
+              "max": 2
+            },
+            "Key of Hate": {
+              "count": 1,
+              "median": 2,
+              "mean": 2,
+              "min": 2,
+              "max": 2
+            },
+            "Key of Destruction": {
+              "count": 1,
+              "median": 2,
+              "mean": 2,
+              "min": 2,
+              "max": 2
+            }
+          },
+          "overall": {
+            "median": 2.0,
+            "mean": 9,
+            "count": 4
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Kurast Shield": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            }
+          },
+          "overall": {
+            "median": 12,
+            "mean": 12,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Lacerator": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            }
+          },
+          "overall": {
+            "median": 15,
+            "mean": 15,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Large Charm": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            }
+          },
+          "overall": {
+            "median": 22,
+            "mean": 22,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Latent Black Cleft": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Jah Rune": {
+              "count": 1,
+              "median": 250,
+              "mean": 250,
+              "min": 250,
+              "max": 250
+            }
+          },
+          "overall": {
+            "median": 250,
+            "mean": 250,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Latent Bone Break": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Jah Rune": {
+              "count": 1,
+              "median": 200,
+              "mean": 200,
+              "min": 200,
+              "max": 200
+            },
+            "Lo Rune": {
+              "count": 1,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            }
+          },
+          "overall": {
+            "median": 115.0,
+            "mean": 115,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Latent Cold Rupture": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Lo Rune": {
+              "count": 2,
+              "median": 30.0,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            },
+            "Sur Rune": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Ohm Rune": {
+              "count": 1,
+              "median": 25,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            },
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            }
+          },
+          "overall": {
+            "median": 25,
+            "mean": 21.6,
+            "count": 5
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Latent Crack of the Heavens": {
+        "traderie": {
+          "total_listings": 3,
+          "currencies": {
+            "Lo Rune": {
+              "count": 3,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            },
+            "Ohm Rune": {
+              "count": 3,
+              "median": 25,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            },
+            "Vex Rune": {
+              "count": 2,
+              "median": 22.0,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            },
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            }
+          },
+          "overall": {
+            "median": 25,
+            "mean": 24.9,
+            "count": 9
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Latent Flame Rift": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            },
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            }
+          },
+          "overall": {
+            "median": 13.5,
+            "mean": 13.5,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Latent Rotting Fissure": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Um Rune": {
+              "count": 1,
+              "median": 10,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            },
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 5,
+              "mean": 5,
+              "min": 5,
+              "max": 5
+            }
+          },
+          "overall": {
+            "median": 7.5,
+            "mean": 7.5,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Laying of Hands": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Lem Rune": {
+              "count": 1,
+              "median": 8,
+              "mean": 8,
+              "min": 8,
+              "max": 8
+            },
+            "Pul Rune": {
+              "count": 2,
+              "median": 9.0,
+              "mean": 9,
+              "min": 9,
+              "max": 9
+            }
+          },
+          "overall": {
+            "median": 9,
+            "mean": 8.7,
+            "count": 3
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Lem Rune": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 5,
+              "mean": 5,
+              "min": 5,
+              "max": 5
+            }
+          },
+          "overall": {
+            "median": 5,
+            "mean": 5,
+            "count": 1
+          }
+        },
+        "fg": {
+          "median_fg": 40.0,
+          "avg_fg": 147.5,
+          "min_fg": 10.0,
+          "max_fg": 400.0,
+          "samples": 34
+        },
+        "fg_name": "Lem Rune"
+      },
+      "Lidless Wall": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Key of Terror": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Key of Hate": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Key of Destruction": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 1,
+            "mean": 1,
+            "count": 3
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Light Plated Boots": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Jah Rune": {
+              "count": 1,
+              "median": 50,
+              "mean": 50,
+              "min": 50,
+              "max": 50
+            }
+          },
+          "overall": {
+            "median": 50,
+            "mean": 50,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Lo Rune": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Ber Rune": {
+              "count": 1,
+              "median": 60,
+              "mean": 60,
+              "min": 60,
+              "max": 60
+            },
+            "Ohm Rune": {
+              "count": 1,
+              "median": 25,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            },
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            }
+          },
+          "overall": {
+            "median": 25,
+            "mean": 32.3,
+            "count": 3
+          }
+        },
+        "fg": {
+          "median_fg": 45.0,
+          "avg_fg": 192.3,
+          "min_fg": 5.0,
+          "max_fg": 650.0,
+          "samples": 80
+        },
+        "fg_name": "Lo Rune"
+      },
+      "Mage Plate": {
+        "traderie": {
+          "total_listings": 4,
+          "currencies": {
+            "Ist Rune": {
+              "count": 4,
+              "median": 15.0,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            },
+            "Gul Rune": {
+              "count": 1,
+              "median": 18,
+              "mean": 18,
+              "min": 18,
+              "max": 18
+            }
+          },
+          "overall": {
+            "median": 15,
+            "mean": 15.6,
+            "count": 5
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Mal Rune": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 13,
+              "mean": 13,
+              "min": 13,
+              "max": 13
+            },
+            "Ral Rune": {
+              "count": 1,
+              "median": 54,
+              "mean": 54,
+              "min": 54,
+              "max": 54
+            }
+          },
+          "overall": {
+            "median": 33.5,
+            "mean": 33.5,
+            "count": 2
+          }
+        },
+        "fg": {
+          "median_fg": 50.0,
+          "avg_fg": 116.9,
+          "min_fg": 5.0,
+          "max_fg": 600.0,
+          "samples": 122
+        },
+        "fg_name": "Mal Rune"
+      },
+      "Mancatcher": {
+        "traderie": {
+          "total_listings": 3,
+          "currencies": {
+            "Ist Rune": {
+              "count": 2,
+              "median": 15.0,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            },
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            },
+            "Lo Rune": {
+              "count": 1,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            },
+            "Ohm Rune": {
+              "count": 1,
+              "median": 25,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            },
+            "Sur Rune": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Lem Rune": {
+              "count": 1,
+              "median": 8,
+              "mean": 8,
+              "min": 8,
+              "max": 8
+            },
+            "Pul Rune": {
+              "count": 1,
+              "median": 9,
+              "mean": 9,
+              "min": 9,
+              "max": 9
+            }
+          },
+          "overall": {
+            "median": 13.5,
+            "mean": 14.4,
+            "count": 8
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Mang Song's Lesson": {
+        "traderie": {
+          "total_listings": 3,
+          "currencies": {
+            "Jah Rune": {
+              "count": 3,
+              "median": 50,
+              "mean": 66.7,
+              "min": 50,
+              "max": 100
+            },
+            "Ber Rune": {
+              "count": 2,
+              "median": 120.0,
+              "mean": 120,
+              "min": 60,
+              "max": 180
+            },
+            "Zod Rune": {
+              "count": 1,
+              "median": 3,
+              "mean": 3,
+              "min": 3,
+              "max": 3
+            },
+            "Mang Song's Lesson": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 50,
+            "mean": 63.4,
+            "count": 7
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Mara's Kaleidoscope": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            }
+          },
+          "overall": {
+            "median": 22,
+            "mean": 22,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Matriarchal Bow": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            },
+            "Ist Rune": {
+              "count": 1,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            }
+          },
+          "overall": {
+            "median": 26.0,
+            "mean": 26,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Monarch": {
+        "traderie": {
+          "total_listings": 11,
+          "currencies": {
+            "Perfect Amethyst": {
+              "count": 8,
+              "median": 2.5,
+              "mean": 2.5,
+              "min": 1,
+              "max": 4
+            },
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            },
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            },
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            },
+            "Um Rune": {
+              "count": 2,
+              "median": 10.0,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            },
+            "Pul Rune": {
+              "count": 1,
+              "median": 9,
+              "mean": 9,
+              "min": 9,
+              "max": 9
+            },
+            "Random Minor Key": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Lem Rune": {
+              "count": 1,
+              "median": 8,
+              "mean": 8,
+              "min": 8,
+              "max": 8
+            },
+            "Key of Terror": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Key of Hate": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Key of Destruction": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Jah Rune": {
+              "count": 1,
+              "median": 50,
+              "mean": 50,
+              "min": 50,
+              "max": 50
+            }
+          },
+          "overall": {
+            "median": 3.0,
+            "mean": 8,
+            "count": 20
+          }
+        },
+        "fg": {
+          "median_fg": 35.0,
+          "avg_fg": 165.4,
+          "min_fg": 5.0,
+          "max_fg": 2700.0,
+          "samples": 185
+        },
+        "fg_name": "Monarch"
+      },
+      "Mosaic": {
+        "traderie": {
+          "total_listings": 4,
+          "currencies": {
+            "Jah Rune": {
+              "count": 7,
+              "median": 100,
+              "mean": 121.4,
+              "min": 50,
+              "max": 200
+            },
+            "Ber Rune": {
+              "count": 3,
+              "median": 60,
+              "mean": 60,
+              "min": 60,
+              "max": 60
+            }
+          },
+          "overall": {
+            "median": 80.0,
+            "mean": 103,
+            "count": 10
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Moser's Blessed Circle": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 1,
+            "mean": 1,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Nagelring": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 1,
+            "mean": 1,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Naj's Light Plate": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Lem Rune": {
+              "count": 1,
+              "median": 8,
+              "mean": 8,
+              "min": 8,
+              "max": 8
+            }
+          },
+          "overall": {
+            "median": 8,
+            "mean": 8,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Nature's Peace": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            }
+          },
+          "overall": {
+            "median": 15,
+            "mean": 15,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Nightwing's Veil": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            },
+            "Ral Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            }
+          },
+          "overall": {
+            "median": 13.5,
+            "mean": 13.5,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Nokozan Relic": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 1,
+            "mean": 1,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Northern Worldstone Shard": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            }
+          },
+          "overall": {
+            "median": 22,
+            "mean": 22,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Opalvein": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Jah Rune": {
+              "count": 1,
+              "median": 550,
+              "mean": 550,
+              "min": 550,
+              "max": 550
+            }
+          },
+          "overall": {
+            "median": 550,
+            "mean": 550,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Ormus' Robes": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Jah Rune": {
+              "count": 1,
+              "median": 150,
+              "mean": 150,
+              "min": 150,
+              "max": 150
+            },
+            "Ber Rune": {
+              "count": 1,
+              "median": 180,
+              "mean": 180,
+              "min": 180,
+              "max": 180
+            }
+          },
+          "overall": {
+            "median": 165.0,
+            "mean": 165,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Perfect Amethyst": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Random Minor Key": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Jah Rune": {
+              "count": 1,
+              "median": 50,
+              "mean": 50,
+              "min": 50,
+              "max": 50
+            }
+          },
+          "overall": {
+            "median": 25.5,
+            "mean": 25.5,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Phase Blade": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Lem Rune": {
+              "count": 1,
+              "median": 8,
+              "mean": 8,
+              "min": 8,
+              "max": 8
+            }
+          },
+          "overall": {
+            "median": 8,
+            "mean": 8,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Poleaxe": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ral Rune": {
+              "count": 1,
+              "median": 6,
+              "mean": 6,
+              "min": 6,
+              "max": 6
+            },
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 3.5,
+            "mean": 3.5,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Protector's Frost": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Jah Rune": {
+              "count": 1,
+              "median": 50,
+              "mean": 50,
+              "min": 50,
+              "max": 50
+            }
+          },
+          "overall": {
+            "median": 50,
+            "mean": 50,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Protector's Stone": {
+        "traderie": {
+          "total_listings": 3,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            },
+            "Ohm Rune": {
+              "count": 1,
+              "median": 25,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            },
+            "Lo Rune": {
+              "count": 1,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            }
+          },
+          "overall": {
+            "median": 25,
+            "mean": 23.3,
+            "count": 3
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Rainbow Facet: Cold Level-up": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            },
+            "Ist Rune": {
+              "count": 1,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            }
+          },
+          "overall": {
+            "median": 26.0,
+            "mean": 26,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Rainbow Facet: Fire Death": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            },
+            "Ber Rune": {
+              "count": 2,
+              "median": 60.0,
+              "mean": 60,
+              "min": 60,
+              "max": 60
+            },
+            "Zod Rune": {
+              "count": 2,
+              "median": 1.0,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Sur Rune": {
+              "count": 2,
+              "median": 1.0,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 1,
+            "mean": 19.4,
+            "count": 7
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Rainbow Facet: Fire Level-up": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            },
+            "Lo Rune": {
+              "count": 1,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            }
+          },
+          "overall": {
+            "median": 22.5,
+            "mean": 22.5,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Rainbow Facet: Poison Death": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Um Rune": {
+              "count": 1,
+              "median": 10,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            },
+            "Pul Rune": {
+              "count": 1,
+              "median": 9,
+              "mean": 9,
+              "min": 9,
+              "max": 9
+            }
+          },
+          "overall": {
+            "median": 9.5,
+            "mean": 9.5,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Ral Rune": {
+        "traderie": {
+          "total_listings": 4,
+          "currencies": {
+            "Um Rune": {
+              "count": 1,
+              "median": 10,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            },
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            },
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            },
+            "Gul Rune": {
+              "count": 1,
+              "median": 18,
+              "mean": 18,
+              "min": 18,
+              "max": 18
+            },
+            "Token of Absolution": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Ohm Rune": {
+              "count": 1,
+              "median": 25,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            }
+          },
+          "overall": {
+            "median": 16.5,
+            "mean": 15.2,
+            "count": 6
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Raven Claw": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 1,
+            "mean": 1,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Raven Frost": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            },
+            "Um Rune": {
+              "count": 1,
+              "median": 10,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            }
+          },
+          "overall": {
+            "median": 11.0,
+            "mean": 11,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Razortail": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Pul Rune": {
+              "count": 1,
+              "median": 9,
+              "mean": 9,
+              "min": 9,
+              "max": 9
+            }
+          },
+          "overall": {
+            "median": 9,
+            "mean": 9,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Renewed Black Cleft": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ohm Rune": {
+              "count": 1,
+              "median": 25,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            }
+          },
+          "overall": {
+            "median": 25,
+            "mean": 25,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Renewed Bone Break": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Tal Rasha's Adjudication": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            },
+            "Ist Rune": {
+              "count": 2,
+              "median": 30.0,
+              "mean": 30,
+              "min": 15,
+              "max": 45
+            }
+          },
+          "overall": {
+            "median": 18.5,
+            "mean": 20.8,
+            "count": 4
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Renewed Crack of the Heavens": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Lo Rune": {
+              "count": 1,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            }
+          },
+          "overall": {
+            "median": 30,
+            "mean": 30,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Renewed Flame Rift": {
+        "traderie": {
+          "total_listings": 4,
+          "currencies": {
+            "Jah Rune": {
+              "count": 3,
+              "median": 100,
+              "mean": 183.3,
+              "min": 50,
+              "max": 400
+            },
+            "Ber Rune": {
+              "count": 2,
+              "median": 60.0,
+              "mean": 60,
+              "min": 60,
+              "max": 60
+            },
+            "Lo Rune": {
+              "count": 1,
+              "median": 90,
+              "mean": 90,
+              "min": 90,
+              "max": 90
+            },
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            },
+            "Cham Rune": {
+              "count": 1,
+              "median": 35,
+              "mean": 35,
+              "min": 35,
+              "max": 35
+            }
+          },
+          "overall": {
+            "median": 60.0,
+            "mean": 102.1,
+            "count": 8
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Renewed Rotting Fissure": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Jah Rune": {
+              "count": 1,
+              "median": 100,
+              "mean": 100,
+              "min": 100,
+              "max": 100
+            }
+          },
+          "overall": {
+            "median": 100,
+            "mean": 100,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Rhyme": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Random Gems": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 1,
+            "mean": 1,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Ribcracker": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            }
+          },
+          "overall": {
+            "median": 15,
+            "mean": 15,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Ring": {
+        "traderie": {
+          "total_listings": 6,
+          "currencies": {
+            "Jah Rune": {
+              "count": 6,
+              "median": 200.0,
+              "mean": 216.7,
+              "min": 50,
+              "max": 450
+            }
+          },
+          "overall": {
+            "median": 200.0,
+            "mean": 216.7,
+            "count": 6
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Rune Staff": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Sur Rune": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 1,
+            "mean": 1,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Sacred Armor": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Jah Rune": {
+              "count": 1,
+              "median": 50,
+              "mean": 50,
+              "min": 50,
+              "max": 50
+            },
+            "Ohm Rune": {
+              "count": 1,
+              "median": 25,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            },
+            "Ber Rune": {
+              "count": 1,
+              "median": 60,
+              "mean": 60,
+              "min": 60,
+              "max": 60
+            }
+          },
+          "overall": {
+            "median": 50,
+            "mean": 45,
+            "count": 3
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Sacred Rondache": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            }
+          },
+          "overall": {
+            "median": 15,
+            "mean": 15,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Sanctuary": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Um Rune": {
+              "count": 1,
+              "median": 10,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            }
+          },
+          "overall": {
+            "median": 10,
+            "mean": 10,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": "Sanctuary"
+      },
+      "Sander's Riprap": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 1,
+            "mean": 1,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Sandstorm Trek": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Arachnid Mesh": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            }
+          },
+          "overall": {
+            "median": 6.5,
+            "mean": 6.5,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Scarab Husk": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            }
+          },
+          "overall": {
+            "median": 15,
+            "mean": 15,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Scythe": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ral Rune": {
+              "count": 1,
+              "median": 9,
+              "mean": 9,
+              "min": 9,
+              "max": 9
+            }
+          },
+          "overall": {
+            "median": 9,
+            "mean": 9,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Shard Set": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 45,
+              "mean": 45,
+              "min": 45,
+              "max": 45
+            }
+          },
+          "overall": {
+            "median": 45,
+            "mean": 45,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Skin of the Vipermagi": {
+        "traderie": {
+          "total_listings": 3,
+          "currencies": {
+            "Ohm Rune": {
+              "count": 1,
+              "median": 50,
+              "mean": 50,
+              "min": 50,
+              "max": 50
+            },
+            "Lo Rune": {
+              "count": 1,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            },
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            }
+          },
+          "overall": {
+            "median": 30,
+            "mean": 31.7,
+            "count": 3
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Skullder's Ire": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Lo Rune": {
+              "count": 1,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            },
+            "Ohm Rune": {
+              "count": 1,
+              "median": 25,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            },
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            }
+          },
+          "overall": {
+            "median": 25,
+            "mean": 23.3,
+            "count": 3
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Sling": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ber Rune": {
+              "count": 1,
+              "median": 60,
+              "mean": 60,
+              "min": 60,
+              "max": 60
+            }
+          },
+          "overall": {
+            "median": 60,
+            "mean": 60,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Small Charm": {
+        "traderie": {
+          "total_listings": 7,
+          "currencies": {
+            "Ist Rune": {
+              "count": 2,
+              "median": 15.0,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            },
+            "Lo Rune": {
+              "count": 2,
+              "median": 30.0,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            },
+            "Jah Rune": {
+              "count": 3,
+              "median": 50,
+              "mean": 50,
+              "min": 50,
+              "max": 50
+            },
+            "Ber Rune": {
+              "count": 1,
+              "median": 60,
+              "mean": 60,
+              "min": 60,
+              "max": 60
+            },
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            },
+            "Ohm Rune": {
+              "count": 1,
+              "median": 25,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            }
+          },
+          "overall": {
+            "median": 30.0,
+            "mean": 33.7,
+            "count": 10
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Snowclash": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Amn Rune": {
+              "count": 2,
+              "median": 10.0,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            }
+          },
+          "overall": {
+            "median": 10.0,
+            "mean": 10,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Spired Helm": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            }
+          },
+          "overall": {
+            "median": 15,
+            "mean": 15,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Statue Set": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Jah Rune": {
+              "count": 1,
+              "median": 50,
+              "mean": 50,
+              "min": 50,
+              "max": 50
+            },
+            "Ohm Rune": {
+              "count": 1,
+              "median": 25,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            }
+          },
+          "overall": {
+            "median": 37.5,
+            "mean": 37.5,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Sur Rune": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ohm Rune": {
+              "count": 1,
+              "median": 25,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            },
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            },
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            }
+          },
+          "overall": {
+            "median": 22,
+            "mean": 20.7,
+            "count": 3
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Tal Rasha's Adjudication": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            },
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            }
+          },
+          "overall": {
+            "median": 26.0,
+            "mean": 26,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Tal Rasha's Guardianship": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            },
+            "Ist Rune": {
+              "count": 1,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            },
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            }
+          },
+          "overall": {
+            "median": 22,
+            "mean": 21.3,
+            "count": 3
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Tal Rasha's Lidless Eye": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Lem Rune": {
+              "count": 1,
+              "median": 8,
+              "mean": 8,
+              "min": 8,
+              "max": 8
+            }
+          },
+          "overall": {
+            "median": 8,
+            "mean": 8,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Talic's Anguish": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Burning Essence of Terror": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Festering Essence of Destruction": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 1.0,
+            "mean": 1,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "The Cold Rupture": {
+        "traderie": {
+          "total_listings": 3,
+          "currencies": {
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            },
+            "Jah Rune": {
+              "count": 1,
+              "median": 50,
+              "mean": 50,
+              "min": 50,
+              "max": 50
+            },
+            "Ber Rune": {
+              "count": 1,
+              "median": 60,
+              "mean": 60,
+              "min": 60,
+              "max": 60
+            },
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            },
+            "Ohm Rune": {
+              "count": 1,
+              "median": 25,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            },
+            "Lo Rune": {
+              "count": 1,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            }
+          },
+          "overall": {
+            "median": 27.5,
+            "mean": 33.2,
+            "count": 6
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "The Crack of the Heavens": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Lo Rune": {
+              "count": 2,
+              "median": 90.0,
+              "mean": 90,
+              "min": 90,
+              "max": 90
+            }
+          },
+          "overall": {
+            "median": 90.0,
+            "mean": 90,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "The Gladiator's Bane": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            }
+          },
+          "overall": {
+            "median": 15,
+            "mean": 15,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "The Reaper's Toll": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            }
+          },
+          "overall": {
+            "median": 12,
+            "mean": 12,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "The Rising Sun": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Um Rune": {
+              "count": 1,
+              "median": 10,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            },
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 5,
+              "mean": 5,
+              "min": 5,
+              "max": 5
+            }
+          },
+          "overall": {
+            "median": 7.5,
+            "mean": 7.5,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "The Stone of Jordan": {
+        "traderie": {
+          "total_listings": 11,
+          "currencies": {
+            "Ohm Rune": {
+              "count": 7,
+              "median": 25,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            },
+            "Vex Rune": {
+              "count": 5,
+              "median": 22,
+              "mean": 30.8,
+              "min": 22,
+              "max": 44
+            },
+            "Ist Rune": {
+              "count": 3,
+              "median": 60,
+              "mean": 50,
+              "min": 30,
+              "max": 60
+            },
+            "Annihilus": {
+              "count": 1,
+              "median": 2,
+              "mean": 2,
+              "min": 2,
+              "max": 2
+            },
+            "Lo Rune": {
+              "count": 5,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            },
+            "Gul Rune": {
+              "count": 3,
+              "median": 18,
+              "mean": 36,
+              "min": 18,
+              "max": 72
+            },
+            "Sur Rune": {
+              "count": 2,
+              "median": 1.0,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Mal Rune": {
+              "count": 1,
+              "median": 72,
+              "mean": 72,
+              "min": 72,
+              "max": 72
+            },
+            "Worusk's End": {
+              "count": 1,
+              "median": 6,
+              "mean": 6,
+              "min": 6,
+              "max": 6
+            },
+            "Token of Absolution": {
+              "count": 1,
+              "median": 4,
+              "mean": 4,
+              "min": 4,
+              "max": 4
+            },
+            "Festering Essence of Destruction": {
+              "count": 1,
+              "median": 6,
+              "mean": 6,
+              "min": 6,
+              "max": 6
+            }
+          },
+          "overall": {
+            "median": 25.0,
+            "mean": 27.6,
+            "count": 30
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Thunder Maul": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Jah Rune": {
+              "count": 1,
+              "median": 50,
+              "mean": 50,
+              "min": 50,
+              "max": 50
+            }
+          },
+          "overall": {
+            "median": 50,
+            "mean": 50,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Thundergod's Vigor": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Pul Rune": {
+              "count": 1,
+              "median": 9,
+              "mean": 9,
+              "min": 9,
+              "max": 9
+            },
+            "Um Rune": {
+              "count": 1,
+              "median": 10,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            }
+          },
+          "overall": {
+            "median": 9.5,
+            "mean": 9.5,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Thunderstroke": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Lem Rune": {
+              "count": 1,
+              "median": 8,
+              "mean": 8,
+              "min": 8,
+              "max": 8
+            },
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            },
+            "Tal Rasha's Guardianship": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Harlequin Crest": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 4.5,
+            "mean": 8,
+            "count": 4
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Tiara": {
+        "traderie": {
+          "total_listings": 3,
+          "currencies": {
+            "Jah Rune": {
+              "count": 4,
+              "median": 350.0,
+              "mean": 337.5,
+              "min": 50,
+              "max": 600
+            },
+            "Ber Rune": {
+              "count": 1,
+              "median": 60,
+              "mean": 60,
+              "min": 60,
+              "max": 60
+            },
+            "Lo Rune": {
+              "count": 2,
+              "median": 30.0,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            },
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            }
+          },
+          "overall": {
+            "median": 55.0,
+            "mean": 186.5,
+            "count": 8
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Titan's Revenge": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            },
+            "Um Rune": {
+              "count": 1,
+              "median": 10,
+              "mean": 10,
+              "min": 10,
+              "max": 10
+            }
+          },
+          "overall": {
+            "median": 12.5,
+            "mean": 12.5,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Token of Absolution": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            }
+          },
+          "overall": {
+            "median": 15,
+            "mean": 15,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Tomb Reaver": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ohm Rune": {
+              "count": 1,
+              "median": 25,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            }
+          },
+          "overall": {
+            "median": 25,
+            "mean": 25,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Trang-Oul's Scales": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Ral Rune": {
+              "count": 1,
+              "median": 6,
+              "mean": 6,
+              "min": 6,
+              "max": 6
+            },
+            "Hel Rune": {
+              "count": 1,
+              "median": 2,
+              "mean": 2,
+              "min": 2,
+              "max": 2
+            },
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Random Minor Key": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 1.5,
+            "mean": 2.5,
+            "count": 4
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Um Rune": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Festering Essence of Destruction": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Burning Essence of Terror": {
+              "count": 1,
+              "median": 5,
+              "mean": 5,
+              "min": 5,
+              "max": 5
+            },
+            "Charged Essence of Hatred": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            },
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            },
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            },
+            "Token of Absolution": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            }
+          },
+          "overall": {
+            "median": 8.5,
+            "mean": 8.2,
+            "count": 6
+          }
+        },
+        "fg": {
+          "median_fg": 30.0,
+          "avg_fg": 65.0,
+          "min_fg": 5.0,
+          "max_fg": 400.0,
+          "samples": 74
+        },
+        "fg_name": "Um Rune"
+      },
+      "Vambraces": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Pul Rune": {
+              "count": 1,
+              "median": 9,
+              "mean": 9,
+              "min": 9,
+              "max": 9
+            }
+          },
+          "overall": {
+            "median": 9,
+            "mean": 9,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Vex Rune": {
+        "traderie": {
+          "total_listings": 3,
+          "currencies": {
+            "Lo Rune": {
+              "count": 1,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            },
+            "Ist Rune": {
+              "count": 2,
+              "median": 52.5,
+              "mean": 52.5,
+              "min": 30,
+              "max": 75
+            },
+            "Mal Rune": {
+              "count": 1,
+              "median": 12,
+              "mean": 12,
+              "min": 12,
+              "max": 12
+            },
+            "Token of Absolution": {
+              "count": 1,
+              "median": 3,
+              "mean": 3,
+              "min": 3,
+              "max": 3
+            },
+            "Ohm Rune": {
+              "count": 1,
+              "median": 25,
+              "mean": 25,
+              "min": 25,
+              "max": 25
+            }
+          },
+          "overall": {
+            "median": 27.5,
+            "mean": 29.2,
+            "count": 6
+          }
+        },
+        "fg": {
+          "median_fg": 40.0,
+          "avg_fg": 205.9,
+          "min_fg": 5.0,
+          "max_fg": 2150.0,
+          "samples": 73
+        },
+        "fg_name": "Vex Rune"
+      },
+      "Warshrike": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Jah Rune": {
+              "count": 1,
+              "median": 50,
+              "mean": 50,
+              "min": 50,
+              "max": 50
+            }
+          },
+          "overall": {
+            "median": 50,
+            "mean": 50,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Wire Fleece": {
+        "traderie": {
+          "total_listings": 3,
+          "currencies": {
+            "Hel Rune": {
+              "count": 1,
+              "median": 3,
+              "mean": 3,
+              "min": 3,
+              "max": 3
+            },
+            "Lem Rune": {
+              "count": 1,
+              "median": 8,
+              "mean": 8,
+              "min": 8,
+              "max": 8
+            },
+            "Ist Rune": {
+              "count": 1,
+              "median": 15,
+              "mean": 15,
+              "min": 15,
+              "max": 15
+            }
+          },
+          "overall": {
+            "median": 8,
+            "mean": 8.7,
+            "count": 3
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Witchwild String": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Vex Rune": {
+              "count": 1,
+              "median": 22,
+              "mean": 22,
+              "min": 22,
+              "max": 22
+            },
+            "Ist Rune": {
+              "count": 1,
+              "median": 30,
+              "mean": 30,
+              "min": 30,
+              "max": 30
+            }
+          },
+          "overall": {
+            "median": 26.0,
+            "mean": 26,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Wizardspike": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Lem Rune": {
+              "count": 1,
+              "median": 8,
+              "mean": 8,
+              "min": 8,
+              "max": 8
+            },
+            "Perfect Amethyst": {
+              "count": 1,
+              "median": 2,
+              "mean": 2,
+              "min": 2,
+              "max": 2
+            }
+          },
+          "overall": {
+            "median": 5.0,
+            "mean": 5,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Wraithstep": {
+        "traderie": {
+          "total_listings": 2,
+          "currencies": {
+            "Horazon's Legacy": {
+              "count": 1,
+              "median": 1,
+              "mean": 1,
+              "min": 1,
+              "max": 1
+            },
+            "Jah Rune": {
+              "count": 1,
+              "median": 50,
+              "mean": 50,
+              "min": 50,
+              "max": 50
+            }
+          },
+          "overall": {
+            "median": 25.5,
+            "mean": 25.5,
+            "count": 2
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Zweihander": {
+        "traderie": {
+          "total_listings": 1,
+          "currencies": {
+            "Jah Rune": {
+              "count": 1,
+              "median": 50,
+              "mean": 50,
+              "min": 50,
+              "max": 50
+            }
+          },
+          "overall": {
+            "median": 50,
+            "mean": 50,
+            "count": 1
+          }
+        },
+        "fg": null,
+        "fg_name": null
+      },
+      "Insight": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 30.0,
+          "avg_fg": 180.5,
+          "min_fg": 5.0,
+          "max_fg": 2200.0,
+          "samples": 127
+        },
+        "fg_name": "Insight"
+      },
+      "Black": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 40.0,
+          "avg_fg": 132.5,
+          "min_fg": 5.0,
+          "max_fg": 400.0,
+          "samples": 77
+        },
+        "fg_name": "Black"
+      },
+      "Fist of the Heavens": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 400.0,
+          "avg_fg": 366.7,
+          "min_fg": 300.0,
+          "max_fg": 400.0,
+          "samples": 12
+        },
+        "fg_name": "Fist"
+      },
+      "Pul Rune": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 40.0,
+          "avg_fg": 241.2,
+          "min_fg": 5.0,
+          "max_fg": 1800.0,
+          "samples": 52
+        },
+        "fg_name": "Pul Rune"
+      },
+      "Spirit": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 35.0,
+          "avg_fg": 148.7,
+          "min_fg": 5.0,
+          "max_fg": 2700.0,
+          "samples": 183
+        },
+        "fg_name": "Spirit"
+      },
+      "Ohm Rune": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 240.0,
+          "avg_fg": 344.8,
+          "min_fg": 10.0,
+          "max_fg": 6000.0,
+          "samples": 77
+        },
+        "fg_name": "Ohm Rune"
+      },
+      "White": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 30.0,
+          "avg_fg": 121.5,
+          "min_fg": 5.0,
+          "max_fg": 900.0,
+          "samples": 106
+        },
+        "fg_name": "White"
+      },
+      "Giant's": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 15.0,
+          "avg_fg": 71.7,
+          "min_fg": 5.0,
+          "max_fg": 400.0,
+          "samples": 30
+        },
+        "fg_name": "Giant"
+      },
+      "Pala Torch": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 300.0,
+          "avg_fg": 296.9,
+          "min_fg": 10.0,
+          "max_fg": 900.0,
+          "samples": 44
+        },
+        "fg_name": "Pala Torch"
+      },
+      "Enigma": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 350.0,
+          "avg_fg": 679.3,
+          "min_fg": 10.0,
+          "max_fg": 2700.0,
+          "samples": 41
+        },
+        "fg_name": "Enigma"
+      },
+      "Night": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 10.0,
+          "avg_fg": 23.3,
+          "min_fg": 4.0,
+          "max_fg": 70.0,
+          "samples": 19
+        },
+        "fg_name": "Night"
+      },
+      "Thresher": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 70.0,
+          "avg_fg": 181.8,
+          "min_fg": 8.0,
+          "max_fg": 690.0,
+          "samples": 59
+        },
+        "fg_name": "Thresher"
+      },
+      "Paladin Combat SK": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 250.0,
+          "avg_fg": 525.8,
+          "min_fg": 10.0,
+          "max_fg": 1800.0,
+          "samples": 31
+        },
+        "fg_name": "Pcomb SK"
+      },
+      "Bul-Kathos' Wedding Band": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 50.0,
+          "avg_fg": 197.9,
+          "min_fg": 2.0,
+          "max_fg": 1800.0,
+          "samples": 93
+        },
+        "fg_name": "BK Ring"
+      },
+      "Mara's Wardrobe": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 90.0,
+          "avg_fg": 285.6,
+          "min_fg": 10.0,
+          "max_fg": 2700.0,
+          "samples": 66
+        },
+        "fg_name": "Mara"
+      },
+      "Viper's Gorge": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 50.0,
+          "avg_fg": 158.4,
+          "min_fg": 10.0,
+          "max_fg": 690.0,
+          "samples": 45
+        },
+        "fg_name": "Viper Gorge"
+      },
+      "Ward": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 40.0,
+          "avg_fg": 142.5,
+          "min_fg": 15.0,
+          "max_fg": 400.0,
+          "samples": 16
+        },
+        "fg_name": "Ward"
+      },
+      "Stealth": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 20.0,
+          "avg_fg": 67.8,
+          "min_fg": 5.0,
+          "max_fg": 400.0,
+          "samples": 30
+        },
+        "fg_name": "Stealth RW"
+      },
+      "Moser's": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 40.0,
+          "avg_fg": 94.2,
+          "min_fg": 15.0,
+          "max_fg": 400.0,
+          "samples": 24
+        },
+        "fg_name": "Moser"
+      },
+      "Facet": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 45.0,
+          "avg_fg": 127.5,
+          "min_fg": 15.0,
+          "max_fg": 400.0,
+          "samples": 32
+        },
+        "fg_name": "5/5 Facet"
+      },
+      "Jah Rune": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 1100.0,
+          "avg_fg": 1266.2,
+          "min_fg": 50.0,
+          "max_fg": 2150.0,
+          "samples": 26
+        },
+        "fg_name": "Jah Rune"
+      },
+      "Sacred": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 50.0,
+          "avg_fg": 164.8,
+          "min_fg": 5.0,
+          "max_fg": 900.0,
+          "samples": 81
+        },
+        "fg_name": "Sacred"
+      },
+      "Guardian's Light": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 235.0,
+          "avg_fg": 451.0,
+          "min_fg": 10.0,
+          "max_fg": 2200.0,
+          "samples": 20
+        },
+        "fg_name": "Guardian's Light"
+      },
+      "War Traveler": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 50.0,
+          "avg_fg": 175.7,
+          "min_fg": 40.0,
+          "max_fg": 400.0,
+          "samples": 14
+        },
+        "fg_name": "War Traveler"
+      },
+      "Cold SK": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 75.0,
+          "avg_fg": 495.6,
+          "min_fg": 10.0,
+          "max_fg": 1800.0,
+          "samples": 16
+        },
+        "fg_name": "Cold SK"
+      },
+      "Sorc Torch": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 150.0,
+          "avg_fg": 199.8,
+          "min_fg": 10.0,
+          "max_fg": 900.0,
+          "samples": 46
+        },
+        "fg_name": "Sorc Torch"
+      },
+      "Unid Torch": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 275.0,
+          "avg_fg": 359.0,
+          "min_fg": 30.0,
+          "max_fg": 1980.0,
+          "samples": 37
+        },
+        "fg_name": "Unid Torch"
+      },
+      "The Oculus": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 40.0,
+          "avg_fg": 70.9,
+          "min_fg": 5.0,
+          "max_fg": 250.0,
+          "samples": 33
+        },
+        "fg_name": "Oculus"
+      },
+      "Troll": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 35.0,
+          "avg_fg": 28.3,
+          "min_fg": 15.0,
+          "max_fg": 35.0,
+          "samples": 6
+        },
+        "fg_name": "Troll"
+      },
+      "Crow": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 5.0,
+          "avg_fg": 5.0,
+          "min_fg": 5.0,
+          "max_fg": 5.0,
+          "samples": 9
+        },
+        "fg_name": "Crow"
+      },
+      "Fortitude": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 125.0,
+          "avg_fg": 138.8,
+          "min_fg": 30.0,
+          "max_fg": 275.0,
+          "samples": 16
+        },
+        "fg_name": "Fortitude"
+      },
+      "Skin of the Vip er": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 20.0,
+          "avg_fg": 84.4,
+          "min_fg": 5.0,
+          "max_fg": 410.0,
+          "samples": 24
+        },
+        "fg_name": "Skin"
+      },
+      "Light SK": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 410.0,
+          "avg_fg": 410.0,
+          "min_fg": 410.0,
+          "max_fg": 410.0,
+          "samples": 4
+        },
+        "fg_name": "Light SK"
+      },
+      "Treachery": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 500.0,
+          "avg_fg": 596.0,
+          "min_fg": 10.0,
+          "max_fg": 2200.0,
+          "samples": 15
+        },
+        "fg_name": "Treachery"
+      },
+      "Dual Leech Ring": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 90.0,
+          "avg_fg": 93.3,
+          "min_fg": 40.0,
+          "max_fg": 150.0,
+          "samples": 6
+        },
+        "fg_name": "Dual Leech Ring"
+      },
+      "Javelin SK": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 10.0,
+          "avg_fg": 73.8,
+          "min_fg": 5.0,
+          "max_fg": 250.0,
+          "samples": 17
+        },
+        "fg_name": "Java SK"
+      },
+      "Fury": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 10.0,
+          "avg_fg": 23.3,
+          "min_fg": 10.0,
+          "max_fg": 50.0,
+          "samples": 9
+        },
+        "fg_name": "Fury"
+      },
+      "Grief": {
+        "traderie": null,
+        "fg": {
+          "median_fg": 500.0,
+          "avg_fg": 500.0,
+          "min_fg": 500.0,
+          "max_fg": 500.0,
+          "samples": 2
+        },
+        "fg_name": "Grief"
+      }
+    }
+  }
+]

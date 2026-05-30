@@ -1,0 +1,9518 @@
+{
+  "scraped_at": "2026-05-30T17:47:18.312749+00:00",
+  "scrape_date": "2026-05-30",
+  "total_listings_scanned": 1500,
+  "items_found": 335,
+  "prices": {
+    "3x3 Key Set": {
+      "total_listings": 4,
+      "currencies": {
+        "Vex Rune": {
+          "count": 2,
+          "median": 22.0,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Call to Arms": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Ist Rune": {
+          "count": 2,
+          "median": 22.5,
+          "mean": 22.5,
+          "min": 15,
+          "max": 30
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 24,
+          "mean": 24,
+          "min": 24,
+          "max": 24
+        }
+      },
+      "overall": {
+        "median": 22.0,
+        "mean": 19,
+        "count": 6
+      }
+    },
+    "Aldur's Advance": {
+      "total_listings": 2,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 3,
+          "mean": 3,
+          "min": 3,
+          "max": 3
+        },
+        "Perfect Ruby": {
+          "count": 1,
+          "median": 3,
+          "mean": 3,
+          "min": 3,
+          "max": 3
+        }
+      },
+      "overall": {
+        "median": 3.0,
+        "mean": 3,
+        "count": 2
+      }
+    },
+    "Aldur's Rhythm": {
+      "total_listings": 1,
+      "currencies": {
+        "Tal Rune": {
+          "count": 1,
+          "median": 6,
+          "mean": 6,
+          "min": 6,
+          "max": 6
+        }
+      },
+      "overall": {
+        "median": 6,
+        "mean": 6,
+        "count": 1
+      }
+    },
+    "Alma Negra": {
+      "total_listings": 2,
+      "currencies": {
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 20.0,
+        "mean": 20,
+        "count": 2
+      }
+    },
+    "Amn Rune": {
+      "total_listings": 1,
+      "currencies": {
+        "Mal Rune": {
+          "count": 1,
+          "median": 24,
+          "mean": 24,
+          "min": 24,
+          "max": 24
+        }
+      },
+      "overall": {
+        "median": 24,
+        "mean": 24,
+        "count": 1
+      }
+    },
+    "Amulet": {
+      "total_listings": 9,
+      "currencies": {
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Jah Rune": {
+          "count": 3,
+          "median": 150,
+          "mean": 750,
+          "min": 100,
+          "max": 2000
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 150,
+          "mean": 150,
+          "min": 150,
+          "max": 150
+        },
+        "Perfect Amethyst": {
+          "count": 3,
+          "median": 2,
+          "mean": 2,
+          "min": 1,
+          "max": 3
+        },
+        "Lem Rune": {
+          "count": 2,
+          "median": 8.0,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        },
+        "Pul Rune": {
+          "count": 1,
+          "median": 9,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        },
+        "Small Charm": {
+          "count": 1,
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        }
+      },
+      "overall": {
+        "median": 8.5,
+        "mean": 203.6,
+        "count": 12
+      }
+    },
+    "Andariel's Visage": {
+      "total_listings": 5,
+      "currencies": {
+        "Ber Rune": {
+          "count": 3,
+          "median": 180,
+          "mean": 200,
+          "min": 60,
+          "max": 360
+        },
+        "Jah Rune": {
+          "count": 2,
+          "median": 200.0,
+          "mean": 200,
+          "min": 150,
+          "max": 250
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Lo Rune": {
+          "count": 2,
+          "median": 30.0,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        }
+      },
+      "overall": {
+        "median": 105.0,
+        "mean": 134.4,
+        "count": 8
+      }
+    },
+    "Annihilus": {
+      "total_listings": 5,
+      "currencies": {
+        "Vex Rune": {
+          "count": 2,
+          "median": 33.0,
+          "mean": 33,
+          "min": 22,
+          "max": 44
+        },
+        "Ber Rune": {
+          "count": 2,
+          "median": 60.0,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Sur Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Ohm Rune": {
+          "count": 2,
+          "median": 25.0,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        }
+      },
+      "overall": {
+        "median": 27.5,
+        "mean": 33.4,
+        "count": 8
+      }
+    },
+    "Arachnid Mesh": {
+      "total_listings": 2,
+      "currencies": {
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Lo Rune": {
+          "count": 2,
+          "median": 30.0,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        }
+      },
+      "overall": {
+        "median": 30,
+        "mean": 28.3,
+        "count": 3
+      }
+    },
+    "Archon Plate": {
+      "total_listings": 5,
+      "currencies": {
+        "Jah Rune": {
+          "count": 5,
+          "median": 300,
+          "mean": 260,
+          "min": 50,
+          "max": 350
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 155.0,
+        "mean": 172.8,
+        "count": 8
+      }
+    },
+    "Archon Staff": {
+      "total_listings": 7,
+      "currencies": {
+        "Jah Rune": {
+          "count": 7,
+          "median": 150,
+          "mean": 150,
+          "min": 100,
+          "max": 200
+        },
+        "Ber Rune": {
+          "count": 5,
+          "median": 240,
+          "mean": 252,
+          "min": 240,
+          "max": 300
+        }
+      },
+      "overall": {
+        "median": 175.0,
+        "mean": 192.5,
+        "count": 12
+      }
+    },
+    "Arioc's Needle": {
+      "total_listings": 12,
+      "currencies": {
+        "Um Rune": {
+          "count": 2,
+          "median": 10.0,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Pul Rune": {
+          "count": 1,
+          "median": 9,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        },
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 6,
+          "mean": 6,
+          "min": 6,
+          "max": 6
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Ber Rune": {
+          "count": 8,
+          "median": 180.0,
+          "mean": 232.5,
+          "min": 120,
+          "max": 480
+        },
+        "Jah Rune": {
+          "count": 8,
+          "median": 150.0,
+          "mean": 287.5,
+          "min": 100,
+          "max": 1000
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Small Charm": {
+          "count": 1,
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 150.0,
+        "mean": 177.0,
+        "count": 24
+      }
+    },
+    "Arkaine's Valor": {
+      "total_listings": 1,
+      "currencies": {
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        }
+      },
+      "overall": {
+        "median": 25,
+        "mean": 25,
+        "count": 1
+      }
+    },
+    "Arreat's Face": {
+      "total_listings": 1,
+      "currencies": {
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 12,
+        "mean": 12,
+        "count": 1
+      }
+    },
+    "Ars Dul'Mephistos": {
+      "total_listings": 7,
+      "currencies": {
+        "Jah Rune": {
+          "count": 9,
+          "median": 200,
+          "mean": 227.8,
+          "min": 100,
+          "max": 400
+        },
+        "Ber Rune": {
+          "count": 6,
+          "median": 240.0,
+          "mean": 250,
+          "min": 60,
+          "max": 480
+        }
+      },
+      "overall": {
+        "median": 200,
+        "mean": 236.7,
+        "count": 15
+      }
+    },
+    "Ars Tor'Baalos": {
+      "total_listings": 3,
+      "currencies": {
+        "Zod Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Ber Rune": {
+          "count": 2,
+          "median": 60.0,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Jah Rune": {
+          "count": 1,
+          "median": 100,
+          "mean": 100,
+          "min": 100,
+          "max": 100
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 120,
+          "mean": 120,
+          "min": 120,
+          "max": 120
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        }
+      },
+      "overall": {
+        "median": 60,
+        "mean": 56.6,
+        "count": 7
+      }
+    },
+    "Atma's Scarab": {
+      "total_listings": 1,
+      "currencies": {
+        "Random Minor Key": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Atma's Wail": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 2,
+          "median": 67.5,
+          "mean": 67.5,
+          "min": 45,
+          "max": 90
+        },
+        "Vex Rune": {
+          "count": 2,
+          "median": 33.0,
+          "mean": 33,
+          "min": 22,
+          "max": 44
+        }
+      },
+      "overall": {
+        "median": 44.5,
+        "mean": 50.2,
+        "count": 4
+      }
+    },
+    "Bane's Authority": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Bartuc's Cut-Throat": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 13.5,
+        "mean": 13.5,
+        "count": 2
+      }
+    },
+    "Bastard Sword": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 750,
+          "mean": 750,
+          "min": 750,
+          "max": 750
+        },
+        "Small Charm": {
+          "count": 1,
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        }
+      },
+      "overall": {
+        "median": 375.2,
+        "mean": 375.2,
+        "count": 2
+      }
+    },
+    "Battle Staff": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 100,
+          "mean": 100,
+          "min": 100,
+          "max": 100
+        }
+      },
+      "overall": {
+        "median": 100,
+        "mean": 100,
+        "count": 1
+      }
+    },
+    "Ber Rune": {
+      "total_listings": 10,
+      "currencies": {
+        "Lo Rune": {
+          "count": 6,
+          "median": 60.0,
+          "mean": 60,
+          "min": 30,
+          "max": 90
+        },
+        "Vex Rune": {
+          "count": 3,
+          "median": 44,
+          "mean": 66,
+          "min": 22,
+          "max": 132
+        },
+        "Ist Rune": {
+          "count": 2,
+          "median": 82.5,
+          "mean": 82.5,
+          "min": 15,
+          "max": 150
+        },
+        "Ohm Rune": {
+          "count": 4,
+          "median": 62.5,
+          "mean": 68.8,
+          "min": 25,
+          "max": 125
+        },
+        "Sur Rune": {
+          "count": 1,
+          "median": 2,
+          "mean": 2,
+          "min": 2,
+          "max": 2
+        },
+        "Jah Rune": {
+          "count": 5,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        }
+      },
+      "overall": {
+        "median": 50,
+        "mean": 59.5,
+        "count": 21
+      }
+    },
+    "Berserker Axe": {
+      "total_listings": 4,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 2,
+          "mean": 2,
+          "min": 2,
+          "max": 2
+        },
+        "Small Charm": {
+          "count": 2,
+          "median": 2.0,
+          "mean": 2.0,
+          "min": 2.0,
+          "max": 2.0
+        },
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        }
+      },
+      "overall": {
+        "median": 2.0,
+        "mean": 4.0,
+        "count": 4
+      }
+    },
+    "Blackoak Shield": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 15,
+        "count": 1
+      }
+    },
+    "Blade of Ali Baba": {
+      "total_listings": 2,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 2,
+          "mean": 2,
+          "min": 2,
+          "max": 2
+        },
+        "Pul Rune": {
+          "count": 1,
+          "median": 9,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        },
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        }
+      },
+      "overall": {
+        "median": 8,
+        "mean": 6.3,
+        "count": 3
+      }
+    },
+    "Bladebuckle": {
+      "total_listings": 1,
+      "currencies": {
+        "Random Gems": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Blood Gloves": {
+      "total_listings": 4,
+      "currencies": {
+        "Small Charm": {
+          "count": 3,
+          "median": 1.0,
+          "mean": 1.3,
+          "min": 0.5,
+          "max": 2.5
+        },
+        "Jah Rune": {
+          "count": 1,
+          "median": 2000,
+          "mean": 2000,
+          "min": 2000,
+          "max": 2000
+        }
+      },
+      "overall": {
+        "median": 1.8,
+        "mean": 501.0,
+        "count": 4
+      }
+    },
+    "Blood Ring": {
+      "total_listings": 9,
+      "currencies": {
+        "Jah Rune": {
+          "count": 9,
+          "median": 250,
+          "mean": 250,
+          "min": 100,
+          "max": 600
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 480,
+          "mean": 480,
+          "min": 480,
+          "max": 480
+        },
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        }
+      },
+      "overall": {
+        "median": 250,
+        "mean": 250.9,
+        "count": 11
+      }
+    },
+    "Bloodmoon": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 15,
+        "count": 1
+      }
+    },
+    "Bone": {
+      "total_listings": 6,
+      "currencies": {
+        "Jah Rune": {
+          "count": 5,
+          "median": 100,
+          "mean": 150,
+          "min": 50,
+          "max": 250
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Small Charm": {
+          "count": 1,
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        }
+      },
+      "overall": {
+        "median": 80.0,
+        "mean": 102.8,
+        "count": 8
+      }
+    },
+    "Boneflame": {
+      "total_listings": 1,
+      "currencies": {
+        "Mal Rune": {
+          "count": 2,
+          "median": 12.0,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Ist Rune": {
+          "count": 2,
+          "median": 15.0,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 13.5,
+        "mean": 13.5,
+        "count": 4
+      }
+    },
+    "Brainhew": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 15,
+        "count": 1
+      }
+    },
+    "Breast Plate": {
+      "total_listings": 1,
+      "currencies": {
+        "Ral Rune": {
+          "count": 1,
+          "median": 6,
+          "mean": 6,
+          "min": 6,
+          "max": 6
+        },
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Random Gems": {
+          "count": 1,
+          "median": 3,
+          "mean": 3,
+          "min": 3,
+          "max": 3
+        }
+      },
+      "overall": {
+        "median": 3,
+        "mean": 3.3,
+        "count": 3
+      }
+    },
+    "Breath of the Dying": {
+      "total_listings": 2,
+      "currencies": {
+        "Jah Rune": {
+          "count": 2,
+          "median": 1200.0,
+          "mean": 1200,
+          "min": 900,
+          "max": 1500
+        }
+      },
+      "overall": {
+        "median": 1200.0,
+        "mean": 1200,
+        "count": 2
+      }
+    },
+    "Bul-Kathos' Nightmare": {
+      "total_listings": 1,
+      "currencies": {
+        "Vex Rune": {
+          "count": 1,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        }
+      },
+      "overall": {
+        "median": 22,
+        "mean": 22,
+        "count": 1
+      }
+    },
+    "Bul-Kathos' Sacred Charge": {
+      "total_listings": 1,
+      "currencies": {
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        }
+      },
+      "overall": {
+        "median": 8,
+        "mean": 8,
+        "count": 1
+      }
+    },
+    "Call to Arms": {
+      "total_listings": 7,
+      "currencies": {
+        "Small Charm": {
+          "count": 1,
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        },
+        "Jah Rune": {
+          "count": 5,
+          "median": 150,
+          "mean": 130,
+          "min": 50,
+          "max": 250
+        },
+        "Ber Rune": {
+          "count": 3,
+          "median": 60,
+          "mean": 160,
+          "min": 60,
+          "max": 360
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Vex Rune": {
+          "count": 1,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Lo Rune": {
+          "count": 2,
+          "median": 30.0,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        }
+      },
+      "overall": {
+        "median": 50,
+        "mean": 95.2,
+        "count": 13
+      }
+    },
+    "Caster Amulet": {
+      "total_listings": 38,
+      "currencies": {
+        "Small Charm": {
+          "count": 11,
+          "median": 1.0,
+          "mean": 0.8,
+          "min": 0.5,
+          "max": 1.5
+        },
+        "Jah Rune": {
+          "count": 27,
+          "median": 250,
+          "mean": 468.5,
+          "min": 50,
+          "max": 2000
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 2,
+          "mean": 2,
+          "min": 2,
+          "max": 2
+        }
+      },
+      "overall": {
+        "median": 150.0,
+        "mean": 316.9,
+        "count": 40
+      }
+    },
+    "Caster Boots": {
+      "total_listings": 1,
+      "currencies": {
+        "Small Charm": {
+          "count": 1,
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        }
+      },
+      "overall": {
+        "median": 0.5,
+        "mean": 0.5,
+        "count": 1
+      }
+    },
+    "Caster Ring": {
+      "total_listings": 22,
+      "currencies": {
+        "Small Charm": {
+          "count": 4,
+          "median": 0.8,
+          "mean": 1.1,
+          "min": 0.5,
+          "max": 2.5
+        },
+        "Jah Rune": {
+          "count": 18,
+          "median": 175.0,
+          "mean": 211.1,
+          "min": 50,
+          "max": 700
+        },
+        "Ber Rune": {
+          "count": 7,
+          "median": 240,
+          "mean": 231.4,
+          "min": 60,
+          "max": 540
+        },
+        "Sur Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 150.0,
+        "mean": 180.8,
+        "count": 30
+      }
+    },
+    "Ceremonial Javelin": {
+      "total_listings": 2,
+      "currencies": {
+        "Jah Rune": {
+          "count": 3,
+          "median": 300,
+          "mean": 300,
+          "min": 300,
+          "max": 300
+        },
+        "Ber Rune": {
+          "count": 2,
+          "median": 480.0,
+          "mean": 480,
+          "min": 480,
+          "max": 480
+        }
+      },
+      "overall": {
+        "median": 300,
+        "mean": 372,
+        "count": 5
+      }
+    },
+    "Chain Boots": {
+      "total_listings": 3,
+      "currencies": {
+        "Jah Rune": {
+          "count": 3,
+          "median": 300,
+          "mean": 283.3,
+          "min": 150,
+          "max": 400
+        }
+      },
+      "overall": {
+        "median": 300,
+        "mean": 283.3,
+        "count": 3
+      }
+    },
+    "Chain Gloves": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 250,
+          "mean": 250,
+          "min": 250,
+          "max": 250
+        }
+      },
+      "overall": {
+        "median": 250,
+        "mean": 250,
+        "count": 1
+      }
+    },
+    "Cham Rune": {
+      "total_listings": 1,
+      "currencies": {
+        "Lo Rune": {
+          "count": 1,
+          "median": 90,
+          "mean": 90,
+          "min": 90,
+          "max": 90
+        },
+        "Sur Rune": {
+          "count": 1,
+          "median": 3,
+          "mean": 3,
+          "min": 3,
+          "max": 3
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 125,
+          "mean": 125,
+          "min": 125,
+          "max": 125
+        }
+      },
+      "overall": {
+        "median": 90,
+        "mean": 72.7,
+        "count": 3
+      }
+    },
+    "Chance Guards": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Charged Essence of Hatred": {
+      "total_listings": 5,
+      "currencies": {
+        "Festering Essence of Destruction": {
+          "count": 2,
+          "median": 3.0,
+          "mean": 3,
+          "min": 1,
+          "max": 5
+        },
+        "Burning Essence of Terror": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Pul Rune": {
+          "count": 1,
+          "median": 9,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        }
+      },
+      "overall": {
+        "median": 9,
+        "mean": 7,
+        "count": 5
+      }
+    },
+    "Chromatic Ire": {
+      "total_listings": 1,
+      "currencies": {
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        }
+      },
+      "overall": {
+        "median": 10,
+        "mean": 10,
+        "count": 1
+      }
+    },
+    "Circlet": {
+      "total_listings": 5,
+      "currencies": {
+        "Jah Rune": {
+          "count": 2,
+          "median": 825.0,
+          "mean": 825,
+          "min": 150,
+          "max": 1500
+        },
+        "Ber Rune": {
+          "count": 2,
+          "median": 180.0,
+          "mean": 180,
+          "min": 120,
+          "max": 240
+        },
+        "Zod Rune": {
+          "count": 1,
+          "median": 2,
+          "mean": 2,
+          "min": 2,
+          "max": 2
+        },
+        "Small Charm": {
+          "count": 1,
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        },
+        "Vex Rune": {
+          "count": 1,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Pul Rune": {
+          "count": 1,
+          "median": 18,
+          "mean": 18,
+          "min": 18,
+          "max": 18
+        },
+        "Lem Rune": {
+          "count": 1,
+          "median": 32,
+          "mean": 32,
+          "min": 32,
+          "max": 32
+        }
+      },
+      "overall": {
+        "median": 23.5,
+        "mean": 177.9,
+        "count": 12
+      }
+    },
+    "Clasped Orb": {
+      "total_listings": 1,
+      "currencies": {
+        "Ber Rune": {
+          "count": 1,
+          "median": 240,
+          "mean": 240,
+          "min": 240,
+          "max": 240
+        },
+        "Jah Rune": {
+          "count": 1,
+          "median": 150,
+          "mean": 150,
+          "min": 150,
+          "max": 150
+        }
+      },
+      "overall": {
+        "median": 195.0,
+        "mean": 195,
+        "count": 2
+      }
+    },
+    "Colossus Blade": {
+      "total_listings": 3,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 45,
+          "mean": 45,
+          "min": 45,
+          "max": 45
+        },
+        "Vex Rune": {
+          "count": 1,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Jah Rune": {
+          "count": 2,
+          "median": 225.0,
+          "mean": 225,
+          "min": 200,
+          "max": 250
+        },
+        "Ber Rune": {
+          "count": 2,
+          "median": 330.0,
+          "mean": 330,
+          "min": 300,
+          "max": 360
+        }
+      },
+      "overall": {
+        "median": 122.5,
+        "mean": 154,
+        "count": 8
+      }
+    },
+    "Colossus Sword": {
+      "total_listings": 3,
+      "currencies": {
+        "Pul Rune": {
+          "count": 1,
+          "median": 9,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        },
+        "Jah Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        },
+        "Ber Rune": {
+          "count": 2,
+          "median": 90.0,
+          "mean": 90,
+          "min": 60,
+          "max": 120
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 50,
+        "mean": 50.8,
+        "count": 5
+      }
+    },
+    "Colossus Voulge": {
+      "total_listings": 7,
+      "currencies": {
+        "Jah Rune": {
+          "count": 4,
+          "median": 250.0,
+          "mean": 225,
+          "min": 100,
+          "max": 300
+        },
+        "Ber Rune": {
+          "count": 3,
+          "median": 420,
+          "mean": 320,
+          "min": 120,
+          "max": 420
+        },
+        "Ist Rune": {
+          "count": 3,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Mal Rune": {
+          "count": 4,
+          "median": 12.0,
+          "mean": 15,
+          "min": 12,
+          "max": 24
+        },
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Pul Rune": {
+          "count": 1,
+          "median": 9,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        },
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 117.2,
+        "count": 17
+      }
+    },
+    "Corona": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        }
+      },
+      "overall": {
+        "median": 50,
+        "mean": 50,
+        "count": 1
+      }
+    },
+    "Coronet": {
+      "total_listings": 9,
+      "currencies": {
+        "Small Charm": {
+          "count": 5,
+          "median": 1.0,
+          "mean": 1.0,
+          "min": 0.5,
+          "max": 2.0
+        },
+        "Jah Rune": {
+          "count": 3,
+          "median": 100,
+          "mean": 716.7,
+          "min": 50,
+          "max": 2000
+        },
+        "Ber Rune": {
+          "count": 2,
+          "median": 60.0,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        }
+      },
+      "overall": {
+        "median": 50,
+        "mean": 211.4,
+        "count": 11
+      }
+    },
+    "Corpsemourn": {
+      "total_listings": 1,
+      "currencies": {
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        }
+      },
+      "overall": {
+        "median": 25,
+        "mean": 25,
+        "count": 1
+      }
+    },
+    "Crainte Vomir": {
+      "total_listings": 1,
+      "currencies": {
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 12,
+        "mean": 12,
+        "count": 1
+      }
+    },
+    "Crescent Moon": {
+      "total_listings": 1,
+      "currencies": {
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        }
+      },
+      "overall": {
+        "median": 8,
+        "mean": 8,
+        "count": 1
+      }
+    },
+    "Crow": {
+      "total_listings": 28,
+      "currencies": {
+        "Jah Rune": {
+          "count": 29,
+          "median": 250,
+          "mean": 429.3,
+          "min": 50,
+          "max": 2000
+        },
+        "Ber Rune": {
+          "count": 2,
+          "median": 120.0,
+          "mean": 120,
+          "min": 60,
+          "max": 180
+        },
+        "Small Charm": {
+          "count": 2,
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        }
+      },
+      "overall": {
+        "median": 250,
+        "mean": 384.6,
+        "count": 33
+      }
+    },
+    "Crow Caw": {
+      "total_listings": 1,
+      "currencies": {
+        "Sur Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        }
+      },
+      "overall": {
+        "median": 30,
+        "mean": 27,
+        "count": 3
+      }
+    },
+    "Crown of Ages": {
+      "total_listings": 3,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 150,
+          "mean": 150,
+          "min": 150,
+          "max": 150
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 240,
+          "mean": 240,
+          "min": 240,
+          "max": 240
+        },
+        "Small Charm": {
+          "count": 1,
+          "median": 2.0,
+          "mean": 2.0,
+          "min": 2.0,
+          "max": 2.0
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Um Rune": {
+          "count": 1,
+          "median": 20,
+          "mean": 20,
+          "min": 20,
+          "max": 20
+        },
+        "Pul Rune": {
+          "count": 1,
+          "median": 36,
+          "mean": 36,
+          "min": 36,
+          "max": 36
+        },
+        "Lem Rune": {
+          "count": 1,
+          "median": 64,
+          "mean": 64,
+          "min": 64,
+          "max": 64
+        }
+      },
+      "overall": {
+        "median": 36,
+        "mean": 75.3,
+        "count": 7
+      }
+    },
+    "Crown of Thieves": {
+      "total_listings": 1,
+      "currencies": {
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 12,
+        "mean": 12,
+        "count": 1
+      }
+    },
+    "Crushflange": {
+      "total_listings": 1,
+      "currencies": {
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 4,
+          "mean": 4,
+          "min": 4,
+          "max": 4
+        },
+        "Random Minor Key": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 4,
+        "mean": 5.7,
+        "count": 3
+      }
+    },
+    "Cryptic Axe": {
+      "total_listings": 2,
+      "currencies": {
+        "Ist Rune": {
+          "count": 2,
+          "median": 15.0,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Mal Rune": {
+          "count": 2,
+          "median": 12.0,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 6,
+          "mean": 6,
+          "min": 6,
+          "max": 6
+        }
+      },
+      "overall": {
+        "median": 12,
+        "mean": 12,
+        "count": 5
+      }
+    },
+    "Crystal Sword": {
+      "total_listings": 9,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 2,
+          "median": 1.0,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Pul Rune": {
+          "count": 2,
+          "median": 9.0,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        },
+        "Ko Rune": {
+          "count": 1,
+          "median": 4,
+          "mean": 4,
+          "min": 4,
+          "max": 4
+        },
+        "Ist Rune": {
+          "count": 4,
+          "median": 15.0,
+          "mean": 18.8,
+          "min": 15,
+          "max": 30
+        },
+        "Mal Rune": {
+          "count": 2,
+          "median": 12.0,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        },
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Gul Rune": {
+          "count": 1,
+          "median": 18,
+          "mean": 18,
+          "min": 18,
+          "max": 18
+        }
+      },
+      "overall": {
+        "median": 11.0,
+        "mean": 11.4,
+        "count": 14
+      }
+    },
+    "Cure": {
+      "total_listings": 47,
+      "currencies": {
+        "Jah Rune": {
+          "count": 50,
+          "median": 200.0,
+          "mean": 218,
+          "min": 100,
+          "max": 400
+        },
+        "Ber Rune": {
+          "count": 12,
+          "median": 60.0,
+          "mean": 135,
+          "min": 60,
+          "max": 540
+        }
+      },
+      "overall": {
+        "median": 200.0,
+        "mean": 201.9,
+        "count": 62
+      }
+    },
+    "Dark Adherent": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Death": {
+      "total_listings": 2,
+      "currencies": {
+        "Small Charm": {
+          "count": 2,
+          "median": 2.0,
+          "mean": 2.0,
+          "min": 1.5,
+          "max": 2.5
+        }
+      },
+      "overall": {
+        "median": 2.0,
+        "mean": 2.0,
+        "count": 2
+      }
+    },
+    "Death's Disguise": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        }
+      },
+      "overall": {
+        "median": 30,
+        "mean": 30,
+        "count": 1
+      }
+    },
+    "Death's Fathom": {
+      "total_listings": 3,
+      "currencies": {
+        "Jah Rune": {
+          "count": 3,
+          "median": 200,
+          "mean": 216.7,
+          "min": 150,
+          "max": 300
+        },
+        "Ber Rune": {
+          "count": 3,
+          "median": 300,
+          "mean": 340,
+          "min": 240,
+          "max": 480
+        }
+      },
+      "overall": {
+        "median": 270.0,
+        "mean": 278.3,
+        "count": 6
+      }
+    },
+    "Decapitator": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 300,
+          "mean": 300,
+          "min": 300,
+          "max": 300
+        }
+      },
+      "overall": {
+        "median": 300,
+        "mean": 300,
+        "count": 1
+      }
+    },
+    "Deep Worldstone Shard": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 2,
+          "median": 16.0,
+          "mean": 16,
+          "min": 16,
+          "max": 16
+        }
+      },
+      "overall": {
+        "median": 16.0,
+        "mean": 16,
+        "count": 2
+      }
+    },
+    "Defender's Bile": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 750,
+          "mean": 750,
+          "min": 750,
+          "max": 750
+        }
+      },
+      "overall": {
+        "median": 750,
+        "mean": 750,
+        "count": 1
+      }
+    },
+    "Demon Limb": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 13.5,
+        "mean": 13.5,
+        "count": 2
+      }
+    },
+    "Demonhide Gloves": {
+      "total_listings": 1,
+      "currencies": {
+        "Ber Rune": {
+          "count": 1,
+          "median": 180,
+          "mean": 180,
+          "min": 180,
+          "max": 180
+        }
+      },
+      "overall": {
+        "median": 180,
+        "mean": 180,
+        "count": 1
+      }
+    },
+    "Diadem": {
+      "total_listings": 4,
+      "currencies": {
+        "Jah Rune": {
+          "count": 4,
+          "median": 200.0,
+          "mean": 612.5,
+          "min": 50,
+          "max": 2000
+        },
+        "Ber Rune": {
+          "count": 2,
+          "median": 240.0,
+          "mean": 240,
+          "min": 180,
+          "max": 300
+        }
+      },
+      "overall": {
+        "median": 215.0,
+        "mean": 488.3,
+        "count": 6
+      }
+    },
+    "Dol Rune": {
+      "total_listings": 1,
+      "currencies": {
+        "Sol Rune": {
+          "count": 1,
+          "median": 6,
+          "mean": 6,
+          "min": 6,
+          "max": 6
+        },
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 3.5,
+        "mean": 3.5,
+        "count": 2
+      }
+    },
+    "Doombringer": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 15,
+        "count": 1
+      }
+    },
+    "Dracul's Grasp": {
+      "total_listings": 2,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Vex Rune": {
+          "count": 1,
+          "median": 66,
+          "mean": 66,
+          "min": 66,
+          "max": 66
+        },
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        }
+      },
+      "overall": {
+        "median": 22.5,
+        "mean": 30.8,
+        "count": 4
+      }
+    },
+    "Duriel's Shell": {
+      "total_listings": 3,
+      "currencies": {
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Ist Rune": {
+          "count": 2,
+          "median": 15.0,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        }
+      },
+      "overall": {
+        "median": 13.5,
+        "mean": 12.5,
+        "count": 4
+      }
+    },
+    "Dusk Shroud": {
+      "total_listings": 1,
+      "currencies": {
+        "Arachnid Mesh": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Griffon's Eye": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Latent Crack of the Heavens": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1.0,
+        "mean": 3.8,
+        "count": 4
+      }
+    },
+    "Dwarf Star": {
+      "total_listings": 2,
+      "currencies": {
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 13.5,
+        "mean": 13.5,
+        "count": 2
+      }
+    },
+    "Elder Staff": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 15,
+        "count": 1
+      }
+    },
+    "Enigma": {
+      "total_listings": 2,
+      "currencies": {
+        "Jah Rune": {
+          "count": 2,
+          "median": 200.0,
+          "mean": 200,
+          "min": 100,
+          "max": 300
+        },
+        "Ber Rune": {
+          "count": 2,
+          "median": 330.0,
+          "mean": 330,
+          "min": 180,
+          "max": 480
+        }
+      },
+      "overall": {
+        "median": 240.0,
+        "mean": 265,
+        "count": 4
+      }
+    },
+    "Eschuta's Temper": {
+      "total_listings": 4,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Jah Rune": {
+          "count": 3,
+          "median": 100,
+          "mean": 83.3,
+          "min": 50,
+          "max": 100
+        },
+        "Ber Rune": {
+          "count": 2,
+          "median": 120.0,
+          "mean": 120,
+          "min": 120,
+          "max": 120
+        }
+      },
+      "overall": {
+        "median": 100.0,
+        "mean": 84.2,
+        "count": 6
+      }
+    },
+    "Ethereal Edge": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 15,
+        "count": 1
+      }
+    },
+    "Fal Rune": {
+      "total_listings": 3,
+      "currencies": {
+        "Pul Rune": {
+          "count": 3,
+          "median": 9,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        },
+        "Lem Rune": {
+          "count": 3,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        },
+        "Ral Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Sol Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        }
+      },
+      "overall": {
+        "median": 9.0,
+        "mean": 17.6,
+        "count": 8
+      }
+    },
+    "Feral Claws": {
+      "total_listings": 1,
+      "currencies": {
+        "Small Charm": {
+          "count": 1,
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        },
+        "Jah Rune": {
+          "count": 1,
+          "median": 500,
+          "mean": 500,
+          "min": 500,
+          "max": 500
+        }
+      },
+      "overall": {
+        "median": 250.2,
+        "mean": 250.2,
+        "count": 2
+      }
+    },
+    "Festering Essence of Destruction": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 15,
+        "count": 1
+      }
+    },
+    "Fist": {
+      "total_listings": 4,
+      "currencies": {
+        "Jah Rune": {
+          "count": 4,
+          "median": 275.0,
+          "mean": 275,
+          "min": 150,
+          "max": 400
+        },
+        "Ber Rune": {
+          "count": 4,
+          "median": 360.0,
+          "mean": 375,
+          "min": 240,
+          "max": 540
+        }
+      },
+      "overall": {
+        "median": 330.0,
+        "mean": 325,
+        "count": 8
+      }
+    },
+    "Flail": {
+      "total_listings": 4,
+      "currencies": {
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        },
+        "Sol Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Gul Rune": {
+          "count": 1,
+          "median": 18,
+          "mean": 18,
+          "min": 18,
+          "max": 18
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Hel Rune": {
+          "count": 2,
+          "median": 1.0,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Perfect Amethyst": {
+          "count": 2,
+          "median": 1.0,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Ral Rune": {
+          "count": 2,
+          "median": 9.0,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        },
+        "Random Gems": {
+          "count": 2,
+          "median": 4.0,
+          "mean": 4,
+          "min": 4,
+          "max": 4
+        }
+      },
+      "overall": {
+        "median": 8,
+        "mean": 7.3,
+        "count": 13
+      }
+    },
+    "Flying Knife": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 2000,
+          "mean": 2000,
+          "min": 2000,
+          "max": 2000
+        }
+      },
+      "overall": {
+        "median": 2000,
+        "mean": 2000,
+        "count": 1
+      }
+    },
+    "Full Rejuvenation Potion": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Random Gems": {
+          "count": 1,
+          "median": 2,
+          "mean": 2,
+          "min": 2,
+          "max": 2
+        }
+      },
+      "overall": {
+        "median": 1.5,
+        "mean": 1.5,
+        "count": 2
+      }
+    },
+    "Fury": {
+      "total_listings": 2,
+      "currencies": {
+        "Jah Rune": {
+          "count": 2,
+          "median": 175.0,
+          "mean": 175,
+          "min": 150,
+          "max": 200
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        }
+      },
+      "overall": {
+        "median": 150,
+        "mean": 136.7,
+        "count": 3
+      }
+    },
+    "Gauntlets": {
+      "total_listings": 4,
+      "currencies": {
+        "Vex Rune": {
+          "count": 1,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Jah Rune": {
+          "count": 2,
+          "median": 475.0,
+          "mean": 475,
+          "min": 300,
+          "max": 650
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 420,
+          "mean": 420,
+          "min": 420,
+          "max": 420
+        },
+        "Small Charm": {
+          "count": 2,
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        }
+      },
+      "overall": {
+        "median": 30,
+        "mean": 203.3,
+        "count": 7
+      }
+    },
+    "Ghost Glaive": {
+      "total_listings": 2,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 500,
+          "mean": 500,
+          "min": 500,
+          "max": 500
+        },
+        "Small Charm": {
+          "count": 1,
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        }
+      },
+      "overall": {
+        "median": 250.2,
+        "mean": 250.2,
+        "count": 2
+      }
+    },
+    "Gloom's Trap": {
+      "total_listings": 1,
+      "currencies": {
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        }
+      },
+      "overall": {
+        "median": 8,
+        "mean": 8,
+        "count": 1
+      }
+    },
+    "Glowing Orb": {
+      "total_listings": 1,
+      "currencies": {
+        "Ber Rune": {
+          "count": 1,
+          "median": 240,
+          "mean": 240,
+          "min": 240,
+          "max": 240
+        },
+        "Jah Rune": {
+          "count": 1,
+          "median": 150,
+          "mean": 150,
+          "min": 150,
+          "max": 150
+        }
+      },
+      "overall": {
+        "median": 195.0,
+        "mean": 195,
+        "count": 2
+      }
+    },
+    "Gnarled Staff": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 100,
+          "mean": 100,
+          "min": 100,
+          "max": 100
+        }
+      },
+      "overall": {
+        "median": 100,
+        "mean": 100,
+        "count": 1
+      }
+    },
+    "Gold": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 15,
+        "count": 1
+      }
+    },
+    "Goldskin": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 5,
+          "mean": 5,
+          "min": 5,
+          "max": 5
+        }
+      },
+      "overall": {
+        "median": 10.0,
+        "mean": 10,
+        "count": 2
+      }
+    },
+    "Goldwrap": {
+      "total_listings": 2,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 2,
+          "mean": 2,
+          "min": 2,
+          "max": 2
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 12,
+        "mean": 9.7,
+        "count": 3
+      }
+    },
+    "Gore Rider": {
+      "total_listings": 3,
+      "currencies": {
+        "Vex Rune": {
+          "count": 1,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Harlequin Crest": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Tal Rasha's Guardianship": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Ist Rune": {
+          "count": 2,
+          "median": 15.0,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 13.5,
+        "mean": 11,
+        "count": 6
+      }
+    },
+    "Grand Charm": {
+      "total_listings": 44,
+      "currencies": {
+        "Mal Rune": {
+          "count": 10,
+          "median": 12.0,
+          "mean": 13.2,
+          "min": 12,
+          "max": 24
+        },
+        "Ist Rune": {
+          "count": 10,
+          "median": 15.0,
+          "mean": 18,
+          "min": 15,
+          "max": 45
+        },
+        "Lo Rune": {
+          "count": 4,
+          "median": 30.0,
+          "mean": 37.5,
+          "min": 30,
+          "max": 60
+        },
+        "Lem Rune": {
+          "count": 3,
+          "median": 8,
+          "mean": 10.7,
+          "min": 8,
+          "max": 16
+        },
+        "Ohm Rune": {
+          "count": 9,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Jah Rune": {
+          "count": 14,
+          "median": 100.0,
+          "mean": 389.3,
+          "min": 50,
+          "max": 2000
+        },
+        "Ber Rune": {
+          "count": 6,
+          "median": 60.0,
+          "mean": 80,
+          "min": 60,
+          "max": 180
+        },
+        "Sur Rune": {
+          "count": 2,
+          "median": 1.0,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Um Rune": {
+          "count": 2,
+          "median": 10.0,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Vex Rune": {
+          "count": 2,
+          "median": 22.0,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Pul Rune": {
+          "count": 3,
+          "median": 9,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        },
+        "Perfect Amethyst": {
+          "count": 2,
+          "median": 1.0,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 25,
+        "mean": 100.7,
+        "count": 67
+      }
+    },
+    "Grand Matron Bow": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 13.5,
+        "mean": 13.5,
+        "count": 2
+      }
+    },
+    "Great Poleaxe": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Greater Claws": {
+      "total_listings": 2,
+      "currencies": {
+        "Small Charm": {
+          "count": 2,
+          "median": 1.0,
+          "mean": 1.0,
+          "min": 0.5,
+          "max": 1.5
+        },
+        "Jah Rune": {
+          "count": 1,
+          "median": 750,
+          "mean": 750,
+          "min": 750,
+          "max": 750
+        }
+      },
+      "overall": {
+        "median": 1.5,
+        "mean": 250.7,
+        "count": 3
+      }
+    },
+    "Greater Talons": {
+      "total_listings": 4,
+      "currencies": {
+        "Jah Rune": {
+          "count": 5,
+          "median": 400,
+          "mean": 610,
+          "min": 200,
+          "max": 1500
+        },
+        "Small Charm": {
+          "count": 1,
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        }
+      },
+      "overall": {
+        "median": 300.0,
+        "mean": 508.4,
+        "count": 6
+      }
+    },
+    "Greaves": {
+      "total_listings": 4,
+      "currencies": {
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Ral Rune": {
+          "count": 1,
+          "median": 24,
+          "mean": 24,
+          "min": 24,
+          "max": 24
+        },
+        "Jah Rune": {
+          "count": 3,
+          "median": 500,
+          "mean": 683.3,
+          "min": 300,
+          "max": 1250
+        },
+        "Small Charm": {
+          "count": 1,
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        }
+      },
+      "overall": {
+        "median": 24,
+        "mean": 300.2,
+        "count": 7
+      }
+    },
+    "Grief": {
+      "total_listings": 3,
+      "currencies": {
+        "Small Charm": {
+          "count": 2,
+          "median": 2.0,
+          "mean": 2.0,
+          "min": 1.0,
+          "max": 3.0
+        },
+        "Jah Rune": {
+          "count": 1,
+          "median": 900,
+          "mean": 900,
+          "min": 900,
+          "max": 900
+        }
+      },
+      "overall": {
+        "median": 3.0,
+        "mean": 301.3,
+        "count": 3
+      }
+    },
+    "Griffon's Eye": {
+      "total_listings": 7,
+      "currencies": {
+        "Jah Rune": {
+          "count": 6,
+          "median": 200.0,
+          "mean": 266.7,
+          "min": 100,
+          "max": 450
+        },
+        "Ber Rune": {
+          "count": 4,
+          "median": 240.0,
+          "mean": 195,
+          "min": 60,
+          "max": 240
+        },
+        "Sur Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 200,
+        "mean": 216.5,
+        "count": 11
+      }
+    },
+    "Griswold's Heart": {
+      "total_listings": 1,
+      "currencies": {
+        "Random Minor Key": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Guardian Angel": {
+      "total_listings": 2,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Mal Rune": {
+          "count": 2,
+          "median": 12.0,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 12,
+        "mean": 13,
+        "count": 3
+      }
+    },
+    "Guardian's Light": {
+      "total_listings": 3,
+      "currencies": {
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Vex Rune": {
+          "count": 1,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Ist Rune": {
+          "count": 2,
+          "median": 52.5,
+          "mean": 52.5,
+          "min": 15,
+          "max": 90
+        },
+        "Worusk's End": {
+          "count": 1,
+          "median": 2,
+          "mean": 2,
+          "min": 2,
+          "max": 2
+        },
+        "Jah Rune": {
+          "count": 1,
+          "median": 2000,
+          "mean": 2000,
+          "min": 2000,
+          "max": 2000
+        }
+      },
+      "overall": {
+        "median": 25,
+        "mean": 312,
+        "count": 7
+      }
+    },
+    "Guardian's Thunder": {
+      "total_listings": 2,
+      "currencies": {
+        "Jah Rune": {
+          "count": 4,
+          "median": 75.0,
+          "mean": 75,
+          "min": 50,
+          "max": 100
+        },
+        "Ber Rune": {
+          "count": 2,
+          "median": 60.0,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        }
+      },
+      "overall": {
+        "median": 60.0,
+        "mean": 70,
+        "count": 6
+      }
+    },
+    "Guillaume's Face": {
+      "total_listings": 2,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Pul Rune": {
+          "count": 1,
+          "median": 9,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        }
+      },
+      "overall": {
+        "median": 12.0,
+        "mean": 12,
+        "count": 2
+      }
+    },
+    "Gul Rune": {
+      "total_listings": 2,
+      "currencies": {
+        "Ist Rune": {
+          "count": 3,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Mal Rune": {
+          "count": 2,
+          "median": 12.0,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        }
+      },
+      "overall": {
+        "median": 13.5,
+        "mean": 13.2,
+        "count": 6
+      }
+    },
+    "Halaberd's Reign": {
+      "total_listings": 1,
+      "currencies": {
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 75,
+          "mean": 75,
+          "min": 75,
+          "max": 75
+        },
+        "Cham Rune": {
+          "count": 1,
+          "median": 35,
+          "mean": 35,
+          "min": 35,
+          "max": 35
+        }
+      },
+      "overall": {
+        "median": 35,
+        "mean": 46.7,
+        "count": 3
+      }
+    },
+    "Harlequin Crest": {
+      "total_listings": 4,
+      "currencies": {
+        "Um Rune": {
+          "count": 2,
+          "median": 10.0,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Mal Rune": {
+          "count": 2,
+          "median": 12.0,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Pul Rune": {
+          "count": 1,
+          "median": 9,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        }
+      },
+      "overall": {
+        "median": 12.0,
+        "mean": 15.4,
+        "count": 8
+      }
+    },
+    "Hatchet": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 1200,
+          "mean": 1200,
+          "min": 1200,
+          "max": 1200
+        },
+        "Small Charm": {
+          "count": 1,
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        }
+      },
+      "overall": {
+        "median": 600.2,
+        "mean": 600.2,
+        "count": 2
+      }
+    },
+    "Heart Carver": {
+      "total_listings": 1,
+      "currencies": {
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 13.5,
+        "mean": 13.5,
+        "count": 2
+      }
+    },
+    "Heaven's Light": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        }
+      },
+      "overall": {
+        "median": 50,
+        "mean": 50,
+        "count": 1
+      }
+    },
+    "Heavenly Stone": {
+      "total_listings": 2,
+      "currencies": {
+        "Jah Rune": {
+          "count": 2,
+          "median": 150.0,
+          "mean": 150,
+          "min": 150,
+          "max": 150
+        },
+        "Ber Rune": {
+          "count": 2,
+          "median": 240.0,
+          "mean": 240,
+          "min": 240,
+          "max": 240
+        }
+      },
+      "overall": {
+        "median": 195.0,
+        "mean": 195,
+        "count": 4
+      }
+    },
+    "Heavy Gloves": {
+      "total_listings": 3,
+      "currencies": {
+        "Small Charm": {
+          "count": 1,
+          "median": 1.0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "Jah Rune": {
+          "count": 2,
+          "median": 175.0,
+          "mean": 175,
+          "min": 150,
+          "max": 200
+        }
+      },
+      "overall": {
+        "median": 150,
+        "mean": 117.0,
+        "count": 3
+      }
+    },
+    "Hel Rune": {
+      "total_listings": 1,
+      "currencies": {
+        "Festering Essence of Destruction": {
+          "count": 1,
+          "median": 5,
+          "mean": 5,
+          "min": 5,
+          "max": 5
+        }
+      },
+      "overall": {
+        "median": 5,
+        "mean": 5,
+        "count": 1
+      }
+    },
+    "Hellfire Torch": {
+      "total_listings": 31,
+      "currencies": {
+        "Jah Rune": {
+          "count": 9,
+          "median": 150,
+          "mean": 138.9,
+          "min": 50,
+          "max": 350
+        },
+        "Ist Rune": {
+          "count": 10,
+          "median": 15.0,
+          "mean": 21,
+          "min": 15,
+          "max": 45
+        },
+        "Vex Rune": {
+          "count": 8,
+          "median": 22.0,
+          "mean": 24.8,
+          "min": 22,
+          "max": 44
+        },
+        "Ohm Rune": {
+          "count": 3,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Gul Rune": {
+          "count": 1,
+          "median": 18,
+          "mean": 18,
+          "min": 18,
+          "max": 18
+        },
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Ber Rune": {
+          "count": 3,
+          "median": 60,
+          "mean": 100,
+          "min": 60,
+          "max": 180
+        },
+        "Sur Rune": {
+          "count": 2,
+          "median": 1.5,
+          "mean": 1.5,
+          "min": 1,
+          "max": 2
+        },
+        "Um Rune": {
+          "count": 3,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Pul Rune": {
+          "count": 2,
+          "median": 9.0,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        },
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 6,
+          "mean": 6,
+          "min": 6,
+          "max": 6
+        },
+        "Key of Hate": {
+          "count": 2,
+          "median": 4.0,
+          "mean": 4,
+          "min": 4,
+          "max": 4
+        },
+        "Key of Terror": {
+          "count": 2,
+          "median": 4.0,
+          "mean": 4,
+          "min": 4,
+          "max": 4
+        },
+        "Key of Destruction": {
+          "count": 2,
+          "median": 4.0,
+          "mean": 4,
+          "min": 4,
+          "max": 4
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        }
+      },
+      "overall": {
+        "median": 22,
+        "mean": 42.8,
+        "count": 51
+      }
+    },
+    "Hellwarden's Will": {
+      "total_listings": 2,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        },
+        "Ist Rune": {
+          "count": 2,
+          "median": 75.0,
+          "mean": 75,
+          "min": 15,
+          "max": 135
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 32.5,
+        "mean": 53,
+        "count": 4
+      }
+    },
+    "Herald of Zakarum": {
+      "total_listings": 2,
+      "currencies": {
+        "Mal Rune": {
+          "count": 2,
+          "median": 36.0,
+          "mean": 36,
+          "min": 12,
+          "max": 60
+        },
+        "Um Rune": {
+          "count": 1,
+          "median": 20,
+          "mean": 20,
+          "min": 20,
+          "max": 20
+        },
+        "Colossus Voulge": {
+          "count": 1,
+          "median": 4,
+          "mean": 4,
+          "min": 4,
+          "max": 4
+        },
+        "Vex Rune": {
+          "count": 1,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 45,
+          "mean": 45,
+          "min": 45,
+          "max": 45
+        }
+      },
+      "overall": {
+        "median": 21.0,
+        "mean": 27.2,
+        "count": 6
+      }
+    },
+    "Heraldic Shield": {
+      "total_listings": 2,
+      "currencies": {
+        "Vex Rune": {
+          "count": 1,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Gul Rune": {
+          "count": 1,
+          "median": 18,
+          "mean": 18,
+          "min": 18,
+          "max": 18
+        },
+        "Ist Rune": {
+          "count": 2,
+          "median": 22.5,
+          "mean": 22.5,
+          "min": 15,
+          "max": 30
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 18,
+        "mean": 19.4,
+        "count": 5
+      }
+    },
+    "Highlord's Wrath": {
+      "total_listings": 3,
+      "currencies": {
+        "Ist Rune": {
+          "count": 3,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 15,
+        "count": 3
+      }
+    },
+    "Hit Power Gloves": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 150,
+          "mean": 150,
+          "min": 150,
+          "max": 150
+        }
+      },
+      "overall": {
+        "median": 150,
+        "mean": 150,
+        "count": 1
+      }
+    },
+    "Homunculus": {
+      "total_listings": 1,
+      "currencies": {
+        "Pul Rune": {
+          "count": 1,
+          "median": 9,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        },
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        }
+      },
+      "overall": {
+        "median": 8.5,
+        "mean": 8.5,
+        "count": 2
+      }
+    },
+    "Horazon's Countenance": {
+      "total_listings": 2,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 3,
+          "mean": 3,
+          "min": 3,
+          "max": 3
+        },
+        "Pul Rune": {
+          "count": 1,
+          "median": 9,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        }
+      },
+      "overall": {
+        "median": 6.0,
+        "mean": 6,
+        "count": 2
+      }
+    },
+    "Horazon's Dominion": {
+      "total_listings": 2,
+      "currencies": {
+        "Ko Rune": {
+          "count": 1,
+          "median": 4,
+          "mean": 4,
+          "min": 4,
+          "max": 4
+        },
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        }
+      },
+      "overall": {
+        "median": 6.0,
+        "mean": 6,
+        "count": 2
+      }
+    },
+    "Horazon's Hold": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Horazon's Legacy": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        }
+      },
+      "overall": {
+        "median": 50,
+        "mean": 50,
+        "count": 1
+      }
+    },
+    "Hunter's Guise": {
+      "total_listings": 1,
+      "currencies": {
+        "Small Charm": {
+          "count": 1,
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        }
+      },
+      "overall": {
+        "median": 0.5,
+        "mean": 0.5,
+        "count": 1
+      }
+    },
+    "Ice": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 200,
+          "mean": 200,
+          "min": 200,
+          "max": 200
+        }
+      },
+      "overall": {
+        "median": 200,
+        "mean": 200,
+        "count": 1
+      }
+    },
+    "Immortal King's Pillar": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Immortal King's Stone Crusher": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Immortal King's Will": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Infinity": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 200,
+          "mean": 200,
+          "min": 200,
+          "max": 200
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 300,
+          "mean": 300,
+          "min": 300,
+          "max": 300
+        }
+      },
+      "overall": {
+        "median": 250.0,
+        "mean": 250,
+        "count": 2
+      }
+    },
+    "Insight": {
+      "total_listings": 2,
+      "currencies": {
+        "Jah Rune": {
+          "count": 2,
+          "median": 575.0,
+          "mean": 575,
+          "min": 400,
+          "max": 750
+        }
+      },
+      "overall": {
+        "median": 575.0,
+        "mean": 575,
+        "count": 2
+      }
+    },
+    "Io Rune": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 3,
+          "mean": 3,
+          "min": 3,
+          "max": 3
+        }
+      },
+      "overall": {
+        "median": 3,
+        "mean": 3,
+        "count": 1
+      }
+    },
+    "Ist Rune": {
+      "total_listings": 3,
+      "currencies": {
+        "Grand Charm": {
+          "count": 1,
+          "median": 5,
+          "mean": 5,
+          "min": 5,
+          "max": 5
+        },
+        "Vex Rune": {
+          "count": 2,
+          "median": 22.0,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Latent Flame Rift": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 13.5,
+        "mean": 12.5,
+        "count": 4
+      }
+    },
+    "Jah Rune": {
+      "total_listings": 8,
+      "currencies": {
+        "Zod Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Renewed Flame Rift": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 180,
+          "mean": 180,
+          "min": 180,
+          "max": 180
+        },
+        "Ber Rune": {
+          "count": 2,
+          "median": 150.0,
+          "mean": 150,
+          "min": 120,
+          "max": 180
+        },
+        "Lo Rune": {
+          "count": 2,
+          "median": 90.0,
+          "mean": 90,
+          "min": 90,
+          "max": 90
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 165,
+          "mean": 165,
+          "min": 165,
+          "max": 165
+        }
+      },
+      "overall": {
+        "median": 105.0,
+        "mean": 103.4,
+        "count": 8
+      }
+    },
+    "Jalal's Mane": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Jawbone Cap": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 150,
+          "mean": 150,
+          "min": 150,
+          "max": 150
+        }
+      },
+      "overall": {
+        "median": 150,
+        "mean": 150,
+        "count": 1
+      }
+    },
+    "Jewel": {
+      "total_listings": 9,
+      "currencies": {
+        "Ist Rune": {
+          "count": 3,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Jah Rune": {
+          "count": 4,
+          "median": 450.0,
+          "mean": 362.5,
+          "min": 50,
+          "max": 500
+        },
+        "Ber Rune": {
+          "count": 5,
+          "median": 480,
+          "mean": 360,
+          "min": 60,
+          "max": 600
+        },
+        "Sur Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 60.0,
+        "mean": 236.3,
+        "count": 14
+      }
+    },
+    "Key of Destruction": {
+      "total_listings": 1,
+      "currencies": {
+        "Key of Terror": {
+          "count": 1,
+          "median": 5,
+          "mean": 5,
+          "min": 5,
+          "max": 5
+        }
+      },
+      "overall": {
+        "median": 5,
+        "mean": 5,
+        "count": 1
+      }
+    },
+    "Key of Hate": {
+      "total_listings": 3,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 3,
+          "median": 5,
+          "mean": 5,
+          "min": 5,
+          "max": 5
+        }
+      },
+      "overall": {
+        "median": 5,
+        "mean": 5,
+        "count": 3
+      }
+    },
+    "Key of Terror": {
+      "total_listings": 5,
+      "currencies": {
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        },
+        "Perfect Amethyst": {
+          "count": 4,
+          "median": 5.0,
+          "mean": 5,
+          "min": 5,
+          "max": 5
+        }
+      },
+      "overall": {
+        "median": 5,
+        "mean": 5.6,
+        "count": 5
+      }
+    },
+    "Kira's Guardian": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 200,
+          "mean": 200,
+          "min": 200,
+          "max": 200
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 300,
+          "mean": 300,
+          "min": 300,
+          "max": 300
+        }
+      },
+      "overall": {
+        "median": 250.0,
+        "mean": 250,
+        "count": 2
+      }
+    },
+    "Korlic's Pain": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 15,
+        "count": 1
+      }
+    },
+    "Kris": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 2,
+          "median": 15.0,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 15.0,
+        "mean": 15,
+        "count": 2
+      }
+    },
+    "Kurast Shield": {
+      "total_listings": 1,
+      "currencies": {
+        "Small Charm": {
+          "count": 1,
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        }
+      },
+      "overall": {
+        "median": 0.5,
+        "mean": 0.5,
+        "count": 1
+      }
+    },
+    "Lacerator": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 150,
+          "mean": 150,
+          "min": 150,
+          "max": 150
+        }
+      },
+      "overall": {
+        "median": 150,
+        "mean": 150,
+        "count": 1
+      }
+    },
+    "Lacquered Plate": {
+      "total_listings": 3,
+      "currencies": {
+        "Jah Rune": {
+          "count": 3,
+          "median": 250,
+          "mean": 250,
+          "min": 250,
+          "max": 250
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 360,
+          "mean": 360,
+          "min": 360,
+          "max": 360
+        }
+      },
+      "overall": {
+        "median": 250.0,
+        "mean": 277.5,
+        "count": 4
+      }
+    },
+    "Large Charm": {
+      "total_listings": 2,
+      "currencies": {
+        "Jah Rune": {
+          "count": 2,
+          "median": 1025.0,
+          "mean": 1025,
+          "min": 50,
+          "max": 2000
+        },
+        "Ber Rune": {
+          "count": 2,
+          "median": 90.0,
+          "mean": 90,
+          "min": 60,
+          "max": 120
+        }
+      },
+      "overall": {
+        "median": 90.0,
+        "mean": 557.5,
+        "count": 4
+      }
+    },
+    "Latent Black Cleft": {
+      "total_listings": 2,
+      "currencies": {
+        "Latent Crack of the Heavens": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Vex Rune": {
+          "count": 1,
+          "median": 44,
+          "mean": 44,
+          "min": 44,
+          "max": 44
+        },
+        "Jah Rune": {
+          "count": 1,
+          "median": 200,
+          "mean": 200,
+          "min": 200,
+          "max": 200
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 240,
+          "mean": 240,
+          "min": 240,
+          "max": 240
+        }
+      },
+      "overall": {
+        "median": 44,
+        "mean": 102,
+        "count": 5
+      }
+    },
+    "Latent Bone Break": {
+      "total_listings": 3,
+      "currencies": {
+        "Latent Crack of the Heavens": {
+          "count": 3,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 3
+      }
+    },
+    "Latent Cold Rupture": {
+      "total_listings": 4,
+      "currencies": {
+        "Lo Rune": {
+          "count": 3,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        }
+      },
+      "overall": {
+        "median": 30.0,
+        "mean": 28.8,
+        "count": 4
+      }
+    },
+    "Latent Flame Rift": {
+      "total_listings": 2,
+      "currencies": {
+        "Vex Rune": {
+          "count": 1,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Jah Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        },
+        "Lo Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Sur Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 50,
+        "mean": 38.6,
+        "count": 5
+      }
+    },
+    "Latent Rotting Fissure": {
+      "total_listings": 2,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Latent Flame Rift": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Latent Cold Rupture": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Latent Crack of the Heavens": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1.0,
+        "mean": 8.2,
+        "count": 4
+      }
+    },
+    "Laying of Hands": {
+      "total_listings": 3,
+      "currencies": {
+        "Hel Rune": {
+          "count": 2,
+          "median": 1.0,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Perfect Amethyst": {
+          "count": 2,
+          "median": 1.0,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Pul Rune": {
+          "count": 1,
+          "median": 9,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        },
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        },
+        "Random Minor Key": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1.0,
+        "mean": 4,
+        "count": 8
+      }
+    },
+    "Legendary Mallet": {
+      "total_listings": 1,
+      "currencies": {
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 13.5,
+        "mean": 13.5,
+        "count": 2
+      }
+    },
+    "Lem Rune": {
+      "total_listings": 5,
+      "currencies": {
+        "Hel Rune": {
+          "count": 1,
+          "median": 7,
+          "mean": 7,
+          "min": 7,
+          "max": 7
+        },
+        "Io Rune": {
+          "count": 1,
+          "median": 20,
+          "mean": 20,
+          "min": 20,
+          "max": 20
+        },
+        "Sur Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Ral Rune": {
+          "count": 2,
+          "median": 30.0,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Sol Rune": {
+          "count": 2,
+          "median": 60.0,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Perfect Ruby": {
+          "count": 2,
+          "median": 20.0,
+          "mean": 20,
+          "min": 20,
+          "max": 20
+        },
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 20,
+        "mean": 24.5,
+        "count": 11
+      }
+    },
+    "Light Gauntlets": {
+      "total_listings": 4,
+      "currencies": {
+        "Vex Rune": {
+          "count": 2,
+          "median": 22.0,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Sur Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 18.5,
+        "mean": 16.2,
+        "count": 6
+      }
+    },
+    "Light Plated Boots": {
+      "total_listings": 2,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 750,
+          "mean": 750,
+          "min": 750,
+          "max": 750
+        },
+        "Vex Rune": {
+          "count": 2,
+          "median": 22.0,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Gul Rune": {
+          "count": 2,
+          "median": 18.0,
+          "mean": 18,
+          "min": 18,
+          "max": 18
+        },
+        "Ist Rune": {
+          "count": 2,
+          "median": 15.0,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 18,
+        "mean": 122.9,
+        "count": 7
+      }
+    },
+    "Lo Rune": {
+      "total_listings": 2,
+      "currencies": {
+        "Vex Rune": {
+          "count": 1,
+          "median": 44,
+          "mean": 44,
+          "min": 44,
+          "max": 44
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        }
+      },
+      "overall": {
+        "median": 44,
+        "mean": 44.7,
+        "count": 3
+      }
+    },
+    "Long Sword": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Lycander's Aim": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "M'avina's Icy Clutch": {
+      "total_listings": 1,
+      "currencies": {
+        "Hel Rune": {
+          "count": 2,
+          "median": 1.0,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Ral Rune": {
+          "count": 2,
+          "median": 6.0,
+          "mean": 6,
+          "min": 6,
+          "max": 6
+        },
+        "Perfect Amethyst": {
+          "count": 2,
+          "median": 1.0,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1.0,
+        "mean": 2.7,
+        "count": 6
+      }
+    },
+    "M'avina's Tenet": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 2,
+          "median": 1.0,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1.0,
+        "mean": 1,
+        "count": 2
+      }
+    },
+    "Madawc's Ire": {
+      "total_listings": 3,
+      "currencies": {
+        "Mal Rune": {
+          "count": 2,
+          "median": 12.0,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Vex Rune": {
+          "count": 1,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        },
+        "Pul Rune": {
+          "count": 1,
+          "median": 9,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        },
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        }
+      },
+      "overall": {
+        "median": 11.0,
+        "mean": 12.2,
+        "count": 6
+      }
+    },
+    "Mage Plate": {
+      "total_listings": 3,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Ber Rune": {
+          "count": 2,
+          "median": 60.0,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Jah Rune": {
+          "count": 2,
+          "median": 50.0,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        },
+        "Um Rune": {
+          "count": 2,
+          "median": 10.0,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Pul Rune": {
+          "count": 2,
+          "median": 9.0,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 30.3,
+        "count": 9
+      }
+    },
+    "Magefist": {
+      "total_listings": 4,
+      "currencies": {
+        "Vex Rune": {
+          "count": 1,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Ist Rune": {
+          "count": 3,
+          "median": 15,
+          "mean": 20,
+          "min": 15,
+          "max": 30
+        },
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Gul Rune": {
+          "count": 1,
+          "median": 18,
+          "mean": 18,
+          "min": 18,
+          "max": 18
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 17.4,
+        "count": 7
+      }
+    },
+    "Maiden Javelin": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        }
+      },
+      "overall": {
+        "median": 55.0,
+        "mean": 55,
+        "count": 2
+      }
+    },
+    "Mal Rune": {
+      "total_listings": 4,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Ral Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Ist Rune": {
+          "count": 2,
+          "median": 15.0,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Gul Rune": {
+          "count": 3,
+          "median": 18,
+          "mean": 18,
+          "min": 18,
+          "max": 18
+        }
+      },
+      "overall": {
+        "median": 18,
+        "mean": 22.3,
+        "count": 7
+      }
+    },
+    "Mancatcher": {
+      "total_listings": 2,
+      "currencies": {
+        "Random Gems": {
+          "count": 1,
+          "median": 5,
+          "mean": 5,
+          "min": 5,
+          "max": 5
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 8.5,
+        "mean": 8.5,
+        "count": 2
+      }
+    },
+    "Mang Song's Lesson": {
+      "total_listings": 21,
+      "currencies": {
+        "Ber Rune": {
+          "count": 18,
+          "median": 180.0,
+          "mean": 193.3,
+          "min": 60,
+          "max": 660
+        },
+        "Jah Rune": {
+          "count": 22,
+          "median": 150.0,
+          "mean": 190.9,
+          "min": 50,
+          "max": 550
+        },
+        "Zod Rune": {
+          "count": 1,
+          "median": 4,
+          "mean": 4,
+          "min": 4,
+          "max": 4
+        },
+        "Sur Rune": {
+          "count": 1,
+          "median": 2,
+          "mean": 2,
+          "min": 2,
+          "max": 2
+        }
+      },
+      "overall": {
+        "median": 150.0,
+        "mean": 183,
+        "count": 42
+      }
+    },
+    "Mara's Kaleidoscope": {
+      "total_listings": 3,
+      "currencies": {
+        "Vex Rune": {
+          "count": 1,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        }
+      },
+      "overall": {
+        "median": 18.5,
+        "mean": 19.8,
+        "count": 4
+      }
+    },
+    "Marrowwalk": {
+      "total_listings": 3,
+      "currencies": {
+        "Ist Rune": {
+          "count": 2,
+          "median": 15.0,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Mal Rune": {
+          "count": 2,
+          "median": 12.0,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Um Rune": {
+          "count": 3,
+          "median": 10,
+          "mean": 13.3,
+          "min": 10,
+          "max": 20
+        },
+        "Pul Rune": {
+          "count": 3,
+          "median": 9,
+          "mean": 15,
+          "min": 9,
+          "max": 27
+        },
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        }
+      },
+      "overall": {
+        "median": 12,
+        "mean": 13.4,
+        "count": 11
+      }
+    },
+    "Martel de Fer": {
+      "total_listings": 1,
+      "currencies": {
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 25,
+        "mean": 23.3,
+        "count": 3
+      }
+    },
+    "Matriarchal Javelin": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 2000,
+          "mean": 2000,
+          "min": 2000,
+          "max": 2000
+        }
+      },
+      "overall": {
+        "median": 2000,
+        "mean": 2000,
+        "count": 1
+      }
+    },
+    "Matriarchal Spear": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 135,
+          "mean": 135,
+          "min": 135,
+          "max": 135
+        }
+      },
+      "overall": {
+        "median": 60,
+        "mean": 81.7,
+        "count": 3
+      }
+    },
+    "Military Pick": {
+      "total_listings": 1,
+      "currencies": {
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        },
+        "Pul Rune": {
+          "count": 1,
+          "median": 9,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        }
+      },
+      "overall": {
+        "median": 8.5,
+        "mean": 8.5,
+        "count": 2
+      }
+    },
+    "Mirrored Boots": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 2,
+          "median": 400.0,
+          "mean": 400,
+          "min": 400,
+          "max": 400
+        },
+        "Ber Rune": {
+          "count": 2,
+          "median": 600.0,
+          "mean": 600,
+          "min": 600,
+          "max": 600
+        }
+      },
+      "overall": {
+        "median": 500.0,
+        "mean": 500,
+        "count": 4
+      }
+    },
+    "Monarch": {
+      "total_listings": 15,
+      "currencies": {
+        "Small Charm": {
+          "count": 2,
+          "median": 1.0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "Zod Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Um Rune": {
+          "count": 2,
+          "median": 10.0,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Lem Rune": {
+          "count": 2,
+          "median": 8.0,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Jah Rune": {
+          "count": 3,
+          "median": 100,
+          "mean": 166.7,
+          "min": 100,
+          "max": 300
+        },
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Perfect Amethyst": {
+          "count": 2,
+          "median": 3.0,
+          "mean": 3,
+          "min": 3,
+          "max": 3
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Random Gems": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 10,
+        "mean": 41.3,
+        "count": 17
+      }
+    },
+    "Mosaic": {
+      "total_listings": 66,
+      "currencies": {
+        "Jah Rune": {
+          "count": 67,
+          "median": 150,
+          "mean": 144.8,
+          "min": 50,
+          "max": 350
+        },
+        "Ber Rune": {
+          "count": 29,
+          "median": 60,
+          "mean": 86.9,
+          "min": 60,
+          "max": 300
+        }
+      },
+      "overall": {
+        "median": 100.0,
+        "mean": 127.3,
+        "count": 96
+      }
+    },
+    "Mythical Sword": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 13.5,
+        "mean": 13.5,
+        "count": 2
+      }
+    },
+    "Naj's Circlet": {
+      "total_listings": 1,
+      "currencies": {
+        "Ral Rune": {
+          "count": 1,
+          "median": 6,
+          "mean": 6,
+          "min": 6,
+          "max": 6
+        },
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Random Gems": {
+          "count": 1,
+          "median": 3,
+          "mean": 3,
+          "min": 3,
+          "max": 3
+        }
+      },
+      "overall": {
+        "median": 3,
+        "mean": 3.3,
+        "count": 3
+      }
+    },
+    "Naj's Puzzler": {
+      "total_listings": 2,
+      "currencies": {
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        },
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 3,
+          "mean": 3,
+          "min": 3,
+          "max": 3
+        }
+      },
+      "overall": {
+        "median": 5.5,
+        "mean": 5.5,
+        "count": 2
+      }
+    },
+    "Nightsmoke": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 5,
+          "mean": 5,
+          "min": 5,
+          "max": 5
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 8.5,
+        "mean": 8.5,
+        "count": 2
+      }
+    },
+    "Nightwing's Veil": {
+      "total_listings": 1,
+      "currencies": {
+        "Pul Rune": {
+          "count": 1,
+          "median": 9,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        }
+      },
+      "overall": {
+        "median": 9,
+        "mean": 9,
+        "count": 1
+      }
+    },
+    "Nokozan Relic": {
+      "total_listings": 1,
+      "currencies": {
+        "Ral Rune": {
+          "count": 1,
+          "median": 6,
+          "mean": 6,
+          "min": 6,
+          "max": 6
+        },
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Random Gems": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 2.7,
+        "count": 3
+      }
+    },
+    "Northern Worldstone Shard": {
+      "total_listings": 2,
+      "currencies": {
+        "Ist Rune": {
+          "count": 2,
+          "median": 15.0,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Jah Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        }
+      },
+      "overall": {
+        "median": 32.5,
+        "mean": 35,
+        "count": 4
+      }
+    },
+    "Oath": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 15,
+        "count": 1
+      }
+    },
+    "Obsession": {
+      "total_listings": 3,
+      "currencies": {
+        "Jah Rune": {
+          "count": 3,
+          "median": 400,
+          "mean": 366.7,
+          "min": 100,
+          "max": 600
+        }
+      },
+      "overall": {
+        "median": 400,
+        "mean": 366.7,
+        "count": 3
+      }
+    },
+    "Occult Codex": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        }
+      },
+      "overall": {
+        "median": 50,
+        "mean": 50,
+        "count": 1
+      }
+    },
+    "Ogre Maul": {
+      "total_listings": 1,
+      "currencies": {
+        "Zod Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Ondal's Wisdom": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Sur Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 105,
+          "mean": 105,
+          "min": 105,
+          "max": 105
+        }
+      },
+      "overall": {
+        "median": 55.0,
+        "mean": 54,
+        "count": 4
+      }
+    },
+    "Opalvein": {
+      "total_listings": 4,
+      "currencies": {
+        "Lo Rune": {
+          "count": 2,
+          "median": 30.0,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Vex Rune": {
+          "count": 1,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Ohm Rune": {
+          "count": 3,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 25,
+        "mean": 24.6,
+        "count": 7
+      }
+    },
+    "Ormus' Robes": {
+      "total_listings": 1,
+      "currencies": {
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Vex Rune": {
+          "count": 1,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        }
+      },
+      "overall": {
+        "median": 27.5,
+        "mean": 34.2,
+        "count": 4
+      }
+    },
+    "Perfect Amethyst": {
+      "total_listings": 7,
+      "currencies": {
+        "The Oculus": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Monarch": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Random Minor Key": {
+          "count": 3,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Vex Rune": {
+          "count": 2,
+          "median": 22.0,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 1.0,
+        "mean": 8,
+        "count": 8
+      }
+    },
+    "Phase Blade": {
+      "total_listings": 3,
+      "currencies": {
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Jah Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Zod Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Vex Rune": {
+          "count": 1,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        }
+      },
+      "overall": {
+        "median": 30,
+        "mean": 32.6,
+        "count": 5
+      }
+    },
+    "Protector's Stone": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 750,
+          "mean": 750,
+          "min": 750,
+          "max": 750
+        }
+      },
+      "overall": {
+        "median": 750,
+        "mean": 750,
+        "count": 1
+      }
+    },
+    "Pul Rune": {
+      "total_listings": 2,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 13.5,
+        "mean": 13.5,
+        "count": 2
+      }
+    },
+    "Rainbow Facet: Cold Death": {
+      "total_listings": 6,
+      "currencies": {
+        "Jah Rune": {
+          "count": 3,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        },
+        "Ohm Rune": {
+          "count": 3,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Vex Rune": {
+          "count": 3,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        }
+      },
+      "overall": {
+        "median": 25,
+        "mean": 32.3,
+        "count": 9
+      }
+    },
+    "Rainbow Facet: Cold Level-up": {
+      "total_listings": 1,
+      "currencies": {
+        "Zod Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        }
+      },
+      "overall": {
+        "median": 30.5,
+        "mean": 30.5,
+        "count": 2
+      }
+    },
+    "Rainbow Facet: Fire Death": {
+      "total_listings": 21,
+      "currencies": {
+        "Jah Rune": {
+          "count": 9,
+          "median": 50,
+          "mean": 66.7,
+          "min": 50,
+          "max": 100
+        },
+        "Sur Rune": {
+          "count": 15,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Ber Rune": {
+          "count": 10,
+          "median": 60.0,
+          "mean": 72,
+          "min": 60,
+          "max": 120
+        },
+        "Lo Rune": {
+          "count": 5,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Zod Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 30.0,
+        "mean": 37.1,
+        "count": 40
+      }
+    },
+    "Rainbow Facet: Fire Level-up": {
+      "total_listings": 1,
+      "currencies": {
+        "Zod Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        }
+      },
+      "overall": {
+        "median": 30.5,
+        "mean": 30.5,
+        "count": 2
+      }
+    },
+    "Rainbow Facet: Lightning Death": {
+      "total_listings": 2,
+      "currencies": {
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Jah Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        },
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        }
+      },
+      "overall": {
+        "median": 40.0,
+        "mean": 41.2,
+        "count": 4
+      }
+    },
+    "Rainbow Facet: Lightning Level-up": {
+      "total_listings": 2,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        }
+      },
+      "overall": {
+        "median": 13.5,
+        "mean": 16.8,
+        "count": 4
+      }
+    },
+    "Rainbow Facet: Poison Death": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 15,
+        "count": 1
+      }
+    },
+    "Ral Rune": {
+      "total_listings": 2,
+      "currencies": {
+        "Ist Rune": {
+          "count": 2,
+          "median": 15.0,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 15.0,
+        "mean": 15,
+        "count": 2
+      }
+    },
+    "Random Gems": {
+      "total_listings": 3,
+      "currencies": {
+        "Tal Rasha's Horadric Crest": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 75,
+          "mean": 75,
+          "min": 75,
+          "max": 75
+        },
+        "Jah Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        }
+      },
+      "overall": {
+        "median": 50,
+        "mean": 42,
+        "count": 3
+      }
+    },
+    "Raven Claw": {
+      "total_listings": 2,
+      "currencies": {
+        "Tir Rune": {
+          "count": 1,
+          "median": 3,
+          "mean": 3,
+          "min": 3,
+          "max": 3
+        },
+        "Perfect Amethyst": {
+          "count": 2,
+          "median": 1.5,
+          "mean": 1.5,
+          "min": 1,
+          "max": 2
+        }
+      },
+      "overall": {
+        "median": 2,
+        "mean": 2,
+        "count": 3
+      }
+    },
+    "Raven Frost": {
+      "total_listings": 3,
+      "currencies": {
+        "Jah Rune": {
+          "count": 2,
+          "median": 100.0,
+          "mean": 100,
+          "min": 100,
+          "max": 100
+        },
+        "Ber Rune": {
+          "count": 2,
+          "median": 180.0,
+          "mean": 180,
+          "min": 180,
+          "max": 180
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Lem Rune": {
+          "count": 1,
+          "median": 16,
+          "mean": 16,
+          "min": 16,
+          "max": 16
+        }
+      },
+      "overall": {
+        "median": 58.0,
+        "mean": 76.6,
+        "count": 8
+      }
+    },
+    "Renewed Bone Break": {
+      "total_listings": 9,
+      "currencies": {
+        "Small Charm": {
+          "count": 5,
+          "median": 1.5,
+          "mean": 1.6,
+          "min": 0.5,
+          "max": 2.5
+        },
+        "Jah Rune": {
+          "count": 5,
+          "median": 700,
+          "mean": 840,
+          "min": 300,
+          "max": 1750
+        }
+      },
+      "overall": {
+        "median": 151.2,
+        "mean": 420.8,
+        "count": 10
+      }
+    },
+    "Renewed Cold Rupture": {
+      "total_listings": 11,
+      "currencies": {
+        "Jah Rune": {
+          "count": 9,
+          "median": 100,
+          "mean": 194.4,
+          "min": 100,
+          "max": 500
+        },
+        "Renewed Crack of the Heavens": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Lo Rune": {
+          "count": 2,
+          "median": 30.0,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Zod Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        }
+      },
+      "overall": {
+        "median": 100.0,
+        "mean": 133,
+        "count": 14
+      }
+    },
+    "Renewed Crack of the Heavens": {
+      "total_listings": 2,
+      "currencies": {
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Jah Rune": {
+          "count": 1,
+          "median": 100,
+          "mean": 100,
+          "min": 100,
+          "max": 100
+        }
+      },
+      "overall": {
+        "median": 65.0,
+        "mean": 65,
+        "count": 2
+      }
+    },
+    "Renewed Flame Rift": {
+      "total_listings": 6,
+      "currencies": {
+        "Lo Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Jah Rune": {
+          "count": 4,
+          "median": 300.0,
+          "mean": 350,
+          "min": 100,
+          "max": 700
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 840,
+          "mean": 840,
+          "min": 840,
+          "max": 840
+        },
+        "Renewed Crack of the Heavens": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 100.0,
+        "mean": 289.1,
+        "count": 8
+      }
+    },
+    "Renewed Rotting Fissure": {
+      "total_listings": 3,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Jah Rune": {
+          "count": 1,
+          "median": 100,
+          "mean": 100,
+          "min": 100,
+          "max": 100
+        }
+      },
+      "overall": {
+        "median": 22.5,
+        "mean": 39.2,
+        "count": 4
+      }
+    },
+    "Ribcracker": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 13.5,
+        "mean": 13.5,
+        "count": 2
+      }
+    },
+    "Ring": {
+      "total_listings": 89,
+      "currencies": {
+        "Jah Rune": {
+          "count": 90,
+          "median": 250.0,
+          "mean": 384.4,
+          "min": 50,
+          "max": 2000
+        },
+        "Ist Rune": {
+          "count": 3,
+          "median": 135,
+          "mean": 95,
+          "min": 15,
+          "max": 135
+        },
+        "Gul Rune": {
+          "count": 1,
+          "median": 18,
+          "mean": 18,
+          "min": 18,
+          "max": 18
+        },
+        "Ber Rune": {
+          "count": 15,
+          "median": 120,
+          "mean": 144,
+          "min": 60,
+          "max": 360
+        },
+        "Small Charm": {
+          "count": 4,
+          "median": 0.8,
+          "mean": 0.8,
+          "min": 0.5,
+          "max": 1.0
+        },
+        "Zod Rune": {
+          "count": 1,
+          "median": 5,
+          "mean": 5,
+          "min": 5,
+          "max": 5
+        },
+        "Sur Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 250,
+        "mean": 322.4,
+        "count": 115
+      }
+    },
+    "Rondache": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 15,
+        "count": 1
+      }
+    },
+    "Rune Master": {
+      "total_listings": 1,
+      "currencies": {
+        "Vex Rune": {
+          "count": 1,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        }
+      },
+      "overall": {
+        "median": 22,
+        "mean": 22,
+        "count": 1
+      }
+    },
+    "Rune Staff": {
+      "total_listings": 3,
+      "currencies": {
+        "Jah Rune": {
+          "count": 3,
+          "median": 200,
+          "mean": 383.3,
+          "min": 200,
+          "max": 750
+        },
+        "Small Charm": {
+          "count": 1,
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        }
+      },
+      "overall": {
+        "median": 200.0,
+        "mean": 287.6,
+        "count": 4
+      }
+    },
+    "Runic Talons": {
+      "total_listings": 2,
+      "currencies": {
+        "Jah Rune": {
+          "count": 2,
+          "median": 150.0,
+          "mean": 150,
+          "min": 100,
+          "max": 200
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 300,
+          "mean": 300,
+          "min": 300,
+          "max": 300
+        }
+      },
+      "overall": {
+        "median": 200,
+        "mean": 200,
+        "count": 3
+      }
+    },
+    "Sacred": {
+      "total_listings": 4,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 1500,
+          "mean": 1500,
+          "min": 1500,
+          "max": 1500
+        },
+        "Small Charm": {
+          "count": 3,
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        }
+      },
+      "overall": {
+        "median": 0.5,
+        "mean": 375.4,
+        "count": 4
+      }
+    },
+    "Sacred Armor": {
+      "total_listings": 2,
+      "currencies": {
+        "Jah Rune": {
+          "count": 2,
+          "median": 300.0,
+          "mean": 300,
+          "min": 250,
+          "max": 350
+        },
+        "Ber Rune": {
+          "count": 2,
+          "median": 420.0,
+          "mean": 420,
+          "min": 360,
+          "max": 480
+        }
+      },
+      "overall": {
+        "median": 355.0,
+        "mean": 360,
+        "count": 4
+      }
+    },
+    "Sacred Globe": {
+      "total_listings": 1,
+      "currencies": {
+        "Ber Rune": {
+          "count": 1,
+          "median": 240,
+          "mean": 240,
+          "min": 240,
+          "max": 240
+        },
+        "Jah Rune": {
+          "count": 1,
+          "median": 150,
+          "mean": 150,
+          "min": 150,
+          "max": 150
+        }
+      },
+      "overall": {
+        "median": 195.0,
+        "mean": 195,
+        "count": 2
+      }
+    },
+    "Sacred Rondache": {
+      "total_listings": 3,
+      "currencies": {
+        "Jah Rune": {
+          "count": 3,
+          "median": 50,
+          "mean": 133.3,
+          "min": 50,
+          "max": 300
+        },
+        "Ber Rune": {
+          "count": 3,
+          "median": 60,
+          "mean": 180,
+          "min": 60,
+          "max": 420
+        },
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Lo Rune": {
+          "count": 2,
+          "median": 30.0,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        }
+      },
+      "overall": {
+        "median": 50.0,
+        "mean": 102.2,
+        "count": 10
+      }
+    },
+    "Sacred Targe": {
+      "total_listings": 9,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Jah Rune": {
+          "count": 6,
+          "median": 200.0,
+          "mean": 358.3,
+          "min": 50,
+          "max": 1250
+        },
+        "Small Charm": {
+          "count": 1,
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        },
+        "Vex Rune": {
+          "count": 1,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Harlequin Crest": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Ber Rune": {
+          "count": 6,
+          "median": 90.0,
+          "mean": 190,
+          "min": 60,
+          "max": 540
+        }
+      },
+      "overall": {
+        "median": 60.0,
+        "mean": 208.0,
+        "count": 16
+      }
+    },
+    "Sanctuary": {
+      "total_listings": 1,
+      "currencies": {
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 12,
+        "mean": 12,
+        "count": 1
+      }
+    },
+    "Sander's Taboo": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Sandstorm Trek": {
+      "total_listings": 4,
+      "currencies": {
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Jah Rune": {
+          "count": 3,
+          "median": 150,
+          "mean": 150,
+          "min": 100,
+          "max": 200
+        },
+        "Pul Rune": {
+          "count": 1,
+          "median": 9,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        },
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        }
+      },
+      "overall": {
+        "median": 60,
+        "mean": 76.7,
+        "count": 7
+      }
+    },
+    "Sazabi's Mental Sheath": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Scythe": {
+      "total_listings": 1,
+      "currencies": {
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        }
+      },
+      "overall": {
+        "median": 11.0,
+        "mean": 11,
+        "count": 2
+      }
+    },
+    "Shadow Bow": {
+      "total_listings": 1,
+      "currencies": {
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Vex Rune": {
+          "count": 1,
+          "median": 44,
+          "mean": 44,
+          "min": 44,
+          "max": 44
+        }
+      },
+      "overall": {
+        "median": 37.0,
+        "mean": 39.8,
+        "count": 4
+      }
+    },
+    "Shadow Dancer": {
+      "total_listings": 2,
+      "currencies": {
+        "Jah Rune": {
+          "count": 3,
+          "median": 250,
+          "mean": 183.3,
+          "min": 50,
+          "max": 250
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        }
+      },
+      "overall": {
+        "median": 155.0,
+        "mean": 152.5,
+        "count": 4
+      }
+    },
+    "Shadow Plate": {
+      "total_listings": 1,
+      "currencies": {
+        "Vex Rune": {
+          "count": 1,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        }
+      },
+      "overall": {
+        "median": 22,
+        "mean": 22,
+        "count": 1
+      }
+    },
+    "Shael Rune": {
+      "total_listings": 1,
+      "currencies": {
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Um Rune": {
+          "count": 1,
+          "median": 20,
+          "mean": 20,
+          "min": 20,
+          "max": 20
+        },
+        "Pul Rune": {
+          "count": 1,
+          "median": 36,
+          "mean": 36,
+          "min": 36,
+          "max": 36
+        }
+      },
+      "overall": {
+        "median": 20,
+        "mean": 22.7,
+        "count": 3
+      }
+    },
+    "Shako": {
+      "total_listings": 3,
+      "currencies": {
+        "Ist Rune": {
+          "count": 2,
+          "median": 15.0,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Pul Rune": {
+          "count": 1,
+          "median": 9,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 13,
+        "count": 3
+      }
+    },
+    "Shard Set": {
+      "total_listings": 2,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        }
+      },
+      "overall": {
+        "median": 12.5,
+        "mean": 12.5,
+        "count": 2
+      }
+    },
+    "Sigon's Gage": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Sigon's Guard": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Sigon's Shelter": {
+      "total_listings": 4,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 2,
+          "median": 1.0,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Random Gems": {
+          "count": 2,
+          "median": 1.5,
+          "mean": 1.5,
+          "min": 1,
+          "max": 2
+        }
+      },
+      "overall": {
+        "median": 1.0,
+        "mean": 1.2,
+        "count": 4
+      }
+    },
+    "Sigon's Visor": {
+      "total_listings": 2,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 2,
+          "median": 1.0,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1.0,
+        "mean": 1,
+        "count": 2
+      }
+    },
+    "Silkweave": {
+      "total_listings": 1,
+      "currencies": {
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        }
+      },
+      "overall": {
+        "median": 8,
+        "mean": 8,
+        "count": 1
+      }
+    },
+    "Skin of the Vipermagi": {
+      "total_listings": 10,
+      "currencies": {
+        "Um Rune": {
+          "count": 2,
+          "median": 15.0,
+          "mean": 15,
+          "min": 10,
+          "max": 20
+        },
+        "Pul Rune": {
+          "count": 2,
+          "median": 13.5,
+          "mean": 13.5,
+          "min": 9,
+          "max": 18
+        },
+        "Festering Essence of Destruction": {
+          "count": 1,
+          "median": 2,
+          "mean": 2,
+          "min": 2,
+          "max": 2
+        },
+        "Charged Essence of Hatred": {
+          "count": 1,
+          "median": 4,
+          "mean": 4,
+          "min": 4,
+          "max": 4
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Random Gems": {
+          "count": 1,
+          "median": 2,
+          "mean": 2,
+          "min": 2,
+          "max": 2
+        },
+        "Vex Rune": {
+          "count": 4,
+          "median": 33.0,
+          "mean": 33,
+          "min": 22,
+          "max": 44
+        },
+        "Jah Rune": {
+          "count": 3,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Ohm Rune": {
+          "count": 2,
+          "median": 25.0,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Rainbow Facet: Lightning Death": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 19.0,
+        "mean": 21.3,
+        "count": 20
+      }
+    },
+    "Skullder's Ire": {
+      "total_listings": 2,
+      "currencies": {
+        "Gul Rune": {
+          "count": 1,
+          "median": 18,
+          "mean": 18,
+          "min": 18,
+          "max": 18
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 16.5,
+        "mean": 16.5,
+        "count": 2
+      }
+    },
+    "Slayer Guard": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 700,
+          "mean": 700,
+          "min": 700,
+          "max": 700
+        },
+        "Small Charm": {
+          "count": 1,
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        }
+      },
+      "overall": {
+        "median": 350.2,
+        "mean": 350.2,
+        "count": 2
+      }
+    },
+    "Small Charm": {
+      "total_listings": 23,
+      "currencies": {
+        "Jah Rune": {
+          "count": 11,
+          "median": 50,
+          "mean": 109.1,
+          "min": 50,
+          "max": 550
+        },
+        "Ber Rune": {
+          "count": 7,
+          "median": 60,
+          "mean": 68.6,
+          "min": 60,
+          "max": 120
+        },
+        "Zod Rune": {
+          "count": 3,
+          "median": 1,
+          "mean": 1.3,
+          "min": 1,
+          "max": 2
+        },
+        "Ohm Rune": {
+          "count": 2,
+          "median": 25.0,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Random Gems": {
+          "count": 2,
+          "median": 6.0,
+          "mean": 6,
+          "min": 6,
+          "max": 6
+        },
+        "Ist Rune": {
+          "count": 3,
+          "median": 15,
+          "mean": 20,
+          "min": 15,
+          "max": 30
+        },
+        "Sur Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Lo Rune": {
+          "count": 4,
+          "median": 30.0,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Ars Dul'Mephistos": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Vex Rune": {
+          "count": 2,
+          "median": 22.0,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Opalvein": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Um Rune": {
+          "count": 2,
+          "median": 10.0,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        },
+        "Hel Rune": {
+          "count": 1,
+          "median": 2,
+          "mean": 2,
+          "min": 2,
+          "max": 2
+        }
+      },
+      "overall": {
+        "median": 30.0,
+        "mean": 48.0,
+        "count": 42
+      }
+    },
+    "Smoked Sphere": {
+      "total_listings": 2,
+      "currencies": {
+        "Jah Rune": {
+          "count": 2,
+          "median": 150.0,
+          "mean": 150,
+          "min": 150,
+          "max": 150
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 240,
+          "mean": 240,
+          "min": 240,
+          "max": 240
+        }
+      },
+      "overall": {
+        "median": 150,
+        "mean": 180,
+        "count": 3
+      }
+    },
+    "Snowclash": {
+      "total_listings": 1,
+      "currencies": {
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        }
+      },
+      "overall": {
+        "median": 60,
+        "mean": 60,
+        "count": 1
+      }
+    },
+    "Socket Quest": {
+      "total_listings": 2,
+      "currencies": {
+        "Vex Rune": {
+          "count": 1,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Token of Absolution": {
+          "count": 1,
+          "median": 2,
+          "mean": 2,
+          "min": 2,
+          "max": 2
+        },
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        }
+      },
+      "overall": {
+        "median": 22,
+        "mean": 18.2,
+        "count": 5
+      }
+    },
+    "Sol Rune": {
+      "total_listings": 3,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 2,
+          "median": 1.0,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Random Gems": {
+          "count": 2,
+          "median": 30.0,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Hel Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Ral Rune": {
+          "count": 1,
+          "median": 6,
+          "mean": 6,
+          "min": 6,
+          "max": 6
+        }
+      },
+      "overall": {
+        "median": 3.5,
+        "mean": 11.5,
+        "count": 6
+      }
+    },
+    "Soul Drainer": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 3,
+          "mean": 3,
+          "min": 3,
+          "max": 3
+        },
+        "Random Gems": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Charged Essence of Hatred": {
+          "count": 1,
+          "median": 2,
+          "mean": 2,
+          "min": 2,
+          "max": 2
+        }
+      },
+      "overall": {
+        "median": 3,
+        "mean": 5,
+        "count": 3
+      }
+    },
+    "Southern Worldstone Shard": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        }
+      },
+      "overall": {
+        "median": 10,
+        "mean": 10,
+        "count": 1
+      }
+    },
+    "Spectral Shard": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Spineripper": {
+      "total_listings": 1,
+      "currencies": {
+        "Random Gems": {
+          "count": 1,
+          "median": 2,
+          "mean": 2,
+          "min": 2,
+          "max": 2
+        }
+      },
+      "overall": {
+        "median": 2,
+        "mean": 2,
+        "count": 1
+      }
+    },
+    "Spirit": {
+      "total_listings": 2,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 200,
+          "mean": 200,
+          "min": 200,
+          "max": 200
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 107.5,
+        "mean": 107.5,
+        "count": 2
+      }
+    },
+    "Stealskull": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Steelrend": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 15,
+        "count": 1
+      }
+    },
+    "Stormlash": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 200,
+          "mean": 200,
+          "min": 200,
+          "max": 200
+        }
+      },
+      "overall": {
+        "median": 200,
+        "mean": 200,
+        "count": 1
+      }
+    },
+    "Stormshield": {
+      "total_listings": 1,
+      "currencies": {
+        "Zod Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        }
+      },
+      "overall": {
+        "median": 30.5,
+        "mean": 30.5,
+        "count": 2
+      }
+    },
+    "String of Ears": {
+      "total_listings": 2,
+      "currencies": {
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        }
+      },
+      "overall": {
+        "median": 10.0,
+        "mean": 10,
+        "count": 2
+      }
+    },
+    "Stygian Pike": {
+      "total_listings": 2,
+      "currencies": {
+        "Jah Rune": {
+          "count": 2,
+          "median": 50.0,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        },
+        "Ber Rune": {
+          "count": 2,
+          "median": 60.0,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        }
+      },
+      "overall": {
+        "median": 55.0,
+        "mean": 55,
+        "count": 4
+      }
+    },
+    "Suicide Branch": {
+      "total_listings": 1,
+      "currencies": {
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 5,
+          "mean": 5,
+          "min": 5,
+          "max": 5
+        }
+      },
+      "overall": {
+        "median": 8.5,
+        "mean": 8.5,
+        "count": 2
+      }
+    },
+    "Sur Rune": {
+      "total_listings": 2,
+      "currencies": {
+        "Ber Rune": {
+          "count": 2,
+          "median": 60.0,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Jah Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        },
+        "Lo Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        }
+      },
+      "overall": {
+        "median": 60.0,
+        "mean": 57.5,
+        "count": 4
+      }
+    },
+    "Tal Rasha's Adjudication": {
+      "total_listings": 2,
+      "currencies": {
+        "Ist Rune": {
+          "count": 2,
+          "median": 22.5,
+          "mean": 22.5,
+          "min": 15,
+          "max": 30
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 19,
+        "count": 3
+      }
+    },
+    "Tal Rasha's Fine-Spun Cloth": {
+      "total_listings": 3,
+      "currencies": {
+        "Festering Essence of Destruction": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Mal Rune": {
+          "count": 2,
+          "median": 12.0,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Pul Rune": {
+          "count": 1,
+          "median": 9,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        },
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        }
+      },
+      "overall": {
+        "median": 9.5,
+        "mean": 8.7,
+        "count": 6
+      }
+    },
+    "Tal Rasha's Guardianship": {
+      "total_listings": 1,
+      "currencies": {
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        }
+      },
+      "overall": {
+        "median": 8,
+        "mean": 8,
+        "count": 1
+      }
+    },
+    "Tal Rasha's Horadric Crest": {
+      "total_listings": 3,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 3,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Random Gems": {
+          "count": 1,
+          "median": 5,
+          "mean": 5,
+          "min": 5,
+          "max": 5
+        }
+      },
+      "overall": {
+        "median": 1.0,
+        "mean": 2,
+        "count": 4
+      }
+    },
+    "Tal Rasha's Lidless Eye": {
+      "total_listings": 1,
+      "currencies": {
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        }
+      },
+      "overall": {
+        "median": 11.0,
+        "mean": 11,
+        "count": 2
+      }
+    },
+    "Tal Rune": {
+      "total_listings": 2,
+      "currencies": {
+        "Ist Rune": {
+          "count": 3,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 15,
+        "count": 3
+      }
+    },
+    "Talic's Anguish": {
+      "total_listings": 3,
+      "currencies": {
+        "Ko Rune": {
+          "count": 1,
+          "median": 4,
+          "mean": 4,
+          "min": 4,
+          "max": 4
+        },
+        "Fal Rune": {
+          "count": 1,
+          "median": 7,
+          "mean": 7,
+          "min": 7,
+          "max": 7
+        },
+        "Bul-Kathos' Nightmare": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Um Rune": {
+          "count": 2,
+          "median": 10.0,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        }
+      },
+      "overall": {
+        "median": 7,
+        "mean": 6.4,
+        "count": 5
+      }
+    },
+    "The Bone Break": {
+      "total_listings": 1,
+      "currencies": {
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        }
+      },
+      "overall": {
+        "median": 25,
+        "mean": 25,
+        "count": 1
+      }
+    },
+    "The Cold Rupture": {
+      "total_listings": 1,
+      "currencies": {
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        }
+      },
+      "overall": {
+        "median": 25,
+        "mean": 25,
+        "count": 1
+      }
+    },
+    "The Crack of the Heavens": {
+      "total_listings": 1,
+      "currencies": {
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        }
+      },
+      "overall": {
+        "median": 30,
+        "mean": 30,
+        "count": 1
+      }
+    },
+    "The Flame Rift": {
+      "total_listings": 2,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        },
+        "Zod Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        }
+      },
+      "overall": {
+        "median": 25,
+        "mean": 25.3,
+        "count": 3
+      }
+    },
+    "The Gladiator's Bane": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 15,
+        "count": 1
+      }
+    },
+    "The Oculus": {
+      "total_listings": 2,
+      "currencies": {
+        "Pul Rune": {
+          "count": 1,
+          "median": 9,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        },
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        },
+        "Random Gems": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        }
+      },
+      "overall": {
+        "median": 8.5,
+        "mean": 8.8,
+        "count": 4
+      }
+    },
+    "The Patriarch": {
+      "total_listings": 1,
+      "currencies": {
+        "Random Gems": {
+          "count": 1,
+          "median": 2,
+          "mean": 2,
+          "min": 2,
+          "max": 2
+        }
+      },
+      "overall": {
+        "median": 2,
+        "mean": 2,
+        "count": 1
+      }
+    },
+    "The Reaper's Toll": {
+      "total_listings": 2,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 100,
+          "mean": 100,
+          "min": 100,
+          "max": 100
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 7,
+          "mean": 7,
+          "min": 7,
+          "max": 7
+        }
+      },
+      "overall": {
+        "median": 37.5,
+        "mean": 45.5,
+        "count": 4
+      }
+    },
+    "The Redeemer": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Gul Rune": {
+          "count": 1,
+          "median": 36,
+          "mean": 36,
+          "min": 36,
+          "max": 36
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 36,
+          "mean": 36,
+          "min": 36,
+          "max": 36
+        }
+      },
+      "overall": {
+        "median": 36,
+        "mean": 34,
+        "count": 3
+      }
+    },
+    "The Rising Sun": {
+      "total_listings": 1,
+      "currencies": {
+        "Um Rune": {
+          "count": 2,
+          "median": 10.0,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        }
+      },
+      "overall": {
+        "median": 10.0,
+        "mean": 10,
+        "count": 2
+      }
+    },
+    "The Rotting Fissure": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 15,
+        "count": 1
+      }
+    },
+    "The Stone of Jordan": {
+      "total_listings": 4,
+      "currencies": {
+        "Vex Rune": {
+          "count": 2,
+          "median": 33.0,
+          "mean": 33,
+          "min": 22,
+          "max": 44
+        },
+        "Ohm Rune": {
+          "count": 3,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 25,
+        "mean": 26.6,
+        "count": 7
+      }
+    },
+    "The Vile Husk": {
+      "total_listings": 1,
+      "currencies": {
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        }
+      },
+      "overall": {
+        "median": 8,
+        "mean": 8,
+        "count": 1
+      }
+    },
+    "Thresher": {
+      "total_listings": 6,
+      "currencies": {
+        "Jah Rune": {
+          "count": 4,
+          "median": 225.0,
+          "mean": 625,
+          "min": 50,
+          "max": 2000
+        },
+        "Small Charm": {
+          "count": 1,
+          "median": 1.0,
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0
+        },
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        },
+        "Pul Rune": {
+          "count": 1,
+          "median": 9,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        }
+      },
+      "overall": {
+        "median": 50,
+        "mean": 359.7,
+        "count": 7
+      }
+    },
+    "Thul Rune": {
+      "total_listings": 1,
+      "currencies": {
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Random Gems": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        }
+      },
+      "overall": {
+        "median": 21.0,
+        "mean": 21,
+        "count": 2
+      }
+    },
+    "Thunder Maul": {
+      "total_listings": 13,
+      "currencies": {
+        "Zod Rune": {
+          "count": 4,
+          "median": 1.5,
+          "mean": 1.5,
+          "min": 1,
+          "max": 2
+        },
+        "Jah Rune": {
+          "count": 9,
+          "median": 100,
+          "mean": 133.3,
+          "min": 50,
+          "max": 400
+        },
+        "Ohm Rune": {
+          "count": 3,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Ber Rune": {
+          "count": 4,
+          "median": 180.0,
+          "mean": 180,
+          "min": 60,
+          "max": 300
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 50,
+        "mean": 95.9,
+        "count": 21
+      }
+    },
+    "Thundergod's Vigor": {
+      "total_listings": 2,
+      "currencies": {
+        "Pul Rune": {
+          "count": 2,
+          "median": 9.0,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        }
+      },
+      "overall": {
+        "median": 9.0,
+        "mean": 9,
+        "count": 2
+      }
+    },
+    "Thunderstroke": {
+      "total_listings": 3,
+      "currencies": {
+        "Jah Rune": {
+          "count": 2,
+          "median": 50.0,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        },
+        "Lo Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        }
+      },
+      "overall": {
+        "median": 50,
+        "mean": 45.6,
+        "count": 5
+      }
+    },
+    "Tiara": {
+      "total_listings": 3,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Um Rune": {
+          "count": 2,
+          "median": 10.0,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        }
+      },
+      "overall": {
+        "median": 12,
+        "mean": 28.4,
+        "count": 5
+      }
+    },
+    "Titan's Revenge": {
+      "total_listings": 6,
+      "currencies": {
+        "Um Rune": {
+          "count": 2,
+          "median": 10.0,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Pul Rune": {
+          "count": 1,
+          "median": 9,
+          "mean": 9,
+          "min": 9,
+          "max": 9
+        },
+        "Jah Rune": {
+          "count": 2,
+          "median": 200.0,
+          "mean": 200,
+          "min": 200,
+          "max": 200
+        },
+        "Ber Rune": {
+          "count": 2,
+          "median": 300.0,
+          "mean": 300,
+          "min": 300,
+          "max": 300
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        }
+      },
+      "overall": {
+        "median": 30,
+        "mean": 119.3,
+        "count": 9
+      }
+    },
+    "Token of Absolution": {
+      "total_listings": 2,
+      "currencies": {
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 37.5,
+        "mean": 37.5,
+        "count": 2
+      }
+    },
+    "Tomb Reaver": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 100,
+          "mean": 100,
+          "min": 100,
+          "max": 100
+        }
+      },
+      "overall": {
+        "median": 100,
+        "mean": 100,
+        "count": 1
+      }
+    },
+    "Toothrow": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Torch of Iro": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 15,
+        "count": 1
+      }
+    },
+    "Trang-Oul's Claws": {
+      "total_listings": 1,
+      "currencies": {
+        "Lem Rune": {
+          "count": 1,
+          "median": 8,
+          "mean": 8,
+          "min": 8,
+          "max": 8
+        }
+      },
+      "overall": {
+        "median": 8,
+        "mean": 8,
+        "count": 1
+      }
+    },
+    "Trang-Oul's Scales": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Twisted Essence of Suffering": {
+      "total_listings": 1,
+      "currencies": {
+        "Burning Essence of Terror": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Uber Tristram Service": {
+      "total_listings": 1,
+      "currencies": {
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Random Minor Key": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 6.5,
+        "mean": 6.5,
+        "count": 2
+      }
+    },
+    "Um Rune": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 15,
+        "count": 1
+      }
+    },
+    "Undead Crown": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Valkyrie Wing": {
+      "total_listings": 1,
+      "currencies": {
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        }
+      },
+      "overall": {
+        "median": 10,
+        "mean": 10,
+        "count": 1
+      }
+    },
+    "Vampire Gaze": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        },
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        }
+      },
+      "overall": {
+        "median": 55.0,
+        "mean": 55,
+        "count": 2
+      }
+    },
+    "Vampirebone Gloves": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 600,
+          "mean": 600,
+          "min": 600,
+          "max": 600
+        },
+        "Small Charm": {
+          "count": 1,
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        }
+      },
+      "overall": {
+        "median": 300.2,
+        "mean": 300.2,
+        "count": 2
+      }
+    },
+    "Verdungo's Hearty Cord": {
+      "total_listings": 2,
+      "currencies": {
+        "Vex Rune": {
+          "count": 1,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 45,
+          "mean": 45,
+          "min": 45,
+          "max": 45
+        },
+        "Jah Rune": {
+          "count": 2,
+          "median": 50.0,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        }
+      },
+      "overall": {
+        "median": 47.5,
+        "mean": 41.8,
+        "count": 4
+      }
+    },
+    "Vex Rune": {
+      "total_listings": 3,
+      "currencies": {
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        },
+        "Worusk's End": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        },
+        "Korlic's Pain": {
+          "count": 1,
+          "median": 3,
+          "mean": 3,
+          "min": 3,
+          "max": 3
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        }
+      },
+      "overall": {
+        "median": 10,
+        "mean": 13.8,
+        "count": 5
+      }
+    },
+    "Vidala's Fetlock": {
+      "total_listings": 1,
+      "currencies": {
+        "Random Gems": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Vortex Orb": {
+      "total_listings": 1,
+      "currencies": {
+        "Ber Rune": {
+          "count": 2,
+          "median": 240.0,
+          "mean": 240,
+          "min": 240,
+          "max": 240
+        },
+        "Jah Rune": {
+          "count": 2,
+          "median": 150.0,
+          "mean": 150,
+          "min": 150,
+          "max": 150
+        }
+      },
+      "overall": {
+        "median": 195.0,
+        "mean": 195,
+        "count": 4
+      }
+    },
+    "Vortex Shield": {
+      "total_listings": 2,
+      "currencies": {
+        "Lo Rune": {
+          "count": 1,
+          "median": 30,
+          "mean": 30,
+          "min": 30,
+          "max": 30
+        },
+        "Jah Rune": {
+          "count": 1,
+          "median": 200,
+          "mean": 200,
+          "min": 200,
+          "max": 200
+        }
+      },
+      "overall": {
+        "median": 115.0,
+        "mean": 115,
+        "count": 2
+      }
+    },
+    "War Pike": {
+      "total_listings": 3,
+      "currencies": {
+        "Jah Rune": {
+          "count": 3,
+          "median": 400,
+          "mean": 316.7,
+          "min": 50,
+          "max": 500
+        },
+        "Ber Rune": {
+          "count": 3,
+          "median": 540,
+          "mean": 420,
+          "min": 60,
+          "max": 660
+        },
+        "Zod Rune": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 400,
+        "mean": 315.9,
+        "count": 7
+      }
+    },
+    "War Spike": {
+      "total_listings": 3,
+      "currencies": {
+        "Small Charm": {
+          "count": 1,
+          "median": 0.5,
+          "mean": 0.5,
+          "min": 0.5,
+          "max": 0.5
+        },
+        "Um Rune": {
+          "count": 2,
+          "median": 10.0,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        }
+      },
+      "overall": {
+        "median": 10,
+        "mean": 6.8,
+        "count": 3
+      }
+    },
+    "War Staff": {
+      "total_listings": 2,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        },
+        "Ohm Rune": {
+          "count": 1,
+          "median": 25,
+          "mean": 25,
+          "min": 25,
+          "max": 25
+        }
+      },
+      "overall": {
+        "median": 37.5,
+        "mean": 37.5,
+        "count": 2
+      }
+    },
+    "War Traveler": {
+      "total_listings": 4,
+      "currencies": {
+        "Cham Rune": {
+          "count": 1,
+          "median": 35,
+          "mean": 35,
+          "min": 35,
+          "max": 35
+        },
+        "Vex Rune": {
+          "count": 3,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Gul Rune": {
+          "count": 1,
+          "median": 18,
+          "mean": 18,
+          "min": 18,
+          "max": 18
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 22.0,
+        "mean": 22.3,
+        "count": 6
+      }
+    },
+    "Warpspear": {
+      "total_listings": 2,
+      "currencies": {
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 6.5,
+        "mean": 6.5,
+        "count": 2
+      }
+    },
+    "Warshrike": {
+      "total_listings": 2,
+      "currencies": {
+        "Mal Rune": {
+          "count": 2,
+          "median": 12.0,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        },
+        "Ist Rune": {
+          "count": 2,
+          "median": 15.0,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 13.5,
+        "mean": 13.5,
+        "count": 4
+      }
+    },
+    "Waterwalk": {
+      "total_listings": 2,
+      "currencies": {
+        "Um Rune": {
+          "count": 1,
+          "median": 10,
+          "mean": 10,
+          "min": 10,
+          "max": 10
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 12.5,
+        "mean": 12.5,
+        "count": 2
+      }
+    },
+    "Western Worldstone Shard": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 13,
+          "mean": 13,
+          "min": 13,
+          "max": 13
+        }
+      },
+      "overall": {
+        "median": 13,
+        "mean": 13,
+        "count": 1
+      }
+    },
+    "White": {
+      "total_listings": 1,
+      "currencies": {
+        "Perfect Amethyst": {
+          "count": 1,
+          "median": 1,
+          "mean": 1,
+          "min": 1,
+          "max": 1
+        }
+      },
+      "overall": {
+        "median": 1,
+        "mean": 1,
+        "count": 1
+      }
+    },
+    "Windforce": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 15,
+        "count": 1
+      }
+    },
+    "Winged Knife": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 2000,
+          "mean": 2000,
+          "min": 2000,
+          "max": 2000
+        }
+      },
+      "overall": {
+        "median": 2000,
+        "mean": 2000,
+        "count": 1
+      }
+    },
+    "Wire Fleece": {
+      "total_listings": 2,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 300,
+          "mean": 300,
+          "min": 300,
+          "max": 300
+        },
+        "Ist Rune": {
+          "count": 2,
+          "median": 15.0,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Mal Rune": {
+          "count": 2,
+          "median": 12.0,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 15,
+        "mean": 70.8,
+        "count": 5
+      }
+    },
+    "Witchwild String": {
+      "total_listings": 1,
+      "currencies": {
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        },
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 13.5,
+        "mean": 13.5,
+        "count": 2
+      }
+    },
+    "Worusk's End": {
+      "total_listings": 1,
+      "currencies": {
+        "Mal Rune": {
+          "count": 1,
+          "median": 12,
+          "mean": 12,
+          "min": 12,
+          "max": 12
+        }
+      },
+      "overall": {
+        "median": 12,
+        "mean": 12,
+        "count": 1
+      }
+    },
+    "Wraithstep": {
+      "total_listings": 1,
+      "currencies": {
+        "Vex Rune": {
+          "count": 1,
+          "median": 22,
+          "mean": 22,
+          "min": 22,
+          "max": 22
+        },
+        "Gul Rune": {
+          "count": 1,
+          "median": 18,
+          "mean": 18,
+          "min": 18,
+          "max": 18
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 18,
+        "mean": 18.3,
+        "count": 3
+      }
+    },
+    "Wyrmhide": {
+      "total_listings": 2,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 300,
+          "mean": 300,
+          "min": 300,
+          "max": 300
+        },
+        "Ist Rune": {
+          "count": 1,
+          "median": 15,
+          "mean": 15,
+          "min": 15,
+          "max": 15
+        }
+      },
+      "overall": {
+        "median": 157.5,
+        "mean": 157.5,
+        "count": 2
+      }
+    },
+    "Wyrmhide Boots": {
+      "total_listings": 1,
+      "currencies": {
+        "Jah Rune": {
+          "count": 1,
+          "median": 250,
+          "mean": 250,
+          "min": 250,
+          "max": 250
+        }
+      },
+      "overall": {
+        "median": 250,
+        "mean": 250,
+        "count": 1
+      }
+    },
+    "Zod Rune": {
+      "total_listings": 1,
+      "currencies": {
+        "Ber Rune": {
+          "count": 1,
+          "median": 60,
+          "mean": 60,
+          "min": 60,
+          "max": 60
+        },
+        "Jah Rune": {
+          "count": 1,
+          "median": 50,
+          "mean": 50,
+          "min": 50,
+          "max": 50
+        }
+      },
+      "overall": {
+        "median": 55.0,
+        "mean": 55,
+        "count": 2
+      }
+    }
+  }
+}

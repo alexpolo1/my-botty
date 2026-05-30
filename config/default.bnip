@@ -155,13 +155,13 @@
 [Name] == Flawlesssapphire
 [Name] == Flawlessskull
 [Name] == Flawlesstopaz
-//[Name] == Perfectamethyst
-//[Name] == Perfectdiamond
-//[Name] == Perfectemerald
-//[Name] == Perfectruby
-//[Name] == Perfectsapphire
-//[Name] == Perfectskull
-//[Name] == Perfecttopaz
+[Name] == Perfectamethyst
+[Name] == Perfectdiamond
+[Name] == Perfectemerald
+[Name] == Perfectruby
+[Name] == Perfectsapphire
+[Name] == Perfectskull
+[Name] == Perfecttopaz
 
 //=========================================================================//
 //<<<<<<<<<<<<<<<<<<<<<<<<<<++++ Magic Items ++++>>>>>>>>>>>>>>>>>>>>>>>>>>//
@@ -404,10 +404,10 @@
 [Name] == Monarch && [Quality] == Magic # [Sockets] == 4 && [Fhr] == 17     // Jmoe
 [Name] == Monarch && [Quality] == Magic # [Sockets] == 4 && [Maxhp] >= 60       // Jmoc
 [Name] == Monarch && [Quality] == Magic # [Sockets] == 4 && [Itemreqpercent] == -30     // Jmos
-//([Name] == Crownshield || [Name] == Royalshield || [Name] == Sacredtarge || [Name] == Sacredrondache) && [Quality] == Magic # [Sockets] == 4 && [Fhr] == 17  // Paladin Jmod
-//([Name] == Crownshield || [Name] == Royalshield || [Name] == Sacredtarge || [Name] == Sacredrondache) && [Quality] == Magic # [Sockets] == 4 && [Itemfasterblockrate] == 30  // Paladin Jmoe
-//([Name] == Crownshield || [Name] == Royalshield || [Name] == Sacredtarge || [Name] == Sacredrondache) && [Quality] == Magic # [Sockets] == 4 && [Maxhp] >= 60 // Paladin Jmoc
-//([Name] == Crownshield || [Name] == Royalshield || [Name] == Sacredtarge || [Name] == Sacredrondache) && [Quality] == Magic # [Sockets] == 4 && [Itemreqpercent] == -30 // Paladin Jmos
+([Name] == Crownshield || [Name] == Royalshield || [Name] == Sacredtarge || [Name] == Sacredrondache) && [Quality] == Magic # [Sockets] == 4 && [Fhr] == 17  // Paladin Jmod
+([Name] == Crownshield || [Name] == Royalshield || [Name] == Sacredtarge || [Name] == Sacredrondache) && [Quality] == Magic # [Sockets] == 4 && [Itemfasterblockrate] == 30  // Paladin Jmoe
+([Name] == Crownshield || [Name] == Royalshield || [Name] == Sacredtarge || [Name] == Sacredrondache) && [Quality] == Magic # [Sockets] == 4 && [Maxhp] >= 60 // Paladin Jmoc
+([Name] == Crownshield || [Name] == Royalshield || [Name] == Sacredtarge || [Name] == Sacredrondache) && [Quality] == Magic # [Sockets] == 4 && [Itemreqpercent] == -30 // Paladin Jmos
 //[Type] == Voodooheads && [Quality] == Magic && [Class] >= Exceptional && [Flag] != Ethereal # ([Necromancerskills] >= 1 || [Poisonandboneskilltab] >= 1) && [Fbr] >= 30 && [Skillbonespear] >= 1
 
 //------------------------------------------
@@ -576,8 +576,8 @@
 //[Type] == Shield && [Quality] == Rare && [Flag] != Ethereal # [Maxhp] >= 30 && [Coldresist]+[Fireresist]+[Lightresist]+[Poisonresist] >= 40 && [Fbr] >= 30 && [Sockets] == 2
 //[Type] == Shield && [Quality] == Rare && [Flag] == Ethereal # [Maxhp] >= 30 && [Coldresist]+[Fireresist]+[Lightresist]+[Poisonresist] >= 40 && [Fbr] >= 30 && [Itemreplenishdurability] >= 1 && [Sockets] == 2
 //[Type] == Voodooheads && [Quality] == Rare # [Necromancerskills] == 2 && ([Skillbonespear] >= 3 || [Skillpoisonnova] >= 3) && [Fbr] >= 30 && [Fhr] >= 17 && [Sockets] >= 2
-//[Type] == Auricshields && [Quality] == Rare && [Flag] != Ethereal # [Paladinskills] >= 2 && [Fbr] == 30 && [Sockets] == 2
-//[Type] == Auricshields && [Quality] == Rare && [Flag] == Ethereal # [Paladinskills] >= 2 && [Fbr] >= 15 && [Itemreplenishdurability] >= 1 && [Sockets] == 2
+[Type] == Auricshields && [Quality] == Rare && [Flag] != Ethereal # [Paladinskills] >= 2 && [Fbr] == 30 && [Sockets] == 2
+[Type] == Auricshields && [Quality] == Rare && [Flag] == Ethereal # [Paladinskills] >= 2 && [Fbr] >= 15 && [Itemreplenishdurability] >= 1 && [Sockets] == 2
 
 //------------------------------------------
 //================= Weapons ================
@@ -808,8 +808,8 @@
 //[Name] == Crystalsword && [Quality] == Normal && [Flag] != Ethereal # [Sockets] == 0           // Plain
 //[Name] == Flail && [Quality] == Normal && [Flag] != Ethereal # [Sockets] == 0          // Plain
 //[Name] == Phaseblade && [Quality] == Normal && [Flag] != Ethereal # [Sockets] == 0          // Plain
-//[Name] == Warscepter && [Quality] == Normal && [Flag] != Ethereal # ([Skillblessedhammer] >= 3 || [Skillconviction] >= 3 || [Skillfistoftheheavens] >= 3 || [Skillfanaticism] >= 3 || [Skillholyshield] >= 3) && [Sockets] == 0          // Plain
-//[Name] == Divinescepter && [Quality] == Normal && [Flag] != Ethereal # ([Skillblessedhammer] >= 3 || [Skillconviction] >= 3 || [Skillfistoftheheavens] >= 3 || [Skillfanaticism] >= 3 || [Skillholyshield] >= 3) && [Sockets] == 0          // Plain
+[Name] == Warscepter && [Quality] == Normal && [Flag] != Ethereal # ([Skillblessedhammer] >= 3 || [Skillconviction] >= 3 || [Skillfistoftheheavens] >= 3 || [Skillfanaticism] >= 3 || [Skillholyshield] >= 3) && [Sockets] == 0          // Plain
+[Name] == Divinescepter && [Quality] == Normal && [Flag] != Ethereal # ([Skillblessedhammer] >= 3 || [Skillconviction] >= 3 || [Skillfistoftheheavens] >= 3 || [Skillfanaticism] >= 3 || [Skillholyshield] >= 3) && [Sockets] == 0          // Plain
 //[Name] == Crypticsword && [Quality] == Normal && [Flag] != Ethereal # [Sockets] == 0    // Plain
 //[Name] == Mythicalsword && [Quality] == Normal && [Flag] != Ethereal # [Sockets] == 0    // Plain
 
@@ -836,10 +836,10 @@
 ([Name] == Kris || [Name] == Cinquedeas || [Name] == Fangedknife) && [Quality] == Normal # [Skillabyss] >= 1 && ([Sockets] == 0 || [Sockets] == 3) //Void base       
 //[Name] == Phaseblade && [Quality] == Normal && [Flag] != Ethereal # [Sockets] == 5          // Socketed Greif base
 //[Name] == Phaseblade && [Quality] == Normal && [Flag] != Ethereal # [Sockets] == 3          // Socketed Lawbringer base
-//[Name] == Warscepter && [Quality] == Normal && [Flag] != Ethereal # ([Skillblessedhammer] >= 3 || [Skillconviction] >= 3 || [Skillfistoftheheavens] >= 3 || [Skillfanaticism] >= 3 || [Skillholyshield] >= 3) && [Sockets] == 5          // Socketed
-//[Name] == Divinescepter && [Quality] == Normal && [Flag] != Ethereal # ([Skillblessedhammer] >= 3 || [Skillconviction] >= 3 || [Skillfistoftheheavens] >= 3 || [Skillfanaticism] >= 3 || [Skillholyshield] >= 3) && [Sockets] == 5          // Socketed
-//[Name] == Caduceus && [Quality] == Normal && [Flag] != Ethereal # ([Skillblessedhammer] >= 3 || [Skillconviction] >= 3 || [Skillfistoftheheavens] >= 3 || [Skillfanaticism] >= 3 || [Skillholyshield] >= 3)          // Socketed
-//[Name] == Caduceus && [Quality] == Normal && [Flag] != Ethereal # ([Skillblessedhammer] >= 3 || [Skillconviction] >= 3 || [Skillfistoftheheavens] >= 3 || [Skillfanaticism] >= 3 || [Skillholyshield] >= 3) && [Sockets] == 5          // Socketed
+[Name] == Warscepter && [Quality] == Normal && [Flag] != Ethereal # ([Skillblessedhammer] >= 3 || [Skillconviction] >= 3 || [Skillfistoftheheavens] >= 3 || [Skillfanaticism] >= 3 || [Skillholyshield] >= 3) && [Sockets] == 5          // Socketed
+[Name] == Divinescepter && [Quality] == Normal && [Flag] != Ethereal # ([Skillblessedhammer] >= 3 || [Skillconviction] >= 3 || [Skillfistoftheheavens] >= 3 || [Skillfanaticism] >= 3 || [Skillholyshield] >= 3) && [Sockets] == 5          // Socketed
+[Name] == Caduceus && [Quality] == Normal && [Flag] != Ethereal # ([Skillblessedhammer] >= 3 || [Skillconviction] >= 3 || [Skillfistoftheheavens] >= 3 || [Skillfanaticism] >= 3 || [Skillholyshield] >= 3) && [Sockets] == 0          // Plain
+[Name] == Caduceus && [Quality] == Normal && [Flag] != Ethereal # ([Skillblessedhammer] >= 3 || [Skillconviction] >= 3 || [Skillfistoftheheavens] >= 3 || [Skillfanaticism] >= 3 || [Skillholyshield] >= 3) && [Sockets] == 5          // Socketed
 //[Name] == Crypticsword && [Quality] == Normal && [Flag] != Ethereal # [Sockets] == 3           // Socketed
 //[Name] == Mythicalsword && [Quality] == Normal && [Flag] != Ethereal # [Sockets] == 3           // Socketed
 
@@ -1563,7 +1563,7 @@
 //[Name] == Phaseblade && [Quality] == Unique && [Flag] != Ethereal # [Enhanceddamage] >= 150 && [Manaleech] >= 5       // Lightsabre
 //[Name] == Phaseblade && [Quality] == Unique && [Flag] != Ethereal # [Ias] == 30 && [Enhanceddamage] >= 230      // Azurewrath
 //[Idname] == Doombringer     // Doombringer
-//[Idname] == Thegrandfather      // The Grandfather
+[Idname] == Thegrandfather      // The Grandfather
 
 //----------------------------------------------
 //================= Unique Axes ================
@@ -1574,7 +1574,7 @@
 //[Idname] == Runemaster      // Rune Master
 //[Idname] == Spellsteel      // Spellsteel
 //[Idname] == Islestrike      // Islestrike
-//[Idname] == Razorsedge      // Razor's Edge
+[Idname] == Razorsedge      // Razor's Edge
 //[Idname] == Cranebeak       // Cranebeak
 
 //----------------------------------------------------------
@@ -1608,10 +1608,10 @@
 //================= Unique Polearms ================
 //--------------------------------------------------
 
-//[Name] == Ogreaxe && [Quality] == Unique && [Flag] != Ethereal # [Enhanceddamage] >= 270       // Bonehew
-//[Name] == Ogreaxe && [Quality] == Unique && [Flag] == Ethereal # [Enhanceddamage] >= 270       // Eth Bonehew
+[Name] == Ogreaxe && [Quality] == Unique && [Flag] != Ethereal # [Enhanceddamage] >= 270       // Bonehew
+[Name] == Ogreaxe && [Quality] == Unique && [Flag] == Ethereal # [Enhanceddamage] >= 270       // Eth Bonehew
 [Name] == Ogreaxe && [Quality] == Unique && [Flag] == Ethereal # [Enhanceddamage] == 320      // Eth Bonehew Perfect
-//[Name] == Thresher && [Quality] == Unique && [Flag] != Ethereal # [Enhanceddamage] >= 190     // The Reaper's Toll
+[Name] == Thresher && [Quality] == Unique && [Flag] != Ethereal # [Enhanceddamage] >= 190     // The Reaper's Toll
 [Name] == Thresher && [Quality] == Unique && [Flag] == Ethereal # [Enhanceddamage] >= 190     // Eth The Reaper's Toll
 //[Name] == Thresher && [Quality] == Unique && [Flag] == Ethereal # [Enhanceddamage] == 240 && [Lifeleech] == 15     // Eth The Reaper's Toll Perfect
 //[Name] == Crypticaxe && [Quality] == Unique && [Flag] != Ethereal # [Enhanceddamage] >= 200 && [Sockets] >= 1     // Tomb Reaver

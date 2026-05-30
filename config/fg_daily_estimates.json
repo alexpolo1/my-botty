@@ -1,654 +1,740 @@
 {
-  "generated_at": "2026-05-29T06:11:07.634072+00:00",
+  "generated_at": "2026-05-30T17:14:28.140756+00:00",
   "mode": "offline",
   "offline_dir": "data\\d2jsp_pages",
-  "ladder_start_date": "2026-05-22",
-  "days": 14,
-  "topics_scanned": 853,
+  "ladder_start_date": "2026-05-12",
+  "days": 21,
+  "topics_scanned": 861,
   "estimates": {
     "day_1": {},
     "day_2": {},
     "day_3": {},
     "day_4": {},
-    "day_5": {
-      "CTA": {
-        "median_fg": 1199.0,
-        "samples": 1
-      },
-      "Topic:Buy 2 Chaos Gc For 100 Fg": {
-        "median_fg": 100.0,
-        "samples": 2
-      },
-      "Cham Rune": {
-        "median_fg": 30.0,
-        "samples": 5
-      },
-      "Topic:Demon Skills Amulet And Skillers": {
-        "median_fg": 125.0,
-        "samples": 3
-      },
-      "Aldur's Advance": {
-        "median_fg": 25.0,
-        "samples": 3
-      },
-      "Ist Rune": {
-        "median_fg": 100.0,
-        "samples": 8
-      },
-      "Gul Rune": {
-        "median_fg": 65.0,
-        "samples": 4
-      },
-      "Topic:Mf Goldwrap, Nagel, Chancies": {
-        "median_fg": 35.0,
-        "samples": 3
-      },
-      "Dual Leech Ring": {
-        "median_fg": 70.0,
-        "samples": 1
-      },
-      "Unid Anni": {
-        "median_fg": 575.0,
-        "samples": 2
-      },
-      "Stealth RW": {
-        "median_fg": 10.0,
-        "samples": 1
-      }
-    },
+    "day_5": {},
     "day_6": {},
     "day_7": {},
-    "day_8": {
-      "Topic:Shards Shards And Shardonnay's": {
-        "median_fg": 5.0,
-        "samples": 6
-      },
-      "Cold SK": {
-        "median_fg": 100.0,
-        "samples": 12
-      },
-      "Griffon": {
-        "median_fg": 375.0,
-        "samples": 36
-      },
-      "Cham Rune": {
-        "median_fg": 70.0,
-        "samples": 45
-      },
-      "Topic:2.5m Igg": {
-        "median_fg": 10.0,
-        "samples": 2
-      },
-      "Topic:All My Stuff From The Ladder, Gear + Stash": {
-        "median_fg": 250.0,
-        "samples": 2
-      },
-      "Highlord": {
-        "median_fg": 60.0,
-        "samples": 13
-      },
-      "BK Ring": {
-        "median_fg": 20.0,
-        "samples": 33
-      },
-      "Topic:Dixtre Rush Normal And Nightmare Nm Services": {
-        "median_fg": 40.0,
-        "samples": 6
-      },
-      "Mal Rune": {
-        "median_fg": 87.5,
-        "samples": 24
-      },
-      "Insight": {
-        "median_fg": 80.0,
-        "samples": 61
-      },
-      "Ber Rune": {
-        "median_fg": 625.0,
-        "samples": 28
-      },
-      "Topic:Cheep Necro Torch": {
-        "median_fg": 37.5,
-        "samples": 4
-      },
-      "Topic:Torches": {
-        "median_fg": 200.0,
-        "samples": 6
-      },
-      "Topic:A Couple Of Uniques And Token": {
-        "median_fg": 50.0,
-        "samples": 6
-      },
-      "Topic:Fresh Latent Crack Of The Heavens 400fg": {
-        "median_fg": 400.0,
-        "samples": 6
-      },
-      "Topic:Iso X2 Act2 Statues": {
-        "median_fg": 15.0,
-        "samples": 6
-      },
-      "Topic:4 X Amazon Torchs Pack !!!": {
-        "median_fg": 200.0,
-        "samples": 2
-      },
-      "Topic:Eth 3os And 4os Armor": {
-        "median_fg": 30.0,
-        "samples": 4
-      },
-      "Topic:Latent Cold Rupture": {
-        "median_fg": 432.0,
-        "samples": 2
-      },
-      "Jah Rune": {
-        "median_fg": 1250.0,
-        "samples": 6
-      },
-      "Lo Rune": {
-        "median_fg": 200.0,
-        "samples": 55
-      },
-      "Topic:Need Worusk Statues": {
-        "median_fg": 60.0,
-        "samples": 2
-      },
-      "Topic:N Hoto Flail": {
-        "median_fg": 5.0,
-        "samples": 4
-      },
-      "Topic:Iso Grush And 1-60 Paying 250fg": {
-        "median_fg": 250.0,
-        "samples": 4
-      },
-      "Topic:Wts Latent Crack Of The Heavens": {
-        "median_fg": 450.0,
-        "samples": 2
-      },
-      "Topic:Gore Rider": {
-        "median_fg": 60.0,
-        "samples": 2
-      },
-      "Sorc Torch": {
-        "median_fg": 400.0,
-        "samples": 22
-      },
-      "Topic:Iso Cheap Necro Torch Ntorch": {
-        "median_fg": 175.0,
-        "samples": 4
-      },
-      "Topic:Iso Normal Rush": {
-        "median_fg": 15.0,
-        "samples": 2
-      },
-      "Gul Rune": {
-        "median_fg": 10.0,
-        "samples": 33
-      },
-      "Topic:Latent Rotting Fissure": {
-        "median_fg": 35.0,
-        "samples": 2
-      },
-      "Unid Anni": {
-        "median_fg": 400.0,
-        "samples": 9
-      },
-      "CTA": {
-        "median_fg": 350.0,
-        "samples": 4
-      },
-      "Black": {
-        "median_fg": 75.0,
-        "samples": 16
-      },
-      "Topic:Nightwing's Veil & Death Fathom": {
-        "median_fg": 200.0,
-        "samples": 2
-      },
-      "Topic:Iso Death Fathom": {
-        "median_fg": 200.0,
-        "samples": 2
-      },
-      "Vex Rune": {
-        "median_fg": 250.0,
-        "samples": 14
-      },
-      "Ist Rune": {
-        "median_fg": 100.0,
-        "samples": 66
-      },
-      "Topic:Fresh Storch For Auction": {
-        "median_fg": 50.0,
-        "samples": 2
-      },
-      "Topic:Horazon Legacy (boots)": {
-        "median_fg": 40.0,
-        "samples": 2
-      },
-      "Topic:All My Runes Sell Out Here": {
-        "median_fg": 100.0,
-        "samples": 2
-      },
-      "Um Rune": {
-        "median_fg": 40.0,
-        "samples": 23
-      },
-      "Pcomb SK": {
-        "median_fg": 80.0,
-        "samples": 6
-      },
-      "Topic:Iso: Gheeds Charm": {
-        "median_fg": 250.0,
-        "samples": 4
-      },
-      "Monarch": {
-        "median_fg": 40.0,
-        "samples": 20
-      },
-      "Shako": {
-        "median_fg": 120.0,
-        "samples": 20
-      },
-      "Topic:Wts Alot Torchs For Resell (( Profit ))": {
-        "median_fg": 600.0,
-        "samples": 4
-      },
-      "Vampire Gaze": {
-        "median_fg": 2.0,
-        "samples": 6
-      },
-      "Lem Rune": {
-        "median_fg": 30.0,
-        "samples": 6
-      },
-      "Ohm Rune": {
-        "median_fg": 55.0,
-        "samples": 28
-      },
-      "Topic:Renewed Crack Of Heaven (light Sunder) Random": {
-        "median_fg": 250.0,
-        "samples": 2
-      },
-      "Thresher": {
-        "median_fg": 9.0,
-        "samples": 16
-      },
-      "Topic:Arreat Non Eth": {
-        "median_fg": 150.0,
-        "samples": 2
-      },
-      "Topic:Need Some Perfect Amethyst": {
-        "median_fg": 48.0,
-        "samples": 2
-      },
-      "Topic:Tal Rasha Lidless Ft": {
-        "median_fg": 27.5,
-        "samples": 4
-      },
-      "Topic:15fg Vs Any Magefists": {
-        "median_fg": 15.0,
-        "samples": 4
-      },
-      "Treachery": {
-        "median_fg": 70.0,
-        "samples": 8
-      },
-      "Grief": {
-        "median_fg": 80.0,
-        "samples": 12
-      },
-      "Topic:Ft Assasin Torch 11/16": {
-        "median_fg": 100.0,
-        "samples": 6
-      },
-      "Topic:Iso Any Trash Flame Rift": {
-        "median_fg": 50.0,
-        "samples": 2
-      },
-      "Java SK": {
-        "median_fg": 90.0,
-        "samples": 12
-      },
-      "Topic:Renewed Flame Rift Monster": {
-        "median_fg": 100.0,
-        "samples": 2
-      },
-      "Topic:Iso Act 4 And 5 Statues": {
-        "median_fg": 60.0,
-        "samples": 4
-      },
-      "Topic:Ume Lament Ft": {
-        "median_fg": 15.0,
-        "samples": 2
-      },
-      "Topic:Cheap 3os Eth Loricated Mail": {
-        "median_fg": 20.0,
-        "samples": 2
-      },
-      "Topic:Fire Gc - 6 Str Eye": {
-        "median_fg": 50.0,
-        "samples": 2
-      },
-      "Topic:Heart Of The Oak 37 All Res": {
-        "median_fg": 450.0,
-        "samples": 2
-      },
-      "Guardian's Light": {
-        "median_fg": 15.0,
-        "samples": 12
-      },
-      "Topic:O Eth Ali Baba": {
-        "median_fg": 20.0,
-        "samples": 2
-      },
-      "Topic:Andy Visage": {
-        "median_fg": 100.0,
-        "samples": 2
-      },
-      "Topic:Tal Belt , Helm": {
-        "median_fg": 10.0,
-        "samples": 2
-      },
-      "Topic:Iso: Lum Rune": {
-        "median_fg": 7.5,
-        "samples": 4
-      },
-      "Topic:Bunch Of Item Ft": {
-        "median_fg": 15.0,
-        "samples": 12
-      },
-      "Topic:N 3x Chaos Sk": {
-        "median_fg": 50.0,
-        "samples": 6
-      },
-      "Topic:Key Of Hate Ft": {
-        "median_fg": 207.5,
-        "samples": 8
-      },
-      "Topic:Trang Gloves": {
-        "median_fg": 22.5,
-        "samples": 4
-      },
-      "Arach": {
-        "median_fg": 225.0,
-        "samples": 8
-      },
-      "Spirit": {
-        "median_fg": 5.0,
-        "samples": 6
-      },
-      "Topic:Iso: The Eye Of Etlich=50fg": {
-        "median_fg": 50.0,
-        "samples": 4
-      },
-      "Topic:Fal Rune For Sale": {
-        "median_fg": 10.0,
-        "samples": 2
-      },
-      "Topic:Chaos Gc Plain": {
-        "median_fg": 70.0,
-        "samples": 2
-      },
-      "Topic:Iso Fire Facet": {
-        "median_fg": 150.0,
-        "samples": 4
-      },
-      "Topic:Goldwrap": {
-        "median_fg": 8.0,
-        "samples": 2
-      },
-      "Topic:Eth Reapers Toll": {
-        "median_fg": 325.0,
-        "samples": 2
-      },
-      "Pul Rune": {
-        "median_fg": 20.0,
-        "samples": 34
-      },
-      "Topic:Lum Runes For Trade": {
-        "median_fg": 2905.0,
-        "samples": 6
-      },
-      "Topic:32rare Rings + 13 Rare Amulets Unid Vs 140 Fg": {
-        "median_fg": 140.0,
-        "samples": 6
-      },
-      "Topic:Wts 3x3 Keyset": {
-        "median_fg": 450.0,
-        "samples": 2
-      },
-      "Topic:Ft Zod": {
-        "median_fg": 660.0,
-        "samples": 2
-      },
-      "Topic:100% Perfect Raven Frost 250 20": {
-        "median_fg": 600.0,
-        "samples": 2
-      },
-      "Topic:Java Skiller With 27life For Cheap": {
-        "median_fg": 150.0,
-        "samples": 2
-      },
-      "Topic:# Wtb Perf Amethyst / Ral / Jewels / Gold": {
-        "median_fg": 3.0,
-        "samples": 6
-      },
-      "Topic:Draculs Grasp 50fg": {
-        "median_fg": 50.0,
-        "samples": 6
-      },
-      "Topic:Iso Shael 5fg": {
-        "median_fg": 5.0,
-        "samples": 4
-      },
-      "Topic:Arreat's Face Here": {
-        "median_fg": 50.0,
-        "samples": 2
-      },
-      "Topic:Assassin Torch 20/20": {
-        "median_fg": 1100.0,
-        "samples": 2
-      },
-      "War Traveler": {
-        "median_fg": 140.0,
-        "samples": 6
-      },
-      "Topic:Iso 3x Plain Lighting Skillers": {
-        "median_fg": 100.0,
-        "samples": 6
-      },
-      "Topic:Iso Sigon Belt": {
-        "median_fg": 5.0,
-        "samples": 4
-      },
-      "Topic:Ama Tiara Str And Java Gc Life": {
-        "median_fg": 115.0,
-        "samples": 12
-      },
-      "Topic:Perfect Gems": {
-        "median_fg": 46.0,
-        "samples": 2
-      },
-      "Topic:North Shard 25 Fg": {
-        "median_fg": 25.0,
-        "samples": 6
-      },
-      "Unid Torch": {
-        "median_fg": 200.0,
-        "samples": 9
-      },
-      "Topic:Iso Belt Tal Rash 15 Mf": {
-        "median_fg": 80.0,
-        "samples": 2
-      },
-      "Topic:Iso Chaos Skillers, Chaos Wraithstep": {
-        "median_fg": 239.0,
-        "samples": 2
-      },
-      "Topic:Tal Amu Need": {
-        "median_fg": 150.0,
-        "samples": 2
-      },
-      "Topic:O 50fire Res Aldur Boots": {
-        "median_fg": 50.0,
-        "samples": 2
-      },
-      "Topic:Iso Latent Cold Rupture Cold Sunder": {
-        "median_fg": 375.0,
-        "samples": 2
-      },
-      "Topic:Grush Let's Get Going>> 150fg": {
-        "median_fg": 150.0,
-        "samples": 6
-      },
-      "Topic:Eldritch Sk With Gf": {
-        "median_fg": 82.5,
-        "samples": 4
-      },
-      "Topic:Ft Perf Marrow Walks 2/200/20": {
-        "median_fg": 20.0,
-        "samples": 2
-      },
-      "Topic:Renewed Cold Sunder 600fg": {
-        "median_fg": 600.0,
-        "samples": 6
-      },
-      "Topic:Fal Rune For 10 Fg": {
-        "median_fg": 10.0,
-        "samples": 6
-      },
-      "Topic:Hell Wardens": {
-        "median_fg": 100.0,
-        "samples": 6
-      },
-      "Topic:Iso List": {
-        "median_fg": 20.0,
-        "samples": 2
-      },
-      "Topic:All My Perfect Gems": {
-        "median_fg": 2.0,
-        "samples": 2
-      },
-      "Topic:Grush": {
-        "median_fg": 125.0,
-        "samples": 2
-      },
-      "Topic:## Gg Fcr Ring ##": {
-        "median_fg": 400.0,
-        "samples": 12
-      },
-      "Topic:Ft: +3 Lite Coronet": {
-        "median_fg": 50.0,
-        "samples": 2
-      },
-      "Topic:O Ocu 4smon Trang": {
-        "median_fg": 200.0,
-        "samples": 2
-      },
-      "Topic:Sigon's Full Set": {
-        "median_fg": 30.0,
-        "samples": 2
-      },
-      "Dual Leech Ring": {
-        "median_fg": 85.0,
-        "samples": 6
-      },
-      "Topic:Some Cheap Items": {
-        "median_fg": 40.0,
-        "samples": 12
-      },
-      "Topic:Pit Store": {
-        "median_fg": 10.0,
-        "samples": 9
-      },
-      "White": {
-        "median_fg": 60.0,
-        "samples": 12
-      },
-      "Topic:Cheap Boost / Socket Quest Now Available": {
-        "median_fg": 25.0,
-        "samples": 6
-      },
-      "Topic:Renewed Crack Of The Heavens": {
-        "median_fg": 1.0,
-        "samples": 9
-      },
-      "Topic:Up To 8m Igg - 6 Fg/1m": {
-        "median_fg": 6.0,
-        "samples": 4
-      },
-      "Topic:Eth 15%ed Decapitator": {
-        "median_fg": 50.0,
-        "samples": 4
-      },
-      "Skin": {
-        "median_fg": 5.0,
-        "samples": 6
-      },
-      "Topic:Iso Zon Torch Physical Sunder And Jewel": {
-        "median_fg": 50.0,
-        "samples": 2
-      },
-      "Oculus": {
-        "median_fg": 1200.0,
-        "samples": 4
-      },
-      "Topic:Grush And Leveling Service": {
-        "median_fg": 150.0,
-        "samples": 12
-      },
-      "Topic:Ring 10fcr Light+fire Res": {
-        "median_fg": 57.5,
-        "samples": 4
-      },
-      "Topic:Skillers Grand Charm": {
-        "median_fg": 55.0,
-        "samples": 4
-      },
-      "Topic:Shard Set": {
-        "median_fg": 50.0,
-        "samples": 2
-      },
-      "Topic:30 Korlic's Pain Ft (30each)": {
-        "median_fg": 30.0,
-        "samples": 2
-      },
-      "Topic:23rare Rings+17rare Amulet All Unid Vs 100 Fg": {
-        "median_fg": 100.0,
-        "samples": 4
-      },
-      "Topic:Dixtre Waypoint Service": {
-        "median_fg": 25.0,
-        "samples": 6
-      },
-      "Topic:Iso Fire Skiller Frw X3": {
-        "median_fg": 100.0,
-        "samples": 2
-      },
-      "Topic:Iso Act 5 Statues": {
-        "median_fg": 60.0,
-        "samples": 2
-      },
-      "Topic:Wts - Rare Fcr Ring Vs Fg": {
-        "median_fg": 200.0,
-        "samples": 2
-      },
-      "Topic:Eldritch Sk 33 Life": {
-        "median_fg": 1500.0,
-        "samples": 2
-      },
-      "Sacred": {
-        "median_fg": 10.0,
-        "samples": 9
-      },
-      "Topic:Bring Wartravs": {
-        "median_fg": 250.0,
-        "samples": 6
-      }
-    },
+    "day_8": {},
     "day_9": {},
     "day_10": {},
     "day_11": {},
     "day_12": {},
     "day_13": {},
-    "day_14": {}
+    "day_14": {},
+    "day_15": {
+      "CTA": {
+        "median_fg": 100.0,
+        "avg_fg": 358.0,
+        "min_fg": 1.0,
+        "max_fg": 1199.0,
+        "samples": 5
+      },
+      "Gul Rune": {
+        "median_fg": 25.0,
+        "avg_fg": 63.1,
+        "min_fg": 5.0,
+        "max_fg": 200.0,
+        "samples": 8
+      },
+      "Sorc Torch": {
+        "median_fg": 100.0,
+        "avg_fg": 100.0,
+        "min_fg": 100.0,
+        "max_fg": 100.0,
+        "samples": 1
+      },
+      "Stealth RW": {
+        "median_fg": 55.0,
+        "avg_fg": 55.0,
+        "min_fg": 10.0,
+        "max_fg": 100.0,
+        "samples": 2
+      },
+      "Dual Leech Ring": {
+        "median_fg": 85.0,
+        "avg_fg": 85.0,
+        "min_fg": 70.0,
+        "max_fg": 100.0,
+        "samples": 2
+      },
+      "Unid Anni": {
+        "median_fg": 550.0,
+        "avg_fg": 416.7,
+        "min_fg": 100.0,
+        "max_fg": 600.0,
+        "samples": 3
+      },
+      "Ist Rune": {
+        "median_fg": 95.0,
+        "avg_fg": 112.2,
+        "min_fg": 1.0,
+        "max_fg": 400.0,
+        "samples": 12
+      },
+      "Pul Rune": {
+        "median_fg": 60.0,
+        "avg_fg": 72.1,
+        "min_fg": 5.0,
+        "max_fg": 190.0,
+        "samples": 7
+      },
+      "Lo Rune": {
+        "median_fg": 25.0,
+        "avg_fg": 38.8,
+        "min_fg": 5.0,
+        "max_fg": 100.0,
+        "samples": 4
+      },
+      "Um Rune": {
+        "median_fg": 75.0,
+        "avg_fg": 99.6,
+        "min_fg": 1.0,
+        "max_fg": 400.0,
+        "samples": 10
+      },
+      "Lem Rune": {
+        "median_fg": 60.0,
+        "avg_fg": 72.1,
+        "min_fg": 5.0,
+        "max_fg": 190.0,
+        "samples": 7
+      },
+      "Mal Rune": {
+        "median_fg": 100.0,
+        "avg_fg": 112.0,
+        "min_fg": 1.0,
+        "max_fg": 400.0,
+        "samples": 13
+      },
+      "Cham Rune": {
+        "median_fg": 30.0,
+        "avg_fg": 121.0,
+        "min_fg": 5.0,
+        "max_fg": 450.0,
+        "samples": 5
+      },
+      "Aldur's Advance": {
+        "median_fg": 27.5,
+        "avg_fg": 43.8,
+        "min_fg": 20.0,
+        "max_fg": 100.0,
+        "samples": 4
+      },
+      "Vex Rune": {
+        "median_fg": 20.0,
+        "avg_fg": 18.3,
+        "min_fg": 5.0,
+        "max_fg": 30.0,
+        "samples": 3
+      },
+      "Insight": {
+        "median_fg": 25.0,
+        "avg_fg": 91.0,
+        "min_fg": 1.0,
+        "max_fg": 400.0,
+        "samples": 6
+      },
+      "Ohm Rune": {
+        "median_fg": 20.0,
+        "avg_fg": 18.3,
+        "min_fg": 5.0,
+        "max_fg": 30.0,
+        "samples": 3
+      },
+      "Black": {
+        "median_fg": 20.0,
+        "avg_fg": 18.3,
+        "min_fg": 5.0,
+        "max_fg": 30.0,
+        "samples": 3
+      },
+      "Oculus": {
+        "median_fg": 20.0,
+        "avg_fg": 18.3,
+        "min_fg": 5.0,
+        "max_fg": 30.0,
+        "samples": 3
+      },
+      "Bone": {
+        "median_fg": 20.0,
+        "avg_fg": 18.3,
+        "min_fg": 5.0,
+        "max_fg": 30.0,
+        "samples": 3
+      },
+      "Moser": {
+        "median_fg": 20.0,
+        "avg_fg": 18.3,
+        "min_fg": 5.0,
+        "max_fg": 30.0,
+        "samples": 3
+      },
+      "Ber Rune": {
+        "median_fg": 20.0,
+        "avg_fg": 18.3,
+        "min_fg": 5.0,
+        "max_fg": 30.0,
+        "samples": 3
+      },
+      "Monarch": {
+        "median_fg": 20.0,
+        "avg_fg": 18.3,
+        "min_fg": 5.0,
+        "max_fg": 30.0,
+        "samples": 3
+      },
+      "Shako": {
+        "median_fg": 25.0,
+        "avg_fg": 91.0,
+        "min_fg": 1.0,
+        "max_fg": 400.0,
+        "samples": 6
+      },
+      "Key": {
+        "median_fg": 20.0,
+        "avg_fg": 18.3,
+        "min_fg": 5.0,
+        "max_fg": 30.0,
+        "samples": 3
+      },
+      "White": {
+        "median_fg": 20.0,
+        "avg_fg": 18.3,
+        "min_fg": 5.0,
+        "max_fg": 30.0,
+        "samples": 3
+      },
+      "Spirit": {
+        "median_fg": 20.0,
+        "avg_fg": 18.3,
+        "min_fg": 5.0,
+        "max_fg": 30.0,
+        "samples": 3
+      },
+      "Jah Rune": {
+        "median_fg": 20.0,
+        "avg_fg": 18.3,
+        "min_fg": 5.0,
+        "max_fg": 30.0,
+        "samples": 3
+      },
+      "BK Ring": {
+        "median_fg": 20.0,
+        "avg_fg": 18.3,
+        "min_fg": 5.0,
+        "max_fg": 30.0,
+        "samples": 3
+      },
+      "Vampire Gaze": {
+        "median_fg": 20.0,
+        "avg_fg": 18.3,
+        "min_fg": 5.0,
+        "max_fg": 30.0,
+        "samples": 3
+      },
+      "Skin": {
+        "median_fg": 20.0,
+        "avg_fg": 18.3,
+        "min_fg": 5.0,
+        "max_fg": 30.0,
+        "samples": 3
+      },
+      "Java SK": {
+        "median_fg": 20.0,
+        "avg_fg": 18.3,
+        "min_fg": 5.0,
+        "max_fg": 30.0,
+        "samples": 3
+      },
+      "Arach": {
+        "median_fg": 90.0,
+        "avg_fg": 163.7,
+        "min_fg": 1.0,
+        "max_fg": 400.0,
+        "samples": 3
+      },
+      "Mara": {
+        "median_fg": 90.0,
+        "avg_fg": 163.7,
+        "min_fg": 1.0,
+        "max_fg": 400.0,
+        "samples": 3
+      },
+      "5/5 Facet": {
+        "median_fg": 90.0,
+        "avg_fg": 163.7,
+        "min_fg": 1.0,
+        "max_fg": 400.0,
+        "samples": 3
+      }
+    },
+    "day_16": {},
+    "day_17": {},
+    "day_18": {},
+    "day_19": {
+      "Night": {
+        "median_fg": 75.0,
+        "avg_fg": 64.3,
+        "min_fg": 5.0,
+        "max_fg": 125.0,
+        "samples": 21
+      },
+      "Black": {
+        "median_fg": 125.0,
+        "avg_fg": 197.1,
+        "min_fg": 3.0,
+        "max_fg": 1400.0,
+        "samples": 126
+      },
+      "Spirit": {
+        "median_fg": 50.0,
+        "avg_fg": 231.4,
+        "min_fg": 3.0,
+        "max_fg": 3000.0,
+        "samples": 217
+      },
+      "Bone": {
+        "median_fg": 85.0,
+        "avg_fg": 194.5,
+        "min_fg": 3.0,
+        "max_fg": 3000.0,
+        "samples": 96
+      },
+      "Insight": {
+        "median_fg": 40.0,
+        "avg_fg": 179.3,
+        "min_fg": 3.0,
+        "max_fg": 3000.0,
+        "samples": 170
+      },
+      "Arach": {
+        "median_fg": 200.0,
+        "avg_fg": 302.4,
+        "min_fg": 3.0,
+        "max_fg": 3000.0,
+        "samples": 160
+      },
+      "Viper Gorge": {
+        "median_fg": 60.0,
+        "avg_fg": 251.9,
+        "min_fg": 3.0,
+        "max_fg": 1250.0,
+        "samples": 49
+      },
+      "Um Rune": {
+        "median_fg": 40.0,
+        "avg_fg": 95.7,
+        "min_fg": 3.0,
+        "max_fg": 400.0,
+        "samples": 132
+      },
+      "Fortitude": {
+        "median_fg": 70.0,
+        "avg_fg": 492.2,
+        "min_fg": 10.0,
+        "max_fg": 1400.0,
+        "samples": 9
+      },
+      "Sorc Torch": {
+        "median_fg": 200.0,
+        "avg_fg": 342.9,
+        "min_fg": 50.0,
+        "max_fg": 1100.0,
+        "samples": 34
+      },
+      "Pala Torch": {
+        "median_fg": 200.0,
+        "avg_fg": 230.0,
+        "min_fg": 50.0,
+        "max_fg": 450.0,
+        "samples": 18
+      },
+      "Light SK": {
+        "median_fg": 50.0,
+        "avg_fg": 55.8,
+        "min_fg": 20.0,
+        "max_fg": 100.0,
+        "samples": 12
+      },
+      "Skin": {
+        "median_fg": 50.0,
+        "avg_fg": 47.4,
+        "min_fg": 0.0,
+        "max_fg": 210.0,
+        "samples": 27
+      },
+      "Thresher": {
+        "median_fg": 200.0,
+        "avg_fg": 207.1,
+        "min_fg": 3.0,
+        "max_fg": 690.0,
+        "samples": 88
+      },
+      "Monarch": {
+        "median_fg": 45.0,
+        "avg_fg": 204.6,
+        "min_fg": 3.0,
+        "max_fg": 2700.0,
+        "samples": 205
+      },
+      "Griffon": {
+        "median_fg": 350.0,
+        "avg_fg": 321.5,
+        "min_fg": 10.0,
+        "max_fg": 1250.0,
+        "samples": 67
+      },
+      "Vex Rune": {
+        "median_fg": 100.0,
+        "avg_fg": 178.5,
+        "min_fg": 3.0,
+        "max_fg": 1100.0,
+        "samples": 77
+      },
+      "Ist Rune": {
+        "median_fg": 80.0,
+        "avg_fg": 161.5,
+        "min_fg": 3.0,
+        "max_fg": 1400.0,
+        "samples": 121
+      },
+      "Shako": {
+        "median_fg": 150.0,
+        "avg_fg": 406.8,
+        "min_fg": 3.0,
+        "max_fg": 3000.0,
+        "samples": 107
+      },
+      "Oath": {
+        "median_fg": 20.0,
+        "avg_fg": 20.0,
+        "min_fg": 20.0,
+        "max_fg": 20.0,
+        "samples": 3
+      },
+      "Mal Rune": {
+        "median_fg": 42.5,
+        "avg_fg": 139.0,
+        "min_fg": 3.0,
+        "max_fg": 400.0,
+        "samples": 94
+      },
+      "CTA": {
+        "median_fg": 350.0,
+        "avg_fg": 490.0,
+        "min_fg": 10.0,
+        "max_fg": 3000.0,
+        "samples": 94
+      },
+      "White": {
+        "median_fg": 20.0,
+        "avg_fg": 64.6,
+        "min_fg": 3.0,
+        "max_fg": 600.0,
+        "samples": 66
+      },
+      "Highlord": {
+        "median_fg": 45.0,
+        "avg_fg": 161.3,
+        "min_fg": 5.0,
+        "max_fg": 690.0,
+        "samples": 55
+      },
+      "Ohm Rune": {
+        "median_fg": 300.0,
+        "avg_fg": 236.8,
+        "min_fg": 5.0,
+        "max_fg": 1000.0,
+        "samples": 69
+      },
+      "Ber Rune": {
+        "median_fg": 100.0,
+        "avg_fg": 250.4,
+        "min_fg": 3.0,
+        "max_fg": 1100.0,
+        "samples": 27
+      },
+      "Lo Rune": {
+        "median_fg": 250.0,
+        "avg_fg": 227.2,
+        "min_fg": 3.0,
+        "max_fg": 1000.0,
+        "samples": 101
+      },
+      "Cham Rune": {
+        "median_fg": 325.0,
+        "avg_fg": 236.2,
+        "min_fg": 3.0,
+        "max_fg": 650.0,
+        "samples": 39
+      },
+      "Mara": {
+        "median_fg": 300.0,
+        "avg_fg": 463.8,
+        "min_fg": 3.0,
+        "max_fg": 3000.0,
+        "samples": 88
+      },
+      "Light Jewel": {
+        "median_fg": 820.0,
+        "avg_fg": 820.0,
+        "min_fg": 820.0,
+        "max_fg": 820.0,
+        "samples": 2
+      },
+      "Guardian's Light": {
+        "median_fg": 15.0,
+        "avg_fg": 108.7,
+        "min_fg": 5.0,
+        "max_fg": 820.0,
+        "samples": 39
+      },
+      "Enigma": {
+        "median_fg": 300.0,
+        "avg_fg": 725.4,
+        "min_fg": 30.0,
+        "max_fg": 3000.0,
+        "samples": 41
+      },
+      "War Traveler": {
+        "median_fg": 350.0,
+        "avg_fg": 345.7,
+        "min_fg": 3.0,
+        "max_fg": 1400.0,
+        "samples": 32
+      },
+      "5/5 Facet": {
+        "median_fg": 50.0,
+        "avg_fg": 237.3,
+        "min_fg": 3.0,
+        "max_fg": 1400.0,
+        "samples": 50
+      },
+      "Sacred": {
+        "median_fg": 50.0,
+        "avg_fg": 162.9,
+        "min_fg": 5.0,
+        "max_fg": 1400.0,
+        "samples": 100
+      },
+      "Wind": {
+        "median_fg": 750.0,
+        "avg_fg": 743.3,
+        "min_fg": 60.0,
+        "max_fg": 1400.0,
+        "samples": 6
+      },
+      "Cold SK": {
+        "median_fg": 125.0,
+        "avg_fg": 756.5,
+        "min_fg": 10.0,
+        "max_fg": 1800.0,
+        "samples": 10
+      },
+      "Giant": {
+        "median_fg": 17.5,
+        "avg_fg": 103.5,
+        "min_fg": 3.0,
+        "max_fg": 600.0,
+        "samples": 32
+      },
+      "Key": {
+        "median_fg": 10.0,
+        "avg_fg": 42.1,
+        "min_fg": 3.0,
+        "max_fg": 1100.0,
+        "samples": 58
+      },
+      "BK Ring": {
+        "median_fg": 50.0,
+        "avg_fg": 251.0,
+        "min_fg": 2.0,
+        "max_fg": 1800.0,
+        "samples": 79
+      },
+      "Death's Fathom": {
+        "median_fg": 50.0,
+        "avg_fg": 195.5,
+        "min_fg": 35.0,
+        "max_fg": 1000.0,
+        "samples": 22
+      },
+      "Pul Rune": {
+        "median_fg": 40.0,
+        "avg_fg": 175.5,
+        "min_fg": 3.0,
+        "max_fg": 1800.0,
+        "samples": 111
+      },
+      "Fury": {
+        "median_fg": 10.0,
+        "avg_fg": 37.3,
+        "min_fg": 10.0,
+        "max_fg": 100.0,
+        "samples": 11
+      },
+      "Lem Rune": {
+        "median_fg": 200.0,
+        "avg_fg": 214.4,
+        "min_fg": 10.0,
+        "max_fg": 400.0,
+        "samples": 49
+      },
+      "Jah Rune": {
+        "median_fg": 380.0,
+        "avg_fg": 522.8,
+        "min_fg": 3.0,
+        "max_fg": 1100.0,
+        "samples": 13
+      },
+      "Gul Rune": {
+        "median_fg": 80.0,
+        "avg_fg": 233.2,
+        "min_fg": 3.0,
+        "max_fg": 1800.0,
+        "samples": 69
+      },
+      "Unid Anni": {
+        "median_fg": 350.0,
+        "avg_fg": 352.9,
+        "min_fg": 20.0,
+        "max_fg": 450.0,
+        "samples": 24
+      },
+      "Grief": {
+        "median_fg": 350.0,
+        "avg_fg": 378.7,
+        "min_fg": 100.0,
+        "max_fg": 1100.0,
+        "samples": 23
+      },
+      "Fist": {
+        "median_fg": 300.0,
+        "avg_fg": 278.1,
+        "min_fg": 30.0,
+        "max_fg": 400.0,
+        "samples": 21
+      },
+      "Hellfire": {
+        "median_fg": 50.0,
+        "avg_fg": 80.0,
+        "min_fg": 40.0,
+        "max_fg": 150.0,
+        "samples": 9
+      },
+      "Oculus": {
+        "median_fg": 40.0,
+        "avg_fg": 39.0,
+        "min_fg": 5.0,
+        "max_fg": 150.0,
+        "samples": 31
+      },
+      "Unid Torch": {
+        "median_fg": 250.0,
+        "avg_fg": 258.9,
+        "min_fg": 40.0,
+        "max_fg": 400.0,
+        "samples": 36
+      },
+      "Aldur's Advance": {
+        "median_fg": 45.0,
+        "avg_fg": 62.2,
+        "min_fg": 3.0,
+        "max_fg": 150.0,
+        "samples": 12
+      },
+      "Pcomb SK": {
+        "median_fg": 400.0,
+        "avg_fg": 682.6,
+        "min_fg": 55.0,
+        "max_fg": 1800.0,
+        "samples": 21
+      },
+      "Stealth RW": {
+        "median_fg": 20.0,
+        "avg_fg": 36.9,
+        "min_fg": 5.0,
+        "max_fg": 200.0,
+        "samples": 34
+      },
+      "Ward": {
+        "median_fg": 20.0,
+        "avg_fg": 78.3,
+        "min_fg": 15.0,
+        "max_fg": 200.0,
+        "samples": 12
+      },
+      "Moser": {
+        "median_fg": 20.0,
+        "avg_fg": 78.3,
+        "min_fg": 15.0,
+        "max_fg": 200.0,
+        "samples": 12
+      },
+      "Vampire Gaze": {
+        "median_fg": 150.0,
+        "avg_fg": 173.1,
+        "min_fg": 50.0,
+        "max_fg": 300.0,
+        "samples": 13
+      },
+      "Terror Key": {
+        "median_fg": 4.0,
+        "avg_fg": 9.0,
+        "min_fg": 3.0,
+        "max_fg": 20.0,
+        "samples": 6
+      },
+      "Destruction Key": {
+        "median_fg": 10.0,
+        "avg_fg": 25.9,
+        "min_fg": 3.0,
+        "max_fg": 80.0,
+        "samples": 12
+      },
+      "Treachery": {
+        "median_fg": 200.0,
+        "avg_fg": 881.2,
+        "min_fg": 100.0,
+        "max_fg": 3000.0,
+        "samples": 8
+      },
+      "Hate Key": {
+        "median_fg": 3.0,
+        "avg_fg": 8.7,
+        "min_fg": 3.0,
+        "max_fg": 20.0,
+        "samples": 3
+      },
+      "Java SK": {
+        "median_fg": 20.0,
+        "avg_fg": 128.5,
+        "min_fg": 3.0,
+        "max_fg": 600.0,
+        "samples": 6
+      },
+      "Crow": {
+        "median_fg": 5.0,
+        "avg_fg": 5.0,
+        "min_fg": 5.0,
+        "max_fg": 5.0,
+        "samples": 9
+      },
+      "Bulwark": {
+        "median_fg": 15.0,
+        "avg_fg": 15.0,
+        "min_fg": 10.0,
+        "max_fg": 20.0,
+        "samples": 4
+      },
+      "Crescent": {
+        "median_fg": 10.0,
+        "avg_fg": 8.3,
+        "min_fg": 5.0,
+        "max_fg": 10.0,
+        "samples": 9
+      }
+    },
+    "day_20": {},
+    "day_21": {}
   }
 }
