@@ -15,6 +15,10 @@ try:
 except Exception:
     PyTessBaseAPI = None
     OEM = None
+try:
+    import pytesseract
+except Exception:
+    pytesseract = None
 import numpy as np
 import cv2
 from utils.misc import erode_to_black, find_best_match
@@ -61,9 +65,18 @@ def image_to_text(
         images = [images]
     results = []
     if PyTessBaseAPI is None or OEM is None:
-        raise RuntimeError(
-            "tesserocr is not available. Install OCR deps (recommended: Python 3.10 env "
-            "plus dependencies/tesserocr-2.5.2-cp310-cp310-win_amd64.whl)."
+        if pytesseract is None:
+            raise RuntimeError(
+                "Neither tesserocr nor pytesseract is available. Install OCR deps "
+                "(recommended: Python 3.10 env plus dependencies/tesserocr-2.5.2-cp310-cp310-win_amd64.whl, "
+                "or pip install pytesseract)."
+            )
+        Logger.info("tesserocr not available, falling back to pytesseract")
+        return _image_to_text_pytesseract(
+            images, model=model, psm=psm, word_list=word_list, scale=scale,
+            crop_pad=crop_pad, erode=erode, invert=invert, threshold=threshold,
+            digits_only=digits_only, fix_regexps=fix_regexps,
+            check_known_errors=check_known_errors, correct_words=correct_words
         )
 
     with PyTessBaseAPI(psm=psm, oem=OEM.LSTM_ONLY, path=f"assets/tessdata", lang=model ) as api:
@@ -117,6 +130,139 @@ def image_to_text(
                 mean_confidence=api.MeanTextConf()
             ))
         return results
+
+
+def _image_to_text_pytesseract(
+    images: np.ndarray | list[np.ndarray],
+    model: str = "hover-eng_inconsolata_inv_th_fast",
+    psm: int = 3,
+    word_list: str = "assets/word_lists/all_words.txt",
+    scale: float = 1.0,
+    crop_pad: bool = True,
+    erode: bool = False,
+    invert: bool = True,
+    threshold: int = 25,
+    digits_only: bool = False,
+    fix_regexps: bool = True,
+    check_known_errors: bool = True,
+    correct_words: bool = True,
+) -> list[OcrResult]:
+    """
+    pytesseract fallback for image_to_text() when tesserocr is unavailable.
+    """
+    import tempfile
+
+    if type(images) == np.ndarray:
+        images = [images]
+
+    # Build custom config for PSM and user words
+    custom_config = f"--psm {psm}"
+    if word_list:
+        custom_config += f" user_words_file {word_list}"
+    if digits_only:
+        custom_config += (
+            " tessedit_char_blacklist "
+            ".,!?@#$%&*()<>_-+=/:;'\"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+        )
+        custom_config += " tessedit_char_whitelist 0123456789"
+
+    tessdata_dir = "assets/tessdata"
+
+    results = []
+    for image in images:
+        processed_img = image
+        if scale:
+            processed_img = cv2.resize(
+                processed_img, None, fx=scale, fy=scale, interpolation=cv2.INTER_LINEAR)
+        if erode:
+            processed_img = erode_to_black(processed_img)
+        if crop_pad:
+            processed_img = _crop_pad(processed_img)
+        image_is_binary = (image.shape[2] if len(
+            image.shape) == 3 else 1) == 1 and image.dtype == bool
+        if not image_is_binary and threshold:
+            processed_img = cv2.cvtColor(processed_img, cv2.COLOR_BGR2GRAY)
+            processed_img = cv2.threshold(
+                processed_img, threshold, 255, cv2.THRESH_BINARY)[1]
+        if invert:
+            if threshold or image_is_binary:
+                processed_img = cv2.bitwise_not(processed_img)
+            else:
+                processed_img = ~processed_img
+
+        # Save to a temp file for pytesseract (it works with PIL / file paths)
+        with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tmp:
+            tmp_path = tmp.name
+            cv2.imwrite(tmp_path, processed_img)
+
+        # Run pytesseract
+        tessdata_config = f"--tessdata-dir {tessdata_dir}"
+        data = pytesseract.image_to_data(
+            tmp_path,
+            lang=model,
+            config=f"{tessdata_config} {custom_config}",
+            output_type=pytesseract.Output.DICT,
+        )
+
+        # Clean up temp file
+        try:
+            os.unlink(tmp_path)
+        except OSError:
+            pass
+
+        # Reconstruct text and confidences from the per-word data
+        word_confidences = []
+        lines: list[list[str]] = []
+        current_line: list[str] = []
+        prev_top = None
+        for i in range(len(data["text"])):
+            conf = int(data["conf"][i])
+            text = data["text"][i].strip()
+            if not text:
+                # End of a line in image_to_data output
+                if current_line:
+                    lines.append(current_line)
+                    current_line = []
+                prev_top = None
+                continue
+            # Group words by line using the top coordinate
+            top = data["top"][i]
+            if prev_top is not None and abs(top - prev_top) > 10:
+                if current_line:
+                    lines.append(current_line)
+                    current_line = []
+            current_line.append(text)
+            word_confidences.append(conf)
+            prev_top = top
+        if current_line:
+            lines.append(current_line)
+
+        original_text = "\n".join(" ".join(line) for line in lines)
+        text = original_text
+        # replace newlines if image is a single line
+        if psm in (7, 8, 13):
+            text = text.replace('\n', '')
+
+        mean_confidence = (
+            sum(word_confidences) / len(word_confidences)
+            if word_confidences else 0
+        )
+
+        if fix_regexps:
+            text = _fix_regexps(text)
+        if check_known_errors:
+            text = _check_known_errors(text)
+        if correct_words:
+            text = _ocr_result_dictionary_check(text, word_confidences)
+
+        results.append(OcrResult(
+            original_text=original_text,
+            text=text,
+            word_confidences=word_confidences,
+            mean_confidence=mean_confidence
+        ))
+
+    return results
 
 
 def _crop_pad(image: np.ndarray = None):

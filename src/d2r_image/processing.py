@@ -10,6 +10,7 @@ from d2r_image.processing_helpers import build_d2_items, crop_text_clusters, cro
 import numpy as np
 
 from logger import Logger
+from utils.log_rotation import safe_imwrite
 
 import os
 
@@ -36,7 +37,7 @@ def get_hovered_item(image: np.ndarray, model = "hover-eng_inconsolata_inv_th_fa
             Logger.warning(f"\nparsed_item ERROR {e}\n {traceback.format_exc()}")
             # * Log the screenshot to log/screenshots/info directory.
             t = time.time()
-            cv2.imwrite(f"log/screenshots/info/02_{t}.png", res.img)
+            safe_imwrite(f"log/screenshots/info/02_{t}.png", res.img)
             with open("log/screenshots/info/02_error_log.txt", "a") as f:
                 f.write(f"""--------------------------------------------------------------------------------
 [{t}]

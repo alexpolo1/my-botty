@@ -125,6 +125,18 @@ def main():
             print(f"  {row[0]:<10} {row[1]}")
     print("\n")
 
+    # Set up log rotation Discord notification callback
+    from utils import log_rotation
+    if Config().log_rotation.get("discord_notify_rotation"):
+        def _log_rotation_callback(deleted: int, dir_path: str, total_mb: float):
+            from messages import Messenger
+            m = Messenger()
+            if m.enabled:
+                # Normalize path for readability
+                dname = dir_path.split(os.sep)[-1] if dir_path else "log"
+                m.send_message(f"Log rotation: deleted {deleted} old files from {dname}/ ({total_mb:.0f}MB remaining)")
+        log_rotation.set_rotation_callback(_log_rotation_callback)
+
     keyboard.add_hotkey(Config().advanced_options['select_runs_key'], lambda: open_run_selector(Config()))
     keyboard.add_hotkey(Config().advanced_options['auto_settings_key'], lambda: adjust_settings())
     keyboard.add_hotkey(Config().advanced_options['graphic_debugger_key'], lambda: start_or_stop_graphic_debugger(controllers))

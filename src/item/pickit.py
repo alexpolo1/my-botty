@@ -43,9 +43,13 @@ class PickIt:
     @staticmethod
     def _log_data(items: GroundItemList, img: ndarray, counter: int, _uuid: str):
         if Config().general["pickit_screenshots"]:
-            cv2.imwrite(f"log/screenshots/pickit/{_uuid }_{counter}.png", img)
-            with open(f"log/screenshots/pickit/{_uuid }_{counter}.json", 'w', encoding='utf-8') as f:
-                json.dump(items, f, ensure_ascii=False, sort_keys=False, cls=EnhancedJSONEncoder, indent=2)
+            from utils.log_rotation import safe_imwrite
+            safe_imwrite(f"log/screenshots/pickit/{_uuid }_{counter}.png", img)
+            try:
+                with open(f"log/screenshots/pickit/{_uuid }_{counter}.json", 'w', encoding='utf-8') as f:
+                    json.dump(items, f, ensure_ascii=False, sort_keys=False, cls=EnhancedJSONEncoder, indent=2)
+            except OSError as e:
+                Logger.warning(f"Pickit JSON log failed: {e}")
 
     @staticmethod
     def _locate_items() -> tuple[GroundItemList, ndarray]:

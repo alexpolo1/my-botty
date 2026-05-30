@@ -453,6 +453,16 @@ class Config:
             "override_capabilities": _default_iff(Config()._select_optional("advanced_options", "override_capabilities"), ""),
         }
 
+        self.log_rotation = {
+            "pickit_max_files": int(self._select_optional("log_rotation", "pickit_max_files", "300")),
+            "pickit_max_mb": int(self._select_optional("log_rotation", "pickit_max_mb", "200")),
+            "info_max_files": int(self._select_optional("log_rotation", "info_max_files", "100")),
+            "info_max_mb": int(self._select_optional("log_rotation", "info_max_mb", "200")),
+            "items_max_files": int(self._select_optional("log_rotation", "items_max_files", "50")),
+            "items_max_mb": int(self._select_optional("log_rotation", "items_max_mb", "50")),
+            "discord_notify_rotation": bool(int(self._select_optional("log_rotation", "discord_notify_rotation", "1"))),
+        }
+
         self.colors = {}
         for key in self.configs["game"]["parser"]["colors"]:
             self.colors[key] = np.split(np.array([int(x) for x in self._select_val("colors", key).split(",")]), 2)

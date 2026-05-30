@@ -2,6 +2,7 @@ from .generic_api import GenericApi
 from config import Config
 from logger import Logger
 import cv2
+from utils.log_rotation import safe_imwrite
 import datetime
 import traceback
 import discord
@@ -45,7 +46,7 @@ class DiscordEmbeds(GenericApi):
         imgName = item.replace('_', '-')
 
         _, w, _ = image.shape
-        cv2.imwrite(f"./log/screenshots/items/{item}.png", image)
+        safe_imwrite(f"./log/screenshots/items/{item}.png", image)
         file = self._add_file(f"./log/screenshots/items/{item}.png", f"{imgName}.png")
         e = discord.Embed(
             title="Item Stashed!",

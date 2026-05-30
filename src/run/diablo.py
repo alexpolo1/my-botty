@@ -8,6 +8,7 @@ from item.pickit import PickIt
 import template_finder
 from town.town_manager import TownManager, A4
 from utils.misc import wait
+from utils.log_rotation import safe_imwrite
 from input_layer import mouse
 from screen import convert_abs_to_monitor, grab
 from ui_manager import detect_screen_object, ScreenObjects
@@ -100,7 +101,7 @@ class Diablo:
                         if not self._pather.traverse_nodes([602], self._char, threshold=0.80): return False
                         self._pather.traverse_nodes_fixed("dia_pent_rudijump", self._char)
                         Logger.debug("CS after town: Re-open TP")
-                        if Config().general["info_screenshots"]: cv2.imwrite(f"./log/screenshots/info/TP_after_town" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+                        if Config().general["info_screenshots"]: safe_imwrite(f"./log/screenshots/info/TP_after_town" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
                         if not skills.has_tps():
                             Logger.warning("CS after Town: failed to open TP, higher chance of failing runs from now on, you should buy new TPs!")
                             self.used_tps += 20
@@ -137,7 +138,7 @@ class Diablo:
                     x_m, y_m = convert_abs_to_monitor([50 * direction, direction])
                     self._char.move((x_m, y_m), force_move=True)
                 i += 1
-        if Config().general["info_screenshots"] and not found: cv2.imwrite(f"./log/screenshots/info/info_failed_seal_" + seal_layout + "_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+        if Config().general["info_screenshots"] and not found: safe_imwrite(f"./log/screenshots/info/info_failed_seal_" + seal_layout + "_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
         return found
 
 
@@ -150,7 +151,7 @@ class Diablo:
             found = template_finder.search_and_wait(templates, threshold=0.83, timeout=0.1, suppress_debug=True).valid
             if not found: self._pather.traverse_nodes_fixed(path, self._char)
         if not found:
-            if Config().general["info_screenshots"]: cv2.imwrite(f"./log/screenshots/info/info_failed_loop_pentagram_" + path + "_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+            if Config().general["info_screenshots"]: safe_imwrite(f"./log/screenshots/info/info_failed_loop_pentagram_" + path + "_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
             return False
         return True
 
@@ -183,7 +184,7 @@ class Diablo:
                 return True
             else:
                 Logger.warning("CS Trash (A): Layout_check failed to determine the right Layout, "+'\033[91m'+"trying to loop to pentagram to save the run"+'\033[0m')
-                if Config().general["info_screenshots"]: cv2.imwrite(f"./log/screenshots/info/info_entrance_a_failed_layoutcheck_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+                if Config().general["info_screenshots"]: safe_imwrite(f"./log/screenshots/info/info_entrance_a_failed_layoutcheck_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
                 return True
 
         else:
@@ -204,7 +205,7 @@ class Diablo:
                 return True
             else:
                 Logger.warning("CS Trash (B): Layout_check failed to determine the right Layout, "+'\033[91m'+"trying to loop to pentagram to save the run"+'\033[0m')
-                if Config().general["info_screenshots"]: cv2.imwrite(f"./log/screenshots/info/info_entrance_b_failed_layoutcheck_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+                if Config().general["info_screenshots"]: safe_imwrite(f"./log/screenshots/info/info_entrance_b_failed_layoutcheck_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
                 return True
 
     #GET FROM WP TO PENTAGRAM (clear_trash=0)
@@ -222,7 +223,7 @@ class Diablo:
             if not found:
                 self._pather.traverse_nodes_fixed("diablo_wp_pentagram_loop", self._char)
         if not found:
-            if Config().general["info_screenshots"]: cv2.imwrite(f"./log/screenshots/info/info_failed_pent_loop_no_trash_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+            if Config().general["info_screenshots"]: safe_imwrite(f"./log/screenshots/info/info_failed_pent_loop_no_trash_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
             return False
         return True
 
@@ -243,7 +244,7 @@ class Diablo:
             if not found:
                 self._pather.traverse_nodes_fixed("diablo_wp_entrance_loop", self._char)
         if not found:
-            if Config().general["info_screenshots"]: cv2.imwrite(f"./log/screenshots/info/info_failed_cs_entrance_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+            if Config().general["info_screenshots"]: safe_imwrite(f"./log/screenshots/info/info_failed_cs_entrance_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
             return False
         Logger.debug("Kill trash at location: rof_02")
         self._char.kill_cs_trash("rof_02")
@@ -258,7 +259,7 @@ class Diablo:
             found = template_finder.search_and_wait(templates, threshold=0.83, timeout=0.1, suppress_debug=True).valid
             if not found: self._pather.traverse_nodes_fixed("diablo_wp_pentagram_loop", self._char)
         if not found:
-            if Config().general["info_screenshots"]: cv2.imwrite(f"./log/screenshots/info/info_failed_loop_pentagram_diablo_wp_pentagram_loop_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+            if Config().general["info_screenshots"]: safe_imwrite(f"./log/screenshots/info/info_failed_loop_pentagram_diablo_wp_pentagram_loop_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
             return False
         return True
 
@@ -295,7 +296,7 @@ class Diablo:
             found = template_finder.search_and_wait(templates, threshold=0.83, timeout=0.1).valid
             if not found: self._pather.traverse_nodes_fixed(loop_path, self._char)
         if not found:
-            if Config().general["info_screenshots"]: cv2.imwrite(f"./log/screenshots/info/info_failed_loop_pentagram_" + path + "_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+            if Config().general["info_screenshots"]: safe_imwrite(f"./log/screenshots/info/info_failed_loop_pentagram_" + path + "_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
             return False
         if not self._pather.traverse_nodes([602], self._char, timeout=2): return False
         Logger.info("CS TRASH: " + str(seal) + " calibrated at PENTAGRAM")
@@ -381,7 +382,7 @@ class Diablo:
                 if not self._pather.traverse_nodes(confirmation_node, self._char, threshold=calibration_threshold,): return False
             if not template_finder.search_and_wait(templates_confirmation, threshold=threshold_confirmation, timeout=0.1).valid:
                 Logger.warning(f"{seal_layout2}: Layout_check failure - could not determine the seal Layout at" f"{sealname} ("f"{boss}) - "+'\033[91m'+"aborting run"+'\033[0m')
-                if Config().general["info_screenshots"]: cv2.imwrite(f"./log/screenshots/info/info_" + seal_layout1 + "_LC_fail" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+                if Config().general["info_screenshots"]: safe_imwrite(f"./log/screenshots/info/info_" + seal_layout1 + "_LC_fail" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
                 return False
             else:
                 Logger.info(f"{seal_layout1}: Layout_check step 2/2 - templates found for "f"{seal_layout1} - "+'\033[93m'+"all fine, proceeding with "f"{seal_layout1}"+'\033[0m')
@@ -396,7 +397,7 @@ class Diablo:
                 if not self._seal(*params_seal2): return False
             else:
                 Logger.warning(f"{seal_layout2}: Layout_check failure - could not determine the seal Layout at" f"{sealname} ("f"{boss}) - "+'\033[91m'+"aborting run"+'\033[0m')
-                if Config().general["info_screenshots"]: cv2.imwrite(f"./log/screenshots/info/info_" + seal_layout2 + "_LC_fail_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+                if Config().general["info_screenshots"]: safe_imwrite(f"./log/screenshots/info/info_" + seal_layout2 + "_LC_fail_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
                 return False
         return True
 
@@ -499,7 +500,7 @@ class Diablo:
         Logger.info("Waiting for Diablo to spawn")
         if not self._pather.traverse_nodes([602], self._char): return False
         self._char.kill_diablo()
-        if Config().general["info_screenshots"]: cv2.imwrite(f"./log/screenshots/info/info_dia_kill_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+        if Config().general["info_screenshots"]: safe_imwrite(f"./log/screenshots/info/info_dia_kill_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
         self._picked_up_items = self._pickit.pick_up_items(char=self._char)
         wait(0.5, 0.7)
         return (Location.A4_DIABLO_END, self._picked_up_items)

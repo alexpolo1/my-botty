@@ -5,6 +5,7 @@ from screen import convert_screen_to_monitor, grab
 from dataclasses import dataclass
 import numpy as np
 from logger import Logger
+from utils.log_rotation import safe_imwrite
 import time
 import os
 from config import Config
@@ -281,7 +282,7 @@ if __name__ == "__main__":
     def _save_visible_templates():
         os.makedirs("log/screenshots/info", exist_ok=True)
         for match in _visible_templates:
-            cv2.imwrite(match['filename'], match['img'])
+            safe_imwrite(match['filename'], match['img'])
             Logger.info(f"{match['filename']} saved")
 
     def _toggle_templates():

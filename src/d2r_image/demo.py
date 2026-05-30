@@ -8,6 +8,7 @@ import json
 import screen
 from utils.misc import cut_roi, slugify
 from utils import download_test_assets
+from utils.log_rotation import safe_imwrite
 
 import d2r_image.processing as processing
 from d2r_image.processing import get_hovered_item
@@ -60,7 +61,7 @@ def get_ground_loot():
                 if gen_truth:
                     gen_truth_from_ground_loot(ground_loot_list.items, image)
                 filename_base=image_name[:-4]
-                cv2.imwrite(f"log/screenshots/info/{filename_base}.png", image_data)
+                safe_imwrite(f"log/screenshots/info/{filename_base}.png", image_data)
                 with open(f"log/screenshots/info/{filename_base}.json", 'w', encoding='utf-8') as f:
                     json.dump(ground_loot_list, f, ensure_ascii=False, sort_keys=False, cls=EnhancedJSONEncoder, indent=2)
             all_image_data.append(image_data)
@@ -108,7 +109,7 @@ def get_hovered_items():
                 print(f'Failed: {image_name} {cnt+1}/{len(files)}')
             if item and item.BaseItem:
                 filename_base=image_name[:-4]
-                cv2.imwrite(f"log/screenshots/info/{filename_base}.png", image_data)
+                safe_imwrite(f"log/screenshots/info/{filename_base}.png", image_data)
                 with open(f"log/screenshots/info/{filename_base}.json", 'w', encoding='utf-8') as f:
                     json.dump(item, f, ensure_ascii=False, sort_keys=False, cls=EnhancedJSONEncoder, indent=2)
             all_image_data.append(image_data)

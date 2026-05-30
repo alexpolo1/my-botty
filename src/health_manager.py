@@ -7,6 +7,7 @@ from input_layer import keyboard
 from input_layer import mouse
 from utils.misc import wait
 from logger import Logger
+from utils.log_rotation import safe_imwrite
 from screen import grab
 import time
 from config import Config
@@ -83,7 +84,7 @@ class HealthManager:
         view.fast_save_and_exit()
         if Config().general["info_screenshots"]:
             self._last_chicken_screenshot = "./log/screenshots/info/info_debug_chicken_" + time.strftime("%Y%m%d_%H%M%S") + ".png"
-            cv2.imwrite(self._last_chicken_screenshot, img)
+            safe_imwrite(self._last_chicken_screenshot, img)
         self._did_chicken = True
         self.set_pause_state(True)
 

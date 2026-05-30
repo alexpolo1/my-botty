@@ -7,6 +7,7 @@ import cv2
 import numpy as np
 from input_layer import mouse
 from utils.misc import wait # for stash/shrine tele cancel detection in traverse node
+from utils.log_rotation import safe_imwrite
 from utils.misc import is_in_roi
 from config import Config
 from logger import Logger
@@ -627,7 +628,7 @@ class Pather:
                         # Don't want to spam the log with errors in this case because it most likely worked out just fine
                         if timeout > 3.1:
                             if Config().general["info_screenshots"]:
-                                cv2.imwrite("./log/screenshots/info/info_pather_got_stuck_" + time.strftime("%Y%m%d_%H%M%S") + ".png", img)
+                                safe_imwrite("./log/screenshots/info/info_pather_got_stuck_" + time.strftime("%Y%m%d_%H%M%S") + ".png", img)
                             Logger.error("Got stuck exit pather")
                         return False
 
@@ -653,7 +654,7 @@ class Pather:
                         Logger.debug(f"Shrine found, activating it")
                         select_screen_object_match(match)
                         if Config().general["info_screenshots"]:
-                            cv2.imwrite(f"./log/screenshots/info/info_shrine_check_after" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+                            safe_imwrite(f"./log/screenshots/info/info_shrine_check_after" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
                     teleport_count = 0
                     break
                 teleport_count += 1

@@ -87,7 +87,15 @@ class GameStats:
         self._exp_logging_error_warned = False
         self._last_status_report_game = 0
         self._last_status_report_run = 0
+        self._last_failure_reason = None
         os.makedirs("log/stats", exist_ok=True)
+
+    def set_failure_reason(self, reason: str):
+        """Store the reason for the last failure (e.g. disk full, uncaught exception)."""
+        self._last_failure_reason = str(reason)
+
+    def get_failure_reason(self) -> str | None:
+        return self._last_failure_reason
 
     def _log_event(self, event_type: str, data: dict | None = None):
         payload = {
@@ -539,6 +547,8 @@ class GameStats:
         lines.append(f"Deaths:     {self._death_counter}")
         lines.append(f"Chickens:   {self._chicken_counter}")
         lines.append(f"Merc Deaths:{self._merc_death_counter}")
+        if self._last_failure_reason:
+            lines.append(f"Last Failure: {self._last_failure_reason}")
 
         if curr_lvl["lvl"] > 0 and curr_lvl["lvl"] < 99 and self._current_exp > 0:
             gained_exp = self._current_exp - self._starting_exp
@@ -599,6 +609,7 @@ class GameStats:
             "chickens": self._chicken_counter,
             "merc_deaths": self._merc_death_counter,
             "xp_gained": self._current_exp - self._starting_exp if self._current_exp > 0 else 0,
+            "last_failure_reason": self._last_failure_reason,
             "locations": {}
         }
         for location in self._location_stats:

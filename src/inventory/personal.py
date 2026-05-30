@@ -12,6 +12,7 @@ from logger import Logger
 from config import Config
 import template_finder
 from utils.misc import wait, is_in_roi, mask_by_roi
+from utils.log_rotation import safe_imwrite
 from input_layer import mouse
 from inventory import stash, common, vendor
 from ui import view
@@ -143,7 +144,7 @@ def stash_all_items(items: list = None, game_stats = None):
                 Logger.debug("Stash tab is full of gold, selecting next stash tab.")
                 stash.set_curr_stash(gold = (stash.get_curr_stash()["gold"] + 1))
                 if Config().general["info_screenshots"]:
-                    cv2.imwrite("./log/screenshots/info/info_gold_stash_full_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+                    safe_imwrite("./log/screenshots/info/info_gold_stash_full_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
                 if stash.get_curr_stash()["gold"] > 1:
                     #decide if gold pickup should be disabled or gambling is active
                     vendor.set_gamble_status(True)
@@ -163,7 +164,7 @@ def stash_all_items(items: list = None, game_stats = None):
         else:
             Logger.debug(f"Stash tab completely full, advance to next")
             if Config().general["info_screenshots"]:
-                cv2.imwrite("./log/screenshots/info/stash_tab_completely_full_" + time.strftime("%Y%m%d_%H%M%S") + ".png", img)
+                safe_imwrite("./log/screenshots/info/stash_tab_completely_full_" + time.strftime("%Y%m%d_%H%M%S") + ".png", img)
             if Config().char["fill_shared_stash_first"]:
                 stash.set_curr_stash(items = (stash.get_curr_stash()["items"] - 1))
             else:
@@ -178,7 +179,7 @@ def stash_all_items(items: list = None, game_stats = None):
             # could not stash all items, stash tab is likely full
             Logger.debug("Wanted to stash item, but it's still in inventory. Assumes full stash. Move to next.")
             if Config().general["info_screenshots"]:
-                cv2.imwrite("./log/screenshots/info/debug_info_inventory_not_empty_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+                safe_imwrite("./log/screenshots/info/debug_info_inventory_not_empty_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
             if Config().char["fill_shared_stash_first"]:
                 stash.set_curr_stash(items = (stash.get_curr_stash()["items"] - 1))
             else:
@@ -220,12 +221,12 @@ def log_item(item_box: ItemText, item_properties: HoveredItem):
                         found_low_confidence = True
                     except: pass
             if found_low_confidence:
-                cv2.imwrite(f"./log/screenshots/info/ocr_low_confidence_box_{timestamp}.png", item_box.img)
+                safe_imwrite(f"./log/screenshots/info/ocr_low_confidence_box_{timestamp}.png", item_box.img)
 
 def log_item_fail(hovered_item, slot):
     Logger.error(f"item segmentation failed for slot_pos: {slot[0]}")
     if Config().general["info_screenshots"]:
-        cv2.imwrite("./log/screenshots/info/failed_item_box_" + time.strftime("%Y%m%d_%H%M%S") + ".png", hovered_item)
+        safe_imwrite("./log/screenshots/info/failed_item_box_" + time.strftime("%Y%m%d_%H%M%S") + ".png", hovered_item)
 
 def inspect_items(inp_img: np.ndarray = None, close_window: bool = True, game_stats: GameStats = None, ignore_sell: bool = False) -> list[BoxInfo]:
     """
@@ -529,6 +530,6 @@ def update_tome_key_needs(img: np.ndarray = None, item_type: str = "tp") -> bool
     else:
         Logger.error(f"update_tome_key_needs: Failed to capture item description box for {item_type}")
         if Config().general["info_screenshots"]:
-            cv2.imwrite("./log/screenshots/info/failed_capture_item_description_box" + time.strftime("%Y%m%d_%H%M%S") + ".png", hovered_item)
+            safe_imwrite("./log/screenshots/info/failed_capture_item_description_box" + time.strftime("%Y%m%d_%H%M%S") + ".png", hovered_item)
         return False
     return True

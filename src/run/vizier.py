@@ -8,6 +8,7 @@ from item.pickit import PickIt
 import template_finder
 from town.town_manager import TownManager, A4
 from utils.misc import wait
+from utils.log_rotation import safe_imwrite
 from input_layer import mouse
 from screen import convert_abs_to_monitor, grab
 from ui_manager import detect_screen_object, ScreenObjects
@@ -75,7 +76,7 @@ class Vizier:
                     x_m, y_m = convert_abs_to_monitor([50 * direction, direction])
                     self._char.move((x_m, y_m), force_move=True)
                 i += 1
-        if Config().general["info_screenshots"] and not found: cv2.imwrite(f"./log/screenshots/info/info_failed_seal_" + seal_layout + "_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+        if Config().general["info_screenshots"] and not found: safe_imwrite(f"./log/screenshots/info/info_failed_seal_" + seal_layout + "_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
         return found
 
 
@@ -88,7 +89,7 @@ class Vizier:
             if not found: self._pather.traverse_nodes_fixed(path, self._char)
             else: break
         if not found:
-            if Config().general["info_screenshots"]: cv2.imwrite(f"./log/screenshots/info/info_failed_loop_pentagram_" + path + "_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+            if Config().general["info_screenshots"]: safe_imwrite(f"./log/screenshots/info/info_failed_loop_pentagram_" + path + "_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
             return False
         return True
 
@@ -121,7 +122,7 @@ class Vizier:
                 return True
             else:
                 Logger.warning("CS Trash (A): Layout_check failed to determine the right Layout, "+'\033[91m'+"trying to loop to pentagram to save the run"+'\033[0m')
-                if Config().general["info_screenshots"]: cv2.imwrite(f"./log/screenshots/info/info_entrance_a_failed_layoutcheck_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+                if Config().general["info_screenshots"]: safe_imwrite(f"./log/screenshots/info/info_entrance_a_failed_layoutcheck_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
                 return True
 
         else:
@@ -142,7 +143,7 @@ class Vizier:
                 return True
             else:
                 Logger.warning("CS Trash (B): Layout_check failed to determine the right Layout, "+'\033[91m'+"trying to loop to pentagram to save the run"+'\033[0m')
-                if Config().general["info_screenshots"]: cv2.imwrite(f"./log/screenshots/info/info_entrance_b_failed_layoutcheck_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+                if Config().general["info_screenshots"]: safe_imwrite(f"./log/screenshots/info/info_entrance_b_failed_layoutcheck_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
                 return True
 
     #GET FROM WP TO PENTAGRAM (clear_trash=0)
@@ -160,7 +161,7 @@ class Vizier:
             if not found:
                 self._pather.traverse_nodes_fixed("diablo_wp_pentagram_loop", self._char)
         if not found:
-            if Config().general["info_screenshots"]: cv2.imwrite(f"./log/screenshots/info/info_failed_pent_loop_no_trash_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+            if Config().general["info_screenshots"]: safe_imwrite(f"./log/screenshots/info/info_failed_pent_loop_no_trash_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
             return False
         return True
 
@@ -181,7 +182,7 @@ class Vizier:
             if not found:
                 self._pather.traverse_nodes_fixed("diablo_wp_entrance_loop", self._char)
         if not found:
-            if Config().general["info_screenshots"]: cv2.imwrite(f"./log/screenshots/info/info_failed_cs_entrance_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+            if Config().general["info_screenshots"]: safe_imwrite(f"./log/screenshots/info/info_failed_cs_entrance_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
             return False
         Logger.debug("Kill trash at location: rof_02")
         self._char.kill_cs_trash("rof_02")
@@ -196,7 +197,7 @@ class Vizier:
             found = template_finder.search_and_wait(templates, threshold=0.83, timeout=0.1, suppress_debug=True).valid
             if not found: self._pather.traverse_nodes_fixed("diablo_wp_pentagram_loop", self._char)
         if not found:
-            if Config().general["info_screenshots"]: cv2.imwrite(f"./log/screenshots/info/info_failed_loop_pentagram_diablo_wp_pentagram_loop_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+            if Config().general["info_screenshots"]: safe_imwrite(f"./log/screenshots/info/info_failed_loop_pentagram_diablo_wp_pentagram_loop_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
             return False
         return True
 
@@ -255,7 +256,7 @@ class Vizier:
             Logger.debug(f"{seal_layout1}: Layout_check step 1/2 - templates NOT found for "f"{seal_layout2}")
             if not template_finder.search_and_wait(templates_confirmation, threshold=threshold_confirmation, timeout=0.1).valid:
                 Logger.warning(f"{seal_layout2}: Layout_check failure - could not determine the seal Layout at" f"{sealname} ("f"{boss}) - "+'\033[91m'+"aborting run"+'\033[0m')
-                if Config().general["info_screenshots"]: cv2.imwrite(f"./log/screenshots/info/info_" + seal_layout1 + "_LC_fail" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+                if Config().general["info_screenshots"]: safe_imwrite(f"./log/screenshots/info/info_" + seal_layout1 + "_LC_fail" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
                 return False
             else:
                 Logger.info(f"{seal_layout1}: Layout_check step 2/2 - templates found for "f"{seal_layout1} - "+'\033[93m'+"all fine, proceeding with "f"{seal_layout1}"+'\033[0m')

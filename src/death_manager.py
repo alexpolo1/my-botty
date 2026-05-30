@@ -5,6 +5,7 @@ from input_layer import mouse
 from input_layer import keyboard
 import cv2
 from logger import Logger
+from utils.log_rotation import safe_imwrite
 import time
 from ui_manager import ScreenObjects, is_visible
 
@@ -38,7 +39,7 @@ class DeathManager:
             Logger.warning("You have died!")
             if Config().general["info_screenshots"]:
                 self._last_death_screenshot = "./log/screenshots/info/info_debug_death_" + time.strftime("%Y%m%d_%H%M%S") + ".png"
-                cv2.imwrite(self._last_death_screenshot, img)
+                safe_imwrite(self._last_death_screenshot, img)
             # first wait a bit to make sure health manager is done with its chicken stuff which obviously failed
             if self._callback is not None:
                 self._callback()

@@ -4,6 +4,7 @@ import cv2
 from input_layer import keyboard
 
 from utils.auto_settings import check_settings
+from utils.log_rotation import safe_imwrite
 from bot import Bot
 from config import Config
 from death_manager import DeathManager
@@ -51,7 +52,7 @@ class GameController:
                 if max_game_length_reached:
                     Logger.info(f"Max game length reached. Attempting to restart {Config().general['name']}!")
                     if Config().general["info_screenshots"]:
-                        cv2.imwrite("./log/screenshots/info/info_max_game_length_reached_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+                        safe_imwrite("./log/screenshots/info/info_max_game_length_reached_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
                 elif self.death_manager.died():
                     self.game_stats.log_death(self.death_manager._last_death_screenshot)
                 elif did_chicken:
@@ -75,7 +76,11 @@ class GameController:
                 
                 # Try to recover from whatever situation we are and go back to hero selection
                 if max_consecutive_fails_reached:
-                    msg = f"Consecutive fails {self.game_stats.get_consecutive_runs_failed()} >= Max {Config().general['max_consecutive_fails']}. Quitting botty."
+                    reason_str = self.game_stats.get_failure_reason()
+                    msg = f"Consecutive fails {self.game_stats.get_consecutive_runs_failed()} >= Max {Config().general['max_consecutive_fails']}"
+                    if reason_str:
+                        msg += f". Reason: {reason_str}"
+                    msg += ". Quitting botty."
                     Logger.error(msg)
                     if messenger.enabled:
                         messenger.send_message(msg)
@@ -100,7 +105,7 @@ class GameController:
             return self.run_bot()
         else:
             if Config().general["info_screenshots"]:
-                cv2.imwrite("./log/screenshots/info/info_could_not_recover_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
+                safe_imwrite("./log/screenshots/info/info_could_not_recover_" + time.strftime("%Y%m%d_%H%M%S") + ".png", grab())
             if Config().general['restart_d2r_when_stuck']:
                 Logger.error("Could not recover from a max game length violation. Restarting the Game.")
                 if messenger.enabled:
